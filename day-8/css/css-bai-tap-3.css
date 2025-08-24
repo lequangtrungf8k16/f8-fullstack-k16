@@ -1,0 +1,91 @@
+body {
+    color: rgb(62, 62, 62);
+    padding: 0 8%;
+}
+
+/* .breaking-news */
+.breaking-news a {
+    display: inline-block;
+    background: gray;
+    border-radius: 40px;
+    padding: 4px 10px;
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+}
+
+/* section */
+section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* .newsletter-left */
+.newsletter-left div a {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    border-bottom: 1px solid gray;
+    padding: 10px;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: rgb(62, 62, 62);
+}
+
+.newsletter-left img {
+    height: 100px;
+}
+
+/* .feature-news */
+.feature-news {
+    display: flex;
+    flex-grow: 2;
+}
+
+.feature-news a {
+    text-decoration: none;
+    color: rgb(62, 62, 62);
+}
+
+.feature-news img {
+    width: 100%;
+}
+
+.feature-news h2 {
+    font-size: 4rem;
+}
+
+.feature-news p {
+    margin: 20px 0;
+}
+
+.feature-news span {
+    font-weight: bold;
+}
+
+.feature-news span::before {
+    content: ". ";
+}
+
+/* .newsletter-right */
+.newsletter-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.newsletter-right div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.newsletter-right div a {
+    text-decoration: none;
+    color: rgb(62, 62, 62);
+}
+
+.newsletter-right img {
+    height: 200px;
+}

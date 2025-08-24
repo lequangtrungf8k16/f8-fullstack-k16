@@ -1,18 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border: 0;
-    outline: 0;
-}
-
 html {
     background: rgb(46, 66, 77);
-    font-size: 62.5%;
-}
-
-body {
-    font-size: 1.6rem;
 }
 
 .nav-list {
@@ -20,6 +7,7 @@ body {
     background: rgb(31, 73, 89);
     border-radius: 6px;
     margin: 40px auto;
+    font-size: 0;
 }
 
 .nav-list ul li {
