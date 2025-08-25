@@ -54,15 +54,25 @@ span {
     gap: 10px;
 }
 
+.support-info p {
+    width: 170px;
+}
+
 .support-info a {
     color: white;
     text-decoration: none;
 }
 
-.acount-info {
+/* .account */
+.account-info {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.account-info a {
+    color: white;
+    text-decoration: none;
 }
 
 /* .quick-link */
@@ -70,6 +80,11 @@ span {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.quick-link a {
+    color: white;
+    text-decoration: none;
 }
 
 /* .downloads-apps */
