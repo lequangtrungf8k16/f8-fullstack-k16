@@ -58,6 +58,7 @@
 
 .inner-header .navbar .menu li:hover {
     text-decoration: underline;
+    opacity: 0.5;
 }
 
 /* auth */
@@ -79,6 +80,7 @@
 
 .auth-search input {
     background: none;
+    color: white;
 }
 
 .auth-search i,
