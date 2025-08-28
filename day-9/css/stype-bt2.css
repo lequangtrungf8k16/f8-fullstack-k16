@@ -26,7 +26,7 @@ p {
 
 .info-sale .time-sale {
     display: flex;
-    gap: 20px;
+    gap: 10px 20px;
 }
 
 .info-sale .time-sale span {
@@ -34,11 +34,11 @@ p {
 }
 
 .info-sale .time-sale span:first-child {
-    font-size: 1rem;
+    font-size: 1.6rem;
 }
 
 .info-sale .time-sale span:last-child {
-    font-size: 2.3rem;
+    font-size: 5rem;
     font-weight: bold;
 }
 
@@ -108,12 +108,12 @@ p {
     right: 10px;
 }
 
-.product-info > i:first-of-type:hover {
+.product-info > i:hover {
     cursor: pointer;
     color: orange;
 }
 
-.product-info > i:first-of-type:active {
+.product-info > i:active {
     color: red;
 }
 
@@ -171,7 +171,7 @@ p {
 
 .wrapper-product .evaluate i:hover {
     cursor: pointer;
-    color: orange;
+    color: gray;
 }
 
 /* Xem tất cả sản phẩm */

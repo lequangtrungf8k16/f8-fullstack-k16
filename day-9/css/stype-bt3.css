@@ -85,12 +85,12 @@ p {
     right: 10px;
 }
 
-.product-info > i:first-of-type:hover {
+.product-info > i:hover {
     cursor: pointer;
     color: orange;
 }
 
-.product-info > i:first-of-type:active {
+.product-info > i:active {
     cursor: pointer;
     color: red;
 }
@@ -156,7 +156,7 @@ p {
 
 .wrapper-product .evaluate i:hover {
     cursor: pointer;
-    color: yellow;
+    color: gray;
 }
 
 /* Chọn kiểu dáng sản phẩm */

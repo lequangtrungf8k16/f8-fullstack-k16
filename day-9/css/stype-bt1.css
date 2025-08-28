@@ -13,6 +13,8 @@ li {
 
 .menu {
     display: flex;
+
+    height: auto;
 }
 
 /* Menu cấp 1 */
