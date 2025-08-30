@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 50px;
+}
+
+button {
+    position: relative;
+
+    background: gray;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    scale: 0;
+    transform-origin: bottom right;
+
+    background: red;
+    border-radius: 10px;
+
+    transition: scale 0.3s;
+}
+
+button span {
+    position: relative;
+    font-size: 2rem;
+}
+
+button:hover::before {
+    scale: 1;
+    transform-origin: top left;
+}

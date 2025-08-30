@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 50px;
+}
+
+.login {
+    position: relative;
+}
+
+.login input {
+    width: 250px;
+    border: 1px solid gray;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: inherit;
+}
+
+.login input:focus {
+    border-color: chocolate;
+}
+
+.login input:focus + label,
+.login input:not(:placeholder-shown) + label {
+    top: -14px;
+}
+
+.login input:focus + label {
+    color: chocolate;
+}
+
+.login label {
+    position: absolute;
+    top: 7px;
+    left: 10px;
+
+    background: white;
+    color: gray;
+    padding: 0 4px;
+    pointer-events: none;
+    transition: top 0.3s;
+}
