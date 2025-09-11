@@ -1,25 +1,256 @@
-/* Pc Low */
+/* Pc */
+@media (max-width: 1399.98px) {
+    .header {
+        padding: 50px 100px;
+    }
 
-@media (max-width: 1200px) {
+    .about-us {
+        padding: 50px 100px;
+    }
+
+    .about-us .inner {
+        gap: 60px;
+    }
+
+    .services {
+        padding: 50px 100px;
+    }
+
+    .services .inner .wrapper-img {
+        gap: 20px;
+    }
+
+    .features {
+        padding: 50px 100px;
+    }
 }
 
-/* Mobile & Tablet */
+/* Pc Low */
+@media (max-width: 1199.98px) {
+    .header,
+    .about-us,
+    .services,
+    .features,
+    .team,
+    .awards,
+    .testimonial,
+    .faqs,
+    .blogs,
+    .cta-item,
+    .footer {
+        padding: 50px 80px;
+    }
 
-@media (max-width: 1023px) {
+    .heading-info .heading h1 {
+        font-size: 5rem;
+    }
+
+    .about-us .inner {
+        gap: 40px;
+    }
+
+    .services .inner .wrapper-img,
+    .features,
+    .features .inner {
+        gap: 20px;
+    }
+
+    .testimonial .inner .wrapper-clients .client-inner {
+        gap: 40px;
+    }
+
+    .awards .award-inner .award-info {
+        width: 55%;
+    }
 }
 
 /* Tablet */
+@media (max-width: 991.98px) {
+    .header,
+    .about-us,
+    .services,
+    .features,
+    .team,
+    .awards,
+    .testimonial,
+    .faqs,
+    .blogs,
+    .cta-item,
+    .footer {
+        padding: 40px;
+    }
 
-@media (min-width: 740px) and (max-width: 1023px) {
+    .toggle-menu,
+    .close-btn {
+        display: inline-block;
+    }
+
+    .toggle-menu i {
+        font-size: 2.6rem;
+    }
+
+    .header {
+        position: relative;
+    }
+
+    .close-btn {
+        position: fixed;
+        top: 10px;
+        left: -10%;
+        z-index: 999;
+        color: #fff;
+        transition: left 0.3s;
+    }
+
+    .close-btn:hover,
+    .toggle-menu:hover {
+        cursor: pointer;
+        color: #fc4011;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 997;
+        width: 100%;
+        height: 100%;
+        background: #00000081;
+        opacity: 0;
+        visibility: hidden;
+        transition-property: opacity visibility;
+        transition-duration: 0.3s;
+    }
+
+    .header-inner .menu {
+        position: fixed;
+        top: 0;
+        left: -101%;
+        z-index: 998;
+        display: block;
+        width: 250px;
+        height: 100%;
+        background: #0e1412;
+        color: #fff;
+        padding: 20px 10px;
+        transition: left 0.3s;
+    }
+
+    #toggle-btn:checked ~ nav .menu {
+        left: 0;
+    }
+
+    #toggle-btn:checked ~ .close-btn {
+        left: 210px;
+    }
+
+    #toggle-btn:checked ~ .overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .header-inner .menu li {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        border-bottom: 1px solid #fff;
+    }
+
+    .heading-info {
+        gap: 40px;
+        margin-top: 40px;
+    }
+
+    .heading-info .heading h1,
+    .about-us .inner .info .heading {
+        font-size: 4rem;
+    }
+
+    .about-us .inner .statistical {
+        gap: 20px;
+        margin-top: 10px;
+    }
+
+    .services .inner .wrapper-img .Service-image {
+        width: calc(50% - 20px);
+    }
+
+    .services .inner .wrapper-img .btn {
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%);
+        width: 70%;
+        font-size: 1.8rem;
+    }
+
+    .awards .award-inner .award-info {
+        width: 60%;
+    }
 }
 
 /* Mobile */
+@media (max-width: 767.98px) {
+    .header,
+    .about-us,
+    .services,
+    .features,
+    .team,
+    .awards,
+    .testimonial,
+    .faqs,
+    .blogs,
+    .cta-item,
+    .footer {
+        display: block;
+    }
 
-@media (max-width: 740px) {
+    .header,
+    .about-us,
+    .services,
+    .features,
+    .team,
+    .awards,
+    .testimonial,
+    .faqs,
+    .blogs,
+    .cta-item,
+    .footer {
+        padding: 20px 10px;
+    }
+
+    .header-inner {
+        font-size: 1.6rem;
+    }
+
+    .heading-info {
+        gap: 40px;
+        margin-top: 40px;
+    }
+
+    .heading-info .heading h1,
+    .about-us .inner .info .heading {
+        font-size: 4rem;
+    }
+
+    .about-us .inner .statistical {
+        gap: 20px;
+        margin-top: 10px;
+    }
+
+    .awards .award-inner .award-info {
+        width: 60%;
+    }
 }
 
-@media (min-width: 480px) and (max-width: 655px) {
-}
+/* Mobile Low */
+@media (max-width: 575.98px) {
+    .header {
+        padding: 20px;
+    }
 
-@media (max-width: 479px) {
+    .services .inner .wrapper-img .Service-image {
+        width: 80%;
+        gap: 10px;
+        margin: 0 auto;
+    }
 }

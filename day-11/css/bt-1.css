@@ -83,6 +83,8 @@
     display: flex;
     overflow: hidden;
 
+    width: 80%;
+
     margin-top: 50px;
     border: 2px solid #fff;
     border-radius: 10px;
@@ -93,6 +95,8 @@
 .info .switch-btn label {
     width: 180px;
     padding: 15px;
+
+    width: 50%;
 
     font-family: "Rajdhani", sans-serif;
     font-size: 1.6rem;
@@ -586,21 +590,25 @@
     }
 
     .auth .form-box .form-login-wrapper {
-        width: 100%;
+        /* width: 50%; */
         padding: 0 auto;
     }
 
     .auth .form-box .form-register-wrapper {
-        width: 100%;
+        /* width: 50%; */
         padding: 0 auto;
     }
 
     .info .switch-btn {
-        width: 50%;
+        width: 450px;
     }
 }
 
-@media screen and (max-width: 549.98px) {
+@media screen and (max-width: 575.98px) {
+    .auth {
+        min-width: 360px;
+    }
+
     .info {
         width: 100%;
     }
@@ -610,17 +618,9 @@
         font-size: 7.6rem;
     }
 
-    .auth .form-box .form-login-wrapper {
-        width: 100%;
-        padding: 0 auto;
-    }
-
-    .auth .form-box .form-register-wrapper {
-        width: 100%;
-        padding: 0 auto;
-    }
-
+    .auth .form-box .form-login-wrapper,
+    .auth .form-box .form-register-wrapper,
     .info .switch-btn {
-        width: 50%;
+        width: 80%;
     }
 }
