@@ -20,7 +20,7 @@
     background-size: cover;
 }
 
-.dicoration {
+.decoration {
     width: 64%;
     height: 140%;
     border-radius: 50%;
@@ -516,8 +516,12 @@
 }
 
 @media screen and (max-width: 1449.98px) {
-    .dicoration {
+    .decoration {
         display: none;
+    }
+    .auth .form-box .form-login-wrapper,
+    .auth .form-box .form-register-wrapper {
+        box-shadow: none;
     }
 }
 
@@ -559,7 +563,7 @@
         margin: 20px auto;
         border-radius: 10px;
         background: #fff;
-        box-shadow: 5px -5px 20px;
+        box-shadow: none;
     }
 
     .auth:has(#register-btn:checked) .form-login-wrapper {
@@ -571,10 +575,49 @@
     }
 }
 
-@media screen and (max-width: 549.98px) {
+@media screen and (max-width: 922.98px) {
+    .info {
+        width: 100%;
+    }
+
     .info .heading-info h1 {
         margin-top: 20px;
         font-size: 7.6rem;
+    }
+
+    .auth .form-box .form-login-wrapper {
+        width: 100%;
+        padding: 0 auto;
+    }
+
+    .auth .form-box .form-register-wrapper {
+        width: 100%;
+        padding: 0 auto;
+    }
+
+    .info .switch-btn {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 549.98px) {
+    .info {
+        width: 100%;
+    }
+
+    .info .heading-info h1 {
+        margin-top: 20px;
+        font-size: 7.6rem;
+    }
+
+    .auth .form-box .form-login-wrapper {
+        width: 100%;
+        padding: 0 auto;
+    }
+
+    .auth .form-box .form-register-wrapper {
+        width: 100%;
+        padding: 0 auto;
     }
 
     .info .switch-btn {
