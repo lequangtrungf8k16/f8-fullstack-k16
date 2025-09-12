@@ -49,10 +49,18 @@
         gap: 40px;
     }
 
+    .services .inner .info {
+        width: 80%;
+    }
+
     .services .inner .wrapper-img,
     .features,
     .features .inner {
         gap: 20px;
+    }
+
+    .team .inner .info {
+        width: 80%;
     }
 
     .testimonial .inner .wrapper-clients .client-inner {
@@ -60,7 +68,7 @@
     }
 
     .awards .award-inner .award-info {
-        width: 55%;
+        width: 80%;
     }
 }
 
@@ -205,10 +213,6 @@
 
     .team .inner .team-image .wrapper-img .info-name {
         margin-top: 0;
-    }
-
-    .awards .award-inner .award-info {
-        width: 60%;
     }
 
     .awards .award-inner .award-image {
