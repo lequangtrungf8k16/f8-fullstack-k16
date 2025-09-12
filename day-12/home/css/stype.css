@@ -922,7 +922,8 @@ footer .contact {
 }
 
 footer .contact .justice2 {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
