@@ -201,6 +201,10 @@
         font-size: 1.8rem;
     }
 
+    .team .inner .team-image {
+        gap: 20px;
+    }
+
     .team .inner .team-image .wrapper-img {
         width: calc(50% - 20px);
         margin-top: 40px;
@@ -360,6 +364,7 @@
     .testimonial .inner .wrapper-info .heading,
     .blogs .inner .wrapper-blog .blog-inner {
         width: 100%;
+        height: 100%;
     }
 
     .awards .award-inner .award-image .image-wrapper {
