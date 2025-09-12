@@ -895,6 +895,7 @@ footer .contact {
     display: flex;
     justify-content: space-between;
     gap: 20px;
+    width: 100%;
 }
 
 footer .contact h2 {
@@ -916,9 +917,9 @@ footer .contact .justice span {
     margin-top: 20px;
 }
 
-footer .contact {
-    justify-content: space-between;
-    width: 100%;
+footer .contact .pages {
+    display: flex;
+    flex-direction: column;
 }
 
 footer .contact .justice2 {
