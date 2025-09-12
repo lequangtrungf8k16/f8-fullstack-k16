@@ -85,10 +85,16 @@
 @media screen and (max-width: 575.98px) {
     .auth {
         min-width: 360px;
+        padding: 0 10px;
+    }
+
+    .auth .form-box {
+        width: 100%;
     }
 
     .info {
         width: 100%;
+        padding: 0 10px;
     }
 
     .info .heading-info h1 {
@@ -97,8 +103,11 @@
     }
 
     .auth .form-box .form-login-wrapper,
-    .auth .form-box .form-register-wrapper,
+    .auth .form-box .form-register-wrapper {
+        width: 100%;
+    }
+
     .info .switch-btn {
-        width: 80%;
+        width: 100%;
     }
 }
