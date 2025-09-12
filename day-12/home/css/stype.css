@@ -60,7 +60,7 @@ body {
     text-decoration: none;
 }
 
-.header-inner .menu a:hover {
+.header-inner .menu li:hover a {
     color: #fd6038;
     transition: color 0.3s;
 }
@@ -125,19 +125,27 @@ body {
 .heading-info .decor {
     content: "";
     position: absolute;
-    top: calc(100% - 80%);
+    top: 20%;
     left: 0;
-    transform: translate();
     display: block;
     width: 30%;
     height: 80%;
     background: #fed464;
 }
 
-.heading-info .image img:first-child {
-    position: relative;
+.heading-info .decor + img {
+    content: "";
+    position: absolute;
+    top: 30%;
+    right: -30px;
+    display: block;
+    width: 100px;
+    height: auto;
+}
+
+.heading-info .image div img:first-child {
     margin: 0 auto;
-    width: 65%;
+    width: 90%;
     object-fit: cover;
 }
 
@@ -161,7 +169,6 @@ body {
 }
 
 /* Main */
-
 /* .about-us */
 .about-us {
     padding: 80px 137px;
@@ -171,27 +178,33 @@ body {
 
 .about-us .inner {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 80px;
+    gap: 110px;
 }
 
 .about-us .inner .image {
-    display: flex;
-    width: 50%;
-    height: auto;
+    position: relative;
+    flex-grow: 1;
+    width: 90%;
+    height: 570px;
 }
 
 .about-us .inner .image img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-us .inner .image img:last-child {
+    position: absolute;
+    top: 55%;
+    right: -60px;
+    width: 100px;
     height: auto;
 }
 
 .about-us .inner .info {
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    width: 50%;
+    flex-grow: 1;
 }
 
 .about-us .inner .info .heading {
@@ -226,8 +239,9 @@ body {
 }
 
 .about-us .inner .info a {
+    display: inline-block;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
     padding: 15px 30px;
     background: #fd6038;
     text-decoration: none;
@@ -338,6 +352,7 @@ body {
 }
 
 .features .inner .image {
+    position: relative;
     width: 50%;
 }
 
@@ -345,6 +360,22 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.features .image img:last-child {
+    position: absolute;
+    top: 35%;
+    left: -40px;
+    width: 100px;
+    height: auto;
+}
+
+.features .decor img:last-child {
+    position: absolute;
+    top: 35%;
+    left: 95%;
+    width: 100px;
+    height: auto;
 }
 
 .features .inner .info {

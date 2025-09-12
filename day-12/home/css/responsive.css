@@ -85,7 +85,7 @@
     .blogs,
     .cta-item,
     footer {
-        padding: 40px;
+        padding: 60px;
     }
 
     .toggle-menu,
@@ -201,6 +201,14 @@
         font-size: 1.8rem;
     }
 
+    .features .image img:last-child {
+        left: -20px;
+    }
+
+    .features .decor img:last-child {
+        left: 85%;
+    }
+
     .team .inner .team-image {
         gap: 20px;
     }
@@ -267,20 +275,6 @@
         width: 100%;
     }
 
-    .header,
-    .about-us,
-    .services,
-    .features,
-    .team,
-    .awards,
-    .testimonial,
-    .faqs,
-    .blogs,
-    .cta-item,
-    footer {
-        padding: 20px;
-    }
-
     .header-inner {
         font-size: 1.6rem;
     }
@@ -339,6 +333,15 @@
     .features .inner .info,
     .team .inner .info {
         width: 100%;
+    }
+
+    .features .image img:last-child {
+        left: -30px;
+        width: 60px;
+    }
+
+    .features .decor img:last-child {
+        left: 90%;
     }
 
     .team .inner .team-image .wrapper-img {
