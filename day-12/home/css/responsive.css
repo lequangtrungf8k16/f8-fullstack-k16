@@ -341,7 +341,7 @@
     }
 
     .features .decor img:last-child {
-        left: 90%;
+        left: 95%;
     }
 
     .team .inner .team-image .wrapper-img {
@@ -425,6 +425,11 @@
 @media (max-width: 575.98px) {
     .body {
         min-width: 360px;
+    }
+
+    .header-inner .logo,
+    .header-inner .contact {
+        font-size: 1.6rem;
     }
 
     .services .inner .service-image,

@@ -137,9 +137,10 @@ body {
     content: "";
     position: absolute;
     top: 30%;
-    right: -30px;
+    right: -5%;
+    z-index: 2;
     display: block;
-    width: 100px;
+    width: 20%;
     height: auto;
 }
 
@@ -159,8 +160,8 @@ body {
 .heading-info .image .wrapper-img {
     position: absolute;
     z-index: 2;
-    top: -70px;
-    left: -40px;
+    top: -15%;
+    left: -10%;
     flex-basis: 0;
 
     display: inline-block;
@@ -198,8 +199,8 @@ body {
 .about-us .inner .image img:last-child {
     position: absolute;
     top: 55%;
-    right: -60px;
-    width: 100px;
+    right: -10%;
+    width: 20%;
     height: auto;
 }
 
@@ -374,7 +375,7 @@ body {
     position: absolute;
     top: 35%;
     left: 95%;
-    width: 100px;
+    width: 15%;
     height: auto;
 }
 

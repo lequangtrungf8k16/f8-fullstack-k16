@@ -95,6 +95,7 @@ body {
     font-family: "Roboto Slab";
     font-size: 6rem;
     font-weight: 900;
+    max-width: 470px;
 }
 
 .heading-info .heading .scroll-heading {
@@ -238,21 +239,6 @@ body {
     font-size: 1.6rem;
 }
 
-.team .inner a {
-    font-weight: 700;
-    text-align: center;
-    margin-top: 40px;
-    padding: 15px 30px;
-    background: #fd6038;
-    text-decoration: none;
-    color: #fff;
-    transition: background-color 0.3s;
-}
-
-.team .inner a:hover {
-    background: #fc4011;
-}
-
 /* Dealing With a Issue? */
 .cta-item {
     padding: 80px 137px;
@@ -260,10 +246,15 @@ body {
 }
 
 .cta-item .wrapper-info {
-    width: 50%;
+    max-width: 470px;
     text-align: center;
+
     margin: 0 auto;
     color: #fff;
+}
+
+.cta-item .wrapper-info p:last-of-type {
+    margin-top: 20px;
 }
 
 .cta-item .wrapper-info .btn {
