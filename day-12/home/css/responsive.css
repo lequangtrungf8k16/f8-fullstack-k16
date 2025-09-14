@@ -88,6 +88,10 @@
         padding: 60px;
     }
 
+    .header-inner .logo {
+        display: none;
+    }
+
     .toggle-menu,
     .close-btn {
         display: inline-block;
@@ -166,7 +170,7 @@
 
     .heading-info {
         gap: 40px;
-        margin-top: 40px;
+        margin-top: 80px;
     }
 
     .heading-info .heading h1,
@@ -199,14 +203,6 @@
         transform: translate(-50%);
         width: 70%;
         font-size: 1.8rem;
-    }
-
-    .features .image img:last-child {
-        left: -20px;
-    }
-
-    .features .decor img:last-child {
-        left: 85%;
     }
 
     .team .inner .team-image {
@@ -312,7 +308,7 @@
     }
 
     .heading-info .image {
-        width: 80%;
+        width: 90%;
         height: 360px;
         margin: 40px auto;
     }

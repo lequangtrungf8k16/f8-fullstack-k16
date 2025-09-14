@@ -28,6 +28,10 @@
         padding: 60px;
     }
 
+    .header-inner .logo {
+        display: none;
+    }
+
     .toggle-menu,
     .close-btn {
         display: inline-block;

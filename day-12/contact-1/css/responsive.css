@@ -7,6 +7,20 @@
     }
 }
 
+footer .contact .justice,
+footer .contact .pages,
+footer .contact .justice2 {
+    display: none;
+}
+
+footer .contact .map {
+    height: 600px;
+}
+
+footer .contact .map img {
+    height: 100%;
+}
+
 /* Pc Low */
 @media (max-width: 1199.98px) {
     .header,
@@ -26,6 +40,10 @@
     .contact-item,
     footer {
         padding: 60px;
+    }
+
+    .header-inner .logo {
+        display: none;
     }
 
     .toggle-menu,
@@ -135,6 +153,29 @@
 
     .form-register .form-input {
         font-size: 1rem;
+    }
+
+    .contact-item .form-register .form-input label {
+        width: 100%;
+    }
+
+    .contact-item .form-register .btn {
+        text-align: center;
+    }
+
+    footer {
+        background: #0e1412;
+        color: #fff;
+    }
+
+    footer .contact .justice,
+    footer .contact .pages,
+    footer .contact .justice2 {
+        display: flex;
+    }
+
+    footer .contact .map {
+        height: auto;
     }
 
     footer .contact {

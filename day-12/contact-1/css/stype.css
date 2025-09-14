@@ -71,6 +71,7 @@ body {
 }
 
 .header-inner .contact a {
+    font-weight: 700;
     transition: color 0.3s;
 }
 
@@ -114,7 +115,7 @@ body {
     width: calc(50% - 20px);
 }
 
-article.contact-item .form-register .form-input label:last-child {
+.contact-item .form-register .form-input label:last-child {
     width: 100%;
     height: 330px;
     overflow: hidden;
@@ -134,10 +135,15 @@ article.contact-item .form-register .form-input label:last-child {
     height: 80%;
 }
 
-.contact-item .form-register button {
+.contact-item .form-register .btn {
+    text-align: right;
+}
+
+.contact-item .form-register .btn button {
     padding: 15px 30px;
     font-family: inherit;
     font-size: 1.8rem;
+    text-align: right;
     background: #fd6038;
     color: #fff;
 }
@@ -150,8 +156,7 @@ article.contact-item .form-register .form-input label:last-child {
 /* Footer */
 footer {
     padding: 80px 137px;
-    background: #0e1412;
-    color: #fff;
+    color: #0e1412;
 }
 
 footer .contact {
