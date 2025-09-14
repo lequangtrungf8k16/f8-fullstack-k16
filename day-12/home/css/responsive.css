@@ -271,6 +271,20 @@
 
 /* Mobile */
 @media (max-width: 767.98px) {
+    .header,
+    .about-us,
+    .services,
+    .features,
+    .team,
+    .awards,
+    .testimonial,
+    .faqs,
+    .blogs,
+    .cta-item,
+    footer {
+        padding: 40px;
+    }
+
     .header {
         width: 100%;
     }
@@ -407,6 +421,10 @@
 
     footer .contact {
         flex-wrap: wrap;
+    }
+
+    footer .contact .map {
+        height: auto;
     }
 
     footer .contact .justice {

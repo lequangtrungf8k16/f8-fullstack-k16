@@ -406,6 +406,10 @@
         flex-wrap: wrap;
     }
 
+    footer .contact .map {
+        height: auto;
+    }
+
     footer .contact .justice {
         width: 100%;
     }
