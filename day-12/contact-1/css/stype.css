@@ -225,6 +225,10 @@ footer .contact a {
     color: #beccc7;
 }
 
+footer .contact a:hover {
+    color: #fd6038;
+}
+
 footer .contact .map {
     position: relative;
 
