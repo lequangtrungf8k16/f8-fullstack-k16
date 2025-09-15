@@ -330,6 +330,7 @@ body {
     display: inline-block;
     font-family: "Manrope";
     font-weight: 700;
+    text-decoration: none;
     user-select: none;
     margin-top: 20px;
     background: transparent;

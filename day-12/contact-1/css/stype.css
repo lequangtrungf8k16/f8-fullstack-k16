@@ -278,7 +278,7 @@ footer .contact .map a:hover {
     height: 20px;
 }
 
-.about-justice .justice-icon .wrapper-logo .logo img:first-of-type {
+.about-justice .justice-icon .wrapper-logo .logo a img:first-of-type {
     display: none;
 }
 
