@@ -357,6 +357,7 @@ body {
     font-weight: 600;
     padding: 15px 35px;
     cursor: pointer;
+    user-select: none;
     background: #fd6038;
     color: #fff;
     opacity: 0;
@@ -575,9 +576,14 @@ footer .contact .map a:hover {
     margin-top: 20px;
 }
 
+.about-justice .justice-icon .wrapper-logo {
+    display: flex;
+}
+
 .about-justice .justice-icon .logo {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .about-justice .justice-icon .logo img {
@@ -585,8 +591,14 @@ footer .contact .map a:hover {
     height: 20px;
 }
 
-.about-justice .justice-icon span {
-    padding-top: 10px;
+.about-justice .justice-icon .wrapper-logo .logo span:first-of-type {
+    font-size: 2.4rem;
+    font-weight: 900;
+}
+
+.about-justice .justice-icon .wrapper-logo .logo span:last-of-type {
+    font-size: 1.4rem;
+    font-weight: normal;
 }
 
 .about-justice .social {

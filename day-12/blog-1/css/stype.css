@@ -127,8 +127,9 @@ body {
     font-family: "Manrope";
     font-size: 1.8rem;
     text-decoration: none;
+    user-select: none;
     padding: 15px 30px;
-    margin: 10px;
+    margin: 10px 5px;
     background: transparent;
     color: #fff;
     background: #0e1412;
@@ -224,13 +225,14 @@ body {
 
 .newsletter-item .wrapper-info .email-info input {
     width: 300px;
-    padding: 10px;
+    padding: 14px;
 }
 
 .newsletter-item .wrapper-info .email-info .btn {
     display: inline-block;
     font-family: "Manrope";
     text-decoration: none;
+    user-select: none;
     padding: 10px 20px;
     background: transparent;
     color: #fff;
@@ -328,7 +330,7 @@ body {
     display: inline-block;
     font-family: "Manrope";
     font-weight: 700;
-    text-decoration: none;
+    user-select: none;
     margin-top: 20px;
     background: transparent;
     color: #0e1412;
@@ -347,8 +349,9 @@ body {
 .blogs-list .inner .btn-switch .btn {
     background: #0e1412;
     color: #fff;
+    text-decoration: none;
     padding: 10px 15px;
-    margin: 10px;
+    margin: 10px 5px;
 }
 
 .blogs-list .inner .btn-switch .btn:hover {
@@ -444,9 +447,14 @@ footer .contact .map a:hover {
     margin-top: 20px;
 }
 
+.about-justice .justice-icon .wrapper-logo {
+    display: flex;
+}
+
 .about-justice .justice-icon .logo {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .about-justice .justice-icon .logo img {
@@ -459,8 +467,14 @@ footer .contact .map a:hover {
     gap: 20px;
 }
 
-.about-justice .justice-icon span {
-    padding-top: 10px;
+.about-justice .justice-icon .wrapper-logo .logo span:first-of-type {
+    font-size: 2.4rem;
+    font-weight: 900;
+}
+
+.about-justice .justice-icon .wrapper-logo .logo span:last-of-type {
+    font-size: 1.4rem;
+    font-weight: normal;
 }
 
 .about-justice .social a {

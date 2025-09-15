@@ -164,6 +164,7 @@ body {
     padding: 15px 30px;
     font-family: inherit;
     font-size: 1.8rem;
+    user-select: none;
     text-align: right;
     background: #fd6038;
     color: #fff;
@@ -286,8 +287,14 @@ footer .contact .map a:hover {
     gap: 20px;
 }
 
-.about-justice .justice-icon span {
-    padding-top: 10px;
+.about-justice .justice-icon .wrapper-logo .logo span:first-of-type {
+    font-size: 2.4rem;
+    font-weight: 900;
+}
+
+.about-justice .justice-icon .wrapper-logo .logo span:last-of-type {
+    font-size: 1.4rem;
+    font-weight: normal;
 }
 
 .about-justice .social a {
