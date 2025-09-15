@@ -151,6 +151,13 @@
         width: 100%;
     }
 
+    .header,
+    .team,
+    .cta-item,
+    footer {
+        padding: 20px;
+    }
+
     .header-inner {
         position: relative;
         font-size: 1.6rem;
@@ -178,8 +185,8 @@
     }
 
     .heading-info .image {
-        width: 80%;
-        height: 360px;
+        width: 90%;
+        height: 100%;
         margin: 40px 0 auto;
     }
 

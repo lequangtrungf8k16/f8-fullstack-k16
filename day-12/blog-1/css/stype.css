@@ -158,6 +158,24 @@ body {
     font-size: 1.6rem;
 }
 
+.blogs .inner .blog-inner h3 {
+    margin: 20px 0;
+}
+
+.blogs .inner .blog-inner .blog-item .btn {
+    margin-top: 20px;
+    font-family: "Manrope";
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #0e1412;
+    transition: color 0.3s;
+}
+
+.blogs .inner .blog-inner .blog-item .btn:hover {
+    color: #fc4011;
+}
+
 /* #Newsletter */
 .newsletter-item {
     padding: 80px 137px;

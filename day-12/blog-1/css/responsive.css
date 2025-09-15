@@ -31,7 +31,7 @@
     .newsletter-item,
     .blogs-list,
     footer {
-        padding: 60px;
+        padding: 40px;
     }
 
     .header-inner .logo {
@@ -137,6 +137,14 @@
 @media (max-width: 767.98px) {
     .header {
         width: 100%;
+    }
+
+    .header,
+    .blogs,
+    .newsletter-item,
+    .blogs-list,
+    footer {
+        padding: 20px;
     }
 
     .header-inner {
