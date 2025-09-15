@@ -19,7 +19,6 @@
     }
 
     .blogs-list .inner .wrapper-blog .blog-inner {
-        flex-grow: 1;
         width: calc(50% - 20px);
     }
 }
