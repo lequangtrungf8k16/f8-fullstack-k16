@@ -1,5 +1,6 @@
 body {
     font-size: 1.8rem;
+    overflow-x: hidden;
 }
 
 /* Header */
@@ -60,7 +61,7 @@ body {
     text-decoration: none;
 }
 
-.header-inner .menu li:hover a {
+.header-inner .menu a:hover {
     color: #fd6038;
     transition: color 0.3s;
 }
@@ -70,7 +71,28 @@ body {
     color: #fd6038;
 }
 
+.header-inner .menu li:last-child {
+    position: relative;
+}
+
+.header-inner .menu li:last-child > ul {
+    position: absolute;
+    display: none;
+    width: max-content;
+    padding-top: 10px;
+}
+
+.header-inner .menu li:last-child > ul li {
+    padding: 10px;
+    border-bottom: 1px solid #313d39;
+}
+
+.header-inner .menu li:last-child:hover > ul {
+    display: block;
+}
+
 .header-inner .contact a {
+    font-weight: 700;
     transition: color 0.3s;
 }
 

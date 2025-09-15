@@ -168,6 +168,29 @@
         border-bottom: 1px solid #fff;
     }
 
+    .header-inner .menu li:last-child > ul {
+        background: inherit;
+        color: #fff;
+        padding-left: 20px;
+        width: 100%;
+    }
+
+    .header-inner .menu li:last-child > ul li:last-child {
+        margin-top: 0;
+    }
+
+    .header-inner .menu li:last-child > ul {
+        background: inherit;
+        color: #fff;
+        box-shadow: none;
+        padding-left: 20px;
+        width: 100%;
+    }
+
+    .header-inner .menu li:last-child > ul li:last-child {
+        margin-top: 0;
+    }
+
     .heading-info {
         gap: 40px;
         margin-top: 80px;

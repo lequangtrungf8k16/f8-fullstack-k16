@@ -1,5 +1,6 @@
 body {
     font-size: 1.8rem;
+    overflow-x: hidden;
 }
 
 /* Header */
@@ -70,7 +71,28 @@ body {
     color: #fd6038;
 }
 
+.header-inner .menu li:last-child {
+    position: relative;
+}
+
+.header-inner .menu li:last-child > ul {
+    position: absolute;
+    display: none;
+    width: max-content;
+    padding-top: 10px;
+}
+
+.header-inner .menu li:last-child > ul li {
+    padding: 10px;
+    border-bottom: 1px solid #313d39;
+}
+
+.header-inner .menu li:last-child:hover > ul {
+    display: block;
+}
+
 .header-inner .contact a {
+    font-weight: 700;
     transition: color 0.3s;
 }
 
@@ -300,26 +322,30 @@ body {
 
 .team-item .inner .team-image {
     display: flex;
+    justify-content: space-between;
+    gap: 40px;
     flex-wrap: wrap;
-    flex-shrink: 1;
-    gap: 120px 30px;
-    margin-top: 20px;
 }
 
 .team-item .inner .team-image .wrapper-img {
-    flex-grow: 1;
-    width: 370px;
-    height: 370px;
+    width: calc(33.3% - 40px);
+    height: 100%;
+    margin-top: 40px;
+    overflow: hidden;
 }
 
 .team-item .inner .team-image .wrapper-img .info-image {
     position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
 }
 
 .team-item .inner .team-image .wrapper-img .info-image img {
     width: 100%;
-    height: 370px;
+    height: 100%;
     object-fit: cover;
+    object-position: 80% 0;
 }
 
 .team-item .inner .team-image .wrapper-img .info-image .btn {
@@ -348,7 +374,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
 }
 
 .team-item .inner .team-image .wrapper-img .info-name span:first-child {
@@ -442,6 +467,7 @@ body {
     display: inline-block;
     font-family: "Manrope";
     text-decoration: none;
+    user-select: none;
     margin-top: 20px;
     padding: 15px 35px;
     color: #fff;
@@ -530,7 +556,6 @@ footer .contact .map a {
     position: absolute;
     top: 0;
     left: 10px;
-
     display: inline-block;
     padding: 6px 20px;
     background: #fff;

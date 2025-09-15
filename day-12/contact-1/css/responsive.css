@@ -122,6 +122,18 @@ footer .contact .map img {
         border-bottom: 1px solid #fff;
     }
 
+    .header-inner .menu li:last-child > ul {
+        background: inherit;
+        color: #fff;
+        box-shadow: none;
+        padding-left: 20px;
+        width: 100%;
+    }
+
+    .header-inner .menu li:last-child > ul li:last-child {
+        margin-top: 0;
+    }
+
     .heading-info {
         gap: 40px;
         margin-top: 40px;
@@ -190,6 +202,13 @@ footer .contact .map img {
 
     footer .contact .justice {
         width: 100%;
+    }
+
+    .about-justice .justice-icon .wrapper-logo .logo img:first-of-type {
+        display: block;
+    }
+    .about-justice .justice-icon .wrapper-logo .logo img:last-of-type {
+        display: none;
     }
 
     .about-justice {
