@@ -5,8 +5,11 @@ body {
 
 /* Header */
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 99;
     background: #f8ebc9;
-    padding: 80px 137px;
+    padding: 10px 137px;
 }
 
 .header-inner {
@@ -42,7 +45,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 .header-inner .menu {
@@ -77,9 +79,13 @@ body {
 
 .header-inner .menu li:last-child > ul {
     position: absolute;
+    z-index: 2;
     display: none;
     width: max-content;
     padding-top: 10px;
+    background: #f8ebc9;
+    padding: 1px 11px;
+    box-shadow: 0 20px 70px 0 rgba(14, 20, 18, 0.07);
 }
 
 .header-inner .menu li:last-child > ul li {
@@ -489,10 +495,11 @@ footer {
 
 footer .contact {
     display: flex;
+    justify-content: space-between;
     gap: 20px;
-    flex-wrap: wrap;
-    flex-shrink: 1;
     width: 100%;
+    margin: 20px 0;
+    border-bottom: 1px solid #313d39;
 }
 
 footer .contact h2 {
@@ -503,14 +510,11 @@ footer .contact * :not(h2) {
     font-size: 1.6rem;
 }
 
-footer .contact .col {
-    flex-grow: 1;
-}
-
 footer .contact .justice {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    width: 20%;
 }
 
 footer .contact .justice span {
@@ -525,6 +529,7 @@ footer .contact .pages {
 footer .contact .justice2 {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 footer .contact a {
@@ -532,7 +537,6 @@ footer .contact a {
     margin-top: 20px;
     text-decoration: none;
     color: #beccc7;
-    transition: color 0.3s;
 }
 
 footer .contact a:hover {
@@ -541,7 +545,7 @@ footer .contact a:hover {
 
 footer .contact .map {
     position: relative;
-    width: 470px;
+
     height: 268px;
     overflow: hidden;
     border-radius: 4px;
@@ -549,7 +553,7 @@ footer .contact .map {
 
 footer .contact .map img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
 }
 
@@ -557,6 +561,7 @@ footer .contact .map a {
     position: absolute;
     top: 0;
     left: 10px;
+
     display: inline-block;
     padding: 6px 20px;
     background: #fff;

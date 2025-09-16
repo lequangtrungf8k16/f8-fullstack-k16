@@ -1,31 +1,30 @@
 /* Pc */
 @media (max-width: 1399.98px) {
-    .header,
-    .contact-item,
+    .header {
+        padding: 10px 100px;
+    }
+
+    .heading-info,
+    .newsletter-item,
+    .blogs,
+    .cta-item,
+    .blogs-list,
     footer {
         padding: 50px 100px;
     }
 }
 
-footer .contact .justice,
-footer .contact .pages,
-footer .contact .justice2 {
-    display: none;
-}
-
-footer .contact .map {
-    width: 100%;
-    height: 600px;
-}
-
-footer .contact .map img {
-    height: 100%;
-}
-
 /* Pc Low */
 @media (max-width: 1199.98px) {
-    .header,
-    .contact-item,
+    .header {
+        padding: 10px 80px;
+    }
+
+    .heading-info,
+    .newsletter-item,
+    .blogs,
+    .cta-item,
+    .blogs-list,
     footer {
         padding: 50px 80px;
     }
@@ -33,12 +32,23 @@ footer .contact .map img {
     .heading-info .heading h1 {
         font-size: 5rem;
     }
+
+    .blogs-list .inner .wrapper-blog .blog-inner {
+        width: calc(50% - 20px);
+    }
 }
 
 /* Tablet */
 @media (max-width: 991.98px) {
-    .header,
-    .contact-item,
+    .header {
+        padding: 25px 60px;
+    }
+
+    .heading-info,
+    .newsletter-item,
+    .blogs,
+    .cta-item,
+    .blogs-list,
     footer {
         padding: 60px;
     }
@@ -126,7 +136,6 @@ footer .contact .map img {
     .header-inner .menu li:last-child > ul {
         background: inherit;
         color: #fff;
-        box-shadow: none;
         padding-left: 20px;
         width: 100%;
     }
@@ -148,53 +157,115 @@ footer .contact .map img {
         top: -75px;
         left: -45px;
     }
+
+    .blogs .inner .wrapper-blog .blog-inner {
+        width: calc(50% - 20px);
+    }
 }
 
 /* Mobile */
 @media (max-width: 767.98px) {
     .header {
-        width: 100%;
+        padding: 25px 40px;
     }
 
-    .header,
-    .contact-item,
+    .heading-info,
+    .newsletter-item,
+    .blogs,
+    .cta-item,
+    .blogs-list,
     footer {
         padding: 40px;
     }
 
-    .contact .wrapper-info h2 {
-        font-size: 2.1rem;
+    .header-inner {
+        font-size: 1.6rem;
     }
 
-    .contact .wrapper-info p {
-        font-size: 1rem;
-    }
-
-    .form-register .form-input {
-        font-size: 1rem;
-    }
-
-    .contact-item .form-register .form-input label {
+    .header-inner .menu li:last-child > ul {
+        background: inherit;
+        color: #fff;
+        box-shadow: none;
+        padding-left: 20px;
         width: 100%;
     }
 
-    .contact-item .form-register .btn {
-        text-align: center;
+    .header-inner .menu li:last-child > ul li:last-child {
+        margin-top: 0;
     }
 
-    footer {
-        background: #0e1412;
-        color: #fff;
-    }
-
-    footer .contact .justice,
-    footer .contact .pages,
-    footer .contact .justice2 {
+    .heading-info {
         display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 40px;
+        margin: 40px auto;
     }
 
-    footer .contact .map {
-        height: auto;
+    .heading-info .heading {
+        width: 100%;
+    }
+
+    .heading-info .heading h1 {
+        font-size: 4.2rem;
+        width: 100%;
+    }
+
+    .heading-info .image {
+        width: 80%;
+        height: 360px;
+        margin: 40px auto;
+    }
+
+    .heading-info .image .wrapper-img {
+        top: -75px;
+        left: -40px;
+    }
+
+    .blogs .inner .wrapper-blog .blog-inner {
+        width: 100%;
+        height: 100%;
+    }
+
+    .blogs .inner .wrapper-blog .blog-inner {
+        width: calc(50% - 20px);
+    }
+
+    .blogs .inner .wrapper-blog {
+        flex-wrap: wrap;
+    }
+
+    .blogs .inner .wrapper-info div:last-child {
+        flex-direction: column;
+        align-items: start;
+        gap: 20px;
+    }
+
+    .newsletter-item .wrapper-info {
+        width: 100%;
+    }
+
+    .newsletter-item .wrapper-info .heading p:last-child {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .newsletter-item .wrapper-info .email-info {
+        display: none;
+    }
+
+    .newsletter-item .wrapper-info button {
+        display: block;
+        margin: 20px auto;
+    }
+
+    .newsletter-item .wrapper-info p:last-of-type {
+        display: none;
+    }
+
+    .blogs-list .inner .wrapper-blog .blog-inner {
+        flex-grow: 1;
+        width: 100%;
     }
 
     footer .contact {
@@ -205,18 +276,15 @@ footer .contact .map img {
         width: 100%;
     }
 
-    .about-justice .justice-icon .wrapper-logo .logo a img:first-of-type {
-        display: block;
-    }
-    .about-justice .justice-icon .wrapper-logo .logo a img:last-of-type {
-        display: none;
-    }
-
     .about-justice {
         flex-direction: column;
         justify-content: space-between;
         align-items: start;
         gap: 20px;
+    }
+
+    footer .contact .map {
+        height: auto;
     }
 }
 
@@ -226,14 +294,15 @@ footer .contact .map img {
         min-width: 360px;
     }
 
-    .header,
-    .contact-item,
-    footer {
-        padding: 20px;
+    .header-inner .logo {
+        display: none;
     }
 
-    .header-inner .logo,
     .header-inner .contact {
         font-size: 1.6rem;
+    }
+
+    .blogs .inner .wrapper-blog .blog-inner {
+        width: 100%;
     }
 }
