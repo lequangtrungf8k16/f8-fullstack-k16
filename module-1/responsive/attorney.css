@@ -56,10 +56,6 @@
         font-size: 2.6rem;
     }
 
-    .header {
-        position: relative;
-    }
-
     .close-btn {
         position: fixed;
         top: 10px;

@@ -759,6 +759,8 @@ body {
 .faqs .inner {
     display: flex;
     flex-direction: column;
+    width: 65%;
+    margin: 0 auto;
 }
 
 .faqs .inner .wrapper-info {
@@ -782,12 +784,13 @@ body {
 
 .faqs .inner .wrapper-info .switch-faq a {
     color: #0e1412;
-    font-weight: 600;
+    font-weight: 400;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .faqs .inner .wrapper-info .switch-faq a:hover {
+    font-weight: 600;
     color: #fd6038;
 }
 
