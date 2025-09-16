@@ -640,7 +640,7 @@ footer .contact .map a:hover {
 /* Back to top */
 .back-to-top {
     position: fixed;
-    left: 20px;
+    right: 20px;
     bottom: 20px;
     padding: 10px;
     border-radius: 50%;
