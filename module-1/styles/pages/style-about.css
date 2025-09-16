@@ -636,3 +636,18 @@ footer .contact .map a:hover {
     background: #fd6038;
     transform: scale(110%);
 }
+
+/* Back to top */
+.back-to-top {
+    position: sticky;
+    left: 95vw;
+    bottom: 5vh;
+    padding: 10px;
+    border-radius: 50%;
+    background: #fd6038;
+    color: #fff;
+}
+
+.back-to-top:hover {
+    background: #fc4011;
+}
