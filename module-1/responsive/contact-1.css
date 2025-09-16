@@ -238,7 +238,11 @@ footer .contact .map img {
         min-width: 360px;
     }
 
-    .header,
+    .header {
+        padding: 25px 20px;
+    }
+
+    .heading-info,
     .contact-item,
     footer {
         padding: 20px;

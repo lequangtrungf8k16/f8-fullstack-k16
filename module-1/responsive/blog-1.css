@@ -294,6 +294,19 @@
         min-width: 360px;
     }
 
+    .header {
+        padding: 25px 20px;
+    }
+
+    .heading-info,
+    .newsletter-item,
+    .blogs,
+    .cta-item,
+    .blogs-list,
+    footer {
+        padding: 20px;
+    }
+
     .header-inner .logo {
         display: none;
     }

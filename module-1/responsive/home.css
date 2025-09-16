@@ -4,7 +4,10 @@
         padding: 10px 100px;
     }
 
-    .heading-info,
+    .heading-info {
+        padding: 80px 100px;
+    }
+
     .about-us,
     .services,
     .features,
@@ -33,7 +36,10 @@
         padding: 10px 80px;
     }
 
-    .heading-info,
+    .heading-info {
+        padding: 80px;
+    }
+
     .about-us,
     .services,
     .features,
@@ -84,7 +90,10 @@
         padding: 25px 60px;
     }
 
-    .heading-info,
+    .heading-info {
+        padding: 80px 60px;
+    }
+
     .about-us,
     .services,
     .features,
@@ -221,7 +230,7 @@
         width: 100%;
     }
 
-    .services .inner .wrapper-img .Service-image {
+    .services .inner .wrapper-img .service-image {
         width: calc(50% - 20px);
     }
 
@@ -312,10 +321,10 @@
     footer {
         padding: 40px;
     }
-
+    /* 
     .header {
         width: 100%;
-    }
+    } */
 
     .header-inner {
         font-size: 1.6rem;
@@ -359,7 +368,7 @@
         width: 100%;
     }
 
-    .services .inner .wrapper-img .Service-image img {
+    .services .inner .wrapper-img .service-image img {
         height: 300px;
     }
 
@@ -368,10 +377,14 @@
     }
 
     .features .inner {
+        justify-content: flex-end;
         flex-wrap: wrap;
     }
 
-    .features .inner .image,
+    .features .inner .image {
+        width: 95%;
+    }
+
     .features .inner .info,
     .team .inner .info {
         width: 100%;
@@ -462,6 +475,24 @@
 @media (max-width: 575.98px) {
     .body {
         min-width: 360px;
+    }
+
+    .header {
+        padding: 25px 20px;
+    }
+
+    .heading-info,
+    .about-us,
+    .services,
+    .features,
+    .team,
+    .awards,
+    .testimonial,
+    .faqs,
+    .blogs,
+    .cta-item,
+    footer {
+        padding: 20px;
     }
 
     .header-inner .logo,

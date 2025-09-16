@@ -4,6 +4,7 @@
         padding: 10px 100px;
     }
 
+    .heading-info,
     .story-item,
     .gallery-item,
     .countdown-item,
@@ -30,6 +31,7 @@
         padding: 10px 80px;
     }
 
+    .heading-info,
     .story-item,
     .gallery-item,
     .countdown-item,
@@ -69,6 +71,7 @@
         padding: 25px 60px;
     }
 
+    .heading-info,
     .story-item,
     .gallery-item,
     .countdown-item,
@@ -234,6 +237,7 @@
         padding: 25px 40px;
     }
 
+    .heading-info,
     .story-item,
     .gallery-item,
     .countdown-item,
@@ -346,6 +350,22 @@
 @media (max-width: 575.98px) {
     .body {
         min-width: 360px;
+    }
+
+    .header {
+        padding: 25px 20px;
+    }
+
+    .heading-info,
+    .story-item,
+    .gallery-item,
+    .countdown-item,
+    .video-item,
+    .team-item,
+    .awards,
+    .cta-item,
+    footer {
+        padding: 20px;
     }
 
     .team-item .inner .team-image .wrapper-img,

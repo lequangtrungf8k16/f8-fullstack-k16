@@ -260,6 +260,17 @@
         min-width: 360px;
     }
 
+    .header {
+        padding: 25px 20px;
+    }
+
+    .heading-info,
+    .team,
+    .cta-item,
+    footer {
+        padding: 20px;
+    }
+
     .team .inner .team-image .wrapper-img {
         width: 100%;
     }
