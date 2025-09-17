@@ -54,6 +54,7 @@ body {
 }
 
 .header-inner a {
+    display: block;
     font-family: inherit;
     color: inherit;
     text-decoration: none;
