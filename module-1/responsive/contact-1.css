@@ -46,7 +46,7 @@ footer .contact .map img {
 /* Tablet */
 @media (max-width: 991.98px) {
     .header {
-        padding: 25px 60px;
+        padding: 10px 60px;
     }
 
     .heading-info,

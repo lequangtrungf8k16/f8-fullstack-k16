@@ -337,9 +337,15 @@ footer .contact .map a:hover {
 
 /* Back to top */
 .back-to-top {
+<<<<<<< HEAD
     position: sticky;
     right: 20px;
     bottom: 20px;
+=======
+    position: fixed;
+    right: 20px;
+    bottom: 2px;
+>>>>>>> 07959f3451c3dc3098317847ef484c66757ffdef
     z-index: 90;
     padding: 10px;
     border-radius: 50%;
