@@ -1153,6 +1153,7 @@ footer .contact .map a:hover {
     position: fixed;
     right: 20px;
     bottom: 20px;
+    z-index: 99;
     padding: 10px;
     border-radius: 50%;
     background: #fd6038;
