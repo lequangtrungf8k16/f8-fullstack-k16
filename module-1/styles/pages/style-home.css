@@ -101,6 +101,7 @@ body {
 .header-inner .contact a {
     font-weight: 700;
     transition: color 0.3s;
+    user-select: none;
 }
 
 .header-inner .contact a:hover {
@@ -133,6 +134,7 @@ body {
     display: inline-block;
     margin-top: 20px;
     padding: 15px 30px;
+    user-select: none;
     background: #fd6038;
     text-decoration: none;
     color: #fff;
@@ -140,6 +142,7 @@ body {
 }
 
 .heading-info .heading a:hover {
+    cursor: pointer;
     background: #fc4011;
 }
 
@@ -197,11 +200,14 @@ body {
     display: inline-block;
     width: 150px;
     height: 25%;
+
+    cursor: pointer;
 }
 
 .header-inner .contact a {
     font-weight: 700;
     transition: color 0.3s;
+    user-select: none;
 }
 
 .header-inner .contact a:hover {
@@ -286,6 +292,7 @@ body {
     text-align: center;
     margin-top: 40px;
     padding: 15px 30px;
+    user-select: none;
     background: #fd6038;
     text-decoration: none;
     color: #fff;
@@ -328,7 +335,6 @@ body {
     justify-content: space-between;
     gap: 40px;
     flex-wrap: wrap;
-
     margin-top: 40px;
 }
 
@@ -356,6 +362,7 @@ body {
     font-size: 2.2rem;
     width: 90%;
     padding: 10px 0;
+    user-select: none;
     transition-property: background-color color;
     transition-duration: 0.3s;
 }
@@ -371,6 +378,7 @@ body {
     text-align: center;
     margin-top: 40px;
     padding: 15px 30px;
+    user-select: none;
     background: #fd6038;
     text-decoration: none;
     color: #fff;
@@ -448,6 +456,7 @@ body {
     text-align: center;
     margin-top: 20px;
     padding: 15px 30px;
+    user-select: none;
     background: #fd6038;
     text-decoration: none;
     color: #fff;
@@ -523,6 +532,7 @@ body {
     font-size: 2.2rem;
     width: 90%;
     padding: 10px 0;
+    user-select: none;
     cursor: pointer;
     background: #fd6038;
     color: #fff;
@@ -558,6 +568,7 @@ body {
     text-align: center;
     margin-top: 40px;
     padding: 15px 30px;
+    user-select: none;
     background: #fd6038;
     text-decoration: none;
     color: #fff;
@@ -698,8 +709,13 @@ body {
 }
 
 .testimonial .inner .wrapper-clients a {
+    user-select: none;
     color: #0e1412;
     transition: color 0.3s;
+}
+
+.testimonial .inner .wrapper-clients a:first-child {
+    color: #fd6038;
 }
 
 .testimonial .inner .wrapper-clients a:hover {
@@ -785,6 +801,7 @@ body {
 .faqs .inner .wrapper-info .switch-faq a {
     color: #0e1412;
     font-weight: 400;
+    user-select: none;
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -887,6 +904,7 @@ body {
     font-size: 1.8rem;
     text-decoration: none;
     padding: 15px 30px;
+    user-select: none;
     background: transparent;
     color: #fff;
     background: #fd6038;
@@ -894,6 +912,7 @@ body {
 }
 
 .blogs .inner .wrapper-info .btn:hover {
+    cursor: pointer;
     background: #fc4011;
 }
 
@@ -911,6 +930,7 @@ body {
 
 .blogs .inner .wrapper-blog .blog-inner .blog-item a {
     text-decoration: none;
+    user-select: none;
     color: inherit;
 }
 
@@ -987,6 +1007,7 @@ body {
     text-decoration: none;
     margin-top: 20px;
     padding: 10px 20px;
+    user-select: none;
     background: transparent;
     color: #fff;
     background: #fd6038;
@@ -1046,6 +1067,7 @@ footer .contact .justice2 {
 footer .contact a {
     display: inline-block;
     margin-top: 20px;
+    user-select: none;
     text-decoration: none;
     color: #beccc7;
 }
@@ -1072,7 +1094,7 @@ footer .contact .map a {
     position: absolute;
     top: 0;
     left: 10px;
-
+    user-select: none;
     display: inline-block;
     padding: 6px 20px;
     background: #fff;
@@ -1131,6 +1153,7 @@ footer .contact .map a:hover {
     display: inline-block;
     width: 30px;
     height: 30px;
+    user-select: none;
     background: #313d39;
     padding-left: 10px;
     transition-property: background-color transform;
@@ -1150,11 +1173,7 @@ footer .contact .map a:hover {
 
 /* Back to top */
 .back-to-top {
-<<<<<<< HEAD
-    position: sticky;
-=======
     position: fixed;
->>>>>>> 07959f3451c3dc3098317847ef484c66757ffdef
     right: 20px;
     bottom: 20px;
     z-index: 90;

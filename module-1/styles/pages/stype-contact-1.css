@@ -60,6 +60,7 @@ body {
 .header-inner a {
     font-family: inherit;
     color: inherit;
+    user-select: none;
     text-decoration: none;
 }
 
@@ -99,6 +100,7 @@ body {
 
 .header-inner .contact a {
     font-weight: 700;
+    user-select: none;
     transition: color 0.3s;
 }
 
@@ -229,6 +231,7 @@ footer .contact .justice2 {
 footer .contact a {
     display: inline-block;
     margin-top: 20px;
+    user-select: none;
     text-decoration: none;
     color: #beccc7;
 }
@@ -255,7 +258,7 @@ footer .contact .map a {
     position: absolute;
     top: 0;
     left: 10px;
-
+    user-select: none;
     display: inline-block;
     padding: 6px 20px;
     background: #fff;
@@ -318,6 +321,7 @@ footer .contact .map a:hover {
     display: inline-block;
     width: 30px;
     height: 30px;
+    user-select: none;
     background: #313d39;
     padding-left: 10px;
     transition-property: background-color transform;
@@ -337,15 +341,9 @@ footer .contact .map a:hover {
 
 /* Back to top */
 .back-to-top {
-<<<<<<< HEAD
-    position: sticky;
-    right: 20px;
-    bottom: 20px;
-=======
     position: fixed;
     right: 20px;
-    bottom: 2px;
->>>>>>> 07959f3451c3dc3098317847ef484c66757ffdef
+    bottom: 20px;
     z-index: 90;
     padding: 10px;
     border-radius: 50%;
