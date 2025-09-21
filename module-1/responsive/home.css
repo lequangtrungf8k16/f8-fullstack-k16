@@ -82,6 +82,10 @@
     .awards .award-inner .award-info {
         width: 80%;
     }
+
+    .awards .award-inner .award-image {
+        justify-content: space-around;
+    }
 }
 
 /* Tablet */
@@ -399,10 +403,6 @@
         height: 260px;
     }
 
-    .awards .award-inner .award-image img:hover {
-        transform: scale(110%);
-    }
-
     .team .inner {
         flex-wrap: wrap;
     }
@@ -414,6 +414,16 @@
     .blogs .inner .wrapper-blog .blog-inner {
         width: 100%;
         height: 100%;
+    }
+
+    .blogs .inner .wrapper-blog .blog-inner .blog-item .blog-name,
+    .blogs .inner .wrapper-blog .blog-inner .blog-item > a,
+    .blogs .inner .wrapper-blog .blog-inner .blog-item .btn {
+        display: none;
+    }
+
+    .awards .award-inner .award-image img:hover {
+        transform: scale(110%);
     }
 
     .awards .award-inner .award-image .image-wrapper {
