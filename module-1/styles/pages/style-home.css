@@ -349,8 +349,8 @@ body {
 .services .inner .wrapper-img .service-image {
     position: relative;
     width: calc(33.3% - 30px);
-    gap: 20px;
     aspect-ratio: 1;
+    gap: 20px;
 }
 
 .services .inner .wrapper-img .service-image img {
@@ -362,7 +362,7 @@ body {
 
 .services .inner .wrapper-img .btn {
     position: absolute;
-    top: 80%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%);
     font-family: "Manrope";
@@ -806,6 +806,10 @@ body {
 .faqs .inner .wrapper-info .switch-faq {
     display: flex;
     gap: 20px;
+}
+
+.faqs .inner .wrapper-info .switch-faq a:first-child {
+    color: #fd6038;
 }
 
 .faqs .inner .wrapper-info .switch-faq a {

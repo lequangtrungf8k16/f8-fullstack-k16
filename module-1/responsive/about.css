@@ -57,7 +57,7 @@
     }
 
     .awards .award-inner .award-image {
-        justify-content: space-around;
+        justify-content: space-between;
     }
 }
 

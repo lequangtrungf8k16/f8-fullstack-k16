@@ -17,7 +17,7 @@ body {
     justify-content: space-between;
 }
 
-.header-inner .logo {
+.header-inner .logo a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,7 +115,11 @@ body {
 .blogs .inner {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+}
+
+.blogs .inner .wrapper-info {
+    display: flex;
+    flex-direction: column;
 }
 
 .blogs .inner .wrapper-info .heading h2 {
@@ -125,8 +129,10 @@ body {
 }
 
 .blogs .inner .wrapper-info .blog-btn {
-    display: inline-block;
     margin-top: 20px;
+    display: flex;
+    flex-shrink: 0;
+    overflow: auto;
 }
 
 .blogs .inner .wrapper-info .blog-btn button {
@@ -142,7 +148,11 @@ body {
     transition: background-color 0.3s;
 }
 
-.blogs .inner .wrapper-info .btn:hover {
+.blogs .inner .wrapper-info .blog-btn .btn:hover {
+    background: #fc4011;
+}
+
+.blogs .inner .wrapper-info .blog-btn button:first-child {
     background: #fc4011;
 }
 
@@ -196,24 +206,27 @@ body {
     flex-direction: column;
 }
 
-.blogs .inner .blog-item .blog-name .name-info span:first-child {
+.blogs .inner .blog-item .blog-name .name-info a span {
+    font-size: 2rem;
     font-weight: 600;
+    transition: color 0.3s;
 }
 
-.blogs .inner .blog-item .blog-name .name-info span:last-child {
+.blogs .inner .blog-item .blog-name .name-info a:hover {
+    color: #fd6038;
+}
+
+.blogs .inner .blog-item .blog-name .name-info span {
     font-size: 1.6rem;
 }
 
-.blogs .inner .blog-inner h3 {
-    margin: 20px 0;
-}
-
 .blogs .inner .blog-inner .blog-item .btn {
-    margin-top: 20px;
+    display: inline-block;
     font-family: "Manrope";
-    font-size: 1.8rem;
     font-weight: 700;
     text-decoration: none;
+    margin-top: 20px;
+    background: transparent;
     color: #0e1412;
     transition: color 0.3s;
 }
@@ -250,6 +263,8 @@ body {
 .newsletter-item .wrapper-info .email-info input {
     width: 300px;
     padding: 14px;
+    font-family: "Manrope";
+    font-size: 1.8rem;
 }
 
 .newsletter-item .wrapper-info .email-info .btn {
@@ -361,20 +376,25 @@ body {
     flex-direction: column;
 }
 
-.blogs-list .inner .blog-item .blog-name .name-info span:first-child {
+.blogs-list .inner .blog-item .blog-name .name-info a span {
+    font-size: 2rem;
     font-weight: 600;
+    transition: color 0.3s;
 }
 
-.blogs-list .inner .blog-item .blog-name .name-info span:last-child {
+.blogs-list .inner .blog-item .blog-name .name-info a:hover {
+    color: #fd6038;
+}
+
+.blogs-list .inner .blog-item .blog-name .name-info span {
     font-size: 1.6rem;
 }
 
-.blogs-list .inner .wrapper-blog .blog-inner .blog-item .btn {
+.blogs-list .inner .blog-inner .blog-item .btn {
     display: inline-block;
     font-family: "Manrope";
     font-weight: 700;
     text-decoration: none;
-    user-select: none;
     margin-top: 20px;
     background: transparent;
     color: #0e1412;
@@ -399,6 +419,10 @@ body {
 }
 
 .blogs-list .inner .btn-switch .btn:hover {
+    background: #fd6038;
+}
+
+.blogs-list .inner .btn-switch .btn:first-child {
     background: #fd6038;
 }
 
@@ -501,10 +525,12 @@ footer .contact .map a:hover {
     display: flex;
 }
 
-.about-justice .justice-icon .logo {
+.about-justice .justice-icon .logo a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
+    color: inherit;
 }
 
 .about-justice .justice-icon .logo img {

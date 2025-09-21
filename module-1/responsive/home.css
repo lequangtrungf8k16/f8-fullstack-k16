@@ -84,7 +84,7 @@
     }
 
     .awards .award-inner .award-image {
-        justify-content: space-around;
+        justify-content: space-between;
     }
 }
 
@@ -370,14 +370,6 @@
     .about-us .inner .info,
     .services .inner .info {
         width: 100%;
-    }
-
-    .services .inner .wrapper-img .service-image img {
-        height: 300px;
-    }
-
-    .services .inner .wrapper-img .btn {
-        top: 65%;
     }
 
     .features .inner {

@@ -231,12 +231,6 @@
         flex-wrap: wrap;
     }
 
-    .blogs .inner .wrapper-info div:last-child {
-        flex-direction: column;
-        align-items: start;
-        gap: 20px;
-    }
-
     .newsletter-item .wrapper-info {
         width: 100%;
     }
