@@ -1,6 +1,5 @@
 // Bài tập buổi 15
 
-
 // Bài tập 1: Viết chương trình khai báo một biến age và gán giá trị số tuổi của bạn.
 // Sau đó, in ra câu:
 // Tôi năm nay <age> tuổi.
@@ -8,13 +7,12 @@
 const age = 41;
 console.log("Tôi năm nay", age, "tuổi");
 
-
 // Bài tập 2
 // Khai báo hằng số PI = 3.14159. Tính diện tích hình tròn với bán kính r = 5.
 
 const PI = 3.14159;
 const r = 5;
-const s = PI * (r*2);
+const s = PI * r ** 2;
 console.log("Diện tích hình tròn là:", s);
 
 // Bài tập 3
@@ -45,8 +43,7 @@ let name = "";
 let defaultName = "Khách";
 // test
 const displayName = name || defaultName;
-    console.log(displayName);
-    
+console.log(displayName);
 
 // Bài tập 5
 // Viết chương trình kiểm tra một người có đủ điều kiện lái xe không. Điều kiện:
@@ -57,21 +54,20 @@ const displayName = name || defaultName;
 const driveAge = 18;
 const hasLicense = false;
 
-if ((driveAge >= 18) && (hasLicense === true)) {
-    console.log("Đủ điều kiện");    
+if (driveAge >= 18 && hasLicense) {
+    console.log("Đủ điều kiện");
 } else {
-    console.log("Không đủ điều kiện");    
+    console.log("Không đủ điều kiện");
 }
 
 // Bài tập 6
-// Cho 2 biến username và password. 
+// Cho 2 biến username và password.
 // Dùng toán tử đã học để kiểm tra xem username và password khác rỗng không (In ra giá trị boolean)
 
 let username = "";
 let password = "";
 const result = username !== "" && password !== "";
-    console.log(result);
-
+console.log(result);
 
 // Bài tập 7
 // Cho trước giá khuyến mãi (salePrice), tỷ lệ giảm giá (discountRate). Tính giá gốc của sản phẩm (price)
@@ -79,7 +75,6 @@ const salePrice = 200;
 const discountRate = 10;
 const price = salePrice / ((100 - discountRate) / 100);
 console.log("Giá gốc của sản phẩm:", price);
-
 
 // Bài tập 8
 // Cho trước 2 biến a, b. Gán giá trị số cho 2 biến.
@@ -91,5 +86,4 @@ console.log("Trước khi hoán đổi:", "aa là:", aa, "bb là:", bb);
 aa = aa + bb;
 bb = aa - bb;
 aa = aa - bb;
-console.log("Sau khi hoán đổi:", "aa là:", aa, "bb là:", bb)
-
+console.log("Sau khi hoán đổi:", "aa là:", aa, "bb là:", bb);
