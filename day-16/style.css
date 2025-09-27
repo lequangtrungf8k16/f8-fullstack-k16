@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+}
+
+table {
+    margin: 50px auto;
+    border: 4px solid #333;
+    border-collapse: collapse;
+}
+
+table td {
+    width: 60px;
+    height: 60px;
+}
+
+.square_even {
+    background: #fff;
+}
+
+.square_odd {
+    background: #333;
+}
