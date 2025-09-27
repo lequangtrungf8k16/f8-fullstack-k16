@@ -87,7 +87,9 @@ if (number <= 1) {
     }
     if (primeNumber === true) {
         console.log(`Số ${number} là số nguyên tố`);
-    } else console.log(`Bài 2: Số ${number} không phải là số nguyên tố`);
+    } else {
+        console.log(`Bài 2: Số ${number} không phải là số nguyên tố`);
+    }
 }
 
 // Bài tập 3
@@ -103,7 +105,9 @@ let oddNumber = "";
 for (let i = 1; i <= x; i++) {
     if (i % 2 === 0) {
         evenNumber = evenNumber + i + " ";
-    } else oddNumber = oddNumber + i + " ";
+    } else {
+        oddNumber = oddNumber + i + " ";
+    }
 }
 console.log(`Bài 3: Dãy số chẵn là: ${evenNumber}\nDãy số lẻ là: ${oddNumber}`);
 // \n: Dấu xuống dòng
@@ -137,7 +141,9 @@ if (a > b) {
     for (let i = a; i <= b; i++)
         if (i % 2 === 0) {
             evenTotal = evenTotal + i;
-        } else oddTotal = oddTotal + i;
+        } else {
+            oddTotal = oddTotal + i;
+        }
     console.log(
         `Bài 5: Tổng số chẵn là: ${evenTotal} \nTổng số lẻ là: ${oddTotal}`
     );
