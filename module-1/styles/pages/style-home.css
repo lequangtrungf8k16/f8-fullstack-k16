@@ -853,9 +853,9 @@ body {
     transition-duration: 0.3s;
 }
 
-.faqs .inner .wrapper-faq .faq-sub-heading label .active {
+/* .faqs .inner .wrapper-faq .faq-sub-heading label .active {
     background: #fd6038;
-}
+} */
 
 .faqs .inner .wrapper-faq .faq-sub-heading label h3:hover {
     color: #fd6038;
@@ -863,24 +863,22 @@ body {
 
 .faqs .inner .wrapper-faq .faq-sub-heading label i:hover {
     cursor: pointer;
-    background: #fd6038;
+    background: #fc4011;
 }
 
 .faqs .inner .wrapper-faq .faq-sub-heading p {
+    display: none;
     margin-top: 20px;
     line-height: 1.8;
     color: #586863;
 }
 
-.faqs .inner .wrapper-faq .faq-sub-heading #toggle-btn-faq1:checked ~ p,
-.faqs .inner .wrapper-faq .faq-sub-heading #toggle-btn-faq2:checked ~ p,
-.faqs .inner .wrapper-faq .faq-sub-heading #toggle-btn-faq3:checked ~ p {
-    display: none;
+.faqs .inner .wrapper-faq .faq-sub-heading input:checked ~ p {
+    display: block;
 }
 
-#toggle-btn-faq1:checked + label i,
-#toggle-btn-faq2:checked + label i,
-#toggle-btn-faq3:checked + label i {
+.faq-sub-heading input:checked + label i {
+    color: #fd6038;
     transform: rotate(180deg);
 }
 
