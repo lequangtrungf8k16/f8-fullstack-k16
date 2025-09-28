@@ -15,7 +15,7 @@ const ENERGY_CONS_2 = 100; // Số kWh bậc 2: 51 - 100
 const ENERGY_CONS_3 = 200; // Số kWh bậc 3: 101 - 200
 const ENERGY_CONS_4 = 300; // Số kWh bậc 4: 201 - 300
 const ENERGY_CONS_5 = 400; // Số kWh bậc 5: 301 - 400
-const ENERGY_CONS_6 = 401; // Số kWh bậc 6: 401 trở lên
+// Còn lại số kWh bậc 6: 401 trở lên
 
 let input = 700; // Số điện tiêu thụ hàng tháng
 let output; // Số tiền phải đóng
@@ -53,20 +53,14 @@ if (input <= 0) {
                 ENERGY_CONS_2 -
                 ENERGY_CONS_1) *
                 ELECTRO_PRICE_5;
-    } else if (input >= ENERGY_CONS_6) {
+    } else {
         output =
             ENERGY_CONS_1 * ELECTRO_PRICE_1 +
-            ENERGY_CONS_2 * ELECTRO_PRICE_2 +
-            ENERGY_CONS_3 * ELECTRO_PRICE_3 +
-            ENERGY_CONS_4 * ELECTRO_PRICE_4 +
-            ENERGY_CONS_5 * ELECTRO_PRICE_5 +
-            (input -
-                ENERGY_CONS_5 -
-                ENERGY_CONS_4 -
-                ENERGY_CONS_3 -
-                ENERGY_CONS_2 -
-                ENERGY_CONS_1) *
-                ELECTRO_PRICE_6;
+            (ENERGY_CONS_2 - ENERGY_CONS_1) * ELECTRO_PRICE_2 +
+            (ENERGY_CONS_3 - ENERGY_CONS_2) * ELECTRO_PRICE_3 +
+            (ENERGY_CONS_4 - ENERGY_CONS_3) * ELECTRO_PRICE_4 +
+            (ENERGY_CONS_5 - ENERGY_CONS_4) * ELECTRO_PRICE_5 +
+            (input - ENERGY_CONS_5) * ELECTRO_PRICE_6;
     }
     console.log(`Bài 1: Số tiền điện phải đóng hàng tháng là: ${output} đồng`);
 }
