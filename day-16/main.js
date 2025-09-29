@@ -32,21 +32,21 @@ if (input <= 0) {
     } else if (input <= ENERGY_CONS_3) {
         output =
             ENERGY_CONS_1 * ELECTRO_PRICE_1 +
-            ENERGY_CONS_2 * ELECTRO_PRICE_2 +
+            (ENERGY_CONS_2 - ENERGY_CONS_1) * ELECTRO_PRICE_2 +
             (input - ENERGY_CONS_2 - ENERGY_CONS_1) * ELECTRO_PRICE_3;
     } else if (input <= ENERGY_CONS_4) {
         output =
             ENERGY_CONS_1 * ELECTRO_PRICE_1 +
-            ENERGY_CONS_2 * ELECTRO_PRICE_2 +
-            ENERGY_CONS_3 * ELECTRO_PRICE_3 +
+            (ENERGY_CONS_2 - ENERGY_CONS_1) * ELECTRO_PRICE_2 +
+            (ENERGY_CONS_3 - ENERGY_CONS_2) * ELECTRO_PRICE_3 +
             (input - ENERGY_CONS_3 - ENERGY_CONS_2 - ENERGY_CONS_1) *
                 ELECTRO_PRICE_4;
     } else if (input <= ENERGY_CONS_5) {
         output =
             ENERGY_CONS_1 * ELECTRO_PRICE_1 +
-            ENERGY_CONS_2 * ELECTRO_PRICE_2 +
-            ENERGY_CONS_3 * ELECTRO_PRICE_3 +
-            ENERGY_CONS_4 * ELECTRO_PRICE_4 +
+            (ENERGY_CONS_2 - ENERGY_CONS_1) * ELECTRO_PRICE_2 +
+            (ENERGY_CONS_3 - ENERGY_CONS_2) * ELECTRO_PRICE_3 +
+            (ENERGY_CONS_4 - ENERGY_CONS_3) * ELECTRO_PRICE_4 +
             (input -
                 ENERGY_CONS_4 -
                 ENERGY_CONS_3 -
@@ -79,7 +79,7 @@ if (number <= 1) {
             break;
         }
     }
-    if (primeNumber === true) {
+    if (primeNumber) {
         console.log(`Số ${number} là số nguyên tố`);
     } else {
         console.log(`Bài 2: Số ${number} không phải là số nguyên tố`);
@@ -98,9 +98,9 @@ let evenNumber = "";
 let oddNumber = "";
 for (let i = 1; i <= x; i++) {
     if (i % 2 === 0) {
-        evenNumber = evenNumber + i + " ";
+        evenNumber = evenNumber + i + ", ";
     } else {
-        oddNumber = oddNumber + i + " ";
+        oddNumber = oddNumber + i + ", ";
     }
 }
 console.log(`Bài 3: Dãy số chẵn là: ${evenNumber}\nDãy số lẻ là: ${oddNumber}`);
@@ -173,13 +173,15 @@ document.body.innerHTML = html;
 // 11 12 13 14 15
 
 let rowNumber = 4;
-let numberCurrent = 1;
+let currentNumber = 1;
 console.log(`Bài 8: vẽ tam giác ${rowNumber} hàng`);
+let result1 = ""; // Tính số lần
+
 for (let i = 1; i <= rowNumber; i++) {
-    let result = ""; // Tính số lần
     for (let j = 1; j <= i; j++) {
-        result = result + numberCurrent + " ";
-        numberCurrent++; // Khi lặp xong thì tăng thêm 1 đến khi = row thì dừng
+        result1 = result1 + currentNumber + " ";
+        currentNumber++; // Khi lặp xong thì tăng thêm 1 đến khi = row thì dừng
     }
-    console.log(result);
+    result1 = result1 + "\n";
 }
+console.log(result1);
