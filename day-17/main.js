@@ -39,7 +39,7 @@ console.log(`Bài tập 2: Từ "${keyword}", lặp lại ${countKeyword} lần`
 // - Có ít nhất 1 ký tự đặc biệt: !@#$%^&*()
 // Chữ hoa 65 - 90; Chữ thường 97 - 122; Số 48 - 57
 
-let password = "Trung@12equang";
+let password = "Trung@12Lequang";
 
 let uppercaseCount = 0;
 let lowercaseCount = 0;
@@ -58,6 +58,7 @@ for (let i = 0; i < password.length; i++) {
         // console.log(characterCount);
     }
 }
+
 if (
     password.length < 8 ||
     uppercaseCount < 2 ||
@@ -65,16 +66,17 @@ if (
     characterCount < 1
 ) {
     console.log("Mật khẩu yếu");
-    // } else if (password.length < 8) {
-    //     console.log("Mật khẩu phải ít nhất 8 ký tự");
-    // } else if (uppercaseCount < 2) {
-    //     console.log("Mật khẩu phải ít nhất 2 chữ hoa");
-    // } else if (lowercaseCount < 2) {
-    //     console.log("Mật khẩu phải ít nhất 2 chữ thường");
-    // } else if (numberCount < 1) {
-    //     console.log("Mật khẩu phải ít nhất 1 số");
-    // } else if (characterCount < 1) {
-    //     console.log("Mật khẩu phải ít nhất 1 ký tự đặt biệt");
+}
+if (password.length < 8) {
+    console.log("Mật khẩu phải ít nhất 8 ký tự");
+} else if (uppercaseCount < 2) {
+    console.log("Mật khẩu phải ít nhất 2 chữ hoa");
+} else if (lowercaseCount < 2) {
+    console.log("Mật khẩu phải ít nhất 2 chữ thường");
+} else if (numberCount < 1) {
+    console.log("Mật khẩu phải ít nhất 1 số");
+} else if (characterCount < 1) {
+    console.log("Mật khẩu phải ít nhất 1 ký tự đặt biệt");
 } else {
     console.log("Mật khẩu mạnh");
 }
