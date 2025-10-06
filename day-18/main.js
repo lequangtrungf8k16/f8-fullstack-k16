@@ -74,7 +74,6 @@ for (let i = 0; i < nums.length; i++) {
         numberOddDouble.push(nums[i] * 2);
     }
 }
-
 console.log(numberUpTo10);
 console.log(numberDivBy3);
 console.log(numberOddDouble);
@@ -110,7 +109,6 @@ for (let i = 0; i < words.length; i++) {
     }
     wordsReverse.push(reverseString);
 }
-
 console.log(wordsThan5);
 console.log(wordsUpperCaseAll);
 console.log(wordsReverse);
@@ -130,7 +128,6 @@ const myArr = [
     [4, 5, 6],
     [7, 8, 9],
 ];
-
 const totalRow = [];
 const totalCol = [];
 const rowSum10 = [];
@@ -154,7 +151,6 @@ for (let i = 0; i < myArr.length; i++) {
         rowSum10.push(temp);
     }
 }
-
 console.log(totalRow);
 console.log(totalCol);
 console.log(rowSum10);
@@ -210,10 +206,14 @@ const myArray2 = [
     [14, 16, 18],
 ];
 const sum1 = [];
-
+// - Lấy ra các phần tử trên đường chéo chính => [2, 10, 18].
 for (let i = 0; i < myArray2.length; i++) {
     sum1.push(myArray2[i][i]);
 }
+// - Lấy ra các phần tử trên đường chéo phụ => [6, 10, 14].
+
+// - Tính tổng của đường chéo chính và phụ.
+
 console.log(sum1);
 
 // Bài 8
@@ -232,7 +232,21 @@ const scores = [
     [10, 9, 8], // học sinh 3
 ];
 
-// const scoresAvanger = [];
-// for (let i = 0; i < scores.length; i++) {
-//     scoresAvanger.push(scores[i].)
-// }
+const scoresAverage = [];
+// - Tính điểm trung bình của từng học sinh => [8, 6, 9].
+for (let i = 0; i < scores.length; i++) {
+    let sumScores = 0;
+    const temp = scores[i];
+    // console.log(temp);
+    for (let j = 0; j < temp.length; j++) {
+        sumScores = sumScores + temp[j];
+        // console.log(sum);
+    }
+    const average = sumScores / temp.length;
+    scoresAverage.push(average);
+}
+// - Lọc ra những học sinh có điểm trung bình >= 8.
+
+// - Tạo mảng mới tăng tất cả điểm thêm 1 (nếu chưa vượt quá 10).
+
+console.log(scoresAverage);
