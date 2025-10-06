@@ -62,6 +62,7 @@ for (let i = 0; i < password.length; i++) {
 if (
     password.length < 8 ||
     uppercaseCount < 2 ||
+    lowercaseCount < 2 ||
     numberCount < 1 ||
     characterCount < 1
 ) {
@@ -103,13 +104,13 @@ for (let i = 0; i < users.length; i++) {
         temp++;
     }
 }
-console.log(output);
+console.log(`Bài 3: ${output}`);
 
 // Bài 4: Tìm số lớn thứ hai trong mảng
 // const numbers = [5, 2, 1, 9, 8, 0];
 const numbers = [5, 2, 1, 9, 8, 0];
-let maxNumber1 = "";
-let maxNumber2 = "";
+let maxNumber1 = [];
+let maxNumber2 = [];
 
 if (numbers[0] > numbers[1]) {
     maxNumber1 = numbers[0];
@@ -128,7 +129,7 @@ for (let i = 0; i <= numbers.length; i++) {
         maxNumber2 = temp;
     }
 }
-console.log(`Số lớn thứ hai là: ${maxNumber2}`);
+console.log(`Bài 4: Số lớn thứ hai là: ${maxNumber2}`);
 
 // Bài 5: Chèn phần tử vào mảng không làm thay đổi thứ tự sắp xếp
 // const numbers =  [1, 3, 5, 7, 9, 11];
@@ -150,4 +151,4 @@ for (let i = 0; i < tempArr - 1; i++) {
         }
     }
 }
-console.log(numbersArr);
+console.log(`Bài 5: ${numbersArr}`);

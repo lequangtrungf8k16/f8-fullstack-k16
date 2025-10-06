@@ -20,6 +20,7 @@ for (let i = 0; i < arr.length; i++) {
         newArrOddDouble.push(arr[i] * arr[i]);
     }
 }
+console.log("Bài 1");
 console.log(newArrDouble);
 console.log(newArrEven);
 console.log(newArrOddDouble);
@@ -43,6 +44,7 @@ for (let j = 0; j < newArrLowerCase.length; j++) {
     let result = temp.charAt(0).toUpperCase() + temp.slice(1);
     newArrUpperCase.push(result);
 }
+console.log("Bài 2");
 console.log(newArrLowerCase);
 console.log(newArrUpperCase);
 
@@ -74,6 +76,7 @@ for (let i = 0; i < nums.length; i++) {
         numberOddDouble.push(nums[i] * 2);
     }
 }
+console.log("Bài 3");
 console.log(numberUpTo10);
 console.log(numberDivBy3);
 console.log(numberOddDouble);
@@ -109,6 +112,7 @@ for (let i = 0; i < words.length; i++) {
     }
     wordsReverse.push(reverseString);
 }
+console.log("Bài 4");
 console.log(wordsThan5);
 console.log(wordsUpperCaseAll);
 console.log(wordsReverse);
@@ -151,6 +155,7 @@ for (let i = 0; i < myArr.length; i++) {
         rowSum10.push(temp);
     }
 }
+console.log("Bài 5");
 console.log(totalRow);
 console.log(totalCol);
 console.log(rowSum10);
@@ -187,6 +192,7 @@ for (let i = 0; i < myArray.length; i++) {
         newArray.push(myArray[i][j]);
     }
 }
+console.log("Bài 6");
 console.log(myArrayUppercase);
 console.log(myArrayThan4);
 console.log(newArray);
@@ -214,6 +220,7 @@ for (let i = 0; i < myArray2.length; i++) {
 
 // - Tính tổng của đường chéo chính và phụ.
 
+console.log("Bài 7");
 console.log(sum1);
 
 // Bài 8
@@ -249,4 +256,5 @@ for (let i = 0; i < scores.length; i++) {
 
 // - Tạo mảng mới tăng tất cả điểm thêm 1 (nếu chưa vượt quá 10).
 
+console.log("Bài 8");
 console.log(scoresAverage);
