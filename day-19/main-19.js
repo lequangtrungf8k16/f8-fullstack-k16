@@ -84,7 +84,7 @@ console.log(
 function sum(numbersEx07) {
     return numbersEx07.reduce(function (acc, cur) {
         return acc + cur;
-    });
+    }, 0);
 }
 // Kiểm tra
 console.log(
@@ -97,7 +97,7 @@ console.log(
 function multiplyAll(numbersEx08) {
     return numbersEx08.reduce(function (acc, cur) {
         return acc * cur;
-    });
+    }, 1);
 }
 // Kiểm tra
 console.log(
@@ -129,8 +129,8 @@ function hasPrime(numbers) {
                 if (value % i === 0) {
                     return false;
                 }
-                return true;
             }
+            return true;
         }
     });
 }
