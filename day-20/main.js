@@ -17,15 +17,15 @@ users.forEach((users) => {
 // - Tìm người có tuổi lớn nhất.
 function oldest(users) {
     return users.reduce(function (max, cur) {
-        return (oldest = max.age > cur.age ? max : cur);
-    }, 0);
+        return max.age > cur.age ? max : cur;
+    }, {});
 }
 console.log("- Người có tuổi lớn nhất:", oldest(users));
 
 // - Tính tuổi trung bình của tất cả người dùng.
 function averageAge(users) {
     return users.reduce(function (sum, cur) {
-        return (averageAge = sum + cur.age / users.length);
+        return sum + cur.age / users.length;
     }, 0);
 }
 console.log("- Tuổi trung bình:", averageAge(users));
@@ -56,7 +56,7 @@ console.log(totalPrice(products));
 
 // - Lọc ra sản phẩm có giá lớn hơn 1 triệu.
 function priceThanMillion(products) {
-    return products.find(function (products) {
+    return products.filter(function (products) {
         return products.price > 1000000;
     }, 0);
 }
@@ -82,7 +82,9 @@ console.log("- Điểm trung bình từng học viên:");
 console.log(students);
 
 // - Trả về danh sách học sinh đạt loại giỏi (điểm TB >= 8).
-const excellentStudent = students.find((student) => student.averageScore >= 8);
+const excellentStudent = students.filter(
+    (student) => student.averageScore >= 8
+);
 console.log("- Danh sách học viên đạt điểm TB >= 8:");
 console.log(excellentStudent);
 
