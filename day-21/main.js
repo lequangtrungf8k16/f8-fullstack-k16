@@ -16,19 +16,19 @@ const menuProduct = products.filter((product) => {
 console.log(menuProduct);
 
 // - Tính tổng giá của tất cả sản phẩm trong danh mục "Electronics".
-const totalProduct = menuProduct.reduce((acc, cur) => {
-    return acc + cur.price;
+const totalProduct = menuProduct.reduce((total, cur) => {
+    return total + cur.price;
 }, 0);
-console.log(totalProduct);
+console.log("Tổng giá của sản phẩm Electronics là:", totalProduct);
 
 // - Chuyển đổi mảng sản phẩm thành một object, trong đó key là category, value là mảng các sản phẩm thuộc danh mục đó.
-const productsObj = products.reduce((acc, cur) => {
-    if (!acc[cur.category]) {
-        acc[cur.category] = [];
+const productsObj = products.reduce((obj, curArray) => {
+    if (!obj[curArray.category]) {
+        obj[curArray.category] = [];
     } else {
-        acc[cur.category].push(cur);
+        obj[curArray.category].push(curArray);
     }
-    return acc;
+    return obj;
 }, {});
 console.log(productsObj);
 
@@ -43,20 +43,23 @@ console.log("Bài 2:");
 
 // - Tính điểm trung bình của từng học viên.
 const averageStudents = students.map((students) => {
-    const totalScore = Object.values(students.scores).reduce((acc, cur) => {
-        return acc + cur;
-    }, 0);
+    const totalScore = Object.values(students.scores).reduce(
+        (avgScore, cur) => {
+            return avgScore + cur;
+        },
+        0
+    );
     const average = totalScore / Object.values(students.scores).length;
     return { ...students, averageScore: average };
 });
 console.log(averageStudents);
 
 // - Tìm học viên có điểm trung bình cao nhất.
-const averageMax = averageStudents.reduce((acc, cur) => {
-    if (cur.averageScore > acc) {
+const averageMax = averageStudents.reduce((avgMax, cur) => {
+    if (cur.averageScore > avgMax) {
         return cur.averageScore;
     }
-    return acc;
+    return avgMax;
 });
 console.log(averageMax);
 
@@ -92,33 +95,37 @@ console.log("Bài 3:");
 
 // - Tính tổng tiền của từng đơn hàng.
 const totalOrders = orders.map((values) => {
-    const items = values.items.reduce((acc, cur) => {
-        return acc + cur.price * cur.quantity;
+    const items = values.items.reduce((sum, cur) => {
+        return sum + cur.price * cur.quantity;
     }, 0);
     return { ...orders, totalItems: items };
 });
 console.log(totalOrders);
 
 // - Tìm khách hàng có đơn hàng có tổng tiền cao nhất.
-const customerWithMax = totalOrders.reduce((acc, cur) => {
-    if (cur.totalItems > acc.totalItems) {
+const customerWithMax = totalOrders.reduce((totalMax, cur) => {
+    if (cur.totalItems > totalMax.totalItems) {
         return cur;
     }
-    return acc;
+    return totalMax;
 });
 console.log(customerWithMax);
 
 // - Gộp danh sách tất cả các sản phẩm từ các đơn hàng, nhóm theo tên sản phẩm và tính tổng số lượng của mỗi sản phẩm.
-const itemGroup = orders.reduce((acc, cur) => {
-    return acc.concat(cur.items);
+const itemGroup = orders.reduce((group, cur) => {
+    return group.concat(cur.items);
 }, []);
 // console.log(itemGroup);
 
-const productGroup = itemGroup.reduce((acc, cur) => {
+const productGroup = itemGroup.reduce((sumItems, cur) => {
     const name = cur.name;
     const quantity = cur.quantity;
-    acc[name] = (acc[name] || 0) + quantity;
-    return acc;
+    if (sumItems[name]) {
+        sumItems[name] = sumItems[name] + quantity;
+    } else {
+        sumItems[name] = quantity;
+    }
+    return sumItems;
 }, {});
 console.log(productGroup);
 
@@ -131,14 +138,21 @@ const employees1 = [
     { id: 5, name: "Phúc", department: "IT", salary: 1100 },
 ];
 // Viết các hàm thực hiện các yêu cầu sau:
+console.log("Bài 4:");
 
 // - Tính tổng lương của từng phòng ban.
-// const totalSalary = employees1.reduce((acc, cur) => {
-//     if (acc.department === cur.department) {
-//         return acc.salary + cur.salary;
-//     }
-//     return;
-// });
+const totalSalary = employees1.reduce((total, cur) => {
+    const department = cur.department;
+    const salary = cur.salary;
+    if (total[department]) {
+        total[department] += salary;
+    } else {
+        total[department] = salary;
+    }
+    return total;
+}, {});
+console.log(totalSalary);
+
 // - Tìm nhân viên có mức lương cao nhất trong mỗi phòng ban.
 
 // - Chuyển đổi dữ liệu về dạng object, trong đó key là tên phòng ban, value là mảng nhân viên trong phòng ban đó.
@@ -154,10 +168,29 @@ const watchHistory = [
     { userId: 3, videoId: "C1", duration: 15 },
 ];
 // Viết các hàm thực hiện các yêu cầu sau:
+console.log("Bài 5:");
 
 // - Tính tổng thời gian xem của từng video.
+const sumWatchVideo = watchHistory.reduce((sum, cur) => {
+    const videoId = cur.videoId;
+    const duration = cur.duration;
+    if (sum[videoId]) {
+        sum[videoId] += duration;
+    } else {
+        sum[videoId] = duration;
+    }
+    return sum;
+}, {});
+console.log(sumWatchVideo);
 
 // - Tìm video được xem nhiều nhất (dựa trên tổng thời gian).
+const videoWatch = sumWatchVideo.reduce((acc, cur) => {
+    if (cur > acc) {
+        return cur;
+    }
+    return acc;
+}, {});
+console.log(videoWatch);
 
 // - Nhóm lịch sử xem theo userId, trong đó mỗi userId sẽ chứa danh sách các video mà họ đã xem và tổng thời gian xem mỗi video.
 
@@ -170,6 +203,7 @@ const matches = [
     { teamA: "A", teamB: "D", scoreA: 3, scoreB: 1 },
 ];
 // Viết các hàm thực hiện các yêu cầu sau:
+console.log("Bài 6:");
 
 // - Tính số trận thắng, hòa, thua của mỗi đội.
 
@@ -191,6 +225,7 @@ const employees2 = [
     { id: 4, name: "Dũng", projects: ["P4"] },
 ];
 // Viết các hàm thực hiện các yêu cầu sau:
+console.log("Bài 7:");
 
 // - Nhóm nhân viên theo dự án, sao cho mỗi dự án có danh sách nhân viên tham gia.
 
@@ -208,6 +243,7 @@ const reviews = [
     { productId: "P1", userId: "U2", rating: 4 },
 ];
 // Viết các hàm thực hiện các yêu cầu sau:
+console.log("Bài 8:");
 
 // - Tính điểm trung bình đánh giá của mỗi sản phẩm.
 
@@ -224,6 +260,7 @@ const transactions = [
     { id: 5, account: "B", type: "deposit", amount: 300 },
 ];
 // Viết các hàm thực hiện các yêu cầu sau:
+console.log("Bài 9:");
 
 // - Tính số dư cuối cùng của từng tài khoản.
 
