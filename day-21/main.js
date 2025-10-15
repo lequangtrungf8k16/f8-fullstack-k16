@@ -16,8 +16,8 @@ const menuProduct = products.filter((product) => {
 console.log(menuProduct);
 
 // - Tính tổng giá của tất cả sản phẩm trong danh mục "Electronics".
-const totalProduct = menuProduct.reduce((sum, product) => {
-    return sum + product.price;
+const totalProduct = menuProduct.reduce((acc, cur) => {
+    return acc + cur.price;
 }, 0);
 console.log(totalProduct);
 
@@ -40,6 +40,7 @@ const students = [
 ];
 // Viết các hàm thực hiện các yêu cầu sau:
 console.log("Bài 2:");
+
 // - Tính điểm trung bình của từng học viên.
 const averageStudents = students.map((students) => {
     const totalScore = Object.values(students.scores).reduce((acc, cur) => {
@@ -104,10 +105,22 @@ const customerWithMax = totalOrders.reduce((acc, cur) => {
         return cur;
     }
     return acc;
-}, totalOrders[0]);
+});
 console.log(customerWithMax);
 
 // - Gộp danh sách tất cả các sản phẩm từ các đơn hàng, nhóm theo tên sản phẩm và tính tổng số lượng của mỗi sản phẩm.
+const itemGroup = orders.reduce((acc, cur) => {
+    return acc.concat(cur.items);
+}, []);
+// console.log(itemGroup);
+
+const productGroup = itemGroup.reduce((acc, cur) => {
+    const name = cur.name;
+    const quantity = cur.quantity;
+    acc[name] = (acc[name] || 0) + quantity;
+    return acc;
+}, {});
+console.log(productGroup);
 
 // Bài 4
 const employees1 = [
@@ -120,7 +133,12 @@ const employees1 = [
 // Viết các hàm thực hiện các yêu cầu sau:
 
 // - Tính tổng lương của từng phòng ban.
-
+// const totalSalary = employees1.reduce((acc, cur) => {
+//     if (acc.department === cur.department) {
+//         return acc.salary + cur.salary;
+//     }
+//     return;
+// });
 // - Tìm nhân viên có mức lương cao nhất trong mỗi phòng ban.
 
 // - Chuyển đổi dữ liệu về dạng object, trong đó key là tên phòng ban, value là mảng nhân viên trong phòng ban đó.
