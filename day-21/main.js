@@ -184,15 +184,28 @@ const sumWatchVideo = watchHistory.reduce((sum, cur) => {
 console.log(sumWatchVideo);
 
 // - Tìm video được xem nhiều nhất (dựa trên tổng thời gian).
-const videoWatch = sumWatchVideo.reduce((acc, cur) => {
-    if (cur > acc) {
-        return cur;
-    }
-    return acc;
-}, {});
-console.log(videoWatch);
+const videoEntries = Object.entries(sumWatchVideo);
+const mostWatchVideo = videoEntries.reduce(
+    (acc, cur) => {
+        if (cur[1] > acc[1]) {
+            return cur;
+        }
+        return acc;
+    },
+    ["", 0]
+);
+console.log(mostWatchVideo);
 
 // - Nhóm lịch sử xem theo userId, trong đó mỗi userId sẽ chứa danh sách các video mà họ đã xem và tổng thời gian xem mỗi video.
+const groupHistory = watchHistory.reduce((acc, cur) => {
+    const userId = cur.userId;
+    if (!acc[userId]) {
+        acc[userId] = [];
+    }
+    acc[userId].push(cur);
+    return acc;
+}, {});
+console.log(groupHistory);
 
 // Bài 6
 const matches = [
@@ -206,16 +219,66 @@ const matches = [
 console.log("Bài 6:");
 
 // - Tính số trận thắng, hòa, thua của mỗi đội.
+const getTeamResult = (matches) => {
+    const teams = {};
+    matches.forEach((match) => {
+        [match.teamA, match.teamB].forEach((item) => {
+            teams[item] = teams[item] || {
+                wins: 0,
+                draws: 0,
+                losses: 0,
+                points: 0,
+                goals: 0,
+            };
+        });
+        teams[match.teamA].goals += match.scoreA;
+        teams[match.teamB].goals += match.scoreB;
+        if (match.scoreA > match.scoreB) {
+            teams[match.teamA].wins++;
+            teams[match.teamA].points += 3;
+            teams[match.teamB].losses++;
+        } else if (match.scoreA < match.scoreB) {
+            teams[match.teamB].wins++;
+            teams[match.teamB].points += 3;
+            teams[match.teamA].losses++;
+        } else {
+            teams[match.teamA].draws++;
+            teams[match.teamB].draws++;
+            teams[match.teamA].points++;
+            teams[match.teamB].points++;
+        }
+    });
+    return teams;
+};
+console.log(getTeamResult(matches));
 
 // - Xếp hạng các đội bóng theo số điểm, với quy tắc:
-
 // * Thắng: +3 điểm
-
 // * Hòa: +1 điểm
-
 // * Thua: +0 điểm
-
+const getRanking = (matches) => {
+    const teams = getTeamResult(matches);
+    const teamsMap = Object.entries(teams).map((item) => {
+        return Object.assign(
+            {},
+            {
+                team: item[0],
+            },
+            item[1]
+        );
+    });
+    return teamsMap.sort((a, b) => {
+        return b.points - a.points;
+    });
+};
+console.log(getRanking(matches));
 // - Tìm đội có số bàn thắng nhiều nhất.
+const getTopGoals = (matches) => {
+    return getRanking(matches).reduce((acc, cur) => {
+        return cur.goals > acc.goals ? cur : acc;
+    });
+};
+console.log(getTopGoals(matches));
 
 // Bài 7
 const employees2 = [
@@ -226,13 +289,54 @@ const employees2 = [
 ];
 // Viết các hàm thực hiện các yêu cầu sau:
 console.log("Bài 7:");
-
 // - Nhóm nhân viên theo dự án, sao cho mỗi dự án có danh sách nhân viên tham gia.
+const groupProject = (employees2) => {
+    return employees2.reduce((acc, cur) => {
+        cur.projects.forEach((item) => {
+            acc[item] = acc[item] || [];
+            acc[item].push(cur.name);
+        });
+        return acc;
+    }, {});
+};
+console.log(groupProject(employees2));
 
 // - Tìm dự án có nhiều nhân viên tham gia nhất.
+const getMaxProject = (employees2) => {
+    return Object.entries(groupProject(employees2)).reduce(
+        (acc, cur) => {
+            const projectName = cur[0];
+            const list = cur[1];
+            if (list.length > acc.count) {
+                return {
+                    project: projectName,
+                    count: list.length,
+                };
+            }
+            return acc;
+        },
+        {
+            count: 0,
+        }
+    );
+};
+console.log(getMaxProject(employees2));
 
 // - Chuyển đổi dữ liệu về dạng object, trong đó key là projectId, value là danh sách nhân viên thuộc dự án đó.
+const projectMap = (employees) => {
+    const result = {};
+    employees.forEach((emp) => {
+        emp.projects.forEach((project) => {
+            if (!result[project]) {
+                result[project] = [];
+            }
+            result[project].push(emp.name);
+        });
+    });
+    return result;
+};
 
+console.log(projectMap(employees2));
 // Bài 8
 const reviews = [
     { productId: "P1", userId: "U1", rating: 5 },
@@ -246,10 +350,49 @@ const reviews = [
 console.log("Bài 8:");
 
 // - Tính điểm trung bình đánh giá của mỗi sản phẩm.
+const getReviewAvg = (reviews) => {
+    const grouped = reviews.reduce((acc, cur) => {
+        acc[cur.productId] = acc[cur.productId] || [];
+        acc[cur.productId].push(cur.rating);
+        return acc;
+    }, {});
+    return Object.entries(grouped).map((item) => {
+        const productId = item[0];
+        const ratingList = item[1];
+        return {
+            productId,
+            avg:
+                ratingList.reduce((acc, cur) => {
+                    return acc + cur;
+                }, 0) / ratingList.length,
+        };
+    });
+};
+console.log(getReviewAvg(reviews));
 
 // - Tìm sản phẩm có điểm trung bình cao nhất.
+const getTopProduct = (reviews) => {
+    return getReviewAvg(reviews).reduce((acc, cur) => {
+        if (cur.avg > acc.avg) {
+            return cur;
+        }
+        return acc;
+    });
+};
+console.log(getTopProduct(reviews));
 
 // - Nhóm danh sách đánh giá theo productId, trong đó mỗi sản phẩm có danh sách đánh giá của từng người dùng.
+const getGroupProduct = (reviews) => {
+    return reviews.reduce((acc, cur) => {
+        acc[cur.productId] = acc[cur.productId] || [];
+        acc[cur.productId].push({
+            user: cur.userId,
+            rating: cur.rating,
+        });
+        return acc;
+    }, {});
+};
+console.log(getGroupProduct(reviews));
 
 // Bài 9
 const transactions = [
@@ -263,5 +406,32 @@ const transactions = [
 console.log("Bài 9:");
 
 // - Tính số dư cuối cùng của từng tài khoản.
+const getBalance = (transactions) => {
+    return transactions.reduce((acc, cur) => {
+        acc[cur.account] = acc[cur.account] || 0;
+        acc[cur.account] += cur.type === "deposit" ? cur.amount : -cur.amount;
+        return acc;
+    }, {});
+};
+console.log(getBalance(transactions));
 
 // - Tìm tài khoản có số dư cao nhất.
+const getMaxAccount = (transactions) => {
+    return Object.entries(getBalance(transactions)).reduce(
+        (acc, cur) => {
+            const accountName = cur[0];
+            const balance = cur[1];
+            if (balance > acc.balance) {
+                return {
+                    account: accountName,
+                    balance,
+                };
+            }
+            return acc;
+        },
+        {
+            balance: 0,
+        }
+    );
+};
+console.log(getMaxAccount(transactions));
