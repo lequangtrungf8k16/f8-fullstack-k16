@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <!-- Font Awesome 7.1.0 -->
+        <link rel="stylesheet" href="./public/css/all.min.css" />
+
+        <!-- Tailwindcss v4.1.16 -->
+        <link href="./src/output.css" rel="stylesheet" />
+        <link rel="stylesheet" href="./src/input.css" />
+    </head>
+    <body class="bg-violet-600">
+        <div
+            class="container bg-violet-950 w-[400px] h-auto my-50 mx-auto px-8 rounded-md shadow-xl/40"
+        >
+            <div class="form-wrapper py-8">
+                <h1 class="text-center text-white text-3xl font-bold">
+                    Get Things Done !
+                </h1>
+                <form
+                    action="#!"
+                    method="post"
+                    class="flex justify-between mt-8"
+                >
+                    <input
+                        class="border-2 flex-1 border-violet-500 text-white px-2 py-1.5 placeholder:text-gray-500"
+                        type="text"
+                        placeholder="What is the task today?"
+                        spellcheck="false"
+                        autocomplete="off"
+                    />
+                    <button class="bg-violet-500 text-white font-bold px-3">
+                        Add Task
+                    </button>
+                </form>
+                <div
+                    class="todolist flex items-center justify-between gap-2 bg-violet-500 px-2 py-2 rounded-md"
+                    hidden
+                >
+                    <p class="text-white">Lorem ipsum dolor sit amet</p>
+                    <div class="action flex gap-2 text-white justify-center">
+                        <a href="#!">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a href="#!"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="./main.js"></script>
+    </body>
+</html>
+<!-- 
+    npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+-->
