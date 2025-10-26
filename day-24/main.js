@@ -44,21 +44,22 @@ formEl.addEventListener("submit", (e) => {
     editTaskEl.addEventListener("click", () => {
         todoItemEl.classList.add("hidden");
 
-        todoItemEl.before(editTodoListEl);
+        const editWrapper = document.createElement("div");
+        editWrapper.className = "edit-wrapper";
 
-        editTodoListEl.classList.remove("hidden");
-
-        editTodoListEl.innerHTML = `
-        <form id="js-edit-form" class="flex justify-between mt-8">
+        editWrapper.innerHTML = `
+        <form class="flex justify-between mt-8">
             <input class="js-edit-input flex-1 border-2 border-violet-500 text-white px-2 py-1.5 placeholder:text-white-700 focus:outline-none" 
                    type="text" placeholder="What is the task today?" spellcheck="false" autocomplete="off" 
                    value="${p.textContent.trim()}">
-            <button type="submit" class="js-btn bg-violet-500 text-white font-bold px-3 hover:cursor-pointer"> Save Task </button>
+            <button type="submit" class="js-btn w-[100px] bg-violet-500 text-white font-bold px-3 hover:cursor-pointer"> Save Task </button>
         </form>
     `;
+        todoItemEl.before(editWrapper);
+
         // console.log(editTodoListEl.innerHTML);
 
-        const editForm = document.querySelector("#js-edit-form");
+        const editForm = editWrapper.querySelector("form");
         const editInput = document.querySelector(".js-edit-input");
 
         editForm.addEventListener("submit", (e) => {
@@ -71,7 +72,8 @@ formEl.addEventListener("submit", (e) => {
                 tasks.some(
                     (task) =>
                         task !== p &&
-                        task.textContent.trim().toLowerCase() === newTask
+                        task.textContent.trim().toLowerCase() ===
+                            newTask.trim().toLowerCase()
                 )
             ) {
                 return alert("Task này đã tồn tại");
@@ -79,7 +81,7 @@ formEl.addEventListener("submit", (e) => {
 
             p.textContent = newTask;
 
-            editTodoListEl.classList.add("hidden");
+            editWrapper.remove();
             todoItemEl.classList.remove("hidden");
         });
     });
