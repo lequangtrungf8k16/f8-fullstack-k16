@@ -49,10 +49,10 @@ formEl.addEventListener("submit", (e) => {
 
         editWrapper.innerHTML = `
         <form class="flex justify-between mt-8">
-            <input class="js-edit-input flex-1 border-2 border-violet-500 text-white px-2 py-1.5 placeholder:text-white-700 focus:outline-none" 
+            <input class="js-edit-input flex-2 border-2 border-violet-500 text-white px-2 py-1.5 placeholder:text-white-700 focus:outline-none" 
                    type="text" placeholder="What is the task today?" spellcheck="false" autocomplete="off" 
                    value="${p.textContent.trim()}">
-            <button type="submit" class="js-btn w-35 bg-violet-500 text-white font-bold hover:cursor-pointer">Save Task</button>
+            <button type="submit" class="js-btn flex-1 w-full bg-violet-500 text-white font-bold hover:cursor-pointer">Save Task</button>
         </form>
     `;
         todoItemEl.before(editWrapper);
