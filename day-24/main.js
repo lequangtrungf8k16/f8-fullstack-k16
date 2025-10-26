@@ -60,7 +60,7 @@ formEl.addEventListener("submit", (e) => {
         // console.log(editTodoListEl.innerHTML);
 
         const editForm = editWrapper.querySelector("form");
-        const editInput = document.querySelector(".js-edit-input");
+        const editInput = editForm.querySelector(".js-edit-input");
 
         editForm.addEventListener("submit", (e) => {
             e.preventDefault();
