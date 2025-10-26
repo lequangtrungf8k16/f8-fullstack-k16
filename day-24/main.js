@@ -67,7 +67,8 @@ formEl.addEventListener("submit", (e) => {
             const newTask = editInput.value.trim();
             if (!newTask) return alert("Không được để trống");
 
-            const tasks = Array.from(todoListEl.querySelectorAll("p"));
+            const allVisibleTasks = todoListEl.querySelectorAll(".todo-list:not(.hidden) p");
+            const tasks = Array.from(allVisibleTasks);
             if (
                 tasks.some(
                     (task) =>
