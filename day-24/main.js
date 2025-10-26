@@ -52,7 +52,7 @@ formEl.addEventListener("submit", (e) => {
             <input class="js-edit-input flex-1 border-2 border-violet-500 text-white px-2 py-1.5 placeholder:text-white-700 focus:outline-none" 
                    type="text" placeholder="What is the task today?" spellcheck="false" autocomplete="off" 
                    value="${p.textContent.trim()}">
-            <button type="submit" class="js-btn w-30 bg-violet-500 text-white px-3.5 font-bold hover:cursor-pointer">Save Task</button>
+            <button type="submit" class="js-btn w-30 bg-violet-500 text-white font-bold hover:cursor-pointer">Save Task</button>
         </form>
     `;
         todoItemEl.before(editWrapper);
