@@ -19,7 +19,7 @@ formEl.addEventListener("submit", (e) => {
                 task.toLowerCase()
         )
     ) {
-        return alert("Nội dung này đã có");
+        return alert("Task này đã tồn tại");
     }
 
     const todoItemEl = document.createElement("div");
@@ -74,7 +74,7 @@ formEl.addEventListener("submit", (e) => {
                         task.textContent.trim().toLowerCase() === newTask
                 )
             ) {
-                return alert("Nội dung này đã có");
+                return alert("Task này đã tồn tại");
             }
 
             p.textContent = newTask;
