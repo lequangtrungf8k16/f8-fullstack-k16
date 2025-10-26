@@ -6,50 +6,61 @@
         <title>Document</title>
 
         <!-- Font Awesome 7.1.0 -->
-        <link rel="stylesheet" href="./public/css/all.min.css" />
+        <link rel="stylesheet" href="../font-awesomwe/css/all.min.css" />
 
         <!-- Tailwindcss v4.1.16 -->
-        <link href="./src/output.css" rel="stylesheet" />
+        <link rel="stylesheet" href="./src/output.css" />
         <link rel="stylesheet" href="./src/input.css" />
     </head>
     <body class="bg-violet-600">
         <div
-            class="container bg-violet-950 w-[400px] h-auto my-50 mx-auto px-8 rounded-md shadow-xl/40"
+            class="container bg-violet-950 w-[400px] h-auto my-20 mx-auto px-8 rounded-md shadow-xl/40"
         >
             <div class="form-wrapper py-8">
                 <h1 class="text-center text-white text-3xl font-bold">
                     Get Things Done !
                 </h1>
-                <form
-                    action="#!"
-                    method="post"
-                    class="flex justify-between mt-8"
-                >
-                    <input
-                        class="flex-1 border-2 border-violet-500 text-white px-2 py-1.5 placeholder:text-white-700 focus:outline-none"
-                        type="text"
-                        placeholder="What is the task today?"
-                        spellcheck="false"
-                        autocomplete="off"
-                    />
-                    <button class="bg-violet-500 text-white font-bold px-3">
-                        Add Task
-                    </button>
-                </form>
-                <div
-                    class="todolist flex items-center justify-between gap-2 bg-violet-500 px-2 py-2 rounded-md"
-                    hidden
-                >
-                    <p class="text-white">Lorem ipsum dolor sit amet</p>
-                    <div class="action flex gap-2 text-white justify-center">
-                        <a href="#!">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                        <a href="#!"><i class="fa-solid fa-trash"></i></a>
-                    </div>
+                <div>
+                    <form
+                        action="#!"
+                        method="post"
+                        id="js-form"
+                        class="flex justify-between mt-8"
+                    >
+                        <input
+                            class="js-input flex-1 border-2 border-violet-500 text-white px-2 py-1.5 placeholder:text-white-700 focus:outline-none"
+                            type="text"
+                            placeholder="What is the task today?"
+                            spellcheck="false"
+                            autocomplete="off"
+                        />
+                        <button
+                            type="submit"
+                            class="js-btn bg-violet-500 text-white font-bold px-3 hover:cursor-pointer"
+                        >
+                            Add Task
+                        </button>
+                    </form>
                 </div>
+                <div id="js-todo-list"></div>
+                <!-- <div
+                    id="js-todo-list"
+                    class="todo flex items-center justify-between gap-2 bg-violet-500 mt-8 px-2 py-2 rounded-md"
+                    hidden
+                ></div> -->
+                <div id="js-edit"></div>
             </div>
         </div>
+        <!-- <p class="text-white"></p>
+    <div class="action flex gap-2 text-white justify-center">
+        <i
+            class="fa-solid fa-pen-to-square py-1 hover:cursor-pointer"
+        >
+        </i>
+        <i
+            class="fa-solid fa-trash py-1 hover:cursor-pointer"
+        ></i>
+    </div> -->
 
         <script src="./main.js"></script>
     </body>
