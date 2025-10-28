@@ -3,17 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Day 25</title>
+        <title>Day 25: Cart</title>
 
         <!-- Tailwindcss v4.1.16 -->
         <link rel="stylesheet" href="./src/output.css" />
         <link rel="stylesheet" href="./src/input.css" />
     </head>
     <body>
+        <!-- Danh sách sản phẩm -->
         <section
             class="w-full px-4 md:w-[750px] md:px-6 lg:w-[1000px] lg:px-8 mx-auto"
         >
-            <h2 class="text-4xl font-bold mt-4">Danh sách sản phẩm</h2>
+            <h2 class="text-2xl font-bold mt-4">DANH SÁCH SẢN PHẨM</h2>
             <table
                 class="w-full border-collapse table-auto border border-gray-500 mt-4 mx-auto"
             >
@@ -55,7 +56,7 @@
                         >
                             <span>1</span>
                             <button
-                                class="bg-gray-400 border border-gray-800 text-xs text-xs text-white m-0.5 hover:bg-blue-800 hover:cursor-pointer"
+                                class="bg-gray-400 border border-gray-800 text-xs text-white m-0.5 hover:bg-blue-800 hover:cursor-pointer"
                             >
                                 Thêm vào giỏ
                             </button>
@@ -82,7 +83,6 @@
                             </button>
                         </td>
                     </tr>
-
                     <tr>
                         <td class="border-collapse border border-gray-500">
                             3
@@ -105,7 +105,6 @@
                             </button>
                         </td>
                     </tr>
-
                     <tr>
                         <td class="border-collapse border border-gray-500">
                             4
@@ -129,12 +128,89 @@
                     </tr>
                 </tbody>
             </table>
-
-            <div class="cart">
-                <h3 class="text-2xl font-bold mt-4">GIỎ HÀNG</h3>
-                <p class="mt-4">Giỏ hàng không có sản phẩm</p>
-            </div>
         </section>
+
+        <!-- Giỏ hàng -->
+        <!-- <section
+            class="w-full px-4 md:w-[750px] md:px-6 lg:w-[1000px] lg:px-8 mx-auto"
+        >
+            >
+            <h2 class="text-2xl font-bold mt-4">GIỎ HÀNG</h2>
+            <p class="mt-4">Giỏ hàng không có sản phẩm</p>
+            <table
+                class="w-full border-collapse table-auto border border-gray-500 mt-4 mx-auto"
+            >
+                <thead class="border-collapse border border-gray-500">
+                    <tr>
+                        <th class="border-collapse border border-gray-500">
+                            STT
+                        </th>
+                        <th class="border-collapse border border-gray-500">
+                            Tên sản phẩm
+                        </th>
+                        <th class="border-collapse border border-gray-500">
+                            Giá
+                        </th>
+                        <th class="border-collapse border border-gray-500">
+                            Số lượng
+                        </th>
+                        <th class="border-collapse border border-gray-500">
+                            Thành tiền
+                        </th>
+                        <th class="border-collapse border border-gray-500">
+                            Xóa
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border-collapse border border-gray-500">
+                            1
+                        </td>
+                        <td class="border-collapse border border-gray-500">
+                            item
+                        </td>
+                        <td class="border-collapse border border-gray-500">
+                            item
+                        </td>
+                        <td class="border-collapse border border-gray-500">
+                            item
+                        </td>
+                        <td class="border-collapse border border-gray-500">
+                            item
+                        </td>
+                        <td class="border-collapse border border-gray-500">
+                            <button
+                                class="w-full bg-gray-400 border border-gray-800 text-xs text-white hover:bg-blue-800 hover:cursor-pointer"
+                            >
+                                Xóa
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td
+                            colspan="3"
+                            class="border-collapse border border-gray-500"
+                        >
+                            item
+                        </td>
+                         <td></td> 
+                        <td></td> 
+                        <td class="border-collapse border border-gray-500">
+                            item
+                        </td>
+                        <td class="border-collapse border border-gray-500">
+                            item
+                        </td>
+                        <td
+                            colspan="2"
+                            class="border-collapse border border-gray-500"
+                        ></td>
+                         <td></td> 
+                    </tr>
+                </tbody>
+            </table>
+        </section> -->
 
         <script src="./main.js"></script>
     </body>

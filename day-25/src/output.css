@@ -211,6 +211,12 @@
   .table {
     display: table;
   }
+  .h-auto {
+    height: auto;
+  }
+  .h-full {
+    height: 100%;
+  }
   .w-2 {
     width: calc(var(--spacing) * 2);
   }
@@ -243,6 +249,9 @@
   }
   .w-auto {
     width: auto;
+  }
+  .w-fit {
+    width: fit-content;
   }
   .w-full {
     width: 100%;
