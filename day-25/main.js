@@ -5,8 +5,10 @@ const products = [
     { id: 4, name: "Sản phẩm 4", price: 4000 },
 ];
 
-const cartSection = document.querySelector("#cart-section");
 const productList = document.querySelector("#product-list");
+const cartSection = document.querySelector("#cart-section");
+const actionDiv = document.querySelector("#action-btn");
+const cartHead = document.querySelector("#cart-head");
 const cartInfo = document.querySelector("#cart-info");
 const cartTotalEl = document.querySelector("#cart-total");
 const updateCartBtn = document.querySelector("#update-cart");
@@ -30,9 +32,10 @@ function showProducts() {
                 product.price
             }</td>
             <td class="flex flex-col border-collapse border border-gray-500">
-                <input type="number" min="1" value="1" class="w-full text-center qty-input focus:outline-none" data-id="${
+                <input type="number" min="1" value="1" class="w-full text-center product-qty focus:outline-none" data-id="${
                     product.id
                 }" />
+
                 <button class="add-to-cart bg-gray-400 border border-gray-800 text-xs text-white hover:bg-blue-800 hover:cursor-pointer" data-id="${
                     product.id
                 }">
@@ -61,12 +64,19 @@ function addCart(id, quantity) {
 
 // Hiển thị giỏ hàng
 function showCart() {
+    const emptyCartMsg = document.querySelector("#empty-cart");
     if (cart.length === 0) {
+        cartHead.classList.add("hidden");
         cartSection.classList.add("hidden");
+        emptyCartMsg.classList.remove("hidden");
+        actionDiv.classList.add("hidden");
         return;
     }
 
+    cartHead.classList.remove("hidden");
     cartSection.classList.remove("hidden");
+    emptyCartMsg.classList.add("hidden");
+    actionDiv.classList.remove("hidden");
 
     // Tính tổng số lượng
     const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -149,7 +159,7 @@ function clearCart() {
 document.addEventListener("click", (e) => {
     if (e.target.classList.contains("add-to-cart")) {
         const id = Number(e.target.dataset.id);
-        const input = document.querySelector(`.qty-input[data-id="${id}"]`);
+        const input = document.querySelector(`.product-qty[data-id="${id}"]`);
         const qty = +input.value || 1;
         addCart(id, qty);
     }
