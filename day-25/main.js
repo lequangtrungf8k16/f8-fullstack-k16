@@ -138,15 +138,6 @@ function updateCart() {
     showCart();
 }
 
-// Xóa 1 sản phẩm
-function deleteItem(id) {
-    if (confirm("Bạn có chắc chắn muốn xóa?")) {
-        cart = cart.filter((item) => item.id !== id);
-
-        showCart();
-    }
-}
-
 // Xóa toàn bộ giỏ hàng
 function clearCart() {
     if (confirm("Bạn có chắc chắn muốn xóa?")) {
