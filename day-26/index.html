@@ -5,39 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>day 26</title>
 
-        <style>
-            .list {
-                width: 90%;
-                margin: 20px auto;
-            }
-
-            .up {
-                color: green;
-            }
-            .down {
-                color: red;
-            }
-
-            .up,
-            .down {
-                cursor: pointer;
-            }
-            .selected {
-                border: 1px dashed green;
-            }
-            ul {
-                list-style: none;
-                margin: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                border: 1px solid red;
-            }
-            ul li {
-                margin: 10px 0;
-                padding: 5px 10px;
-            }
-        </style>
+        <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
         <div class="list">
@@ -68,6 +36,22 @@
                     <span class="down">Down</span>
                 </li>
             </ul>
+        </div>
+
+        <div id="context-menu">
+            <button id="rename">Đổi tên</button>
+            <button id="delete">Xóa</button>
+        </div>
+
+        <div id="overlay">
+            <div id="rename-box">
+                <input
+                    type="text"
+                    id="rename-input"
+                    placeholder="Nhập tên mới..."
+                />
+                <button id="save-rename">Lưu</button>
+            </div>
         </div>
 
         <script src="./main.js"></script>
