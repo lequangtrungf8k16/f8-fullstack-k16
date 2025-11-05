@@ -221,6 +221,16 @@ function viewPost(id) {
             </span>
             <h2 class="text-2xl font-bold my-4">${post.title}</h2>
             <p class="text-gray-600 leading-relaxed">${post.body}</p>
+            <div class="mt-4">
+            <span class="text-gray-600 leading-relaxed">tags: ${post.tags}</span>            
+            </div>
+            <div class="mt-4">
+            <span class="text-gray-600 leading-relaxed mr-10">likes: ${post.reactions.likes}</span>
+            <span class="text-gray-600 leading-relaxed">dislikes: ${post.reactions.dislikes}</span>
+            </div><div class="mt-4">
+            <span class="text-gray-600 leading-relaxed mr-10">views: ${post.views}</span>
+            <span class="text-gray-600 leading-relaxed">user: ${post.userId}</span>
+            </div>
         </div>
     `;
 
