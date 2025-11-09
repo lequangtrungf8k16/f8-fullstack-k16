@@ -9,21 +9,46 @@ const renderPagination = () => {
     const paginationEl = document.querySelector(".js-pagination");
     if (!paginationEl) return;
 
-    let html = "";
     const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+    let html = "";
 
-    for (let i = 1; i <= totalPages; i++) {
-        html += `<button class="page-btn w-[30px] h-[30px] border border-gray-400  hover:cursor-pointer hover:bg-blue-500 hover:text-white ${
-            i === currentPage ? "bg-blue-500 text-white" : ""
+    const maxButtons = 5;
+    let startPage = Math.max(currentPage - Math.floor(maxButtons / 2), 1);
+    let endPage = startPage + maxButtons - 1;
+
+    if (endPage > totalPages) {
+        endPage = totalPages;
+        startPage = Math.max(endPage - maxButtons + 1, 1);
+    }
+
+    if (currentPage > 1) {
+        html += `<button class="page-btn px-2 py-1 border border-gray-300 hover:bg-blue-500 hover:text-white transition-colors hover:cursor-pointer" data-page="${
+            currentPage - 1
+        }">Trang trước</button>`;
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+        html += `<button class="page-btn w-[30px] h-[30px] border hover:cursor-pointer hover:bg-blue-700 hover:text-white transition-colors ${
+            i === currentPage ? "bg-blue-500 text-white" : "bg-white"
         }" data-page="${i}">${i}</button>`;
     }
+
+    if (currentPage < totalPages) {
+        html += `<button class="page-btn px-2 py-1 border border-gray-300 hover:bg-blue-500 hover:text-white transition-colors hover:cursor-pointer" data-page="${
+            currentPage + 1
+        }">Trang sau</button>`;
+    }
+
     paginationEl.innerHTML = html;
 
     const pageBtns = paginationEl.querySelectorAll(".page-btn");
     pageBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
-            currentPage = Number(btn.dataset.page);
-            fetchPostsWithPage(currentPage);
+            const page = Number(btn.dataset.page);
+            if (!isNaN(page)) {
+                currentPage = page;
+                fetchPostsWithPage(currentPage, sortOrder);
+            }
         });
     });
 };
