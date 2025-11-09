@@ -331,11 +331,35 @@
   .h-\[30px\] {
     height: 30px;
   }
+  .h-\[32px\] {
+    height: 32px;
+  }
+  .h-\[33px\] {
+    height: 33px;
+  }
+  .h-\[34px\] {
+    height: 34px;
+  }
+  .h-\[35px\] {
+    height: 35px;
+  }
   .h-auto {
     height: auto;
   }
   .w-\[30px\] {
     width: 30px;
+  }
+  .w-\[32px\] {
+    width: 32px;
+  }
+  .w-\[33px\] {
+    width: 33px;
+  }
+  .w-\[34px\] {
+    width: 34px;
+  }
+  .w-\[35px\] {
+    width: 35px;
   }
   .w-\[100\%\] {
     width: 100%;

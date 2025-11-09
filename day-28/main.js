@@ -28,7 +28,7 @@ const renderPagination = () => {
     }
 
     for (let i = startPage; i <= endPage; i++) {
-        html += `<button class="page-btn w-[30px] h-[30px] border hover:cursor-pointer hover:bg-blue-700 hover:text-white transition-colors ${
+        html += `<button class="page-btn w-[33px] h-[33px] border hover:cursor-pointer hover:bg-blue-700 hover:text-white transition-colors ${
             i === currentPage ? "bg-blue-500 text-white" : "bg-white"
         }" data-page="${i}">${i}</button>`;
     }
