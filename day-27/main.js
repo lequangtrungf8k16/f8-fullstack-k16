@@ -134,13 +134,28 @@ function applySort() {
 function ActiveSort() {
     const allSortBtns = document.querySelectorAll(".sort-btn");
     allSortBtns.forEach((btn) => {
-        btn.classList.remove("bg-blue-500", "text-white");
+        btn.classList.remove(
+            "border-b-4",
+            "border-b-red-400",
+            "bg-blue-500",
+            "text-white"
+        );
     });
 
     if (currentSort === "newest") {
-        sortNewest.classList.add("bg-blue-500", "text-white");
+        sortNewest.classList.add(
+            "border-b-4",
+            "border-b-red-400",
+            "bg-blue-500",
+            "text-white"
+        );
     } else {
-        sortOldest.classList.add("bg-blue-500", "text-white");
+        sortOldest.classList.add(
+            "border-b-4",
+            "border-b-red-400",
+            "bg-blue-500",
+            "text-white"
+        );
     }
 }
 
@@ -166,10 +181,10 @@ function showPosts() {
                     <h2 class="text-xl font-semibold text-gray-800">${post.title}</h2>
                     <p class="text-gray-600 mt-1">${post.body}</p>
                     <div class="flex justify-between gap-2 mt-3">
-                        <button class="bg-blue-500 text-white px-3 py-2 hover:cursor-pointer" onclick="viewPost(${post.id})">Xem thêm</button>
+                        <button class="bg-blue-500 text-white px-3 py-2 hover:cursor-pointer hover:bg-blue-700 transition-colors" onclick="viewPost(${post.id})">Xem thêm</button>
                         <div class="flex gap-2">
-                            <button class="bg-yellow-500 text-white px-5 py-2 hover:cursor-pointer">Sửa</button>
-                            <button class="bg-red-500 text-white px-5 py-2 hover:cursor-pointer">Xóa</button>
+                            <button class="bg-yellow-500 text-white px-5 py-2 hover:cursor-pointer hover:bg-yellow-700 transition-colors">Sửa</button>
+                            <button class="bg-red-500 text-white px-5 py-2 hover:cursor-pointer hover:bg-red-700 transition-colors">Xóa</button>
                         </div>
                     </div>
                 </article>
@@ -188,7 +203,7 @@ function renderPagination() {
     for (let i = 1; i <= totalPages; i++) {
         html += `
             <button
-                class="inline-block w-10 py-1 border hover:cursor-pointer ${
+                class="inline-block w-10 py-1 border hover:cursor-pointer hover:border-black hover:bg-blue-700 hover:text-white transition-colors ${
                     i === currentPage
                         ? "bg-blue-500 border border-black text-white"
                         : ""
@@ -222,14 +237,14 @@ function viewPost(id) {
             <h2 class="text-2xl font-bold my-4">${post.title}</h2>
             <p class="text-gray-600 leading-relaxed">${post.body}</p>
             <div class="mt-4">
-            <span class="text-gray-600 leading-relaxed">tags: ${post.tags}</span>            
+            <span class="text-gray-600 leading-relaxed">Tags: ${post.tags}</span>            
             </div>
             <div class="mt-4">
-            <span class="text-gray-600 leading-relaxed mr-10">likes: ${post.reactions.likes}</span>
-            <span class="text-gray-600 leading-relaxed">dislikes: ${post.reactions.dislikes}</span>
+            <span class="text-gray-600 leading-relaxed mr-10">Likes: ${post.reactions.likes}</span>
+            <span class="text-gray-600 leading-relaxed">Dislikes: ${post.reactions.dislikes}</span>
             </div><div class="mt-4">
-            <span class="text-gray-600 leading-relaxed mr-10">views: ${post.views}</span>
-            <span class="text-gray-600 leading-relaxed">user: ${post.userId}</span>
+            <span class="text-gray-600 leading-relaxed mr-10">Views: ${post.views}</span>
+            <span class="text-gray-600 leading-relaxed">User: ${post.userId}</span>
             </div>
         </div>
     `;
