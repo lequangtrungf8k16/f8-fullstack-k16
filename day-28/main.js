@@ -28,9 +28,10 @@ const renderPagination = () => {
     });
 };
 
-const fetchPostsWithPage = async (page = 1) => {
+const fetchPostsWithPage = async (page = 1, order = "") => {
     try {
         setLoading();
+        sortOrder = order;
 
         let url = `${BASE_URL}/posts?limit=${POSTS_PER_PAGE}&skip=${
             (page - 1) * POSTS_PER_PAGE
@@ -409,5 +410,5 @@ sortOldestBtn.addEventListener("click", () => {
     currentSortBtn.classList.add("bg-blue-500", "text-white");
 });
 
-fetchPostsWithPage(currentPage);
+fetchPostsWithPage(currentPage, "desc");
 addSearchEvent();
