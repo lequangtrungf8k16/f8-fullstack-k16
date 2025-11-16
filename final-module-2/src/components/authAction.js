@@ -1,6 +1,6 @@
 const authAction = () => {
     return `
-    <div class="flex items-center gap-4 mr-20">
+    <div class="flex items-center gap-4">
                 <button class="text-white text-2xl cursor-pointer">
                     <i class="fa-brands fa-chromecast"></i>
                 </button>

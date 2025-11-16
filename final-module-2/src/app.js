@@ -3,9 +3,9 @@ import sidebar from "./components/sidebar";
 
 function app() {
     return `
-${header()}
-
 ${sidebar()}
+
+${header()}
 
 `;
 }

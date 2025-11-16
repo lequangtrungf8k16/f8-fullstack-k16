@@ -27,8 +27,20 @@ const sidebar = () => {
         .join("");
 
     return `
-    <div class="js-sidebar w-60 h-screen border-r border-gray-500 px-2 py-1">
-        <ul>
+    <div class="js-sidebar w-60 h-screen border-r border-gray-500 sticky top-0 px-2 py-4">
+        <div class="flex items-center gap-3 pl-2">
+                <i class="fa-solid fa-bars text-xl cursor-pointer"></i>
+
+                <a href="#!" class="flex items-center">
+                    <img 
+                        src="./src/images/logo_youtube-music-dark.svg" 
+                        alt="logo"
+                        class="h-6"
+                    >
+                </a>
+        </div>
+
+        <ul class="mt-4">
             ${menuHtml}
         </ul>
 

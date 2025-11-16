@@ -1,6 +1,6 @@
 const searchBar = () => {
     return `
-        <div class="flex flex-1 ml-20">
+        <div class="flex flex-1">
                 <div class="flex items-center w-full max-w-xl bg-gray-800 border border-gray-600 rounded-lg overflow-hidden">
 
                     <button class="px-4 text-gray-400 hover:text-white">
