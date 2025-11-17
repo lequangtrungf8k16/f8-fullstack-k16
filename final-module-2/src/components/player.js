@@ -2,6 +2,7 @@ const player = () => {
     return `
     <div id="music-player" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white shadow-xl z-50 border-t border-gray-700">
 
+        <!-- Thanh thời gian -->
         <div class="absolute -top-4 left-0 w-full">
             <input
                 id="progress-bar"
@@ -12,7 +13,7 @@ const player = () => {
             />
         </div>
 
-        <!-- Controls -->
+        <!-- Các nút chức năng nghe nhạc -->
         <div class="flex items-center justify-between gap-4 px-4 py-2">
             <div class="flex items-center gap-4">
                 <div class="flex items-center gap-4">                
@@ -32,12 +33,16 @@ const player = () => {
                     <span>04.30</span>
                 </div>                
             </div>
+
+            <!-- Thông tin bài hát -->
             <div class="flex gap-2">
                 <span>Sponsored</span>
                 <span>.</span>
                 <span class="text-gray-500">Video will play after ad</span>
             </div>
             <div class="flex items-center">
+
+                <!-- Điều chỉnh âm lượng -->
                 <div class="flex items-center group">
                     <div class="w-30">
                         <input
@@ -55,6 +60,7 @@ const player = () => {
                     </button>
                 </div>
 
+                <!-- Các nút chức năng khác -->
                 <button id="repeat-btn" class="w-10 h-10 rounded-full text-xl cursor-pointer hover:bg-gray-500">
                     <i class="fa-solid fa-repeat"></i>
                 </button>
@@ -74,7 +80,7 @@ const player = () => {
         <audio id="audio"></audio>
     </div>
 
-    <!-- Playlist Popup -->
+    <!-- Cửa sổ thông tin nhạc -->
     <div
     class="js-playlist-popup hidden absolute bottom-20 right-4 w-140 bg-gray-800 text-white rounded-lg p-4 max-h-96 overflow-y-auto z-50">
         <h3 class="text-lg font-bold mb-3">UP NEXT</h3>

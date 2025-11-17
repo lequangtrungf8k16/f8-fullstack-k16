@@ -12,49 +12,53 @@ const sidebar = () => {
 
     const menuHtml = menu
         .map(
-            (item) => `            
-            <li>
-                <a 
-                    href="${item.page}" data-link
-                    class="w-full flex items-center gap-3 pl-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800"
-                >
-                    <i class="${item.icon} text-xl"></i>
-                    <span>${item.label}</span>
-                </a>
-            </li>
+            (item) => `
+            <button 
+                data-page="${item.page}"
+                class="w-full flex items-center gap-3 pl-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800"
+            >
+                <i class="${item.icon} text-xl"></i>
+                <span>${item.label}</span>
+            </button>
         `
         )
         .join("");
 
     return `
-    <div class="js-sidebar p-4">
-        <div class="flex items-center gap-3 pl-2 py-2">
-                <i class="fa-solid fa-bars text-xl cursor-pointer"></i>
-                <a href="#!" class="flex items-center">
-                    <img 
-                        src="./src/images/logo_youtube-music-dark.svg" 
-                        alt="logo_youtube-music-dark"
-                        class="h-6"
-                    >
-                </a>
+        <div class="js-sidebar p-4">
+
+            <!-- Logo Youtube Music -->
+            <div class="flex items-center gap-3 pl-2 py-2">
+                    <i class="fa-solid fa-bars text-xl cursor-pointer"></i>
+                    <a href="#!" class="flex items-center">
+                        <img 
+                            src="./src/images/logo_youtube-music-dark.svg" 
+                            alt="logo_youtube-music-dark"
+                            class="h-6"
+                        >
+                    </a>
+            </div>
+
+            <!-- Thanh điều hướng -->
+            <div class="mt-4">
+                ${menuHtml}
+            </div>
+            <div class="border-b border-gray-500 mx-2 pb-7"></div>
+
+            <!-- Nút đăng nhập -->
+            <div class="mt-6 px-2">
+                <button 
+                    class="w-full text-center text-sm bg-gray-800 px-4 py-2 rounded-3xl cursor-pointer transition-colors hover:bg-gray-500"
+                >
+                    Đăng nhập
+                </button>
+                <p 
+                    class="w-full text-gray-500 text-left text-xs pr-1 py-1"
+                >
+                    Đăng nhập để tạo và chia sẻ danh sách phát, nhận đề xuất được cá nhân hóa và nhiều hơn thế nữa.
+                </p>
+            </div>
         </div>
-        <ul class="mt-4">
-            ${menuHtml}
-        </ul>
-        <div class="border-b border-gray-500 mx-2 pb-7"></div>
-        <div class="mt-6 px-2">
-            <button 
-                class="w-full text-center text-sm bg-gray-800 px-4 py-2 rounded-3xl cursor-pointer transition-colors hover:bg-gray-500"
-            >
-                Đăng nhập
-            </button>
-            <p 
-                class="w-full text-gray-500 text-left text-xs pr-1 py-1"
-            >
-                Đăng nhập để tạo và chia sẻ danh sách phát, nhận đề xuất được cá nhân hóa và nhiều hơn thế nữa.
-            </p>
-        </div>
-    </div>
     `;
 };
 

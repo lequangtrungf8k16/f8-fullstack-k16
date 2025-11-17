@@ -17,7 +17,7 @@ const home = () => {
               <button class="shrink-0 bg-gray-700 text-white overflow-hidden px-4 py-2 rounded-lg">Tập trung</button>            
             </div>
 
-            <!-- Quick picks -->
+            <!-- Quick picks: Lựa chọn nhanh -->
             <div class="js-quick-picks mt-10">
               <div class="flex justify-between">
                 <span class="text-4xl">Quick picks</span>
@@ -31,7 +31,10 @@ const home = () => {
               </div>
             </div>
 
+            <!-- Thanh cuộn ngang -->
             <div class="js-play-list flex justify-start gap-6 mt-4 scrollbar scrollbar-track-black scrollbar-thumb-gray-500">
+
+              <!-- Danh sách phát nhạc -->
               <div class="flex gap-2 relative flex-nowrap shrink-0 group">
                 <div class="relative w-12 h-12 bg-amber-300 opacity-50 rounded-md">
                 <button class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
@@ -49,24 +52,23 @@ const home = () => {
                   </div>
                 </div>
 
+                <!-- Khi hover vào bài hát -->
                 <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
                   <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
                   <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
                     <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button>                  
+                  </button>  
+                  
+                    <!-- Danh sách tùy chọn mở rộng -->
                     <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>
-                        
+                      <li>                        
                         <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>
-                     
+                      </li>                     
                     </ul>
                 </div>
               </div>              
-              
             </div>
-
        </div>
      `;
 };

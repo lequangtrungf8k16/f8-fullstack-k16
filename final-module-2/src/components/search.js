@@ -1,4 +1,4 @@
-const searchBar = () => {
+const search = () => {
     return `
         <div class="flex flex-1">
                 <div class="flex items-center w-120 max-w-xl bg-gray-800 border border-gray-600 rounded-lg overflow-hidden">
@@ -18,4 +18,4 @@ const searchBar = () => {
     `;
 };
 
-export default searchBar;
+export default search;
