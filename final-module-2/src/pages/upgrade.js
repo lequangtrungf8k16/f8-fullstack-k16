@@ -1,7 +1,7 @@
 const upgrade = () => {
     return `
-    <div>
-      
+    <div class="hidden">
+      upgrade
     </div>
     `;
 };

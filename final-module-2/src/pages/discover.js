@@ -1,7 +1,7 @@
 const discover = () => {
     return `
     <div>
-      
+      discover
     </div>
     `;
 };

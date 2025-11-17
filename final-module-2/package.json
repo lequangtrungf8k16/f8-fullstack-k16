@@ -1,5 +1,5 @@
 {
-  "name": "final_modul-2",
+  "name": "final_module-2",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "tailwind-scrollbar": "^4.0.2",
     "vite": "^7.2.2"
   },
   "dependencies": {
