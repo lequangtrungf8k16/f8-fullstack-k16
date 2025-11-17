@@ -3,24 +3,24 @@ const sidebar = () => {
         { page: "home", icon: "fa-solid fa-house", label: "Trang chủ" },
         { page: "discover", icon: "fa-regular fa-compass", label: "Khám phá" },
         { page: "library", icon: "fa-regular fa-bookmark", label: "Thư viện" },
-        {
-            page: "upgrade",
-            icon: "fa-regular fa-circle-play",
-            label: "Nâng cấp",
-        },
+        // {
+        //     page: "upgrade",
+        //     icon: "fa-regular fa-circle-play",
+        //     label: "Nâng cấp",
+        // },
     ];
 
     const menuHtml = menu
         .map(
             (item) => `            
             <li>
-                <button 
-                    data-page="${item.page}" 
+                <a 
+                    href="${item.page}" data-link
                     class="w-full flex items-center gap-3 pl-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800"
                 >
                     <i class="${item.icon} text-xl"></i>
                     <span>${item.label}</span>
-                </button>
+                </a>
             </li>
         `
         )
