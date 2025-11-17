@@ -32,8 +32,9 @@ const player = () => {
                     <span>04.30</span>
                 </div>                
             </div>
-            <div class="flex gap-4">
+            <div class="flex gap-2">
                 <span>Sponsored</span>
+                <span>.</span>
                 <span class="text-gray-500">Video will play after ad</span>
             </div>
             <div class="flex items-center">
@@ -75,7 +76,7 @@ const player = () => {
 
     <!-- Playlist Popup -->
     <div
-    class="js-playlist-popup absolute bottom-25 right-4 w-140 bg-gray-800 text-white rounded-lg p-4 max-h-96 overflow-y-auto z-50">
+    class="js-playlist-popup hidden absolute bottom-20 right-4 w-140 bg-gray-800 text-white rounded-lg p-4 max-h-96 overflow-y-auto z-50">
         <h3 class="text-lg font-bold mb-3">UP NEXT</h3>
         <ul id="playlist-list" class="space-y-2"></ul>
     </div>
