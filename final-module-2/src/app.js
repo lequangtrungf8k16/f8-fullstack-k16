@@ -18,10 +18,12 @@ const app = () => {
             <!-- HEADER -->
             ${header()}
             <!-- MAIN -->
-            <main id="page" class="flex-1 overflow-auto px-20 py-6  bg-black text-white">
-            ${home()}
+            <main id="page" class="flex-1 overflow-auto px-20 pt-10 pb-40 bg-black text-white">
             
+            ${home()}
             </main>
+
+            <!-- PLAYER -->
             ${player()}
         </div>
     </div>
