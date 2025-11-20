@@ -78,8 +78,6 @@ const discover = () => {
           <button class="w-40 text-left bg-gray-700 border-l-6 border-l-amber-500 rounded-lg px-4 py-3 cursor-pointer">Chill</button>
           <button class="w-40 text-left bg-gray-700 border-l-6 border-l-amber-500 rounded-lg px-4 py-3 cursor-pointer">Chill</button>
           <button class="w-40 text-left bg-gray-700 border-l-6 border-l-amber-500 rounded-lg px-4 py-3 cursor-pointer">Chill</button>
-          <button class="w-40 text-left bg-gray-700 border-l-6 border-l-amber-500 rounded-lg px-4 py-3 cursor-pointer">Chill</button>
-          <button class="w-40 text-left bg-gray-700 border-l-6 border-l-amber-500 rounded-lg px-4 py-3 cursor-pointer">Chill</button>
         </div>
       </div>
       <!-- End: Danh sách Moods & genres -->        

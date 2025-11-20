@@ -140,7 +140,7 @@ const home = () => {
           <!-- Start Danh sách phát nhạc -->
           <div class="flex gap-4 overflow-x-auto scrollbar scrollbar-track-black scrollbar-thumb-gray-500 py-4">            
             
-            <div class="grid grid-rows-4 grid-flow-col gap-4">
+            <div class="grid grid-rows-4 grid-flow-col gap-4">              
               <!-- Start Bài nhạc -->
               <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
                 <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
@@ -169,13 +169,89 @@ const home = () => {
                   </button> 
                   <!-- End: Khi hover vào bài hát --> 
                   
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
                 </div>
               </section>
               <!-- End Bài nhạc -->
@@ -254,6 +330,44 @@ const home = () => {
                     <!-- End: Danh sách tùy chọn mở rộng -->
                 </div>
               </section>
+              <!-- End Bài nhạc -->              
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
               <!-- End Bài nhạc -->
               <!-- Start Bài nhạc -->
               <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
@@ -283,13 +397,507 @@ const home = () => {
                   </button> 
                   <!-- End: Khi hover vào bài hát --> 
                   
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
+                </div>
+              </section>
+              <!-- End Bài nhạc -->
+              <!-- Start Bài nhạc -->
+              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
+                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
+                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+                  <i class="fa-solid fa-play"></i></button>                
+                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
+                </div>
+
+                <div class="flex flex-col flex-nowrap shrink-0">
+                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
+                  <div class="text-gray-500 text-sm">
+                    <button class="cursor-pointer">Adele</button>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
+                    <span class="cursor-pointer">.</span>
+                    <span class="cursor-pointer">21</span>
+                  </div>
+                </div>
+
+                <!-- Start: Khi hover vào bài hát -->
+                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
+                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
+                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
+                    <i class="fa-solid fa-ellipsis rotate-90"></i>
+                  </button> 
+                  <!-- End: Khi hover vào bài hát --> 
+                  
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
                 </div>
               </section>
               <!-- End Bài nhạc -->
@@ -359,696 +967,13 @@ const home = () => {
                   </button> 
                   <!-- End: Khi hover vào bài hát --> 
                   
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc --><!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
-                </div>
-              </section>
-              <!-- End Bài nhạc -->
-              <!-- Start Bài nhạc -->
-              <section class="w-2xs flex gap-4 relative flex-nowrap shrink-0 group">
-                <div class="relative w-12 aspect-square bg-gray-800 hover:opacity-50 overflow-hidden rounded-md">
-                  <button class="absolute inset-0 flex items-center justify-center text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
-                  <i class="fa-solid fa-play"></i></button>                
-                  <img src="./src/assets/images/nature-1.webp" class="absolute inset-0 w-full h-full object-cover"/>
-                </div>
-
-                <div class="flex flex-col flex-nowrap shrink-0">
-                  <button class="cursor-pointer text-left">Đốt cháy cơn mưa</button>
-                  <div class="text-gray-500 text-sm">
-                    <button class="cursor-pointer">Adele</button>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">1,3 tỷ lượt chơi</span>
-                    <span class="cursor-pointer">.</span>
-                    <span class="cursor-pointer">21</span>
-                  </div>
-                </div>
-
-                <!-- Start: Khi hover vào bài hát -->
-                <div class="absolute top-1/2 -translate-y-1/2 right-1 flex items-center gap-4 text-2xl flex-nowrap shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-down"></i></button>
-                  <button class="w-10 h-10 rounded-full hover:bg-gray-500 text-center cursor-pointer transition-colors"><i class="fa-regular fa-thumbs-up"></i></button>
-                  <button class="relative w-10 h-10 rounded-full hover:bg-gray-500 text-center group cursor-pointer transition-colors">
-                    <i class="fa-solid fa-ellipsis rotate-90"></i>
-                  </button> 
-                  <!-- End: Khi hover vào bài hát --> 
-                  
-                    <!-- Start: Danh sách tùy chọn mở rộng -->
-                    <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                      <li>                        
-                        <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
-                      </li>                     
-                    </ul>
-                    <!-- End: Danh sách tùy chọn mở rộng -->
+                  <!-- Start: Danh sách tùy chọn mở rộng -->
+                  <ul class="hidden absolute top-full right-0 w-50 bg-gray-500 text-center rounded-lg text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                    <li>                        
+                      <a href="#!" class="flex w-full text-white px-4 py-2 rounded-lg">Start mix</a>
+                    </li>                     
+                  </ul>
+                  <!-- End: Danh sách tùy chọn mở rộng -->
                 </div>
               </section>
               <!-- End Bài nhạc -->
