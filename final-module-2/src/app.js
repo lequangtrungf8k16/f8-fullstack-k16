@@ -14,13 +14,12 @@ const app = () => {
             ${sidebar()}
         </aside>
         <!-- PANEL BÊN PHẢI -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="w-full flex flex-col overflow-hidden mx-auto">
             <!-- HEADER -->
             ${header()}
             <!-- MAIN -->
-            <main id="page" class="flex-1 overflow-auto px-20 pt-10 pb-40 bg-black text-white">
+            <main id="page" class="flex-1 overflow-auto px-20 pt-10 pb-40 bg-black text-white scrollbar scrollbar-track-black scrollbar-thumb-gray-500">            
             
-            ${home()}
             </main>
 
             <!-- PLAYER -->

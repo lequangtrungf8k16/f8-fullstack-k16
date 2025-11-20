@@ -1,29 +1,6 @@
+import logo from "../assets/icon/logo_youtube-music-dark.svg";
+
 const sidebar = () => {
-    const menu = [
-        { page: "home", icon: "fa-solid fa-house", label: "Trang chủ" },
-        { page: "discover", icon: "fa-regular fa-compass", label: "Khám phá" },
-        { page: "library", icon: "fa-regular fa-bookmark", label: "Thư viện" },
-        // {
-        //     page: "upgrade",
-        //     icon: "fa-regular fa-circle-play",
-        //     label: "Nâng cấp",
-        // },
-    ];
-
-    const menuHtml = menu
-        .map(
-            (item) => `
-            <button 
-                data-page="${item.page}"
-                class="w-full flex items-center gap-3 pl-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800"
-            >
-                <i class="${item.icon} text-xl"></i>
-                <span>${item.label}</span>
-            </button>
-        `
-        )
-        .join("");
-
     return `
         <div class="js-sidebar p-4">
 
@@ -32,7 +9,7 @@ const sidebar = () => {
                     <i class="fa-solid fa-bars text-xl cursor-pointer"></i>
                     <a href="#!" class="flex items-center">
                         <img 
-                            src="./src/images/logo_youtube-music-dark.svg" 
+                            src=${logo} 
                             alt="logo_youtube-music-dark"
                             class="h-6"
                         >
@@ -41,7 +18,22 @@ const sidebar = () => {
 
             <!-- Thanh điều hướng -->
             <div class="mt-4">
-                ${menuHtml}
+               <a class="w-full flex items-center gap-3 pl-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800" href="/">
+               <i class="fa-regular fa-house"></i>
+               Trang chủ
+               </a>
+               <a class="w-full flex items-center gap-3 pl-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800" href="/discover">
+               <i class="fa-regular fa-compass"></i>
+               Khám phá
+               </a>
+               <a class="w-full flex items-center gap-3 pl-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800" href="/library">
+               <i class="fa-regular fa-bookmark"></i>
+               Thư viện
+               </a>
+               <a class="w-full flex items-center gap-3 pl-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800" href="/upgrade">
+               <i class="fa-regular fa-circle-play"></i>
+               Cập nhật
+               </a>
             </div>
             <div class="border-b border-gray-500 mx-2 pb-7"></div>
 

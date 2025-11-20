@@ -69,9 +69,8 @@ const player = () => {
                     <i class="fa-solid fa-shuffle"></i>
                 </button>
                                 
-                <button id="open-playlist" class="relative text-center w-10 h-10 rounded-full text-xl cursor-pointer hover:bg-gray-500">
-                    <i class="fa-solid fa-sort-up"></i>
-                    <!-- <i class="fa-solid fa-sort-down"></i> -->
+                <button class="js-open-playlist relative text-center w-10 h-10 rounded-full text-xl cursor-pointer hover:bg-gray-500">                    
+                    <i class="fa-solid fa-sort-down"></i>
                 </button>
             </div>
         </div>
@@ -83,9 +82,38 @@ const player = () => {
     <!-- Cửa sổ thông tin nhạc -->
     <div
     class="js-playlist-popup hidden absolute bottom-20 right-4 w-140 bg-gray-800 text-white rounded-lg p-4 max-h-96 overflow-y-auto z-50">
-        <h3 class="text-lg font-bold mb-3">UP NEXT</h3>
-        <ul id="playlist-list" class="space-y-2"></ul>
+        <h3 class="text-lg font-bold border-b border-b-gray-500 pb-4">Danh sách phát</h3>
+        <div id="playlist-list" class="py-2">
+            <button>
+                Bài hát 1
+            </button>
+            <button>
+                Bài hát 2
+            </button>
+        </div>
     </div>
     `;
 };
+
+export const togglePlayList = () => {
+    document.addEventListener("click", (e) => {
+        const playlist = document.querySelector(".js-playlist-popup");
+        const playlistBtn = document.querySelector(".js-open-playlist");
+        if (!playlist || !playlistBtn) return;
+
+        if (e.target.closest(".js-open-playlist")) {
+            playlist.classList.toggle("hidden");
+
+            if (playlist.classList.contains("hidden")) {
+                playlistBtn.innerHTML = `<i class="fa-solid fa-sort-down"></i>`;
+            } else {
+                playlistBtn.innerHTML = `<i class="fa-solid fa-sort-up"></i>`;
+            }
+        } else {
+            playlist.classList.add("hidden");
+            playlistBtn.innerHTML = `<i class="fa-solid fa-sort-down"></i>`;
+        }
+    });
+};
+
 export default player;
