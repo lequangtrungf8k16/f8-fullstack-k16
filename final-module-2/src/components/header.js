@@ -57,8 +57,8 @@ const header = () => {
                 </ul>
             </div>
 
-            <!-- Nút đăng nhập -->
-            <button class="bg-white text-black text-sm rounded-full px-4 py-1.5 cursor-pointer">
+            <!-- Auth -->
+            <button class="js-login-btn bg-white text-black text-sm rounded-full px-4 py-1.5 cursor-pointer">
                 Đăng nhập
             </button>
         </div>
