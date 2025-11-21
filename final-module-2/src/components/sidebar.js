@@ -20,29 +20,29 @@ const sidebar = () => {
             </div>
 
             <!-- Thanh điều hướng -->
-            <div class="mx-4 mt-4 group-[.collapsed]:w-16 group-[.collapsed]:mx-0">
-               <a class="js-sidebar-item w-full flex flex-wrap max-w-10:justify-center items-center gap-3 max-w-20:text-sx px-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800 group-[.collapsed]:flex-col group-[.collapsed]:justify-center group-[.collapsed]:text-center
+            <div class="js-menu mx-4 mt-4 group-[.collapsed]:w-16 group-[.collapsed]:mx-0">
+               <a class="js-sidebar-item w-full flex flex-wrap max-w-10:justify-center items-center gap-3 max-w-20:text-sx mt-2 px-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800 group-[.collapsed]:flex-col group-[.collapsed]:justify-center group-[.collapsed]:text-center
                   group-[.collapsed]:gap-1" href="/">
                 <i class="fa-regular fa-house"></i>
                 <span class="sidebar-text group-[.collapsed]:text-[10px]">
                     Trang chủ
                 </span>
                </a>
-               <a class="js-sidebar-item w-full flex flex-wrap max-w-10:justify-center items-center gap-3 max-w-20:text-sx px-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800 group-[.collapsed]:flex-col group-[.collapsed]:justify-center group-[.collapsed]:text-center
+               <a class="js-sidebar-item w-full flex flex-wrap max-w-10:justify-center items-center gap-3 max-w-20:text-sx mt-2 px-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800 group-[.collapsed]:flex-col group-[.collapsed]:justify-center group-[.collapsed]:text-center
                   group-[.collapsed]:gap-1" href="/discover">
                 <i class="fa-regular fa-compass"></i>
                 <span class="sidebar-text group-[.collapsed]:text-[10px]">
                     Khám phá
                 </span>
                </a>
-               <a class="js-sidebar-item w-full flex flex-wrap max-w-10:justify-center items-center gap-3 max-w-20:text-sx px-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800 group-[.collapsed]:flex-col group-[.collapsed]:justify-center group-[.collapsed]:text-center
+               <a class="js-sidebar-item w-full flex flex-wrap max-w-10:justify-center items-center gap-3 max-w-20:text-sx mt-2 px-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800 group-[.collapsed]:flex-col group-[.collapsed]:justify-center group-[.collapsed]:text-center
                   group-[.collapsed]:gap-1" href="/library">
                 <i class="fa-regular fa-bookmark"></i>
                 <span class="sidebar-text group-[.collapsed]:text-[10px]">
                     Thư viện
                 </span>
                </a>
-               <a class="js-sidebar-item w-full flex flex-wrap max-w-10:justify-center items-center gap-3 max-w-20:text-sx px-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800 group-[.collapsed]:flex-col group-[.collapsed]:justify-center group-[.collapsed]:text-center
+               <a class="js-sidebar-item w-full flex flex-wrap max-w-10:justify-center items-center gap-3 max-w-20:text-sx mt-2 px-2 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-800 group-[.collapsed]:flex-col group-[.collapsed]:justify-center group-[.collapsed]:text-center
                   group-[.collapsed]:gap-1" href="/upgrade">
                 <i class="fa-regular fa-circle-play"></i>
                 <span class="sidebar-text group-[.collapsed]:text-[10px]">
