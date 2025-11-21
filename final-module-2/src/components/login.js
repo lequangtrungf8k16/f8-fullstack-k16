@@ -1,3 +1,7 @@
+import { loginApi } from "../api/authAPI";
+import { tokenService } from "../service/token";
+import { storage } from "../service/storage";
+
 const login = () => {
     return `
     <div class="js-overlay hidden absolute inset-0 z-90 bg-gray-500 opacity-50"></div>
@@ -7,12 +11,14 @@ const login = () => {
         <form class="flex flex-col justify-between gap-4 mt-4">
             <label>
                 Tên tài khoản
-                <input class="w-full border border-gray-500 mt-2 px-4 py-2 rounded-md" type="text" id="username" placeholder="Nhập tên tài khoản...">
+                <input class="js-email w-full border border-gray-500 mt-2 px-4 py-2 rounded-md" type="email" placeholder="Nhập email...">
             </label>
             <label>
                 Mật khẩu
-                <input class="w-full border border-gray-500 mt-2 px-4 py-2 rounded-md" type="password" id="password" placeholder="Nhập mật khẩu...">
+                <input class="js-password w-full border border-gray-500 mt-2 px-4 py-2 rounded-md" type="password" id="password" placeholder="Nhập mật khẩu...">
             </label>
+
+            <!--
             <label>
                 Nhập lại mật khẩu
                 <input class="w-full border border-gray-500 mt-2 px-4 py-2 rounded-md" type="password" id="re-password" placeholder="Nhập lại mật khẩu...">
@@ -24,8 +30,9 @@ const login = () => {
                 </label>
                 <a class="text-blue-700 underline" href="#!">Quên mật khẩu?</a>
             </div>
+            -->
             <div class="mx-auto">
-                <button class="border bg-blue-700 text-white rounded-md cursor-pointer hover:bg-blue-500  px-4 py-2">Đăng nhập</button>
+                <button class="js-submit-btn border bg-blue-700 text-white rounded-md cursor-pointer hover:bg-blue-500  px-4 py-2">Đăng nhập</button>
             </div>
             
         </form>
@@ -40,12 +47,8 @@ export const loginFormEl = () => {
         if (!loginForm || !overlay) return;
 
         if (e.target.closest(".js-login-btn")) {
-            loginForm.classList.toggle("hidden");
-            overlay.classList.toggle("hidden");
-            return;
-        }
-
-        if (e.target.closest(".js-form-login")) {
+            loginForm.classList.remove("hidden");
+            overlay.classList.remove("hidden");
             return;
         }
 
@@ -54,9 +57,33 @@ export const loginFormEl = () => {
             overlay.classList.add("hidden");
             return;
         }
+    });
+};
 
-        loginForm.classList.add("hidden");
-        overlay.classList.add("hidden");
+export const initLogin = () => {
+    const formEl = document.querySelector(".js-login-form");
+    if (!formEl) return;
+
+    formEl.addEventListener("submit", async (e) => {
+        e.preventDefault;
+
+        const email = document.querySelector(".js-email").value.trim();
+        const password = document.querySelector(".js-password").value.trim();
+
+        if (!email || !password) {
+            alert("Hãy điền đầy đủ thông tin");
+            return;
+        }
+
+        const token = await loginApi(email, password);
+
+        if (token) {
+            tokenService.save(token.access_token);
+            storage.set("refresh_token", token.refresh_token);
+            window.location.href = "/home";
+        } else {
+            alert("Email hoặc mật khẩu chưa đúng");
+        }
     });
 };
 

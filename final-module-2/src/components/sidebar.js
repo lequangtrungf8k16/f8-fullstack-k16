@@ -54,7 +54,7 @@ const sidebar = () => {
 
             <!-- Nút đăng nhập -->
             <div class="mt-6 px-2">
-                <button class="w-full text-center text-sm bg-gray-800 px-4 py-2 rounded-3xl cursor-pointer transition-colors hover:bg-gray-500
+                <button class="js-login-btn w-full text-center text-sm bg-gray-800 px-4 py-2 rounded-3xl cursor-pointer transition-colors hover:bg-gray-500
                        group-[.collapsed]:hidden">
                     Đăng nhập
                 </button>

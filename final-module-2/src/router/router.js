@@ -20,12 +20,13 @@ const setActiveLink = (path) => {
     });
 };
 
-const initRouter = async () => {
+const initRouter = () => {
     const page = document.querySelector("#page");
-    router.on("/", () => {
-        page.innerHTML = home();
+    router.on("/", async () => {
+        page.innerHTML = await home();
         setActiveLink("/");
     });
+
     router.on("/discover", () => {
         page.innerHTML = discover();
         setActiveLink("/discover");

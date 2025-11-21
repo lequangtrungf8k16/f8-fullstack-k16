@@ -1,11 +1,8 @@
 import header from "./components/header";
 import sidebar from "./components/sidebar";
 import player from "./components/player";
+import login from "./components/login";
 import home from "./pages/home";
-import discover from "./pages/discover";
-import library from "./pages/library";
-import upgrade from "./pages/upgrade";
-import login, { loginFormEl } from "./components/login";
 
 const app = () => {
     return `
@@ -21,7 +18,7 @@ const app = () => {
             ${login()}
             <!-- MAIN -->
             <main id="page" class="flex-1 overflow-auto px-20 pt-10 pb-40 bg-black text-white scrollbar scrollbar-track-black scrollbar-thumb-gray-500">            
-            
+                
             </main>
 
             <!-- PLAYER -->
