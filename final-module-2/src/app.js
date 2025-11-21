@@ -10,7 +10,7 @@ const app = () => {
     return `
     <div class="h-screen flex overflow-hidden">
         <!-- SIDEBAR BÊN TRÁI -->
-        <aside class="w-60 h-full sticky top-0 bg-black border-r border-gray-700">
+        <aside class="sticky top-0 bg-black">
             ${sidebar()}
         </aside>
         <!-- PANEL BÊN PHẢI -->
