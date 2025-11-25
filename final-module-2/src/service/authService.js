@@ -1,26 +1,27 @@
-// import { storage } from "../utils/storage";
-// import { STORAGE_KEYS } from "../utils/constants";
+import apiClient from "../utils/apiClient";
 
-// export const authService = {
-//     login(accessToken, user) {
-//         storage.set(STORAGE_KEYS.ACCESS_TOKEN, accessToken);
-//         storage.set(STORAGE_KEYS.USER, user);
-//     },
-
-//     logout() {
-//         storage.remove(STORAGE_KEYS.ACCESS_TOKEN);
-//         storage.remove(STORAGE_KEYS.USER);
-//     },
-
-//     getToken() {
-//         return storage.get(STORAGE_KEYS.ACCESS_TOKEN);
-//     },
-
-//     getUser() {
-//         return storage.get(STORAGE_KEYS.USER);
-//     },
-
-//     isAuthenticated() {
-//         return !!this.getToken();
-//     },
-// };
+export const authService = {
+    login: async (email, password) => {
+        return await apiClient.post("/auth/login", { email, password });
+    },
+    register: async (name, email, password, confirmPassword) => {
+        return await apiClient.post("/auth/register", {
+            name,
+            email,
+            password,
+            confirmPassword,
+        });
+    },
+    getMe: async () => {
+        return await apiClient.get("/auth/me");
+    },
+    updateProfile: async (data) => {
+        return await apiClient.patch("/auth/me", data);
+    },
+    changePassword: async (data) => {
+        return await apiClient.patch("/auth/change-password", data);
+    },
+    logout: async () => {
+        return await apiClient.delete("/auth/logout");
+    },
+};

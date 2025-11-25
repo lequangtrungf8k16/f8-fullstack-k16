@@ -1,19 +1,30 @@
 import "./style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+
 import app from "./app";
-import { toggleMenu } from "./components/header";
-import { togglePlayList } from "./components/player";
-import initRouter from "./router/router";
-import login, { loginFormEl } from "./components/login";
-import sidebar from "./components/sidebar";
+import { initSidebarEvents } from "./components/sidebar";
+import { initHeaderEvents } from "./components/header";
+import { initAuthEvents } from "./components/authForm";
+import { initUserModalEvents } from "./components/userModal";
+import { initSearchEvents } from "./components/searchInput";
+import { initPlayerControls } from "./components/musicPlayer";
+import { initializePlayerService } from "./service/playerService";
+
+import initRouter, { initCategoryCarousel } from "./router";
 
 const render = async () => {
-    document.querySelector("#app").innerHTML = await app();
-    sidebar();
-    login();
+    document.querySelector("#app").innerHTML = app();
+
+    initSidebarEvents();
+    initHeaderEvents();
+    initAuthEvents();
+    initUserModalEvents();
+    initSearchEvents();
+    initCategoryCarousel();
+    initializePlayerService();
+    initPlayerControls();
+
     initRouter();
-    toggleMenu();
-    loginFormEl();
-    togglePlayList();
 };
+
 render();

@@ -1,29 +1,26 @@
+// File: src/app.js (Đã cập nhật)
 import header from "./components/header";
 import sidebar from "./components/sidebar";
-import player from "./components/player";
-import login from "./components/login";
-import home from "./pages/home";
+import authForm from "./components/authForm";
+import userModals from "./components/userModal";
+import musicPlayer from "./components/musicPlayer";
 
 const app = () => {
     return `
-    <div class="relative h-screen flex overflow-hidden">
-        <!-- SIDEBAR BÊN TRÁI -->
-        <aside class="sticky top-0 bg-black">
+    <div class="relative h-screen flex overflow-hidden bg-black text-white font-sans">        
+        <aside class="sticky top-0 z-40 h-full">
             ${sidebar()}
         </aside>
-        <!-- PANEL BÊN PHẢI -->
-        <div class="w-full flex flex-col overflow-hidden mx-auto">
-            <!-- HEADER -->
-            ${header()}
-            ${login()}
-            <!-- MAIN -->
-            <main id="page" class="flex-1 overflow-auto px-20 pt-10 pb-40 bg-black text-white scrollbar scrollbar-track-black scrollbar-thumb-gray-500">            
-                
+        <div class="flex-1 flex flex-col h-full overflow-hidden relative">            
+            <header class="sticky top-0 z-30"> 
+                ${header()}
+            </header>
+            <main id="page" class="flex-1 overflow-y-auto bg-black p-4 md:p-8 pb-32 scrollbar-thin scrollbar-thumb-gray-700">
             </main>
-
-            <!-- PLAYER -->
-            ${player()}
+            ${musicPlayer()}
         </div>
+        ${authForm()}
+        ${userModals()}
     </div>
     `;
 };
