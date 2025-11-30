@@ -1,4 +1,3 @@
-// File: src/app.js (Đã cập nhật)
 import header from "./components/header";
 import sidebar from "./components/sidebar";
 import authForm from "./components/authForm";
