@@ -30,7 +30,7 @@ const libraryPage = () => {
 
     return `
         <div class="w-full pb-32">
-            <header class="flex justify-between items-center mb-8 sticky top-0 bg-black z-10 py-4 -mt-4 -mx-20 px-20">
+            <header class="flex justify-between items-center mb-8 top-0 bg-black z-10 py-4 -mt-4 -mx-20 px-20">
                 <div class="flex gap-4 overflow-x-auto scrollbar-hide">
                     <button class="px-3 py-1 bg-white text-black text-sm font-medium rounded-full whitespace-nowrap">Danh sách phát</button>
                     <button class="px-3 py-1 bg-gray-800 text-white border border-gray-700 cursor-pointer hover:bg-gray-700 text-sm font-medium rounded-full whitespace-nowrap transition-colors">Bài hát</button>

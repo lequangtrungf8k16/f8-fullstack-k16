@@ -1,215 +1,290 @@
-import {
-    getAlbumsForYou,
-    getTodaysHits,
-    getAlbumOrPlaylistDetails,
-} from "../service/albumService";
-
-import { playerService } from "../service/playerService";
-import { getPersonalized } from "../service/homeService";
-import { getPlaylistsByCountry } from "../service/playlistService";
+import { homeService } from "../service/homeService";
 import { discoverService } from "../service/discoverService";
+import { getPlaylistsByCountry } from "../service/playlistService";
 import { storageService } from "../service/storageService";
+import { playerService } from "../service/playerService";
 
-const renderAlbumOrPlaylistCard = (item, type) => {
-    if (!item || !item.slug) return "";
+const renderCard = (item, type) => {
+    const title = item.title || item.name || "Không tiêu đề";
 
-    const title = item.title || item.name;
-    let subtitle =
-        item.artistsText ||
-        item.description ||
-        (type === "category" ? "Khám phá" : "");
-    const slug = item.slug || item.id;
-    const itemType = type;
+    let subtitle = "Tuyển tập";
+    if (item.artists && Array.isArray(item.artists)) {
+        if (typeof item.artists[0] === "string") {
+            subtitle = item.artists.join(", ");
+        } else {
+            subtitle = item.artists.map((a) => a.name).join(", ");
+        }
+    } else if (item.description) {
+        subtitle = item.description;
+    }
 
-    const placeholderUrl = "http://via.placeholder.com/300";
-    const thumbnail = item.thumbnail || placeholderUrl;
+    let image = "./src/assets/images/default-album.jpg";
+    if (item.thumbnails && item.thumbnails.length > 0) {
+        image = item.thumbnails[0];
+    } else if (item.thumbnailUrl) {
+        image = item.thumbnailUrl;
+    } else if (item.thumbnail) {
+        image = item.thumbnail;
+    }
 
-    if (itemType === "category") {
+    const id = item.slug || item.encodeId || item._id || item.id;
+
+    if (type === "mood") {
         return `
-            <div class="w-[220px] h-[100px] shrink-0 cursor-pointer group bg-gray-800 rounded-lg overflow-hidden shadow-xl relative transition-transform duration-300 hover:scale-105">
-                <a href="#/discoverPage/${slug}" class="absolute inset-0 p-4 flex items-center justify-between">
-                    <h4 class="text-white font-bold text-lg">${title}</h4>
-                    <img src="${thumbnail}" alt="${title}" class="w-16 h-16 object-cover rounded shadow-md">
-                </a>
-            </div>
+            <a href="/discoverPage/${id}" data-navigo class="block w-[200px] h-[100px] shrink-0 relative rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300 snap-start">
+                <img src="${image}" class="w-full h-full object-cover brightness-75 group-hover:brightness-100 transition-all" alt="${title}">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <h3 class="text-white font-bold text-lg text-center drop-shadow-md px-2">${title}</h3>
+                </div>
+            </a>
         `;
     }
+
     return `
-        <div class="w-[220px] shrink-0 cursor-pointer group">
-            <div class="relative w-full aspect-square rounded-lg overflow-hidden shadow-xl">
-                <img src="${thumbnail}" alt="${title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
-                    <button data-uri="${slug}" data-type="${itemType}" class="js-play-btn w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-lg">
-                        <i class="fa-solid fa-play"></i>
+        <div class="w-[170px] md:w-[200px] shrink-0 group snap-start">
+            <div class="relative w-full aspect-square rounded-md overflow-hidden mb-3 shadow-lg bg-gray-800">
+                <img src="${image}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                    <button class="js-play-home-item w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl cursor-pointer"
+                        data-id="${id}" data-type="${type}">
+                        <i class="fa-solid fa-play ml-1 text-xl"></i>
                     </button>
                 </div>
             </div>
-            <h4 class="text-white font-semibold mt-3 truncate">${title}</h4>
-            <p class="text-gray-400 text-sm truncate">${subtitle}</p>
+            <h4 class="text-white font-bold text-sm md:text-base truncate cursor-pointer hover:underline" title="${title}">${title}</h4>
+            <p class="text-gray-400 text-xs md:text-sm truncate mt-1">${subtitle}</p>
         </div>
     `;
 };
 
-export const renderSection = (title, items, type) => {
-    const dataItems =
-        items && items.data ? items.data : Array.isArray(items) ? items : [];
-
-    if (!dataItems || dataItems.length === 0) return "";
-
-    const renderItem = (item) => renderAlbumOrPlaylistCard(item, type);
+const renderSection = (title, items, type, sectionId) => {
+    if (!items || !Array.isArray(items) || items.length === 0) return "";
 
     return `
-    <div class="mt-10">
-        <div class="flex justify-between items-center mb-4">
-            <h3 class="text-2xl font-bold">${title}</h3>
-            <button class="border border-gray-500 px-4 py-1 rounded-3xl cursor-pointer hover:bg-gray-500 transition-colors text-sm">Xem thêm</button>
-        </div>
-        <div class="flex flex-nowrap gap-6 overflow-x-auto scrollbar-thin scrollbar-track-black scrollbar-thumb-gray-600 py-4">
-            ${dataItems.map(renderItem).join("")}
-        </div>
-    </div>
+        <section class="mb-12 animate-fade-in group/section" id="section-${sectionId}">
+            <div class="flex justify-between items-end mb-4 px-2">
+                <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">${title}</h2>
+                
+                <div class="hidden md:flex gap-3">
+                    <button id="btn-prev-${sectionId}" class="js-scroll-btn w-9 h-9 rounded-full bg-black border border-gray-600 flex items-center justify-center hover:bg-gray-800 hover:border-white text-white transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed" 
+                        data-target="scroll-${sectionId}" data-dir="left" title="Cuộn trái">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button id="btn-next-${sectionId}" class="js-scroll-btn w-9 h-9 rounded-full bg-black border border-gray-600 flex items-center justify-center hover:bg-gray-800 hover:border-white text-white transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed" 
+                        data-target="scroll-${sectionId}" data-dir="right" title="Cuộn phải">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="scroll-${sectionId}" 
+                 class="js-scroll-container flex gap-6 overflow-x-auto pb-4 px-2 scroll-smooth snap-x snap-mandatory scrollbar-custom"
+                 data-section="${sectionId}">
+                
+                <style>
+                    #scroll-${sectionId}::-webkit-scrollbar {
+                        height: 8px;
+                    }
+                    #scroll-${sectionId}::-webkit-scrollbar-track {
+                        background: #181818; 
+                        border-radius: 4px;
+                    }
+                    #scroll-${sectionId}::-webkit-scrollbar-thumb {
+                        background: #444; 
+                        border-radius: 4px;
+                    }
+                    #scroll-${sectionId}::-webkit-scrollbar-thumb:hover {
+                        background: #666; 
+                    }
+                </style>
+
+                ${items.map((item) => renderCard(item, type)).join("")}
+            </div>
+        </section>
     `;
-};
-
-export const initPlayButtons = () => {
-    document.addEventListener("click", async (e) => {
-        const playBtn = e.target.closest(".js-play-btn");
-        if (!playBtn) return;
-        e.preventDefault();
-
-        const uri = playBtn.dataset.uri;
-        const type = playBtn.dataset.type;
-        const trackIndex = parseInt(playBtn.dataset.trackIndex) || 0;
-
-        let playlist = [];
-
-        try {
-            playBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
-
-            if (uri) {
-                const details = await getAlbumOrPlaylistDetails(uri, type);
-
-                if (details && details.songs && details.songs.length > 0) {
-                    playlist = details.songs;
-                }
-            }
-
-            if (playlist.length > 0) {
-                playerService.setPlaylist(playlist, trackIndex);
-            } else {
-                console.warn("Không có bài hát nào để phát từ URI:", uri);
-                alert("Không tìm thấy bài hát nào trong Album/Playlist này.");
-            }
-        } catch (error) {
-            console.error("Lỗi khi phát nhạc từ Card:", error);
-            alert("Lỗi khi cố gắng phát nhạc. Vui lòng thử lại.");
-        } finally {
-            playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-        }
-    });
 };
 
 const homePage = async () => {
-    const userInfo = storageService.getUserInfo();
-    const isLoggedIn = !!userInfo && !!userInfo.name;
-    const userName = userInfo?.name || "";
+    const user = storageService.getUserInfo();
+    const isLoggedIn = !!user;
 
-    let greetingTitle = "";
-    if (isLoggedIn) {
-        greetingTitle = `Chào mừng ${userName} quay trở lại!`;
-    } else {
-        greetingTitle = `Khám Phá Âm Nhạc`;
-    }
-
-    let pageContent = `
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-6">${greetingTitle}</h2>
-            <div class="text-center py-20 text-gray-400">
-                <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
-                <p class="mt-3">Đang tải nội dung Trang chủ...</p>
-            </div>
+    let content = `
+        <div class="w-full h-[60vh] flex flex-col justify-center items-center text-gray-500">
+            <i class="fa-solid fa-circle-notch fa-spin text-4xl mb-4 text-white"></i>
+            <p>Đang tải thư viện nhạc...</p>
         </div>
     `;
 
     try {
-        const [albums, hits, personalized, vnPlaylists, categories] =
+        const [personalized, albums, hits, vnPlaylists, moods] =
             await Promise.all([
-                getAlbumsForYou(),
-                getTodaysHits(),
-                getPersonalized(),
-                getPlaylistsByCountry("VN", 10),
-                discoverService.getCategories(),
+                homeService.getPersonalized(),
+                homeService.getAlbumsForYou(),
+                homeService.getTodaysHits(),
+                getPlaylistsByCountry("VN"),
+                discoverService.getMoods(),
             ]);
 
-        let personalizedHtml = "";
+        let sectionsHtml = "";
+
         if (personalized && personalized.length > 0) {
-            personalizedHtml = renderSection(
-                "Gợi ý Theo Lịch sử Nghe",
+            sectionsHtml += renderSection(
+                `Gợi ý cho ${user.name}`,
                 personalized,
-                "playlist"
+                "playlist",
+                "personalized"
             );
-        } else if (isLoggedIn) {
-            personalizedHtml = `
-                <div class="mt-10 text-gray-500 border border-dashed border-gray-700 p-4 rounded-lg">
-                    <h3 class="text-xl font-bold mb-2">Gợi ý Cá nhân</h3>
-                    <p>Bạn chưa có đủ lịch sử nghe. Hãy bắt đầu thưởng thức nhạc để nhận được gợi ý tốt hơn!</p>
+        }
+
+        sectionsHtml += renderSection(
+            "Album thịnh hành",
+            albums,
+            "album",
+            "albums"
+        );
+        sectionsHtml += renderSection(
+            "Tuyển tập Hits hôm nay",
+            hits,
+            "playlist",
+            "hits"
+        );
+        sectionsHtml += renderSection(
+            "Playlist Việt Nam",
+            vnPlaylists,
+            "playlist",
+            "vn"
+        );
+        sectionsHtml += renderSection(
+            "Tâm trạng & Thể loại",
+            moods,
+            "mood",
+            "moods"
+        );
+
+        if (!sectionsHtml) {
+            sectionsHtml = `
+                <div class="text-center text-gray-400 mt-20">
+                    <i class="fa-solid fa-face-frown-open text-4xl mb-4"></i>
+                    <p>Không có dữ liệu hiển thị.</p>
                 </div>`;
         }
 
-        const albumsForYouHtml = renderSection(
-            "Album Dành Cho Bạn",
-            albums,
-            "album"
-        );
-        const todaysHitsHtml = renderSection(
-            "Tuyển tập Hit Hôm Nay",
-            hits,
-            "playlist"
-        );
-
-        const vnPlaylistsHtml = renderSection(
-            "Danh sách phát Việt Nam Hot",
-            vnPlaylists,
-            "playlist"
-        );
-
-        const categoriesData = categories?.items || [];
-        const moodsHtml = renderSection(
-            "Khám phá theo Tâm trạng & Hoạt động",
-            categoriesData,
-            "category"
-        );
-
-        pageContent = `
-            <div class="max-w-7xl mx-auto">
-                <h2 class="text-3xl font-bold mb-6">${greetingTitle}</h2>
-                
-                ${personalizedHtml}
-                ${albumsForYouHtml}
-                ${todaysHitsHtml}
-                
-                ${vnPlaylistsHtml} 
-                ${moodsHtml} 
-
-                <div class="mt-10 text-gray-500">
-                    <h3 class="text-2xl font-bold mb-4">Trang chủ đã sẵn sàng!</h3>
-                    <p>Bạn có thể phát nhạc từ các Album/Playlist trên hoặc đăng nhập để nhận gợi ý cá nhân hóa.</p>
+        content = `
+            <div class="pb-32 px-4 md:px-8 pt-8 max-w-[1600px] mx-auto">
+                <div class="mb-8 px-2">
+                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">${
+                        isLoggedIn
+                            ? `Chào mừng ${user.name} trở lại!`
+                            : "Khám phá thế giới âm nhạc"
+                    }</h1>
+                    <p class="text-gray-400 text-sm md:text-base">${
+                        isLoggedIn
+                            ? "Nghe lại những bài hát yêu thích của bạn."
+                            : "Đăng nhập để nhận playlist gợi ý riêng cho bạn."
+                    }</p>
+                    
+                    ${
+                        !isLoggedIn
+                            ? `
+                        <button class="js-open-login-modal mt-4 bg-white text-black font-bold py-2 px-6 rounded-full hover:scale-105 transition-transform cursor-pointer">
+                            Đăng nhập ngay
+                        </button>
+                    `
+                            : ""
+                    }
                 </div>
+
+                ${sectionsHtml}
             </div>
         `;
-    } catch (error) {
-        console.error("Lỗi khi tải Trang chủ:", error);
-        pageContent = `
-            <div class="max-w-7xl mx-auto text-center py-20 text-red-500">
-                <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
-                <p class="mt-3">Lỗi kết nối hoặc tải nội dung.</p>
-            </div>
-        `;
+    } catch (e) {
+        console.error("Home Page Critical Error:", e);
+        content = `<div class="pt-20 text-center text-white">Lỗi tải trang: ${e.message}</div>`;
     }
 
-    setTimeout(initPlayButtons, 0);
+    setTimeout(() => {
+        document.querySelectorAll(".js-play-home-item").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const id = btn.dataset.id;
+                const type = btn.dataset.type;
+                playerService.playAlbumOrPlaylist(id, type);
+            });
+        });
 
-    return pageContent;
+        const scrollContainers = document.querySelectorAll(
+            ".js-scroll-container"
+        );
+
+        scrollContainers.forEach((container) => {
+            const sectionId = container.dataset.section;
+            const prevBtn = document.getElementById(`btn-prev-${sectionId}`);
+            const nextBtn = document.getElementById(`btn-next-${sectionId}`);
+
+            const updateButtonState = () => {
+                if (!prevBtn || !nextBtn) return;
+
+                const isAtStart = container.scrollLeft <= 5;
+                prevBtn.disabled = isAtStart;
+                prevBtn.style.opacity = isAtStart ? "0.3" : "1";
+
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                const isAtEnd = container.scrollLeft >= maxScroll - 5;
+                nextBtn.disabled = isAtEnd;
+                nextBtn.style.opacity = isAtEnd ? "0.3" : "1";
+            };
+
+            container.addEventListener("scroll", updateButtonState);
+
+            [prevBtn, nextBtn].forEach((btn) => {
+                if (!btn) return;
+                btn.addEventListener("click", (e) => {
+                    const direction = btn.id.includes("prev")
+                        ? "left"
+                        : "right";
+                    const scrollAmount = container.clientWidth * 0.7;
+
+                    let newScrollPosition;
+
+                    if (direction === "left") {
+                        newScrollPosition = Math.max(
+                            0,
+                            container.scrollLeft - scrollAmount
+                        );
+                    } else {
+                        newScrollPosition = container.scrollLeft + scrollAmount;
+                    }
+
+                    container.scrollTo({
+                        left: newScrollPosition,
+                        behavior: "smooth",
+                    });
+
+                    setTimeout(updateButtonState, 400);
+                });
+            });
+
+            updateButtonState();
+
+            window.addEventListener("resize", updateButtonState);
+        });
+
+        const loginBtn = document.querySelector(".js-open-login-modal");
+        if (loginBtn) {
+            loginBtn.addEventListener("click", () => {
+                const modal = document.querySelector(".js-auth-modal");
+                const overlay = document.querySelector(".js-auth-overlay");
+                if (modal && overlay) {
+                    modal.classList.remove("hidden");
+                    overlay.classList.remove("hidden");
+                }
+            });
+        }
+    }, 100);
+
+    return content;
 };
 
 export default homePage;

@@ -1,5 +1,3 @@
-// File: src/pages/upgrade.js
-
 const upgradePage = () => {
     return `
     <div class="flex items-center justify-center bg-black text-white">

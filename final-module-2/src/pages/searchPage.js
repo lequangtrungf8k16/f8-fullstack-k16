@@ -20,7 +20,8 @@ const searchPage = async (params) => {
             <div class="flex items-center gap-4 p-2 hover:bg-gray-800 rounded-lg cursor-pointer transition-colors">
                 <div class="w-12 h-12 rounded overflow-hidden shrink-0">
                     <img src="${
-                        item.thumbnail || "https://via.placeholder.com/150"
+                        item.thumbnail ||
+                        "./src/assets/images/default-album.jpg"
                     }" alt="${item.title}" class="w-full h-full object-cover">
                 </div>
                 <div class="flex-1 min-w-0">
