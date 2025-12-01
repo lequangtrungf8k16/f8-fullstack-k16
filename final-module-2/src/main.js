@@ -20,6 +20,7 @@ const render = async () => {
     initAuthEvents();
     initUserModalEvents();
     initSearchEvents();
+
     initCategoryCarousel();
     initializePlayerService();
     initPlayerControls();

@@ -59,3 +59,10 @@ export const getTrackList = async (idOrSlug, type) => {
     });
     return { ...data, songs: songs };
 };
+
+export const playlistService = {
+    getPlaylistDetailsApi,
+    getTrackList,
+};
+
+export default playlistService;

@@ -5,7 +5,7 @@ const sidebar = () => {
     const user = storageService.getUserInfo();
 
     return `
-        <div class="js-sidebar group w-60 h-full py-4 overflow-hidden border-r border-r-gray-800 bg-black flex flex-col">
+        <div class="js-sidebar group w-20 md:w-60 h-full py-4 overflow-hidden border-r border-r-gray-800 bg-black flex flex-col">
             
             <div class="flex items-center gap-4 px-6 py-2 group-[.collapsed]:gap-2">
                 <button class="js-menu-btn cursor-pointer text-gray-400 hover:text-white">
@@ -19,24 +19,24 @@ const sidebar = () => {
             <nav class="js-menu mx-2 mt-6 space-y-2 group-[.collapsed]:mx-2">
                <a class="nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/">
                     <i class="fa-solid fa-house text-xl"></i>
-                    <span class="group-[.collapsed]:text-[10px] font-medium">Trang chủ</span>
+                    <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Trang chủ</span>
                </a>
                
                <a class="nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/discoverPage">
                     <i class="fa-regular fa-compass text-xl"></i>
-                    <span class="group-[.collapsed]:text-[10px] font-medium">Khám phá</span>
+                    <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Khám phá</span>
                </a>
 
                <a class="nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/libraryPage">
                     <i class="fa-solid fa-bookmark text-xl"></i>
-                    <span class="group-[.collapsed]:text-[10px] font-medium">Thư viện</span>
+                    <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Thư viện</span>
                </a>               
                ${
                    user
                        ? `
                <a class="nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/upgradePage">
                     <i class="fa-regular fa-circle-play text-xl"></i>
-                    <span class="group-[.collapsed]:text-[10px] font-medium">Nâng cấp</span>
+                    <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Nâng cấp</span>
                </a>
                `
                        : ""

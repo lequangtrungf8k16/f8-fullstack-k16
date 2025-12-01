@@ -2,6 +2,25 @@ import apiClient from "../utils/apiClient";
 import { tokenService } from "./tokenService";
 
 export const homeService = {
+    getHomeData: async () => {
+        try {
+            const response = await apiClient.get("/home");
+            return response.data.data || response.data;
+        } catch (error) {
+            return null;
+        }
+    },
+
+    getLineDetail: async (slug) => {
+        try {
+            const response = await apiClient.get(`/lines/details/${slug}`);
+            return response.data.data || response.data;
+        } catch (error) {
+            console.warn(`API Line không tìm thấy: ${slug}`);
+            return null;
+        }
+    },
+
     getAlbumsForYou: async (country = "VN", limit = 12) => {
         try {
             const response = await apiClient.get("/home/albums-for-you", {
@@ -40,3 +59,5 @@ export const homeService = {
         }
     },
 };
+
+export default homeService;

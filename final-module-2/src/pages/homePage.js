@@ -42,7 +42,7 @@ const renderCard = (item, type) => {
 
     return `
         <div class="w-[170px] md:w-[200px] shrink-0 group snap-start">
-            <div class="relative w-full aspect-square rounded-md overflow-hidden mb-3 shadow-lg bg-gray-800">
+            <div class="relative w-full aspect-square rounded-md overflow-hidden mb-3 shadow-lg bg-gray-800 cursor-pointer">
                 <img src="${image}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                 
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">

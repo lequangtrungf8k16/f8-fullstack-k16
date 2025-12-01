@@ -1,243 +1,161 @@
-import { discoverService } from "../service/discoverService";
+import { homeService } from "../service/homeService";
+import { playlistService } from "../service/playlistService";
 import { playerService } from "../service/playerService";
-import { formatUtils } from "../utils/formatUtils";
 
-const lineDetailPage = async (params) => {
-    const slug = params?.slug || params?.data?.slug;
+const lineDetailPage = async (match) => {
+    const slugOrId = match?.data?.slug;
 
-    if (!slug) {
-        return `<div class="text-white p-20 text-center">Không tìm thấy đường dẫn dòng nhạc.</div>`;
+    if (!slugOrId) {
+        return `<div class="text-white text-center mt-20">Không tìm thấy thông tin.</div>`;
     }
 
-    let lineDetail = null;
-    let songs = [],
-        playlists = [],
-        albums = [],
-        videos = [];
+    let data = null;
+    let type = "line";
 
     try {
-        const [detailRes, songRes, plRes, albRes, vidRes] = await Promise.all([
-            discoverService.getLineDetail(slug),
-            discoverService.getLineSongs(slug, 20),
-            discoverService.getLinePlaylists(slug, 10),
-            discoverService.getLineAlbums(slug, 10),
-            discoverService.getLineVideos(slug, 10),
-        ]);
-
-        lineDetail = detailRes;
-        songs = songRes || [];
-        playlists = plRes || [];
-        albums = albRes || [];
-        videos = vidRes || [];
+        const lineData = await homeService.getLineDetail(slugOrId);
+        if (lineData) {
+            data = lineData;
+        } else {
+            console.log("Không tìm thấy Line, thử tìm Playlist ID:", slugOrId);
+            const playlistData = await playlistService.getPlaylistDetailsApi(
+                slugOrId
+            );
+            if (playlistData) {
+                data = playlistData;
+                type = "playlist";
+            }
+        }
     } catch (error) {
-        console.error("Lỗi tải chi tiết dòng nhạc:", error);
+        console.error("Lỗi tải dữ liệu:", error);
     }
 
-    if (!lineDetail) {
-        return `<div class="text-white p-20 text-center">Không tải được thông tin dòng nhạc "${slug}".</div>`;
+    if (!data) {
+        return `<div class="text-white text-center mt-20">Không tải được nội dung (ID: ${slugOrId}).</div>`;
     }
 
-    const bgColor = lineDetail.color || "#555";
-    const headerStyle = `background: linear-gradient(to bottom, ${bgColor}, #000000)`;
+    const title = data.name || data.title || "Tuyển tập";
+    const description = data.description || data.sortDescription || "";
 
-    const renderCarouselItems = (items, type) => {
-        if (!items || items.length === 0)
-            return `<div class="text-gray-500 pl-4">Đang cập nhật...</div>`;
+    const thumbnail =
+        data.thumbnail ||
+        data.thumbnailUrl ||
+        "./src/assets/images/default-album.jpg";
+    const songs = data.songs || data.items || [];
 
-        return items
-            .map((item) => {
-                const title = item.title || item.name || "Không tiêu đề";
-                const thumb =
-                    item.thumbnailUrl ||
-                    (item.thumbnails && item.thumbnails[0]) ||
-                    item.thumbnails ||
-                    "./src/assets/images/default-album.jpg";
-                const id = item.slug || item._id || item.encodeId;
+    const renderSongs =
+        songs.length > 0
+            ? songs
+                  .map((song, index) => {
+                      const songData = {
+                          id: song.encodeId || song._id || song.id,
+                          title: song.title,
+                          artist: song.artists
+                              ? song.artists.map((a) => a.name).join(", ")
+                              : song.artist || "Unknown",
+                          thumbnail: song.thumbnail || thumbnail,
+                          duration: song.duration || 0,
+                      };
+                      const songDataStr = encodeURIComponent(
+                          JSON.stringify(songData)
+                      );
+                      const durationFormatted = song.duration
+                          ? formatTime(song.duration)
+                          : "--:--";
 
-                const aspectRatio =
-                    type === "videos" ? "aspect-video" : "aspect-square";
-                const playType =
-                    type === "videos"
-                        ? "video"
-                        : type === "playlists"
-                        ? "playlist"
-                        : "album";
+                      return `
+            <div class="flex items-center gap-4 p-3 hover:bg-white/10 rounded-lg cursor-pointer group js-play-song transition-colors"
+                 data-song="${songDataStr}">
+                
+                <span class="text-gray-400 w-4 text-center group-hover:hidden">${
+                    index + 1
+                }</span>
+                <i class="fa-solid fa-play text-white w-4 text-center hidden group-hover:block text-xs"></i>
 
-                return `
-                <div class="w-[180px] shrink-0 cursor-pointer group">
-                    <div class="relative w-full ${aspectRatio} rounded-md overflow-hidden mb-3 bg-gray-800 shadow-lg">
-                        <img src="${thumb}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-                        
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                             <button class="js-play-item w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-                                data-id="${id}" data-type="${playType}">
-                                <i class="fa-solid fa-play ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <h4 class="text-white font-bold text-sm truncate hover:underline" title="${title}">${title}</h4>
-                </div>
-            `;
-            })
-            .join("");
-    };
-
-    const renderSongList = () => {
-        if (songs.length === 0)
-            return `<div class="text-gray-400 p-4">Chưa có bài hát nổi bật.</div>`;
-
-        return songs
-            .map((song, index) => {
-                const title = song.name || "Unknown";
-                const artist = song.albumName || "Nhiều nghệ sĩ";
-                const thumb =
-                    song.thumb || "./src/assets/images/default-album.jpg";
-                const id = song._id || song.encodeId || "";
-
-                return `
-                <div class="group flex items-center gap-4 p-2 rounded-md hover:bg-white/10 transition-colors cursor-pointer js-play-song-item" 
-                     data-index="${index}">
-                    
-                    <span class="text-gray-400 font-medium w-6 text-center text-sm group-hover:hidden">${
-                        index + 1
-                    }</span>
-                    <button class="hidden group-hover:block w-6 text-center text-white"><i class="fa-solid fa-play text-xs"></i></button>
-
-                    <div class="relative w-10 h-10 shrink-0">
-                        <img src="${thumb}" alt="${title}" class="w-full h-full object-cover rounded">
-                    </div>
-                    
-                    <div class="flex-1 min-w-0">
-                        <h4 class="text-white font-medium truncate text-sm">${title}</h4>
-                        <p class="text-xs text-gray-400 truncate">${artist}</p>
-                    </div>
-
-                    <div class="hidden md:block text-xs text-gray-400 w-20 text-right">
-                        ${
-                            song.views
-                                ? formatUtils.formatNumber(song.views)
-                                : 0
-                        } <i class="fa-regular fa-eye ml-1"></i>
-                    </div>
-                    
-                    <button class="text-gray-400 hover:text-white px-2"><i class="fa-regular fa-heart"></i></button>
-                </div>
-            `;
-            })
-            .join("");
-    };
-
-    const renderSection = (title, content) => {
-        return `
-            <div class="mb-12 animate-fade-in">
-                <h2 class="text-xl md:text-2xl font-bold text-white mb-4 pl-4 md:pl-0 border-l-4 border-white md:border-none ml-4 md:ml-0">
-                    ${title}
-                </h2>
-                <div class="flex gap-6 overflow-x-auto scrollbar-hide pb-4 pl-4 md:pl-0 scroll-smooth">
-                    ${content}
-                </div>
-            </div>
-        `;
-    };
-
-    setTimeout(() => {
-        document.querySelectorAll(".js-play-item").forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const id = btn.dataset.id;
-                const type = btn.dataset.type;
-                if (type === "video") {
-                    alert("Tính năng phát video đang phát triển");
-                } else {
-                    playerService.playAlbumOrPlaylist(id, type);
-                }
-            });
-        });
-
-        document.querySelectorAll(".js-play-song-item").forEach((item) => {
-            item.addEventListener("click", () => {
-                const index = parseInt(item.dataset.index);
-                const mappedSongs = songs.map((s) => ({
-                    id: s._id || s.encodeId || "",
-                    title: s.name,
-                    artist: s.albumName || "Nhiều nghệ sĩ",
-                    thumbnail: s.thumb,
-                    duration: 0,
-                    link: "",
-                }));
-                playerService.setPlaylist(mappedSongs, index);
-            });
-        });
-
-        document
-            .querySelector(".js-play-all")
-            ?.addEventListener("click", () => {
-                if (songs.length > 0) {
-                    const mappedSongs = songs.map((s) => ({
-                        id: s._id || s.encodeId || "",
-                        title: s.name,
-                        artist: s.albumName || "Nhiều nghệ sĩ",
-                        thumbnail: s.thumb,
-                        duration: 0,
-                        link: "",
-                    }));
-                    playerService.setPlaylist(mappedSongs, 0);
-                }
-            });
-    }, 200);
-
-    return `
-        <div class="w-full pb-32 min-h-screen bg-black">
-            <div class="relative pt-24 pb-10 px-6 md:px-12 flex flex-col md:flex-row items-end gap-8" style="${headerStyle}">
-                <div class="w-40 h-40 md:w-52 md:h-52 shrink-0 shadow-2xl rounded-lg overflow-hidden hidden md:block">
+                <div class="w-10 h-10 rounded overflow-hidden shrink-0">
                     <img src="${
-                        lineDetail.thumbnailUrl
+                        songData.thumbnail
                     }" class="w-full h-full object-cover">
                 </div>
-                
-                <div class="flex flex-col gap-4 w-full">
-                    <p class="text-xs font-bold uppercase tracking-wider text-white/80">DÒNG NHẠC</p>
-                    <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight drop-shadow-lg">${
-                        lineDetail.name
-                    }</h1>
-                    <p class="text-white/80 text-sm md:text-lg max-w-2xl font-medium">${
-                        lineDetail.description || ""
+
+                <div class="flex-1 min-w-0">
+                    <h4 class="text-white font-medium truncate group-hover:text-green-400">${
+                        songData.title
+                    }</h4>
+                    <p class="text-xs text-gray-400 truncate">${
+                        songData.artist
                     }</p>
-                    
-                    ${
-                        songs.length > 0
-                            ? `
-                        <button class="js-play-all mt-2 bg-red-600 text-white font-bold py-3 px-8 rounded-full hover:scale-105 transition-transform w-max flex items-center gap-2 shadow-lg cursor-pointer">
-                            <i class="fa-solid fa-play"></i> PHÁT TẤT CẢ
-                        </button>
-                    `
-                            : ""
-                    }
+                </div>
+
+                <div class="text-xs text-gray-400">
+                    ${durationFormatted}
                 </div>
             </div>
+            `;
+                  })
+                  .join("")
+            : `<div class="text-gray-400 italic">Chưa có bài hát nào trong danh sách này.</div>`;
 
-            <div class="px-0 md:px-12 mt-8 flex flex-col lg:flex-row gap-12">
-                <div class="flex-1">
-                    <h2 class="text-xl md:text-2xl font-bold text-white mb-6 pl-4 md:pl-0">Bài hát nổi bật</h2>
-                    <div class="flex flex-col px-2 md:px-0">
-                        ${renderSongList()}
-                    </div>
-                </div>
+    setTimeout(() => {
+        const btnPlayAll = document.querySelector(".js-play-all-line");
+        if (btnPlayAll && songs.length > 0) {
+            btnPlayAll.addEventListener("click", () => {
+                const formattedSongs = songs.map((song) => ({
+                    id: song.encodeId || song._id || song.id,
+                    title: song.title,
+                    artist: song.artists
+                        ? song.artists.map((a) => a.name).join(", ")
+                        : song.artist || "Unknown",
+                    thumbnail: song.thumbnail || thumbnail,
+                    duration: song.duration || 0,
+                }));
+                playerService.setPlaylist(formattedSongs, 0);
+            });
+        }
+    }, 500);
+
+    return `
+    <div class="animate-fade-in pb-32">
+        <div class="flex flex-col md:flex-row items-end gap-6 md:gap-8 pt-20 px-8 pb-8 bg-linear-to-b from-emerald-900/50 to-black/50">
+            <div class="w-48 h-48 md:w-56 md:h-56 shadow-2xl rounded-lg overflow-hidden shrink-0 mx-auto md:mx-0">
+                <img src="${thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
             </div>
             
-            <div class="px-0 md:px-12 mt-12">
-                ${renderSection(
-                    "Playlist tuyển chọn",
-                    renderCarouselItems(playlists, "playlists")
-                )}
-                ${renderSection("Album", renderCarouselItems(albums, "albums"))}
-                ${renderSection(
-                    "Video liên quan",
-                    renderCarouselItems(videos, "videos")
-                )}
+            <div class="flex flex-col gap-4 text-center md:text-left w-full">
+                <span class="text-xs font-bold uppercase text-white/80 tracking-wider">
+                    ${type === "playlist" ? "PLAYLIST" : "DÒNG NHẠC"}
+                </span>
+                <h1 class="text-3xl md:text-5xl lg:text-7xl font-black text-white tracking-tight">
+                    ${title}
+                </h1>
+                <p class="text-gray-300 text-sm md:text-base max-w-2xl line-clamp-2">
+                    ${description}
+                </p>
+                <div class="mt-2 flex items-center justify-center md:justify-start gap-4">
+                    <button class="js-play-all-line bg-green-500 hover:bg-green-400 text-black font-bold rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-play text-xl ml-1"></i>
+                    </button>
+                    <button class="w-10 h-10 rounded-full border border-gray-500 text-white flex items-center justify-center hover:border-white hover:bg-white/10 transition">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
             </div>
         </div>
+
+        <div class="px-4 md:px-8 mt-4">
+            <div class="bg-black/20 rounded-xl p-4 min-h-[300px]">
+                ${renderSongs}
+            </div>
+        </div>
+    </div>
     `;
 };
+
+function formatTime(seconds) {
+    if (!seconds) return "00:00";
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s}`;
+}
 
 export default lineDetailPage;
