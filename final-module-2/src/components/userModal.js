@@ -29,6 +29,7 @@ const userModals = () => {
             <button class="js-close-user-modal hover:text-gray-300"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <form class="flex flex-col gap-4">
+            <input type="text" autocomplete="username" value="user_hien_tai" class="hidden">
             <div>
                  <input autocomplete="current-password" class="js-old-pass w-full bg-gray-800 px-4 py-2 rounded outline-none border border-transparent focus:border-white" type="password" placeholder="Mật khẩu cũ">
             </div>

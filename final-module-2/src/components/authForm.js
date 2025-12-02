@@ -12,15 +12,15 @@ const authForm = () => {
             <h3 class="text-3xl text-center font-bold mb-6">Đăng nhập</h3>
             <form class="flex flex-col gap-4">
                 <div class="flex flex-col gap-1">
-                    <label class="text-sm text-gray-400">Email</label>
-                    <input autocomplete="username" class="js-login-email w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="email" placeholder="name@example.com">
+                    <label for="login-email" class="text-sm text-gray-400">Email</label>
+                    <input id="login-email" name="email" autocomplete="username" class="js-login-email w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="email" placeholder="name@example.com">
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label class="text-sm text-gray-400">Mật khẩu</label>
-                    <input autocomplete="current-password" class="js-login-password w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="password" placeholder="Nhập mật khẩu">
+                    <label for="login-password" class="text-sm text-gray-400">Mật khẩu</label>
+                    <input id="login-password" name="password" autocomplete="current-password" class="js-login-password w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="password" placeholder="Nhập mật khẩu">
                 </div>
                 
-                <button type="submit" class="js-btn-login mt-4 w-full bg-white text-black font-bold py-3 rounded-full cursor-pointer hover:bg-gray-200 transition-colors">
+                <button type="submit" class="js-btn-login mt-4 w-full bg-white text-black font-bold py-3 rounded-full cursor-pointer hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                     Đăng nhập
                 </button>
             </form>
@@ -34,23 +34,23 @@ const authForm = () => {
             <h3 class="text-3xl text-center font-bold mb-6">Đăng ký</h3>
             <form class="flex flex-col gap-4">
                 <div class="flex flex-col gap-1">
-                    <label class="text-sm text-gray-400">Tên hiển thị</label>
-                    <input autocomplete="name" class="js-reg-name w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="text" placeholder="Tên của bạn">
+                    <label for="reg-name" class="text-sm text-gray-400">Tên hiển thị</label>
+                    <input id="reg-name" name="name" autocomplete="name" class="js-reg-name w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="text" placeholder="Tên của bạn">
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label class="text-sm text-gray-400">Email</label>
-                    <input autocomplete="username" class="js-reg-email w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="email" placeholder="name@example.com">
+                    <label for="reg-email" class="text-sm text-gray-400">Email</label>
+                    <input id="reg-email" name="email" autocomplete="username" class="js-reg-email w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="email" placeholder="name@example.com">
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label class="text-sm text-gray-400">Mật khẩu</label>
-                    <input autocomplete="new-password" class="js-reg-password w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="password" placeholder="Nhập mật khẩu">
+                    <label for="reg-password" class="text-sm text-gray-400">Mật khẩu</label>
+                    <input id="reg-password" name="password" autocomplete="new-password" class="js-reg-password w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="password" placeholder="Nhập mật khẩu">
                 </div>
                 <div class="flex flex-col gap-1">
-                    <label class="text-sm text-gray-400">Nhập lại mật khẩu</label>
-                    <input autocomplete="new-password" class="js-reg-confirm-password w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="password" placeholder="Xác nhận mật khẩu">
+                    <label for="reg-confirm" class="text-sm text-gray-400">Nhập lại mật khẩu</label>
+                    <input id="reg-confirm" name="confirm-password" autocomplete="new-password" class="js-reg-confirm-password w-full bg-gray-800 border border-gray-600 focus:border-white outline-none px-4 py-3 rounded-lg transition-colors" type="password" placeholder="Xác nhận mật khẩu">
                 </div>
                 
-                <button type="submit" class="js-btn-register mt-4 w-full bg-white text-black font-bold py-3 rounded-full cursor-pointer hover:bg-gray-200 transition-colors">
+                <button type="submit" class="js-btn-register mt-4 w-full bg-white text-black font-bold py-3 rounded-full cursor-pointer hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                     Đăng ký
                 </button>
             </form>
@@ -67,6 +67,19 @@ const authForm = () => {
     `;
 };
 
+const setLoading = (btnSelector, isLoading) => {
+    const btn = document.querySelector(btnSelector);
+    if (!btn) return;
+    if (isLoading) {
+        btn.setAttribute("disabled", "true");
+        btn.innerHTML =
+            '<i class="fa-solid fa-circle-notch fa-spin"></i> Đang xử lý...';
+    } else {
+        btn.removeAttribute("disabled");
+        btn.innerText = btnSelector.includes("login") ? "Đăng nhập" : "Đăng ký";
+    }
+};
+
 export const initAuthEvents = () => {
     const overlay = document.querySelector(".js-auth-overlay");
     const modal = document.querySelector(".js-auth-modal");
@@ -75,7 +88,7 @@ export const initAuthEvents = () => {
 
     if (!modal) return;
 
-    // Chuyển đổi qua lại giữa Login/Register
+    // Chuyển đổi tab
     document
         .querySelector(".js-switch-to-register")
         ?.addEventListener("click", (e) => {
@@ -106,21 +119,24 @@ export const initAuthEvents = () => {
         .querySelector(".js-btn-login")
         ?.addEventListener("click", async (e) => {
             e.preventDefault();
-            const email = document
-                .querySelector(".js-login-email")
-                .value.trim();
-            const password = document
-                .querySelector(".js-login-password")
-                .value.trim();
+
+            const emailEl = document.querySelector(".js-login-email");
+            const passEl = document.querySelector(".js-login-password");
+            const email = emailEl.value.trim();
+            const password = passEl.value.trim();
 
             if (!email || !password)
                 return alert("Vui lòng nhập đầy đủ thông tin");
 
+            // Bắt đầu loading
+            setLoading(".js-btn-login", true);
+
             try {
                 const res = await authService.login(email, password);
-                handleAuthSuccess(res.data);
+                await handleAuthSuccess(res.data);
             } catch (error) {
                 alert(error.response?.data?.message || "Đăng nhập thất bại");
+                setLoading(".js-btn-login", false); // Tắt loading nếu lỗi
             }
         });
 
@@ -129,6 +145,7 @@ export const initAuthEvents = () => {
         .querySelector(".js-btn-register")
         ?.addEventListener("click", async (e) => {
             e.preventDefault();
+
             const name = document.querySelector(".js-reg-name").value.trim();
             const email = document.querySelector(".js-reg-email").value.trim();
             const password = document
@@ -143,6 +160,8 @@ export const initAuthEvents = () => {
             if (password !== confirmPassword)
                 return alert("Mật khẩu không khớp");
 
+            setLoading(".js-btn-register", true);
+
             try {
                 const res = await authService.register(
                     name,
@@ -150,19 +169,18 @@ export const initAuthEvents = () => {
                     password,
                     confirmPassword
                 );
-                handleAuthSuccess(res.data);
+                await handleAuthSuccess(res.data);
             } catch (error) {
                 alert(error.response?.data?.message || "Đăng ký thất bại");
+                setLoading(".js-btn-register", false);
             }
         });
 };
 
 async function handleAuthSuccess(data) {
-    // Lưu token
     tokenService.setAccessToken(data.access_token);
     tokenService.setRefreshToken(data.refresh_token);
 
-    // Lấy thông tin User lưu vào Storage
     try {
         const userRes = await authService.getMe();
         storageService.setUserInfo(userRes.data.data || userRes.data);

@@ -16,6 +16,13 @@ let playerState = {
 
 let onSongStartCallback = null;
 
+const formatTime = (seconds) => {
+    if (!seconds || isNaN(seconds)) return "00:00";
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s}`;
+};
+
 const updatePlayerUI = () => {
     const playBtn = document.getElementById("play-btn");
     const songInfo = document.querySelector(".js-song-info");
@@ -42,7 +49,7 @@ const updatePlayerUI = () => {
             `;
             if (thumbEl) {
                 thumbEl.src =
-                    song.thumbnail || "./src/assets/images/default-album.jpg";
+                    song.thumbnail || "./src/assets/images/default-song.jpg";
             }
         } else {
             songInfo.innerHTML = `
@@ -61,10 +68,7 @@ const getStreamUrl = async (songId) => {
 
     try {
         const response = await apiClient.get(`/songs/details/${songId}`);
-        let songData =
-            response.data && response.data.data
-                ? response.data.data
-                : response.data;
+        const songData = response.data.data || response.data;
 
         if (!songData) return null;
 
@@ -72,6 +76,10 @@ const getStreamUrl = async (songId) => {
             playerState.currentSong.fullData = songData;
         }
 
+        if (songData.audioUrl) return songData.audioUrl;
+
+        if (songData["128"]) return songData["128"];
+        if (songData["320"]) return songData["320"];
         if (songData.source && songData.source["128"])
             return songData.source["128"];
         if (songData.source && songData.source["320"])
@@ -93,11 +101,8 @@ const playTrack = async () => {
 
     if (playerState.consecutiveErrors >= 5) {
         alert(
-            hasToken
-                ? "Playlist này chứa nhiều bài hát VIP/lỗi. Player sẽ dừng lại."
-                : "Vui lòng ĐĂNG NHẬP để nghe nhạc."
+            "Playlist có quá nhiều bài lỗi hoặc yêu cầu VIP. Player sẽ dừng lại."
         );
-
         playerState.isPlaying = false;
         playerState.isLoading = false;
         playerState.consecutiveErrors = 0;
@@ -110,25 +115,35 @@ const playTrack = async () => {
 
     try {
         const songId = playerState.currentSong.id;
-        const streamUrl = await getStreamUrl(songId);
+
+        let streamUrl = playerState.currentSong.link;
+
+        if (!streamUrl) {
+            streamUrl = await getStreamUrl(songId);
+        }
 
         if (!streamUrl) {
             console.warn(
-                `Bài "${playerState.currentSong.title}" lỗi/VIP. Next...`
+                `Bài "${playerState.currentSong.title}" bị lỗi/VIP. Chuyển bài sau 1s...`
             );
             playerState.consecutiveErrors++;
+
+            playerState.isLoading = false;
+            updatePlayerUI();
+
             setTimeout(() => nextTrack(), 1000);
             return;
         }
 
         playerState.consecutiveErrors = 0;
+
         audioEl.src = streamUrl;
 
         try {
             await audioEl.play();
             playerState.isPlaying = true;
         } catch (playErr) {
-            console.warn("Autoplay blocked:", playErr);
+            console.warn("Trình duyệt chặn Autoplay:", playErr);
             playerState.isPlaying = false;
         }
     } catch (error) {
@@ -173,14 +188,18 @@ const prevTrack = () => {
 
 export const initializePlayerService = () => {
     audioEl = document.getElementById("audio");
-    if (!audioEl) return;
+    if (!audioEl) {
+        console.error("Không tìm thấy thẻ <audio id='audio'> trong DOM!");
+        return;
+    }
 
     audioEl.addEventListener("ended", () => {
         playerState.consecutiveErrors = 0;
         nextTrack();
     });
 
-    audioEl.addEventListener("error", () => {
+    audioEl.addEventListener("error", (e) => {
+        console.error("Lỗi Audio Element:", e);
         if (playerState.isPlaying) {
             playerState.consecutiveErrors++;
             setTimeout(nextTrack, 1000);
@@ -195,22 +214,22 @@ export const initializePlayerService = () => {
         if (audioEl.duration && progressBar) {
             const percent = (audioEl.currentTime / audioEl.duration) * 100;
             progressBar.value = percent;
+
             if (currentTimeEl)
-                currentTimeEl.textContent = formatUtils.formatTime(
-                    audioEl.currentTime
-                );
+                currentTimeEl.textContent = formatTime(audioEl.currentTime);
         }
     });
 
     audioEl.addEventListener("loadedmetadata", () => {
-        if (durationEl)
-            durationEl.textContent = formatUtils.formatTime(audioEl.duration);
+        if (durationEl) durationEl.textContent = formatTime(audioEl.duration);
     });
 
     if (progressBar) {
         progressBar.addEventListener("input", (e) => {
-            const seekTime = (audioEl.duration / 100) * e.target.value;
-            audioEl.currentTime = seekTime;
+            if (audioEl.duration) {
+                const seekTime = (audioEl.duration / 100) * e.target.value;
+                audioEl.currentTime = seekTime;
+            }
         });
     }
 
@@ -235,13 +254,15 @@ export const playerService = {
     playAlbumOrPlaylist: async (id, type = "playlist") => {
         playerState.isLoading = true;
         updatePlayerUI();
+
         const data = await getTrackList(id, type);
+
         if (data && data.songs && data.songs.length > 0) {
             playerState.currentPlaylist = data.songs;
             playerState.consecutiveErrors = 0;
             loadSongByIndex(0);
         } else {
-            alert("Playlist rỗng hoặc lỗi.");
+            alert("Playlist rỗng hoặc không tải được danh sách bài hát.");
             playerState.isLoading = false;
             updatePlayerUI();
         }
