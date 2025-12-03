@@ -39,7 +39,7 @@ const discoverPage = async () => {
                         </div>`
                             : `
                         <div class="h-full w-10 md:w-12 shrink-0 relative mr--10px overflow-hidden">
-                            <img src="./src/assets/images/default-album.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform origin-center">
+                            <img src="/src/assets/images/default-album.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform origin-center">
                         </div>`
                     }
                 </a>
@@ -59,7 +59,7 @@ const discoverPage = async () => {
              
             <div class="relative overflow-hidden rounded-lg h-40 aspect-video mb-3 shadow-lg bg-gray-800">
                 <img src="${
-                    line.thumbnailUrl || "./src/assets/images/default-album.jpg"
+                    line.thumbnailUrl || "/src/assets/images/default-album.jpg"
                 }" 
                      alt="${line.name}"
                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
