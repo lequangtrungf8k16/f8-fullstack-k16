@@ -1,6 +1,8 @@
 import Navigo from "navigo";
 import { playerService } from "../service/playerService";
 
+import { updateActiveSidebar } from "../components/sidebar";
+
 import homePage from "../pages/homePage";
 import discoverPage from "../pages/discoverPage";
 import categoryDetailPage from "../pages/categoryDetailPage";
@@ -13,11 +15,16 @@ export const router = new Navigo("/", { linksSelector: "a" });
 
 const render = async (contentFn, match) => {
     const pageContainer = document.querySelector("#page");
+
+    setTimeout(() => {
+        updateActiveSidebar();
+    }, 0);
+
     if (!pageContainer) return;
 
     // Hiển thị loading
     pageContainer.innerHTML = `
-        <p class="text-center text-4xl">Đang tải dữ liệu...</p>>
+        <p class="text-center text-4xl">Đang tải dữ liệu...</p>
     `;
 
     try {

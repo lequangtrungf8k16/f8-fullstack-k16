@@ -6,26 +6,19 @@ import { playerService } from "../service/playerService";
 
 const renderCard = (item, type) => {
     const title = item.title || item.name || "Không tiêu đề";
-
     let subtitle = "Tuyển tập";
     if (item.artists && Array.isArray(item.artists)) {
-        if (typeof item.artists[0] === "string") {
-            subtitle = item.artists.join(", ");
-        } else {
-            subtitle = item.artists.map((a) => a.name).join(", ");
-        }
-    } else if (item.description) {
-        subtitle = item.description;
-    }
+        subtitle =
+            typeof item.artists[0] === "string"
+                ? item.artists.join(", ")
+                : item.artists.map((a) => a.name).join(", ");
+    } else if (item.description) subtitle = item.description;
 
     let image = "./src/assets/images/default-album.jpg";
-    if (item.thumbnails && item.thumbnails.length > 0) {
+    if (item.thumbnails && item.thumbnails.length > 0)
         image = item.thumbnails[0];
-    } else if (item.thumbnailUrl) {
-        image = item.thumbnailUrl;
-    } else if (item.thumbnail) {
-        image = item.thumbnail;
-    }
+    else if (item.thumbnailUrl) image = item.thumbnailUrl;
+    else if (item.thumbnail) image = item.thumbnail;
 
     const id = item.slug || item.encodeId || item._id || item.id;
 
@@ -41,18 +34,16 @@ const renderCard = (item, type) => {
     }
 
     return `
-        <div class="w-[170px] md:w-[200px] shrink-0 group snap-start">
-            <div class="relative w-full aspect-square rounded-md overflow-hidden mb-3 shadow-lg bg-gray-800 cursor-pointer">
+        <div class="js-album-card w-[170px] md:w-[200px] shrink-0 group snap-start cursor-pointer" data-id="${id}" data-type="${type}">
+            <div class="relative w-full aspect-square rounded-md overflow-hidden mb-3 shadow-lg bg-gray-800">
                 <img src="${image}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-                
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                    <button class="js-play-home-item w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl cursor-pointer"
-                        data-id="${id}" data-type="${type}">
+                    <button class="js-play-btn w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl cursor-pointer z-10" title="Phát ngay">
                         <i class="fa-solid fa-play ml-1 text-xl"></i>
                     </button>
                 </div>
             </div>
-            <h4 class="text-white font-bold text-sm md:text-base truncate cursor-pointer hover:underline" title="${title}">${title}</h4>
+            <h4 class="text-white font-bold text-sm md:text-base truncate group-hover:underline" title="${title}">${title}</h4>
             <p class="text-gray-400 text-xs md:text-sm truncate mt-1">${subtitle}</p>
         </div>
     `;
@@ -60,45 +51,16 @@ const renderCard = (item, type) => {
 
 const renderSection = (title, items, type, sectionId) => {
     if (!items || !Array.isArray(items) || items.length === 0) return "";
-
     return `
         <section class="mb-12 animate-fade-in group/section" id="section-${sectionId}">
             <div class="flex justify-between items-end mb-4 px-2">
                 <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">${title}</h2>
-                
                 <div class="hidden md:flex gap-3">
-                    <button id="btn-prev-${sectionId}" class="js-scroll-btn w-9 h-9 rounded-full bg-black border border-gray-600 flex items-center justify-center hover:bg-gray-800 hover:border-white text-white transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed" 
-                        data-target="scroll-${sectionId}" data-dir="left" title="Cuộn trái">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <button id="btn-next-${sectionId}" class="js-scroll-btn w-9 h-9 rounded-full bg-black border border-gray-600 flex items-center justify-center hover:bg-gray-800 hover:border-white text-white transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed" 
-                        data-target="scroll-${sectionId}" data-dir="right" title="Cuộn phải">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
+                    <button id="btn-prev-${sectionId}" class="w-9 h-9 rounded-full bg-black border border-gray-600 flex items-center justify-center hover:bg-gray-800 hover:border-white text-white transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button id="btn-next-${sectionId}" class="w-9 h-9 rounded-full bg-black border border-gray-600 flex items-center justify-center hover:bg-gray-800 hover:border-white text-white transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-
-            <div id="scroll-${sectionId}" 
-                 class="js-scroll-container flex gap-6 overflow-x-auto pb-4 px-2 scroll-smooth snap-x snap-mandatory scrollbar-custom"
-                 data-section="${sectionId}">
-                
-                <style>
-                    #scroll-${sectionId}::-webkit-scrollbar {
-                        height: 8px;
-                    }
-                    #scroll-${sectionId}::-webkit-scrollbar-track {
-                        background: #181818; 
-                        border-radius: 4px;
-                    }
-                    #scroll-${sectionId}::-webkit-scrollbar-thumb {
-                        background: #444; 
-                        border-radius: 4px;
-                    }
-                    #scroll-${sectionId}::-webkit-scrollbar-thumb:hover {
-                        background: #666; 
-                    }
-                </style>
-
+            <div id="scroll-${sectionId}" class="js-scroll-container flex gap-6 overflow-x-auto pb-4 px-2 scroll-smooth snap-x snap-mandatory scrollbar-custom" data-section="${sectionId}">
                 ${items.map((item) => renderCard(item, type)).join("")}
             </div>
         </section>
@@ -108,13 +70,7 @@ const renderSection = (title, items, type, sectionId) => {
 const homePage = async () => {
     const user = storageService.getUserInfo();
     const isLoggedIn = !!user;
-
-    let content = `
-        <div class="w-full h-[60vh] flex flex-col justify-center items-center text-gray-500">
-            <i class="fa-solid fa-circle-notch fa-spin text-4xl mb-4 text-white"></i>
-            <p>Đang tải thư viện nhạc...</p>
-        </div>
-    `;
+    let content = `<div class="w-full h-[60vh] flex flex-col justify-center items-center text-gray-500"><i class="fa-solid fa-circle-notch fa-spin text-4xl mb-4 text-white"></i><p>Đang tải thư viện nhạc...</p></div>`;
 
     try {
         const [personalized, albums, hits, vnPlaylists, moods] =
@@ -127,16 +83,13 @@ const homePage = async () => {
             ]);
 
         let sectionsHtml = "";
-
-        if (personalized && personalized.length > 0) {
+        if (personalized && personalized.length > 0)
             sectionsHtml += renderSection(
                 `Gợi ý cho ${user.name}`,
                 personalized,
                 "playlist",
                 "personalized"
             );
-        }
-
         sectionsHtml += renderSection(
             "Album thịnh hành",
             albums,
@@ -162,13 +115,8 @@ const homePage = async () => {
             "moods"
         );
 
-        if (!sectionsHtml) {
-            sectionsHtml = `
-                <div class="text-center text-gray-400 mt-20">
-                    <i class="fa-solid fa-face-frown-open text-4xl mb-4"></i>
-                    <p>Không có dữ liệu hiển thị.</p>
-                </div>`;
-        }
+        if (!sectionsHtml)
+            sectionsHtml = `<div class="text-center text-gray-400 mt-20"><p>Không có dữ liệu hiển thị.</p></div>`;
 
         content = `
             <div class="pb-32 px-4 md:px-8 pt-8 max-w-[1600px] mx-auto">
@@ -183,105 +131,90 @@ const homePage = async () => {
                             ? "Nghe lại những bài hát yêu thích của bạn."
                             : "Đăng nhập để nhận playlist gợi ý riêng cho bạn."
                     }</p>
-                    
                     ${
                         !isLoggedIn
-                            ? `
-                        <button class="js-open-login-modal mt-4 bg-white text-black font-bold py-2 px-6 rounded-full hover:scale-105 transition-transform cursor-pointer">
-                            Đăng nhập ngay
-                        </button>
-                    `
+                            ? `<button class="js-open-login-modal mt-4 bg-white text-black font-bold py-2 px-6 rounded-full hover:scale-105 transition-transform cursor-pointer">Đăng nhập ngay</button>`
                             : ""
                     }
                 </div>
-
                 ${sectionsHtml}
             </div>
         `;
     } catch (e) {
-        console.error("Home Page Critical Error:", e);
+        console.error("Home Page Error:", e);
         content = `<div class="pt-20 text-center text-white">Lỗi tải trang: ${e.message}</div>`;
     }
 
     setTimeout(() => {
-        document.querySelectorAll(".js-play-home-item").forEach((btn) => {
+        document.querySelectorAll(".js-play-btn").forEach((btn) => {
             btn.addEventListener("click", (e) => {
-                e.preventDefault();
                 e.stopPropagation();
-                const id = btn.dataset.id;
-                const type = btn.dataset.type;
-                playerService.playAlbumOrPlaylist(id, type);
-            });
-        });
-
-        const scrollContainers = document.querySelectorAll(
-            ".js-scroll-container"
-        );
-
-        scrollContainers.forEach((container) => {
-            const sectionId = container.dataset.section;
-            const prevBtn = document.getElementById(`btn-prev-${sectionId}`);
-            const nextBtn = document.getElementById(`btn-next-${sectionId}`);
-
-            const updateButtonState = () => {
-                if (!prevBtn || !nextBtn) return;
-
-                const isAtStart = container.scrollLeft <= 5;
-                prevBtn.disabled = isAtStart;
-                prevBtn.style.opacity = isAtStart ? "0.3" : "1";
-
-                const maxScroll = container.scrollWidth - container.clientWidth;
-                const isAtEnd = container.scrollLeft >= maxScroll - 5;
-                nextBtn.disabled = isAtEnd;
-                nextBtn.style.opacity = isAtEnd ? "0.3" : "1";
-            };
-
-            container.addEventListener("scroll", updateButtonState);
-
-            [prevBtn, nextBtn].forEach((btn) => {
-                if (!btn) return;
-                btn.addEventListener("click", (e) => {
-                    const direction = btn.id.includes("prev")
-                        ? "left"
-                        : "right";
-                    const scrollAmount = container.clientWidth * 0.7;
-
-                    let newScrollPosition;
-
-                    if (direction === "left") {
-                        newScrollPosition = Math.max(
-                            0,
-                            container.scrollLeft - scrollAmount
-                        );
-                    } else {
-                        newScrollPosition = container.scrollLeft + scrollAmount;
-                    }
-
-                    container.scrollTo({
-                        left: newScrollPosition,
-                        behavior: "smooth",
-                    });
-
-                    setTimeout(updateButtonState, 400);
-                });
-            });
-
-            updateButtonState();
-
-            window.addEventListener("resize", updateButtonState);
-        });
-
-        const loginBtn = document.querySelector(".js-open-login-modal");
-        if (loginBtn) {
-            loginBtn.addEventListener("click", () => {
-                const modal = document.querySelector(".js-auth-modal");
-                const overlay = document.querySelector(".js-auth-overlay");
-                if (modal && overlay) {
-                    modal.classList.remove("hidden");
-                    overlay.classList.remove("hidden");
+                const card = btn.closest(".js-album-card");
+                if (card) {
+                    playerService.playAlbumOrPlaylist(
+                        card.dataset.id,
+                        card.dataset.type
+                    );
+                    document.dispatchEvent(new CustomEvent("OPEN_FULL_PLAYER"));
                 }
             });
-        }
+        });
+
+        document.querySelectorAll(".js-album-card").forEach((card) => {
+            card.addEventListener("click", () => {
+                playerService.loadPlaylistOnly(
+                    card.dataset.id,
+                    card.dataset.type
+                );
+                document.dispatchEvent(new CustomEvent("OPEN_FULL_PLAYER"));
+            });
+        });
+
+        document
+            .querySelectorAll(".js-scroll-container")
+            .forEach((container) => {
+                const sectionId = container.dataset.section;
+                const prevBtn = document.getElementById(
+                    `btn-prev-${sectionId}`
+                );
+                const nextBtn = document.getElementById(
+                    `btn-next-${sectionId}`
+                );
+                const updateButtonState = () => {
+                    if (!prevBtn || !nextBtn) return;
+                    prevBtn.disabled = container.scrollLeft <= 5;
+                    prevBtn.style.opacity = prevBtn.disabled ? "0.3" : "1";
+                    const maxScroll =
+                        container.scrollWidth - container.clientWidth;
+                    nextBtn.disabled = container.scrollLeft >= maxScroll - 5;
+                    nextBtn.style.opacity = nextBtn.disabled ? "0.3" : "1";
+                };
+                container.addEventListener("scroll", updateButtonState);
+                [prevBtn, nextBtn].forEach((btn) => {
+                    if (!btn) return;
+                    btn.addEventListener("click", () => {
+                        const amount = container.clientWidth * 0.7;
+                        container.scrollTo({
+                            left: btn.id.includes("prev")
+                                ? Math.max(0, container.scrollLeft - amount)
+                                : container.scrollLeft + amount,
+                            behavior: "smooth",
+                        });
+                    });
+                });
+                updateButtonState();
+                window.addEventListener("resize", updateButtonState);
+            });
+        const loginBtn = document.querySelector(".js-open-login-modal");
+        if (loginBtn)
+            loginBtn.addEventListener("click", () => {
+                document
+                    .querySelector(".js-auth-modal")
+                    ?.classList.remove("hidden");
+                document
+                    .querySelector(".js-auth-overlay")
+                    ?.classList.remove("hidden");
+            });
     }, 100);
 
     return content;

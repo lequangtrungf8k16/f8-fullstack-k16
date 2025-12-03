@@ -13,8 +13,10 @@ const lineDetailPage = async (match) => {
 
     try {
         const lineData = await homeService.getLineDetail(slugOrId);
+
         if (lineData) {
             data = lineData;
+            type = "line";
         } else {
             const playlistData = await playlistService.getPlaylistDetailsApi(
                 slugOrId
@@ -33,30 +35,81 @@ const lineDetailPage = async (match) => {
             }
         }
     } catch (error) {
-        console.error("Lỗi:", error);
+        console.error("Lỗi lấy dữ liệu chi tiết:", error);
     }
 
     if (!data) {
-        console.error(
-            "Không thể tìm thấy dữ liệu (Line/Playlist/Album) cho ID:",
-            slugOrId
-        );
-
         return `<div class="text-white text-center mt-20">
-            <h2 class="text-2xl mb-2">Không tìm thấy Tuyển tập này</h2>
-            <p class="text-gray-400">Có thể dữ liệu đã bị xóa khỏi API (ID: ${slugOrId}).</p>
+            <h2 class="text-2xl mb-2">Không tìm thấy nội dung</h2>
+            <p class="text-gray-400">ID: ${slugOrId}</p>
         </div>`;
     }
 
     const title = data.name || data.title || "Tuyển tập";
-
     const thumbnail =
         data.thumbnail ||
         data.thumbnailUrl ||
         (data.thumbnails && data.thumbnails[0]) ||
         "./src/assets/images/default-album.jpg";
 
-    const songs = data.songs || data.items || data.tracks || [];
+    const playlists =
+        data.playlists || (type === "line" ? data.items || [] : []) || [];
+
+    const songs =
+        data.songs ||
+        data.tracks ||
+        (type !== "line" ? data.items || [] : []) ||
+        [];
+
+    if (playlists.length > 0) {
+        return renderLineView(title, thumbnail, playlists);
+    }
+
+    return renderPlaylistView(title, thumbnail, songs, type);
+};
+
+const renderLineView = (title, thumbnail, playlists) => {
+    const renderPlaylistItems = playlists
+        .map((playlist) => {
+            const pId = playlist.encodeId || playlist._id || playlist.id;
+            const pImg =
+                playlist.thumbnail ||
+                playlist.thumbnailUrl ||
+                playlist.thumbnailM ||
+                "./src/assets/images/default-album.jpg";
+
+            return `
+            <a href="/playlist/${pId}" data-navigo class="group cursor-pointer block">
+                <div class="relative overflow-hidden rounded-lg aspect-square mb-3 shadow-lg bg-gray-800">
+                    <img src="${pImg}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
+                         <button class="w-12 h-12 rounded-full bg-green-500 text-black flex items-center justify-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-xl">
+                            <i class="fa-solid fa-play ml-1"></i>
+                         </button>
+                    </div>
+                </div>
+                <h3 class="text-white font-bold truncate group-hover:underline">${
+                    playlist.title || playlist.name
+                }</h3>
+                <p class="text-gray-400 text-sm truncate mt-1">${
+                    playlist.sortDescription || playlist.artistNames || ""
+                }</p>
+            </a>
+        `;
+        })
+        .join("");
+
+    return `
+    <div class="animate-fade-in pb-32 bg-[#121212] min-h-screen px-6 md:px-10 pt-24">
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-8">${title}</h1>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            ${renderPlaylistItems}
+        </div>
+    </div>
+    `;
+};
+
+const renderPlaylistView = (title, thumbnail, songs, type) => {
     const currentSongId = playerService.getState().currentSong?.id;
 
     const renderSongs =
@@ -70,21 +123,20 @@ const lineDetailPage = async (match) => {
 
                       const songId = song.encodeId || song._id || song.id;
                       const isPlaying = currentSongId === songId;
-
-                      const durationFormatted = song.duration
-                          ? formatTime(song.duration)
-                          : "--:--";
+                      const durationFormatted = formatTime(song.duration);
 
                       const songData = {
                           id: songId,
-                          title: song.title,
+                          title: song.title || song.name,
                           artist: song.artists
                               ? song.artists.map((a) => a.name).join(", ")
                               : song.artist || "Unknown",
                           thumbnail: songThumb,
                           duration: song.duration || 0,
                           audioUrl: song.audioUrl || "",
+                          link: song.link || "",
                       };
+
                       const songDataStr = encodeURIComponent(
                           JSON.stringify(songData)
                       );
@@ -164,9 +216,7 @@ const lineDetailPage = async (match) => {
             </div>
             
             <div class="text-center md:text-left flex-1">
-                <h1 class="text-2xl md:text-4xl font-bold text-white mb-2 leading-tight">
-                    ${title}
-                </h1>
+                <h1 class="text-2xl md:text-4xl font-bold text-white mb-2 leading-tight">${title}</h1>
                 <p class="text-gray-400 text-sm mb-4 line-clamp-1">
                     ${type === "playlist" ? "Playlist" : "Album"} • ${
         songs.length
@@ -193,19 +243,19 @@ function formatSongsForPlayer(songs, defaultThumb) {
         else if (song.thumbnail) songThumb = song.thumbnail;
         return {
             id: song.encodeId || song._id || song.id,
-            title: song.title,
+            title: song.title || song.name,
             artist: song.artists
                 ? song.artists.map((a) => a.name).join(", ")
                 : song.artist || "Unknown",
             thumbnail: songThumb,
             duration: song.duration || 0,
-            audioUrl: song.audioUrl || "",
+            audioUrl: song.audioUrl || song.link || "",
         };
     });
 }
 
 function formatTime(seconds) {
-    if (!seconds) return "00:00";
+    if (!seconds || isNaN(seconds)) return "00:00";
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60);
     return `${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s}`;

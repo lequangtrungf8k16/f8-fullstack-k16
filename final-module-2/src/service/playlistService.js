@@ -12,6 +12,16 @@ export const getPlaylistsByCountry = async (country = "VN", limit = 12) => {
     }
 };
 
+export const getLineDetailsApi = async (id) => {
+    try {
+        const response = await apiClient.get(`/lines/${id}`);
+        return response.data.data || response.data;
+    } catch (error) {
+        console.error(`Lỗi API Line (/lines/${id}):`, error);
+        return null;
+    }
+};
+
 export const getPlaylistDetailsApi = async (slug) => {
     try {
         const response = await apiClient.get(`/playlists/details/${slug}`, {
@@ -41,7 +51,9 @@ export const getTrackList = async (idOrSlug, type) => {
 
     let data = null;
 
-    if (type === "album") {
+    if (type === "line") {
+        data = await getLineDetailsApi(idOrSlug);
+    } else if (type === "album") {
         data = await getAlbumDetailsApi(idOrSlug);
     } else if (type === "playlist") {
         data = await getPlaylistDetailsApi(idOrSlug);
@@ -49,6 +61,11 @@ export const getTrackList = async (idOrSlug, type) => {
 
     if (!data) {
         console.warn(`Đang thử tự động tìm loại dữ liệu cho: ${idOrSlug}`);
+
+        if (type === "line") {
+            return null;
+        }
+
         if (idOrSlug.includes("album")) {
             data = await getAlbumDetailsApi(idOrSlug);
             if (!data) data = await getPlaylistDetailsApi(idOrSlug);
@@ -122,6 +139,7 @@ export const playlistService = {
     getPlaylistsByCountry,
     getPlaylistDetailsApi,
     getAlbumDetailsApi,
+    getLineDetailsApi,
     getTrackList,
     getSongStream,
 };

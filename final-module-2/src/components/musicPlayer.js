@@ -3,7 +3,8 @@ import { formatUtils } from "../utils/formatUtils";
 
 const renderFullPlayerList = () => {
     const listContainer = document.getElementById("full-player-list");
-    const { currentPlaylist, currentIndex } = playerService.getState();
+    const { currentPlaylist, currentIndex, currentSong } =
+        playerService.getState();
     if (!listContainer) return;
 
     if (currentPlaylist.length === 0) {
@@ -23,23 +24,20 @@ const renderFullPlayerList = () => {
             <div class="js-playlist-item flex items-center gap-3 p-2 rounded-md cursor-pointer border-b border-gray-800 last:border-0 transition-colors ${
                 isActive ? "bg-[#2a2a2a]" : "hover:bg-[#2a2a2a]"
             }" data-index="${index}">
-                
                 <div class="w-6 text-center text-sm font-medium shrink-0 ${
                     isActive ? "text-green-500" : "text-gray-500"
                 }">
                     ${
                         isActive
-                            ? '<i class="fa-solid fa-chart-simple"></i>'
+                            ? '<i class="fa-solid fa-music"></i>'
                             : index + 1
                     }
                 </div>
-                
                 <div class="w-10 h-10 rounded overflow-hidden shrink-0 bg-gray-800">
                     <img src="${
                         song.thumbnail
                     }" class="w-full h-full object-cover opacity-90">
                 </div>
-                
                 <div class="flex-1 min-w-0">
                     <p class="text-sm font-medium truncate ${
                         isActive ? "text-green-500" : "text-white"
@@ -48,7 +46,6 @@ const renderFullPlayerList = () => {
                         song.artist
                     }</p>
                 </div>
-                
                 <div class="text-xs text-gray-500 font-medium pr-2">${duration}</div>
             </div>`;
         })
@@ -56,25 +53,24 @@ const renderFullPlayerList = () => {
 
     listContainer.innerHTML = html;
 
-    const activeItem = listContainer.querySelector(
-        `[data-index="${currentIndex}"]`
-    );
-    if (activeItem)
-        activeItem.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (currentIndex >= 0) {
+        const activeItem = listContainer.querySelector(
+            `[data-index="${currentIndex}"]`
+        );
+        if (activeItem)
+            activeItem.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
 };
 
 const musicPlayer = () => {
     return `
-    <div id="full-player" class="hidden fixed inset-0 z-20 bg-[#121212] flex flex-col animate-fade-in overflow-hidden cursor-default">
-        
+    <div id="full-player" class="hidden fixed top-16 bottom-20 right-0 left-0 z-10 bg-[#121212] flex flex-col animate-fade-in overflow-hidden cursor-default transition-all duration-300">
         <div class="relative flex flex-col md:flex-row h-full overflow-hidden">
-            
             <div class="flex-1 flex items-center justify-center p-6 md:p-10 overflow-hidden bg-[#0a0a0a]">
                 <div class="js-stop-close relative aspect-square w-full max-w-[320px] md:max-w-[450px] shadow-2xl rounded-lg overflow-hidden border border-gray-800">
                      <img id="full-player-thumb" src="./src/assets/images/default-album.jpg" class="w-full h-full object-cover" />
                 </div>
             </div>
-
             <div class="js-stop-close w-full md:w-[450px] flex flex-col bg-[#121212] md:border-l border-gray-800">
                 <div class="flex items-center justify-between border-b border-gray-800 px-6 py-5 shrink-0">
                     <span class="text-white font-bold text-lg uppercase tracking-wide">Danh sách phát</span>
@@ -82,50 +78,38 @@ const musicPlayer = () => {
                         <i class="fa-solid fa-chevron-down text-xl"></i>
                     </button>
                 </div>
-
                 <div id="full-player-list" class="flex-1 overflow-y-auto p-2 scrollbar-thin scrollbar-thumb-gray-700"></div>
             </div>
         </div>
     </div>
 
-    <div id="music-player" class="fixed bottom-0 left-0 right-0 bg-[#212121] text-white shadow-2xl z-50 border-t border-gray-700 h-20 flex flex-col justify-center transition-all duration-300">
+    <div id="music-player" class="hidden fixed bottom-0 left-0 right-0 bg-[#212121] text-white shadow-2xl z-50 border-t border-gray-700 h-20 flex flex-col justify-center transition-all duration-300">
         <div class="absolute -top-4 left-0 w-full group h-1 cursor-pointer">
-            <input id="progress-bar" type="range" min="0" max="100" value="0" 
-                class="w-full h-full bg-[#4b5563] appearance-none cursor-pointer hover:h-1.5 transition-all rounded-lg"
-                style="background: linear-gradient(to right, #dc2626 0%, #4b5563 0%);" 
-            />
+            <input id="progress-bar" type="range" min="0" max="100" value="0" class="w-full h-full bg-[#4b5563] appearance-none cursor-pointer hover:h-1.5 transition-all rounded-lg" style="background: linear-gradient(to right, #dc2626 0%, #4b5563 0%);" />
         </div>
         <div class="flex items-center justify-between px-4 h-full">
             <div class="flex items-center gap-4 w-1/3">
                  <button id="prev-btn" class="text-gray-300 hover:text-white text-xl p-2"><i class="fa-solid fa-backward-step cursor-pointer"></i></button>
                  <button id="play-btn" class="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:scale-105 transition shadow-lg text-lg cursor-pointer"><i class="fa-solid fa-play ml-1"></i></button>
                  <button id="next-btn" class="text-gray-300 hover:text-white text-xl p-2"><i class="fa-solid fa-forward-step cursor-pointer"></i></button>
-                 <div class="text-xs text-gray-400 ml-2 hidden sm:block">
-                    <span id="current-time">00:00</span> / <span id="duration">00:00</span>
-                 </div>
+                 <div class="text-xs text-gray-400 ml-2 hidden sm:block"><span id="current-time">00:00</span> / <span id="duration">00:00</span></div>
             </div>
-            
             <div class="js-toggle-full-player flex items-center gap-4 w-1/3 justify-center cursor-pointer group">
                 <div class="relative w-12 h-12 shrink-0 rounded overflow-hidden bg-gray-800">
                      <img class="w-full h-full object-cover group-hover:brightness-75 transition" src="./src/assets/images/default-album.jpg" alt="Thumbnail"/>
-                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <i class="fa-solid fa-chevron-up text-white"></i>
-                     </div>
+                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"><i class="fa-solid fa-chevron-up text-white"></i></div>
                 </div>
                 <div class="js-song-info overflow-hidden max-w-[200px]">
                     <p id="track-title" class="font-bold text-sm truncate group-hover:underline">Chưa chọn bài</p>
                     <p id="track-artist" class="text-xs text-gray-400 truncate">...</p>
                 </div>
             </div>
-
             <div class="flex items-center justify-end gap-4 w-1/3">
                 <div class="hidden md:flex items-center gap-2 group ml-2">
                     <i class="js-volume-icon fa-solid fa-volume-high text-gray-400 w-5 text-center"></i>
                     <input type="range" min="0" max="1" step="0.05" value="1" id="volume-control" class="w-20 accent-white h-1 cursor-pointer bg-gray-600">
                 </div>
-                <button class="js-open-playlist js-toggle-full-player text-gray-400 hover:text-white ml-4 p-2 transition-transform" title="Mở rộng">
-                    <i class="js-playlist-icon fa-solid fa-chevron-down text-lg cursor-pointer"></i>
-                </button>
+                <button class="js-open-playlist js-toggle-full-player text-gray-400 hover:text-white ml-4 p-2 transition-transform" title="Mở rộng"><i class="js-playlist-icon fa-solid fa-chevron-down text-lg cursor-pointer"></i></button>
             </div>
         </div>
         <audio id="audio" class="hidden"></audio>
@@ -135,11 +119,24 @@ const musicPlayer = () => {
 
 export const initPlayerControls = () => {
     const fullPlayer = document.getElementById("full-player");
+    const miniPlayer = document.getElementById("music-player");
     const toggleBtns = document.querySelectorAll(".js-toggle-full-player");
     const fullThumb = document.getElementById("full-player-thumb");
     const miniThumb = document.querySelector("#music-player img");
     const playlistIcon = document.querySelector(".js-playlist-icon");
     const progressBar = document.getElementById("progress-bar");
+    const playBtn = document.getElementById("play-btn");
+    const audio = document.getElementById("audio");
+
+    const sidebarEl = document.querySelector(".js-sidebar");
+    const syncPlayerPosition = () => {
+        if (!fullPlayer) return;
+        fullPlayer.style.left = sidebarEl
+            ? `${sidebarEl.offsetWidth}px`
+            : "0px";
+    };
+    syncPlayerPosition();
+    if (sidebarEl) new ResizeObserver(syncPlayerPosition).observe(sidebarEl);
 
     const updateImages = () => {
         const state = playerService.getState();
@@ -149,34 +146,51 @@ export const initPlayerControls = () => {
         }
     };
 
-    const toggleFullPlayer = () => {
+    const toggleFullPlayer = (forceState = null) => {
         if (!fullPlayer) return;
-        fullPlayer.classList.toggle("hidden");
+        syncPlayerPosition();
 
-        if (fullPlayer.classList.contains("hidden")) {
-            if (playlistIcon) {
-                playlistIcon.classList.remove("fa-chevron-up");
-                playlistIcon.classList.add("fa-chevron-down");
-            }
+        if (forceState === "open") {
+            fullPlayer.classList.remove("hidden");
+        } else if (forceState === "close") {
+            fullPlayer.classList.add("hidden");
         } else {
-            if (playlistIcon) {
-                playlistIcon.classList.remove("fa-chevron-down");
-                playlistIcon.classList.add("fa-chevron-up");
-            }
+            fullPlayer.classList.toggle("hidden");
+        }
+
+        const isHidden = fullPlayer.classList.contains("hidden");
+        if (playlistIcon) {
+            playlistIcon.className = `js-playlist-icon fa-solid text-lg cursor-pointer ${
+                isHidden ? "fa-chevron-down" : "fa-chevron-up"
+            }`;
+        }
+
+        if (!isHidden) {
             renderFullPlayerList();
             updateImages();
         }
     };
 
+    document.addEventListener("OPEN_FULL_PLAYER", () => {
+        if (miniPlayer) miniPlayer.classList.remove("hidden");
+        toggleFullPlayer("open");
+    });
+
+    document.addEventListener("CLOSE_FULL_PLAYER", () => {
+        toggleFullPlayer("close");
+    });
+
     toggleBtns.forEach((btn) =>
-        btn.addEventListener("click", toggleFullPlayer)
+        btn.addEventListener("click", () => toggleFullPlayer())
     );
 
     document.addEventListener("click", (e) => {
         if (!fullPlayer || fullPlayer.classList.contains("hidden")) return;
+
         if (e.target.closest(".js-toggle-full-player")) return;
         if (e.target.closest(".js-stop-close")) return;
         if (e.target.closest("#music-player")) return;
+
         toggleFullPlayer();
     });
 
@@ -186,13 +200,23 @@ export const initPlayerControls = () => {
         progressBar.style.background = `linear-gradient(to right, #dc2626 ${val}%, #4b5563 ${val}%)`;
     };
 
-    const audio = document.getElementById("audio");
     if (audio && progressBar) {
         audio.addEventListener("timeupdate", updateProgressColor);
         progressBar.addEventListener("input", updateProgressColor);
+        audio.addEventListener("play", () => {
+            if (playBtn)
+                playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        });
+        audio.addEventListener("pause", () => {
+            if (playBtn)
+                playBtn.innerHTML = '<i class="fa-solid fa-play ml-1"></i>';
+        });
     }
 
     playerService.registerOnPlayCallback(() => {
+        if (miniPlayer && miniPlayer.classList.contains("hidden"))
+            miniPlayer.classList.remove("hidden");
+
         if (!fullPlayer.classList.contains("hidden")) {
             renderFullPlayerList();
             updateImages();
@@ -234,17 +258,18 @@ export const initPlayerControls = () => {
             volumeIcon.className =
                 "js-volume-icon fa-solid text-gray-400 w-5 text-center";
             if (val === 0) volumeIcon.classList.add("fa-volume-xmark");
-            else if (val === 1) volumeIcon.classList.add("fa-volume-high");
+            else if (val >= 0.5) volumeIcon.classList.add("fa-volume-high");
             else volumeIcon.classList.add("fa-volume-low");
         });
     }
 
-    const playBtn = document.getElementById("play-btn");
     playBtn?.addEventListener("click", playerService.toggle);
-    const nextBtn = document.getElementById("next-btn");
-    nextBtn?.addEventListener("click", playerService.next);
-    const prevBtn = document.getElementById("prev-btn");
-    prevBtn?.addEventListener("click", playerService.prev);
+    document
+        .getElementById("next-btn")
+        ?.addEventListener("click", playerService.next);
+    document
+        .getElementById("prev-btn")
+        ?.addEventListener("click", playerService.prev);
 };
 
 export default musicPlayer;
