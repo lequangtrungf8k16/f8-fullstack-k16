@@ -1,7 +1,7 @@
 import Navigo from "navigo";
 import { playerService } from "../service/playerService";
 import { updateActiveSidebar } from "../components/sidebar";
-// Import các pages
+
 import homePage from "../pages/homePage";
 import discoverPage from "../pages/discoverPage";
 import categoryDetailPage from "../pages/categoryDetailPage";
@@ -12,10 +12,53 @@ import upgradePage from "../pages/upgradePage";
 
 export const router = new Navigo("/", { linksSelector: "a" });
 
-// XỬ LÝ SỰ KIỆN TOÀN CỤC
+export const initCategoryCarousel = () => {
+    const containers = document.querySelectorAll(".js-scroll-container");
+
+    containers.forEach((container) => {
+        const sectionId = container.dataset.section;
+        const prevBtn = document.getElementById(`btn-prev-${sectionId}`);
+        const nextBtn = document.getElementById(`btn-next-${sectionId}`);
+
+        if (!prevBtn || !nextBtn) return;
+
+        container.scrollLeft = 0;
+
+        const updateButtonState = () => {
+            const tolerance = 10;
+
+            prevBtn.disabled = container.scrollLeft <= tolerance;
+            prevBtn.style.opacity = prevBtn.disabled ? "0.3" : "1";
+            prevBtn.style.cursor = prevBtn.disabled ? "not-allowed" : "pointer";
+
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            nextBtn.disabled = container.scrollLeft >= maxScroll - tolerance;
+            nextBtn.style.opacity = nextBtn.disabled ? "0.3" : "1";
+            nextBtn.style.cursor = nextBtn.disabled ? "not-allowed" : "pointer";
+        };
+
+        container.addEventListener("scroll", updateButtonState);
+
+        prevBtn.addEventListener("click", () => {
+            container.scrollBy({
+                left: -container.clientWidth * 0.7,
+                behavior: "smooth",
+            });
+        });
+
+        nextBtn.addEventListener("click", () => {
+            container.scrollBy({
+                left: container.clientWidth * 0.7,
+                behavior: "smooth",
+            });
+        });
+
+        updateButtonState();
+    });
+};
+
 const setupGlobalEvents = () => {
     document.addEventListener("click", (e) => {
-        // 1. Nút Play trên Card
         const playBtn =
             e.target.closest(".js-play-btn") ||
             e.target.closest(".js-discover-play-btn") ||
@@ -26,11 +69,8 @@ const setupGlobalEvents = () => {
             e.preventDefault();
             e.stopPropagation();
 
-            if (playBtn.classList.contains("js-play-all-line")) {
-                return;
-            }
+            if (playBtn.classList.contains("js-play-all-line")) return;
 
-            // Nút play từ Card
             const card =
                 playBtn.closest(".js-album-card") ||
                 playBtn.closest(".js-discover-item") ||
@@ -44,19 +84,16 @@ const setupGlobalEvents = () => {
             return;
         }
 
-        // 2. Nút Card để xem chi tiết
         const cardItem =
             e.target.closest(".js-album-card") ||
             e.target.closest(".js-discover-item");
         if (cardItem && !e.target.closest("a")) {
-            // Nút card (Trừ thẻ a)
             const id = cardItem.dataset.id;
             const type = cardItem.dataset.type || "playlist";
             playerService.loadPlaylistOnly(id, type);
             document.dispatchEvent(new CustomEvent("OPEN_FULL_PLAYER"));
         }
 
-        // 3. Nút Play từng bài
         const songItem = e.target.closest(".js-play-song");
         if (songItem) {
             e.preventDefault();
@@ -68,7 +105,7 @@ const setupGlobalEvents = () => {
                     playerService.setPlaylist([song], 0);
                     document.dispatchEvent(new CustomEvent("OPEN_FULL_PLAYER"));
                 } catch (err) {
-                    console.error("Lỗi parse dữ liệu bài hát:", err);
+                    console.error(err);
                 }
             }
         }
@@ -83,10 +120,7 @@ const render = async (contentFn, match) => {
     if (!pageContainer) return;
 
     pageContainer.innerHTML = `
-        <div class="w-full h-[60vh] flex flex-col justify-center items-center text-gray-500">
-            <i class="fa-solid fa-circle-notch fa-spin text-4xl mb-4 text-white"></i>
-            <p>Đang tải dữ liệu...</p>
-        </div>
+            <p class="w-full h-[60vh] flex flex-col justify-center items-center text-gray-500">Đang tải dữ liệu...</p>
     `;
 
     try {
@@ -94,8 +128,13 @@ const render = async (contentFn, match) => {
         pageContainer.innerHTML = content;
         pageContainer.scrollTop = 0;
 
-        if (match.url === "" || match.url === "/") {
-            setTimeout(initCategoryCarousel, 500);
+        const isScrollablePage =
+            match.url === "" ||
+            match.url === "/" ||
+            match.url.startsWith("discoverPage");
+
+        if (isScrollablePage) {
+            setTimeout(initCategoryCarousel, 100);
         }
     } catch (error) {
         console.error("Lỗi render trang:", error);
@@ -119,44 +158,6 @@ const initRouter = () => {
     router.on("/upgradePage", (match) => render(upgradePage, match));
 
     router.resolve();
-};
-
-export const initCategoryCarousel = () => {
-    const containers = document.querySelectorAll(".js-scroll-container");
-
-    containers.forEach((container) => {
-        const sectionId = container.dataset.section;
-        const prevBtn = document.getElementById(`btn-prev-${sectionId}`);
-        const nextBtn = document.getElementById(`btn-next-${sectionId}`);
-
-        if (!prevBtn || !nextBtn) return;
-
-        const updateButtonState = () => {
-            prevBtn.disabled = container.scrollLeft <= 5;
-            prevBtn.style.opacity = prevBtn.disabled ? "0.3" : "1";
-            const maxScroll = container.scrollWidth - container.clientWidth;
-            nextBtn.disabled = container.scrollLeft >= maxScroll - 5;
-            nextBtn.style.opacity = nextBtn.disabled ? "0.3" : "1";
-        };
-
-        container.addEventListener("scroll", updateButtonState);
-
-        prevBtn.addEventListener("click", () => {
-            container.scrollBy({
-                left: -container.clientWidth * 0.7,
-                behavior: "smooth",
-            });
-        });
-
-        nextBtn.addEventListener("click", () => {
-            container.scrollBy({
-                left: container.clientWidth * 0.7,
-                behavior: "smooth",
-            });
-        });
-
-        updateButtonState();
-    });
 };
 
 export default initRouter;

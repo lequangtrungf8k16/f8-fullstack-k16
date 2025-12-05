@@ -3,8 +3,7 @@ import { formatUtils } from "../utils/formatUtils";
 
 const renderFullPlayerList = () => {
     const listContainer = document.getElementById("full-player-list");
-    const { currentPlaylist, currentIndex, currentSong } =
-        playerService.getState();
+    const { currentPlaylist, currentIndex } = playerService.getState();
     if (!listContainer) return;
 
     if (currentPlaylist.length === 0) {
@@ -54,17 +53,22 @@ const renderFullPlayerList = () => {
     listContainer.innerHTML = html;
 
     if (currentIndex >= 0) {
-        const activeItem = listContainer.querySelector(
-            `[data-index="${currentIndex}"]`
-        );
-        if (activeItem)
-            activeItem.scrollIntoView({ behavior: "smooth", block: "center" });
+        setTimeout(() => {
+            const activeItem = listContainer.querySelector(
+                `[data-index="${currentIndex}"]`
+            );
+            if (activeItem)
+                activeItem.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                });
+        }, 100);
     }
 };
 
 const musicPlayer = () => {
     return `
-    <div id="full-player" class="hidden fixed top-16 bottom-20 right-0 left-0 z-10 bg-[#121212] flex flex-col animate-fade-in overflow-hidden cursor-default transition-all duration-300">
+    <div id="full-player" class="hidden absolute top-16 left-0 right-0 bottom-20 z-20 bg-[#121212] flex flex-col animate-fade-in overflow-hidden cursor-default transition-all duration-300">
         <div class="relative flex flex-col md:flex-row h-full overflow-hidden">
             <div class="flex-1 flex items-center justify-center p-6 md:p-10 overflow-hidden bg-[#0a0a0a]">
                 <div class="js-stop-close relative aspect-square w-full max-w-[320px] md:max-w-[450px] shadow-2xl rounded-lg overflow-hidden border border-gray-800">
@@ -83,9 +87,9 @@ const musicPlayer = () => {
         </div>
     </div>
 
-    <div id="music-player" class="hidden fixed bottom-0 left-0 right-0 bg-[#212121] text-white shadow-2xl z-50 border-t border-gray-700 h-20 flex flex-col justify-center transition-all duration-300">
-        <div class="absolute -top-4 left-0 w-full group h-1 cursor-pointer">
-            <input id="progress-bar" type="range" min="0" max="100" value="0" class="w-full h-full bg-[#4b5563] appearance-none cursor-pointer hover:h-1.5 transition-all rounded-lg" style="background: linear-gradient(to right, #dc2626 0%, #4b5563 0%);" />
+    <div id="music-player" class="hidden absolute bottom-0 left-0 w-full bg-[#212121] text-white shadow-2xl z-50 border-t border-gray-700 h-20 flex flex-col justify-center transition-all duration-300">
+        <div class="absolute -top-4 left-0 w-full group h-4 cursor-pointer flex items-end">
+            <input id="progress-bar" type="range" min="0" max="100" value="0" class="w-full h-1 group-hover:h-1.5 bg-[#4b5563] appearance-none cursor-pointer transition-all rounded-lg" style="background: linear-gradient(to right, #dc2626 0%, #4b5563 0%);" />
         </div>
         <div class="flex items-center justify-between px-4 h-full">
             <div class="flex items-center gap-4 w-1/3">
@@ -109,7 +113,7 @@ const musicPlayer = () => {
                     <i class="js-volume-icon fa-solid fa-volume-high text-gray-400 w-5 text-center"></i>
                     <input type="range" min="0" max="1" step="0.05" value="1" id="volume-control" class="w-20 accent-white h-1 cursor-pointer bg-gray-600">
                 </div>
-                <button class="js-open-playlist js-toggle-full-player text-gray-400 hover:text-white ml-4 p-2 transition-transform" title="Mở rộng"><i class="js-playlist-icon fa-solid fa-chevron-down text-lg cursor-pointer"></i></button>
+                <button class="js-open-playlist js-toggle-full-player text-gray-400 hover:text-white ml-4 p-2 transition-transform" title="Mở rộng"><i class="js-playlist-icon fa-solid fa-chevron-up text-lg cursor-pointer"></i></button>
             </div>
         </div>
         <audio id="audio" class="hidden"></audio>
@@ -128,16 +132,6 @@ export const initPlayerControls = () => {
     const playBtn = document.getElementById("play-btn");
     const audio = document.getElementById("audio");
 
-    const sidebarEl = document.querySelector(".js-sidebar");
-    const syncPlayerPosition = () => {
-        if (!fullPlayer) return;
-        fullPlayer.style.left = sidebarEl
-            ? `${sidebarEl.offsetWidth}px`
-            : "0px";
-    };
-    syncPlayerPosition();
-    if (sidebarEl) new ResizeObserver(syncPlayerPosition).observe(sidebarEl);
-
     const updateImages = () => {
         const state = playerService.getState();
         if (state.currentSong) {
@@ -148,7 +142,6 @@ export const initPlayerControls = () => {
 
     const toggleFullPlayer = (forceState = null) => {
         if (!fullPlayer) return;
-        syncPlayerPosition();
 
         if (forceState === "open") {
             fullPlayer.classList.remove("hidden");
@@ -161,7 +154,7 @@ export const initPlayerControls = () => {
         const isHidden = fullPlayer.classList.contains("hidden");
         if (playlistIcon) {
             playlistIcon.className = `js-playlist-icon fa-solid text-lg cursor-pointer ${
-                isHidden ? "fa-chevron-down" : "fa-chevron-up"
+                isHidden ? "fa-chevron-up" : "fa-chevron-down"
             }`;
         }
 
@@ -181,28 +174,63 @@ export const initPlayerControls = () => {
     });
 
     toggleBtns.forEach((btn) =>
-        btn.addEventListener("click", () => toggleFullPlayer())
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleFullPlayer();
+        })
     );
 
     document.addEventListener("click", (e) => {
         if (!fullPlayer || fullPlayer.classList.contains("hidden")) return;
-
         if (e.target.closest(".js-toggle-full-player")) return;
         if (e.target.closest(".js-stop-close")) return;
         if (e.target.closest("#music-player")) return;
+        if (e.target.closest(".js-playlist-item")) return;
 
-        toggleFullPlayer();
+        toggleFullPlayer("close");
     });
 
-    const updateProgressColor = () => {
+    const updateProgressColor = (val) => {
         if (!progressBar) return;
-        const val = progressBar.value;
         progressBar.style.background = `linear-gradient(to right, #dc2626 ${val}%, #4b5563 ${val}%)`;
     };
 
+    let isSeeking = false;
+
     if (audio && progressBar) {
-        audio.addEventListener("timeupdate", updateProgressColor);
-        progressBar.addEventListener("input", updateProgressColor);
+        audio.addEventListener("timeupdate", () => {
+            if (!isSeeking && audio.duration) {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progressBar.value = percent;
+                updateProgressColor(percent);
+            }
+        });
+
+        const startSeek = () => {
+            isSeeking = true;
+        };
+        progressBar.addEventListener("mousedown", startSeek);
+        progressBar.addEventListener("touchstart", startSeek);
+
+        progressBar.addEventListener("input", (e) => {
+            updateProgressColor(e.target.value);
+            const currentTimeEl = document.getElementById("current-time");
+            if (currentTimeEl && audio.duration) {
+                const seekTime = (audio.duration / 100) * e.target.value;
+                currentTimeEl.textContent = formatUtils.formatTime(seekTime);
+            }
+        });
+
+        const endSeek = (e) => {
+            isSeeking = false;
+            if (audio.duration) {
+                const seekTime = (audio.duration / 100) * e.target.value;
+                audio.currentTime = seekTime;
+            }
+        };
+        progressBar.addEventListener("change", endSeek);
+        progressBar.addEventListener("touchend", endSeek);
+
         audio.addEventListener("play", () => {
             if (playBtn)
                 playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
@@ -213,31 +241,10 @@ export const initPlayerControls = () => {
         });
     }
 
-    playerService.registerOnPlayCallback(() => {
-        if (miniPlayer && miniPlayer.classList.contains("hidden"))
-            miniPlayer.classList.remove("hidden");
-
-        if (!fullPlayer.classList.contains("hidden")) {
-            renderFullPlayerList();
-            updateImages();
-        }
-    });
-
-    if (miniThumb && fullThumb) {
-        const observer = new MutationObserver(() => {
-            fullThumb.src = miniThumb.src;
-            if (!fullPlayer.classList.contains("hidden"))
-                renderFullPlayerList();
-        });
-        observer.observe(miniThumb, {
-            attributes: true,
-            attributeFilter: ["src"],
-        });
-    }
-
     const handleListClick = (e) => {
         const item = e.target.closest(".js-playlist-item");
         if (item) {
+            e.stopPropagation();
             playerService.selectSong(parseInt(item.dataset.index));
             setTimeout(() => {
                 renderFullPlayerList();
@@ -245,9 +252,12 @@ export const initPlayerControls = () => {
             }, 50);
         }
     };
+
     const fullListContainer = document.getElementById("full-player-list");
-    if (fullListContainer)
+    if (fullListContainer) {
+        fullListContainer.removeEventListener("click", handleListClick);
         fullListContainer.addEventListener("click", handleListClick);
+    }
 
     const volumeControl = document.getElementById("volume-control");
     const volumeIcon = document.querySelector(".js-volume-icon");
@@ -263,13 +273,38 @@ export const initPlayerControls = () => {
         });
     }
 
-    playBtn?.addEventListener("click", playerService.toggle);
-    document
-        .getElementById("next-btn")
-        ?.addEventListener("click", playerService.next);
-    document
-        .getElementById("prev-btn")
-        ?.addEventListener("click", playerService.prev);
+    playBtn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        playerService.toggle();
+    });
+    document.getElementById("next-btn")?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        playerService.next();
+    });
+    document.getElementById("prev-btn")?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        playerService.prev();
+    });
+
+    playerService.registerOnPlayCallback(() => {
+        if (miniPlayer && miniPlayer.classList.contains("hidden"))
+            miniPlayer.classList.remove("hidden");
+
+        if (!fullPlayer.classList.contains("hidden")) {
+            renderFullPlayerList();
+            updateImages();
+        }
+    });
+
+    if (miniThumb && fullThumb) {
+        const observer = new MutationObserver(() => {
+            fullThumb.src = miniThumb.src;
+        });
+        observer.observe(miniThumb, {
+            attributes: true,
+            attributeFilter: ["src"],
+        });
+    }
 };
 
 export default musicPlayer;

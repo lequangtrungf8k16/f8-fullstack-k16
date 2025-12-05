@@ -5,38 +5,38 @@ const sidebar = () => {
     const user = storageService.getUserInfo();
 
     return `
-        <div class="js-sidebar group w-20 md:w-60 h-full py-4 overflow-hidden border-r border-r-gray-800 bg-black flex flex-col">
+        <div class="js-sidebar group w-20 md:w-60 h-full py-4 overflow-hidden border-r border-r-gray-800 bg-black flex flex-col transition-all duration-300">
             
-            <div class="flex items-center gap-4 px-6 py-2 group-[.collapsed]:gap-2">
-                <button class="js-menu-btn cursor-pointer text-gray-400 hover:text-white">
+            <div class="flex items-center gap-4 px-6 py-2 group-[.collapsed]:gap-2 justify-start">
+                <button class="js-menu-btn cursor-pointer text-gray-400 hover:text-white shrink-0">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
-                <a href="/" class="js-sidebar-link flex items-center" data-navigo>
+                <a href="/" class="js-sidebar-link flex items-center group-[.collapsed]:hidden" data-navigo>
                     <img src="${logo}" alt="Youtube Music" class="h-6">
                 </a>
             </div>
             
             <nav class="js-menu mx-2 mt-6 space-y-2 group-[.collapsed]:mx-2">
-                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/" data-navigo>
-                    <i class="fa-solid fa-house text-xl"></i>
-                    <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Trang chủ</span>
+                <a class="js-sidebar-link nav-item flex items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:justify-center group-[.collapsed]:px-2" href="/" data-navigo>
+                    <i class="fa-solid fa-house text-xl w-6 text-center"></i>
+                    <span class="text-sm md:text-base font-medium group-[.collapsed]:hidden whitespace-nowrap">Trang chủ</span>
                 </a>
                 
-                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/discoverPage" data-navigo>
-                    <i class="fa-regular fa-compass text-xl"></i>
-                    <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Khám phá</span>
+                <a class="js-sidebar-link nav-item flex items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:justify-center group-[.collapsed]:px-2" href="/discoverPage" data-navigo>
+                    <i class="fa-regular fa-compass text-xl w-6 text-center"></i>
+                    <span class="text-sm md:text-base font-medium group-[.collapsed]:hidden whitespace-nowrap">Khám phá</span>
                 </a>
 
-                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/libraryPage" data-navigo>
-                    <i class="fa-solid fa-bookmark text-xl"></i>
-                    <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Thư viện</span>
+                <a class="js-sidebar-link nav-item flex items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:justify-center group-[.collapsed]:px-2" href="/libraryPage" data-navigo>
+                    <i class="fa-solid fa-bookmark text-xl w-6 text-center"></i>
+                    <span class="text-sm md:text-base font-medium group-[.collapsed]:hidden whitespace-nowrap">Thư viện</span>
                 </a>               
                 ${
                     user
                         ? `
-                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/upgradePage" data-navigo>
-                    <i class="fa-regular fa-circle-play text-xl"></i>
-                    <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Nâng cấp</span>
+                <a class="js-sidebar-link nav-item flex items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:justify-center group-[.collapsed]:px-2" href="/upgradePage" data-navigo>
+                    <i class="fa-regular fa-circle-play text-xl w-6 text-center"></i>
+                    <span class="text-sm md:text-base font-medium group-[.collapsed]:hidden whitespace-nowrap">Nâng cấp</span>
                 </a>
                 `
                         : ""
@@ -69,17 +69,39 @@ const sidebar = () => {
 };
 
 export const updateActiveSidebar = () => {
-    const currentPath = window.location.pathname;
+    const path = window.location.pathname;
     const navLinks = document.querySelectorAll(".js-menu .nav-item");
 
     navLinks.forEach((link) => {
-        const href = link.getAttribute("href");
-        if (href === currentPath) {
-            link.classList.add("bg-gray-800", "font-semibold");
-        } else {
-            link.classList.remove("bg-gray-800", "font-semibold");
-        }
+        link.classList.remove("bg-gray-800", "font-semibold");
     });
+
+    let activeHref = null;
+
+    if (path === "/" || path === "") {
+        activeHref = "/";
+    } else if (
+        path.startsWith("/discoverPage") ||
+        path.startsWith("/lines") ||
+        path.startsWith("/categories") ||
+        path.startsWith("/playlist") ||
+        path.startsWith("/album")
+    ) {
+        activeHref = "/discoverPage";
+    } else if (path.startsWith("/libraryPage")) {
+        activeHref = "/libraryPage";
+    } else if (path.startsWith("/upgradePage")) {
+        activeHref = "/upgradePage";
+    }
+
+    if (activeHref) {
+        const activeLink = document.querySelector(
+            `.js-menu .nav-item[href="${activeHref}"]`
+        );
+        if (activeLink) {
+            activeLink.classList.add("bg-gray-800", "font-semibold");
+        }
+    }
 };
 
 export const initSidebarEvents = () => {
@@ -91,8 +113,14 @@ export const initSidebarEvents = () => {
     if (sidebarEl && menuBtn) {
         menuBtn.addEventListener("click", () => {
             sidebarEl.classList.toggle("collapsed");
-            sidebarEl.classList.toggle("w-60");
-            sidebarEl.classList.toggle("w-40");
+
+            if (sidebarEl.classList.contains("collapsed")) {
+                sidebarEl.classList.remove("md:w-60");
+                sidebarEl.classList.add("w-20");
+            } else {
+                sidebarEl.classList.add("md:w-60");
+                sidebarEl.classList.remove("w-20");
+            }
         });
     }
 
@@ -100,6 +128,8 @@ export const initSidebarEvents = () => {
     links.forEach((link) => {
         link.addEventListener("click", () => {
             document.dispatchEvent(new CustomEvent("CLOSE_FULL_PLAYER"));
+
+            setTimeout(updateActiveSidebar, 50);
         });
     });
 };

@@ -69,14 +69,12 @@ const getStreamUrl = async (songId) => {
         const songData = response.data.data || response.data;
         if (!songData) return null;
 
-        // Ưu tiên các nguồn nhạc theo thứ tự
         if (songData.audioUrl) return songData.audioUrl;
         if (songData["128"]) return songData["128"];
         if (songData["320"]) return songData["320"];
         if (songData.source && songData.source["128"])
             return songData.source["128"];
         if (songData.link) return songData.link;
-
         return null;
     } catch (error) {
         console.error("Lỗi lấy link nhạc:", error);
@@ -86,6 +84,7 @@ const getStreamUrl = async (songId) => {
 
 const playTrack = async () => {
     if (!playerState.currentSong) return;
+
     if (playerState.consecutiveErrors >= 5) {
         alert("Playlist có quá nhiều bài lỗi. Player sẽ dừng lại.");
         playerState.isPlaying = false;
@@ -104,10 +103,11 @@ const playTrack = async () => {
 
         if (!streamUrl) {
             streamUrl = await getStreamUrl(songId);
+            playerState.currentSong.audioUrl = streamUrl;
         }
 
         if (!streamUrl) {
-            console.warn(`Không tìm thấy link nhạc cho bài: ${songId}`);
+            console.warn(`Không tìm thấy link nhạc: ${songId}`);
             playerState.consecutiveErrors++;
             playerState.isLoading = false;
             updatePlayerUI();
@@ -116,7 +116,10 @@ const playTrack = async () => {
         }
 
         playerState.consecutiveErrors = 0;
-        audioEl.src = streamUrl;
+
+        if (audioEl.src !== streamUrl) {
+            audioEl.src = streamUrl;
+        }
 
         try {
             await audioEl.play();
@@ -124,7 +127,6 @@ const playTrack = async () => {
         } catch (playErr) {
             console.warn("Autoplay blocked:", playErr);
             playerState.isPlaying = false;
-            // Không alert làm phiền, chỉ update UI về trạng thái pause để user bấm
         }
     } catch (error) {
         console.error("Lỗi playTrack:", error);
@@ -145,9 +147,18 @@ const pauseTrack = () => {
 
 const loadSongByIndex = (index) => {
     if (index < 0 || index >= playerState.currentPlaylist.length) return;
+
+    if (playerState.currentIndex === index && playerState.currentSong) {
+        if (playerState.isPlaying) pauseTrack();
+        else playTrack();
+        return;
+    }
+
     playerState.currentIndex = index;
     playerState.currentSong = playerState.currentPlaylist[index];
+
     playTrack();
+
     if (onSongStartCallback) onSongStartCallback();
 };
 
@@ -155,14 +166,22 @@ const nextTrack = () => {
     if (playerState.currentPlaylist.length === 0) return;
     let nextIndex = playerState.currentIndex + 1;
     if (nextIndex >= playerState.currentPlaylist.length) nextIndex = 0;
-    loadSongByIndex(nextIndex);
+
+    playerState.currentIndex = nextIndex;
+    playerState.currentSong = playerState.currentPlaylist[nextIndex];
+    playTrack();
+    if (onSongStartCallback) onSongStartCallback();
 };
 
 const prevTrack = () => {
     if (playerState.currentPlaylist.length === 0) return;
     let prevIndex = playerState.currentIndex - 1;
     if (prevIndex < 0) prevIndex = playerState.currentPlaylist.length - 1;
-    loadSongByIndex(prevIndex);
+
+    playerState.currentIndex = prevIndex;
+    playerState.currentSong = playerState.currentPlaylist[prevIndex];
+    playTrack();
+    if (onSongStartCallback) onSongStartCallback();
 };
 
 export const initializePlayerService = () => {
@@ -174,38 +193,26 @@ export const initializePlayerService = () => {
         nextTrack();
     });
 
-    // ... Giữ nguyên các event listener khác (timeupdate, loadedmetadata, volume...)
-    const progressBar = document.getElementById("progress-bar");
+    audioEl.addEventListener("error", () => {
+        if (playerState.isPlaying) {
+            console.warn("Audio Error, skipping...");
+            playerState.consecutiveErrors++;
+            setTimeout(nextTrack, 1000);
+        }
+    });
+
     const currentTimeEl = document.getElementById("current-time");
     const durationEl = document.getElementById("duration");
 
     audioEl.addEventListener("timeupdate", () => {
-        if (audioEl.duration && progressBar) {
-            const percent = (audioEl.currentTime / audioEl.duration) * 100;
-            progressBar.value = percent;
-            progressBar.style.background = `linear-gradient(to right, #dc2626 ${percent}%, #4b5563 ${percent}%)`;
-            if (currentTimeEl)
-                currentTimeEl.textContent = formatTime(audioEl.currentTime);
-        }
+        if (currentTimeEl)
+            currentTimeEl.textContent = formatTime(audioEl.currentTime);
     });
 
     audioEl.addEventListener("loadedmetadata", () => {
         if (durationEl) durationEl.textContent = formatTime(audioEl.duration);
     });
 
-    if (progressBar) {
-        progressBar.addEventListener("input", (e) => {
-            if (audioEl.duration)
-                audioEl.currentTime = (audioEl.duration / 100) * e.target.value;
-        });
-    }
-
-    const volumeControl = document.getElementById("volume-control");
-    if (volumeControl) {
-        volumeControl.addEventListener("input", (e) => {
-            if (audioEl) audioEl.volume = parseFloat(e.target.value);
-        });
-    }
     updatePlayerUI();
 };
 
@@ -213,18 +220,30 @@ export const playerService = {
     setPlaylist: (songs, startIndex = 0) => {
         playerState.currentPlaylist = songs;
         playerState.consecutiveErrors = 0;
-        loadSongByIndex(startIndex);
+        playerState.currentIndex = startIndex;
+        playerState.currentSong = songs[startIndex];
+        playTrack();
+        if (onSongStartCallback) onSongStartCallback();
     },
     playAlbumOrPlaylist: async (id, type = "playlist") => {
         playerState.isLoading = true;
         updatePlayerUI();
-        const data = await getTrackList(id, type);
-        if (data && data.songs && data.songs.length > 0) {
-            playerState.currentPlaylist = data.songs;
-            playerState.consecutiveErrors = 0;
-            loadSongByIndex(0);
-        } else {
-            alert("Playlist rỗng hoặc không tải được.");
+        try {
+            const data = await getTrackList(id, type);
+            if (data && data.songs && data.songs.length > 0) {
+                playerState.currentPlaylist = data.songs;
+                playerState.consecutiveErrors = 0;
+
+                playerState.currentIndex = 0;
+                playerState.currentSong = data.songs[0];
+                playTrack();
+                if (onSongStartCallback) onSongStartCallback();
+            } else {
+                alert("Playlist rỗng hoặc không tải được.");
+            }
+        } catch (e) {
+            console.error(e);
+        } finally {
             playerState.isLoading = false;
             updatePlayerUI();
         }
@@ -238,8 +257,10 @@ export const playerService = {
                 playerState.consecutiveErrors = 0;
                 playerState.currentIndex = 0;
                 playerState.currentSong = data.songs[0];
+
                 playerState.isPlaying = false;
                 if (audioEl) audioEl.pause();
+
                 updatePlayerUI();
                 if (onSongStartCallback) onSongStartCallback();
             }

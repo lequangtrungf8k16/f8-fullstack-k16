@@ -1,112 +1,127 @@
 import { discoverService } from "../service/discoverService";
+import { escapeHtml } from "../utils/htmlUtils";
+
+// Hàm helper để lấy ảnh an toàn (giống trang Discover)
+const getImageUrl = (item) => {
+    if (!item) return "./src/assets/images/default-album.jpg";
+    if (item.thumbnailUrl) return item.thumbnailUrl;
+    if (item.thumbnails && item.thumbnails.length > 0)
+        return item.thumbnails[0];
+    if (item.thumbnail) return item.thumbnail;
+    if (item.thumb) return item.thumb;
+    return "./src/assets/images/default-album.jpg";
+};
 
 const categoryDetailPage = async (match) => {
-    const slug = match?.data?.slug;
+    const slug = match.data.slug;
 
-    if (!slug) {
-        return `<div class="pt-24 text-center text-white">Không tìm thấy danh mục.</div>`;
-    }
-
-    let categoryData = null;
     try {
-        categoryData = await discoverService.getCategoryDetail(slug);
-    } catch (error) {
-        console.error("Error loading category:", error);
-    }
+        const data = await discoverService.getCategoryDetail(slug);
 
-    if (!categoryData) {
-        return `<div class="pt-24 text-center text-white">Lỗi tải dữ liệu hoặc danh mục không tồn tại.</div>`;
-    }
-
-    const renderPlaylistCard = (item) => {
-        const title = item.title || item.name;
-        const thumb =
-            item.thumbnailUrl ||
-            (item.thumbnails && item.thumbnails[0]) ||
-            "./src/assets/images/default-album.jpg";
-        const id = item.slug || item.encodeId || item._id;
-        const desc = item.sortDescription || item.description || "Tuyển tập";
-
-        return `
-            <div class="w-[180px] shrink-0 group cursor-pointer">
-                <div class="relative w-full aspect-square rounded-md overflow-hidden mb-3 bg-zinc-800 shadow-lg">
-                    <img src="${thumb}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-                    
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                         <button class="js-play-cate-item w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl cursor-pointer"
-                            data-id="${id}" data-type="playlist">
-                            <i class="fa-solid fa-play ml-1 text-lg"></i>
-                        </button>
-                    </div>
-                </div>
-                <h4 class="text-white font-bold text-sm truncate hover:underline" title="${title}">${title}</h4>
-                <p class="text-gray-400 text-xs truncate mt-1">${desc}</p>
-            </div>
-        `;
-    };
-
-    const renderSubCategories = () => {
-        if (
-            !categoryData.subcategories ||
-            categoryData.subcategories.length === 0
-        ) {
-            return `<div class="text-gray-400 mt-8">Không có playlist nào trong danh mục này.</div>`;
-        }
-
-        return categoryData.subcategories
-            .map((sub) => {
-                if (!sub.playlists || sub.playlists.length === 0) return "";
-
-                return `
-                <div class="mb-12 animate-fade-in">
-                    <div class="flex items-end justify-between mb-4 border-b border-gray-800 pb-2">
-                        <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight">${
-                            sub.name
-                        }</h2>
-                    </div>
-                    <div class="flex gap-6 overflow-x-auto scrollbar-hide pb-4 scroll-smooth">
-                        ${sub.playlists
-                            .map((playlist) => renderPlaylistCard(playlist))
-                            .join("")}
-                    </div>
+        // 1. Render Banner (Phần đầu trang)
+        const renderBanner = () => {
+            return `
+                <div class="relative w-full h-[300px] md:h-[400px] mb-8 group rounded-xl overflow-hidden shadow-2xl">
+                     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+                     <img src="${getImageUrl(
+                         data
+                     )}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="${escapeHtml(
+                data.name
+            )}">
+                     
+                     <div class="absolute bottom-0 left-0 p-6 md:p-10 z-20 w-full">
+                        <h1 class="text-4xl md:text-6xl font-black text-white mb-2 tracking-tight drop-shadow-lg">${escapeHtml(
+                            data.name
+                        )}</h1>
+                        ${
+                            data.description
+                                ? `<p class="text-gray-300 text-sm md:text-lg max-w-2xl drop-shadow-md line-clamp-2">${escapeHtml(
+                                      data.description
+                                  )}</p>`
+                                : ""
+                        }
+                     </div>
                 </div>
             `;
-            })
-            .join("");
-    };
+        };
 
-    const bgColor = categoryData.color || "#555";
-    const headerStyle = `background: linear-gradient(to bottom, ${bgColor}, #000000)`;
+        // 2. Render từng Playlist dạng Card (Để xử lý sự kiện Play/Load)
+        const renderPlaylistCard = (playlist) => {
+            const image = getImageUrl(playlist);
+            const title = escapeHtml(
+                playlist.title || playlist.name || "Tuyển tập"
+            );
+            const desc = escapeHtml(
+                playlist.description ||
+                    playlist.sortDescription ||
+                    "Playlist tuyển chọn"
+            );
+            // API trả về ID khác nhau tùy endpoint, ưu tiên encodeId hoặc _id
+            const id = playlist.encodeId || playlist._id || playlist.id;
 
-    return `
-        <div class="w-full min-h-screen bg-black pb-32 animate-fade-in">
-            <div class="pt-24 pb-10 px-6 md:px-12 flex flex-col md:flex-row items-end gap-8" style="${headerStyle}">
-                 <div class="w-40 h-40 md:w-52 md:h-52 shrink-0 shadow-2xl rounded-lg overflow-hidden hidden md:block rotate-3 hover:rotate-0 transition-transform duration-500">
-                    <img src="${
-                        categoryData.thumbnailUrl ||
-                        "./src/assets/images/default-album.jpg"
-                    }" class="w-full h-full object-cover">
+            return `
+                <div class="js-album-card w-full cursor-pointer group" 
+                     data-id="${id}" 
+                     data-type="playlist">
+                    
+                    <div class="relative w-full aspect-square rounded-md overflow-hidden mb-3 shadow-lg bg-gray-800">
+                        <img src="${image}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                        
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                            <button class="js-play-btn w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl cursor-pointer z-20" title="Phát ngay">
+                                <i class="fa-solid fa-play ml-1 text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h4 class="text-white font-bold text-sm md:text-base truncate group-hover:underline" title="${title}">${title}</h4>
+                    <p class="text-gray-400 text-xs md:text-sm truncate mt-1">${desc}</p>
                 </div>
-                
-                <div class="flex flex-col gap-4 w-full">
-                    <p class="text-xs font-bold uppercase tracking-wider text-white/80">DANH MỤC</p>
-                    <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight drop-shadow-lg">${
-                        categoryData.name
-                    }</h1>
-                    <p class="text-white/80 text-sm md:text-lg max-w-2xl font-medium line-clamp-2">
-                        ${
-                            categoryData.description ||
-                            "Tuyển tập những bài hát hay nhất dành cho bạn."
-                        }
-                    </p>
-                </div>
-            </div>
+            `;
+        };
 
-            <div class="px-6 md:px-12 mt-8 max-w-[1600px] mx-auto">
-                ${renderSubCategories()}
+        // 3. Render Subcategories (Các mục nhỏ bên trong: Acoustic, Remix, v.v.)
+        const renderSubcategories = () => {
+            if (!data.subcategories || data.subcategories.length === 0)
+                return "";
+
+            return data.subcategories
+                .map((sub) => {
+                    // Kiểm tra xem subcategory có playlists không
+                    if (!sub.playlists || sub.playlists.length === 0) return "";
+
+                    return `
+                    <section class="mb-10">
+                        <h2 class="text-xl md:text-2xl font-bold text-white mb-4 border-b border-gray-800 pb-2">
+                            ${escapeHtml(sub.name)}
+                        </h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                            ${sub.playlists
+                                .map((playlist) => renderPlaylistCard(playlist))
+                                .join("")}
+                        </div>
+                    </section>
+                `;
+                })
+                .join("");
+        };
+
+        return `
+            <div class="w-full pb-32 px-4 md:px-8 pt-4 max-w-[1600px] mx-auto animate-fade-in">
+                <div class="text-xs text-gray-400 mb-4 flex gap-2 items-center">
+                    <a href="/discoverPage" data-navigo class="hover:text-white">Khám phá</a>
+                    <span>/</span>
+                    <span class="text-white">${escapeHtml(data.name)}</span>
+                </div>
+
+                ${renderBanner()}
+                ${renderSubcategories()}
             </div>
-        </div>
-    `;
+        `;
+    } catch (error) {
+        console.error("Lỗi trang chi tiết category:", error);
+        return `<div class="pt-20 text-center text-white">Không tìm thấy danh mục hoặc có lỗi xảy ra.</div>`;
+    }
 };
 
 export default categoryDetailPage;
