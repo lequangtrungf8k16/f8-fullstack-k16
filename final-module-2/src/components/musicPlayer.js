@@ -17,7 +17,7 @@ const renderFullPlayerList = () => {
             const isActive = index === currentIndex;
             const duration = song.duration
                 ? formatUtils.formatTime(song.duration)
-                : "--:--";
+                : "00:00";
 
             return `
             <div class="js-playlist-item flex items-center gap-3 p-2 rounded-md cursor-pointer border-b border-gray-800 last:border-0 transition-colors ${
@@ -68,7 +68,7 @@ const renderFullPlayerList = () => {
 
 const musicPlayer = () => {
     return `
-    <div id="full-player" class="hidden absolute top-16 left-0 right-0 bottom-20 z-20 bg-[#121212] flex flex-col animate-fade-in overflow-hidden cursor-default transition-all duration-300">
+    <div id="full-player" class="hidden absolute top-16 left-0 right-0 bottom-20 z-40 bg-[#121212] flex flex-col animate-fade-in overflow-hidden cursor-default transition-all duration-300 border-t border-gray-800">
         <div class="relative flex flex-col md:flex-row h-full overflow-hidden">
             <div class="flex-1 flex items-center justify-center p-6 md:p-10 overflow-hidden bg-[#0a0a0a]">
                 <div class="js-stop-close relative aspect-square w-full max-w-[320px] md:max-w-[450px] shadow-2xl rounded-lg overflow-hidden border border-gray-800">

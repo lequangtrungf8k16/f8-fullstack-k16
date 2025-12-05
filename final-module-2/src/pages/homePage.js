@@ -35,9 +35,14 @@ const renderCard = (item, type) => {
         `;
     }
 
-    // Lưu ý: class js-album-card và js-play-btn sẽ được Router bắt sự kiện
+    let hrefUrl = `/playlist/${id}`;
+    if (type === "album") hrefUrl = `/album/${id}`;
+    if (type === "line") hrefUrl = `/lines/${id}`;
+
     return `
-        <div class="js-album-card w-[170px] md:w-[200px] shrink-0 group snap-start cursor-pointer" data-id="${id}" data-type="${type}">
+        <a href="${hrefUrl}" data-navigo 
+           class="js-album-card block w-[170px] md:w-[200px] shrink-0 group snap-start cursor-pointer no-underline" 
+           data-id="${id}" data-type="${type}">
             <div class="relative w-full aspect-square rounded-md overflow-hidden mb-3 shadow-lg bg-gray-800">
                 <img src="${image}" alt="${safeTitle}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
@@ -48,7 +53,7 @@ const renderCard = (item, type) => {
             </div>
             <h4 class="text-white font-bold text-sm md:text-base truncate group-hover:underline" title="${safeTitle}">${safeTitle}</h4>
             <p class="text-gray-400 text-xs md:text-sm truncate mt-1">${safeSubtitle}</p>
-        </div>
+        </a>
     `;
 };
 

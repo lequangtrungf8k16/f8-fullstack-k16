@@ -80,13 +80,7 @@ export const updateActiveSidebar = () => {
 
     if (path === "/" || path === "") {
         activeHref = "/";
-    } else if (
-        path.startsWith("/discoverPage") ||
-        path.startsWith("/lines") ||
-        path.startsWith("/categories") ||
-        path.startsWith("/playlist") ||
-        path.startsWith("/album")
-    ) {
+    } else if (path.startsWith("/discoverPage")) {
         activeHref = "/discoverPage";
     } else if (path.startsWith("/libraryPage")) {
         activeHref = "/libraryPage";
@@ -113,7 +107,6 @@ export const initSidebarEvents = () => {
     if (sidebarEl && menuBtn) {
         menuBtn.addEventListener("click", () => {
             sidebarEl.classList.toggle("collapsed");
-
             if (sidebarEl.classList.contains("collapsed")) {
                 sidebarEl.classList.remove("md:w-60");
                 sidebarEl.classList.add("w-20");
@@ -128,7 +121,6 @@ export const initSidebarEvents = () => {
     links.forEach((link) => {
         link.addEventListener("click", () => {
             document.dispatchEvent(new CustomEvent("CLOSE_FULL_PLAYER"));
-
             setTimeout(updateActiveSidebar, 50);
         });
     });

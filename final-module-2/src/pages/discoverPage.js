@@ -88,29 +88,30 @@ const discoverPage = async () => {
                     const image = getImageUrl(line);
 
                     return `
-                <div class="js-discover-item w-[180px] md:w-[220px] shrink-0 snap-start group cursor-pointer block" data-id="${
-                    line.slug
-                }" data-type="line">
-                    <div class="relative overflow-hidden rounded-lg aspect-video mb-3 shadow-lg bg-gray-800">
-                        <img src="${image}" 
-                             alt="${escapeHtml(line.name)}"
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                             onerror="this.src='./src/assets/images/default-album.jpg'">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                             <button class="js-discover-play-btn w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl">
-                                <i class="fa-solid fa-play ml-1"></i>
-                             </button>
+                    <a href="/lines/${line.slug}" data-navigo 
+                        class="js-discover-item w-[180px] md:w-[220px] shrink-0 snap-start group cursor-pointer block" 
+                        data-id="${line.slug}" 
+                        data-type="line">
+                        <div class="relative overflow-hidden rounded-lg aspect-video mb-3 shadow-lg bg-gray-800">
+                            <img src="${image}" 
+                                alt="${escapeHtml(line.name)}"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                onerror="this.src='./src/assets/images/default-album.jpg'">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button class="js-discover-play-btn w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl">
+                                    <i class="fa-solid fa-play ml-1"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <h3 class="text-white font-bold truncate group-hover:underline text-base">${escapeHtml(
-                        line.name
-                    )}</h3>
-                    <p class="text-gray-400 text-xs truncate mt-1">${escapeHtml(
-                        line.description || "Tuyển tập đặc biệt"
-                    )}</p>
-                </div>
-            `;
+                        <h3 class="text-white font-bold truncate group-hover:underline text-base">${escapeHtml(
+                            line.name
+                        )}</h3>
+                        <p class="text-gray-400 text-xs truncate mt-1">${escapeHtml(
+                            line.description || "Tuyển tập đặc biệt"
+                        )}</p>
+                    </a>
+                `;
                 })
                 .join("");
 

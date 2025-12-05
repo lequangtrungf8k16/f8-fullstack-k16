@@ -1,7 +1,6 @@
 import { discoverService } from "../service/discoverService";
 import { escapeHtml } from "../utils/htmlUtils";
 
-// Hàm helper để lấy ảnh an toàn (giống trang Discover)
 const getImageUrl = (item) => {
     if (!item) return "./src/assets/images/default-album.jpg";
     if (item.thumbnailUrl) return item.thumbnailUrl;
@@ -18,11 +17,10 @@ const categoryDetailPage = async (match) => {
     try {
         const data = await discoverService.getCategoryDetail(slug);
 
-        // 1. Render Banner (Phần đầu trang)
         const renderBanner = () => {
             return `
                 <div class="relative w-full h-[300px] md:h-[400px] mb-8 group rounded-xl overflow-hidden shadow-2xl">
-                     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+                     <div class="absolute inset-0 bg-linear-to-b from-transparent to-black/90 z-10"></div>
                      <img src="${getImageUrl(
                          data
                      )}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="${escapeHtml(
@@ -45,7 +43,6 @@ const categoryDetailPage = async (match) => {
             `;
         };
 
-        // 2. Render từng Playlist dạng Card (Để xử lý sự kiện Play/Load)
         const renderPlaylistCard = (playlist) => {
             const image = getImageUrl(playlist);
             const title = escapeHtml(
@@ -56,13 +53,14 @@ const categoryDetailPage = async (match) => {
                     playlist.sortDescription ||
                     "Playlist tuyển chọn"
             );
-            // API trả về ID khác nhau tùy endpoint, ưu tiên encodeId hoặc _id
+
             const id = playlist.encodeId || playlist._id || playlist.id;
 
             return `
-                <div class="js-album-card w-full cursor-pointer group" 
-                     data-id="${id}" 
-                     data-type="playlist">
+                <a href="/playlist/${id}" data-navigo 
+                    class="js-album-card w-full cursor-pointer group block no-underline" 
+                    data-id="${id}" 
+                    data-type="playlist">
                     
                     <div class="relative w-full aspect-square rounded-md overflow-hidden mb-3 shadow-lg bg-gray-800">
                         <img src="${image}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
@@ -76,18 +74,16 @@ const categoryDetailPage = async (match) => {
 
                     <h4 class="text-white font-bold text-sm md:text-base truncate group-hover:underline" title="${title}">${title}</h4>
                     <p class="text-gray-400 text-xs md:text-sm truncate mt-1">${desc}</p>
-                </div>
+                </a>
             `;
         };
 
-        // 3. Render Subcategories (Các mục nhỏ bên trong: Acoustic, Remix, v.v.)
         const renderSubcategories = () => {
             if (!data.subcategories || data.subcategories.length === 0)
                 return "";
 
             return data.subcategories
                 .map((sub) => {
-                    // Kiểm tra xem subcategory có playlists không
                     if (!sub.playlists || sub.playlists.length === 0) return "";
 
                     return `
