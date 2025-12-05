@@ -58,7 +58,7 @@ const discoverPage = async () => {
                             line.color || "#000"
                         }"></div>
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                             <button class="js-discover-play-btn w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl">
+                             <button class="js-discover-play-btn w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl cursor-pointer">
                                 <i class="fa-solid fa-play ml-1"></i>
                              </button>
                         </div>
