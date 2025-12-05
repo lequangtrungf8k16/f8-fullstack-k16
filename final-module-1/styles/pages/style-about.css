@@ -220,6 +220,10 @@ body {
     transition: color 0.3s;
 }
 
+.gallery-item .inner a:first-child {
+    color: #fc4011;
+}
+
 .gallery-item .inner a:hover {
     color: #fc4011;
 }
@@ -304,6 +308,7 @@ body {
     z-index: 1;
     top: 50%;
     left: 50%;
+    cursor: pointer;
     transform: translate(-50%, -50%);
 }
 

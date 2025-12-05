@@ -368,7 +368,7 @@ body {
     font-family: "Manrope";
     font-style: normal;
     font-weight: 700;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     width: 90%;
     padding: 10px 0;
     user-select: none;
@@ -695,6 +695,10 @@ body {
     background: #fd6038;
 }
 
+.testimonial .inner .wrapper-info .switch-testimonial a:first-child i {
+    background-color: #fc4011;
+}
+
 .testimonial .inner .wrapper-clients {
     display: flex;
     flex-direction: column;
@@ -771,8 +775,13 @@ body {
 .testimonial .inner .wrapper-clients .client-name span:first-of-type {
     font-size: 2rem;
     font-weight: 700;
+    cursor: pointer;
 }
 
+.testimonial .inner .wrapper-clients .client-name span:first-of-type:hover {
+    color: #fd6038;
+    transition: color 0.3s;
+}
 .testimonial .inner .wrapper-clients .client-name span:last-of-type {
     font-size: 1.4rem;
 }
@@ -971,6 +980,7 @@ body {
     align-items: center;
     gap: 20px;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .blogs .inner .blog-item .blog-name .name-info {

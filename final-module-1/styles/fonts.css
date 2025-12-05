@@ -1,14 +1,6 @@
 @font-face {
     font-family: "Manrope";
-    src: url("../../module-1/assets/fonts/Manrope-Bold.ttf") format("truetype");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Manrope";
-    src: url("../../module-1/assets/fonts/Manrope-ExtraBold.ttf")
+    src: url("../../final-module-1/assets/fonts/Manrope-Bold.ttf")
         format("truetype");
     font-weight: bold;
     font-style: normal;
@@ -17,7 +9,16 @@
 
 @font-face {
     font-family: "Manrope";
-    src: url("../../module-1/assets/fonts/Manrope-ExtraLight.ttf")
+    src: url("../../final-module-1/assets/fonts/Manrope-ExtraBold.ttf")
+        format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Manrope";
+    src: url("../../final-module-1/assets/fonts/Manrope-ExtraLight.ttf")
         format("truetype");
     font-weight: 200;
     font-style: normal;
@@ -26,7 +27,8 @@
 
 @font-face {
     font-family: "Manrope";
-    src: url("../../module-1/assets/fonts/Manrope-Light.ttf") format("truetype");
+    src: url("../../final-module-1/assets/fonts/Manrope-Light.ttf")
+        format("truetype");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -34,7 +36,7 @@
 
 @font-face {
     font-family: "Manrope";
-    src: url("../../module-1/assets/fonts/Manrope-Regular.ttf")
+    src: url("../../final-module-1/assets/fonts/Manrope-Regular.ttf")
         format("truetype");
     font-weight: normal;
     font-style: normal;
@@ -43,7 +45,7 @@
 
 @font-face {
     font-family: "Manrope";
-    src: url("../../module-1/assets/fonts/Manrope-Medium.ttf")
+    src: url("../../final-module-1/assets/fonts/Manrope-Medium.ttf")
         format("truetype");
     font-weight: 500;
     font-style: normal;
@@ -52,7 +54,7 @@
 
 @font-face {
     font-family: "Roboto Slab";
-    src: url("../../module-1/assets/fonts/RobotoSlab-Bold.ttf")
+    src: url("../../final-module-1/assets/fonts/RobotoSlab-Bold.ttf")
         format("truetype");
     font-weight: bold;
     font-style: normal;
@@ -61,7 +63,7 @@
 
 @font-face {
     font-family: "Roboto Slab";
-    src: url("../../module-1/assets/fonts/RobotoSlab-Black.ttf")
+    src: url("../../final-module-1/assets/fonts/RobotoSlab-Black.ttf")
         format("truetype");
     font-weight: 900;
     font-style: normal;
@@ -70,7 +72,7 @@
 
 @font-face {
     font-family: "Roboto Slab";
-    src: url("../../module-1/assets/fonts/RobotoSlab-ExtraLight.ttf")
+    src: url("../../final-module-1/assets/fonts/RobotoSlab-ExtraLight.ttf")
         format("truetype");
     font-weight: 200;
     font-style: normal;
@@ -79,7 +81,7 @@
 
 @font-face {
     font-family: "Roboto Slab";
-    src: url("../../module-1/assets/fonts/RobotoSlab-ExtraBold.ttf")
+    src: url("../../final-module-1/assets/fonts/RobotoSlab-ExtraBold.ttf")
         format("truetype");
     font-weight: bold;
     font-style: normal;
@@ -88,7 +90,7 @@
 
 @font-face {
     font-family: "Manrope";
-    src: url("../../module-1/assets/fonts/Manrope-SemiBold.ttf")
+    src: url("../../final-module-1/assets/fonts/Manrope-SemiBold.ttf")
         format("truetype");
     font-weight: 600;
     font-style: normal;
@@ -97,7 +99,7 @@
 
 @font-face {
     font-family: "Roboto Slab";
-    src: url("../../module-1/assets/fonts/RobotoSlab-Light.ttf")
+    src: url("../../final-module-1/assets/fonts/RobotoSlab-Light.ttf")
         format("truetype");
     font-weight: 300;
     font-style: normal;
@@ -106,7 +108,7 @@
 
 @font-face {
     font-family: "Roboto Slab";
-    src: url("../../module-1/assets/fonts/RobotoSlab-Regular.ttf")
+    src: url("../../final-module-1/assets/fonts/RobotoSlab-Regular.ttf")
         format("truetype");
     font-weight: normal;
     font-style: normal;
@@ -115,7 +117,7 @@
 
 @font-face {
     font-family: "Roboto Slab";
-    src: url("../../module-1/assets/fonts/RobotoSlab-SemiBold.ttf")
+    src: url("../../final-module-1/assets/fonts/RobotoSlab-SemiBold.ttf")
         format("truetype");
     font-weight: 600;
     font-style: normal;
@@ -124,7 +126,7 @@
 
 @font-face {
     font-family: "Roboto Slab";
-    src: url("../../module-1/assets/fonts/RobotoSlab-Medium.ttf")
+    src: url("../../final-module-1/assets/fonts/RobotoSlab-Medium.ttf")
         format("truetype");
     font-weight: 500;
     font-style: normal;
@@ -133,7 +135,7 @@
 
 @font-face {
     font-family: "Roboto Slab";
-    src: url("../../module-1/assets/fonts/RobotoSlab-Thin.ttf")
+    src: url("../../final-module-1/assets/fonts/RobotoSlab-Thin.ttf")
         format("truetype");
     font-weight: 100;
     font-style: normal;

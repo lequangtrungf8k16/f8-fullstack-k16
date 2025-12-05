@@ -1,5 +1,4 @@
 import { discoverService } from "../service/discoverService";
-import { playerService } from "../service/playerService";
 
 const categoryDetailPage = async (match) => {
     const slug = match?.data?.slug;
@@ -75,17 +74,6 @@ const categoryDetailPage = async (match) => {
             })
             .join("");
     };
-
-    setTimeout(() => {
-        document.querySelectorAll(".js-play-cate-item").forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const id = btn.dataset.id;
-                const type = btn.dataset.type;
-                playerService.playAlbumOrPlaylist(id, type);
-            });
-        });
-    }, 500);
 
     const bgColor = categoryData.color || "#555";
     const headerStyle = `background: linear-gradient(to bottom, ${bgColor}, #000000)`;

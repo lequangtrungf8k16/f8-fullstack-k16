@@ -1,5 +1,4 @@
 import apiClient from "../utils/apiClient";
-import { tokenService } from "./tokenService";
 import { getTrackList } from "./playlistService";
 
 let audioEl = null;
@@ -70,14 +69,14 @@ const getStreamUrl = async (songId) => {
         const songData = response.data.data || response.data;
         if (!songData) return null;
 
-        if (playerState.currentSong && playerState.currentSong.id === songId) {
-            playerState.currentSong.fullData = songData;
-        }
+        // Ưu tiên các nguồn nhạc theo thứ tự
         if (songData.audioUrl) return songData.audioUrl;
         if (songData["128"]) return songData["128"];
         if (songData["320"]) return songData["320"];
+        if (songData.source && songData.source["128"])
+            return songData.source["128"];
         if (songData.link) return songData.link;
-        if (songData.url) return songData.url;
+
         return null;
     } catch (error) {
         console.error("Lỗi lấy link nhạc:", error);
@@ -101,13 +100,14 @@ const playTrack = async () => {
 
     try {
         const songId = playerState.currentSong.id;
-        let streamUrl = playerState.currentSong.link;
+        let streamUrl = playerState.currentSong.audioUrl;
 
         if (!streamUrl) {
             streamUrl = await getStreamUrl(songId);
         }
 
         if (!streamUrl) {
+            console.warn(`Không tìm thấy link nhạc cho bài: ${songId}`);
             playerState.consecutiveErrors++;
             playerState.isLoading = false;
             updatePlayerUI();
@@ -124,6 +124,7 @@ const playTrack = async () => {
         } catch (playErr) {
             console.warn("Autoplay blocked:", playErr);
             playerState.isPlaying = false;
+            // Không alert làm phiền, chỉ update UI về trạng thái pause để user bấm
         }
     } catch (error) {
         console.error("Lỗi playTrack:", error);
@@ -172,13 +173,8 @@ export const initializePlayerService = () => {
         playerState.consecutiveErrors = 0;
         nextTrack();
     });
-    audioEl.addEventListener("error", () => {
-        if (playerState.isPlaying) {
-            playerState.consecutiveErrors++;
-            setTimeout(nextTrack, 1000);
-        }
-    });
 
+    // ... Giữ nguyên các event listener khác (timeupdate, loadedmetadata, volume...)
     const progressBar = document.getElementById("progress-bar");
     const currentTimeEl = document.getElementById("current-time");
     const durationEl = document.getElementById("duration");
@@ -187,19 +183,23 @@ export const initializePlayerService = () => {
         if (audioEl.duration && progressBar) {
             const percent = (audioEl.currentTime / audioEl.duration) * 100;
             progressBar.value = percent;
+            progressBar.style.background = `linear-gradient(to right, #dc2626 ${percent}%, #4b5563 ${percent}%)`;
             if (currentTimeEl)
                 currentTimeEl.textContent = formatTime(audioEl.currentTime);
         }
     });
+
     audioEl.addEventListener("loadedmetadata", () => {
         if (durationEl) durationEl.textContent = formatTime(audioEl.duration);
     });
+
     if (progressBar) {
         progressBar.addEventListener("input", (e) => {
             if (audioEl.duration)
                 audioEl.currentTime = (audioEl.duration / 100) * e.target.value;
         });
     }
+
     const volumeControl = document.getElementById("volume-control");
     if (volumeControl) {
         volumeControl.addEventListener("input", (e) => {
@@ -224,12 +224,11 @@ export const playerService = {
             playerState.consecutiveErrors = 0;
             loadSongByIndex(0);
         } else {
-            alert("Playlist rỗng.");
+            alert("Playlist rỗng hoặc không tải được.");
             playerState.isLoading = false;
             updatePlayerUI();
         }
     },
-
     loadPlaylistOnly: async (id, type = "playlist") => {
         playerState.isLoading = true;
         try {
@@ -237,15 +236,10 @@ export const playerService = {
             if (data && data.songs && data.songs.length > 0) {
                 playerState.currentPlaylist = data.songs;
                 playerState.consecutiveErrors = 0;
-
                 playerState.currentIndex = 0;
                 playerState.currentSong = data.songs[0];
-
                 playerState.isPlaying = false;
-                if (audioEl) {
-                    audioEl.pause();
-                }
-
+                if (audioEl) audioEl.pause();
                 updatePlayerUI();
                 if (onSongStartCallback) onSongStartCallback();
             }

@@ -146,6 +146,7 @@ body {
     color: #fff;
     background: #0e1412;
     transition: background-color 0.3s;
+    cursor: pointer;
 }
 
 .blogs .inner .wrapper-info .blog-btn .btn:hover {
@@ -199,6 +200,10 @@ body {
     align-items: center;
     gap: 20px;
     margin-top: 20px;
+}
+
+.blogs .inner .blog-item .blog-name img {
+    cursor: pointer;
 }
 
 .blogs .inner .blog-item .blog-name .name-info {
@@ -369,6 +374,10 @@ body {
     align-items: center;
     gap: 20px;
     margin-top: 20px;
+}
+
+.blogs-list .inner .blog-item .blog-name img {
+    cursor: pointer;
 }
 
 .blogs-list .inner .blog-item .blog-name .name-info {

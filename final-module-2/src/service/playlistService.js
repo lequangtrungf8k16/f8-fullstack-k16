@@ -7,18 +7,8 @@ export const getPlaylistsByCountry = async (country = "VN", limit = 12) => {
         });
         return Array.isArray(response.data) ? response.data : [];
     } catch (error) {
-        console.error("Lỗi khi tải Playlist theo quốc gia:", error);
+        console.error("Lỗi tải Playlist QG:", error);
         return [];
-    }
-};
-
-export const getLineDetailsApi = async (id) => {
-    try {
-        const response = await apiClient.get(`/lines/${id}`);
-        return response.data.data || response.data;
-    } catch (error) {
-        console.error(`Lỗi API Line (/lines/${id}):`, error);
-        return null;
     }
 };
 
@@ -44,35 +34,35 @@ export const getAlbumDetailsApi = async (slug) => {
     }
 };
 
-export const getTrackList = async (idOrSlug, type) => {
-    if (type === "playlist" && idOrSlug.includes("album")) {
-        type = "album";
-    }
+export const getLineDetailsApi = async (slug) => {
+    try {
+        const lineInfo = await apiClient.get(`/lines/${slug}`);
 
+        const lineSongs = await apiClient.get(`/lines/${slug}/songs`, {
+            params: { limit: 50 },
+        });
+
+        const data = lineInfo.data;
+
+        return {
+            ...data,
+            items: lineSongs.data.items || [],
+        };
+    } catch (error) {
+        return null;
+    }
+};
+
+export const getTrackList = async (idOrSlug, type) => {
     let data = null;
 
     if (type === "line") {
         data = await getLineDetailsApi(idOrSlug);
     } else if (type === "album") {
         data = await getAlbumDetailsApi(idOrSlug);
-    } else if (type === "playlist") {
+    } else {
         data = await getPlaylistDetailsApi(idOrSlug);
-    }
-
-    if (!data) {
-        console.warn(`Đang thử tự động tìm loại dữ liệu cho: ${idOrSlug}`);
-
-        if (type === "line") {
-            return null;
-        }
-
-        if (idOrSlug.includes("album")) {
-            data = await getAlbumDetailsApi(idOrSlug);
-            if (!data) data = await getPlaylistDetailsApi(idOrSlug);
-        } else {
-            data = await getPlaylistDetailsApi(idOrSlug);
-            if (!data) data = await getAlbumDetailsApi(idOrSlug);
-        }
+        if (!data) data = await getAlbumDetailsApi(idOrSlug);
     }
 
     if (!data) return null;
@@ -81,18 +71,12 @@ export const getTrackList = async (idOrSlug, type) => {
 
     const songs = rawSongs.map((song) => {
         const songId = song._id || song.encodeId || song.id;
-
         let imageUrl = "./src/assets/images/default-song.jpg";
 
-        if (song.thumbnails && song.thumbnails.length > 0) {
+        if (song.thumbnails && song.thumbnails.length > 0)
             imageUrl = song.thumbnails[0];
-        } else if (song.thumbnail) {
-            imageUrl = song.thumbnail;
-        } else if (song.thumbnailM) {
-            imageUrl = song.thumbnailM;
-        } else if (song.thumb) {
-            imageUrl = song.thumb;
-        }
+        else if (song.thumbnail) imageUrl = song.thumbnail;
+        else if (song.thumb) imageUrl = song.thumb;
 
         return {
             id: songId,
@@ -102,7 +86,7 @@ export const getTrackList = async (idOrSlug, type) => {
                 : song.artist || "Nhiều nghệ sĩ",
             thumbnail: imageUrl,
             duration: song.duration || 0,
-            link: "",
+            audioUrl: song.audioUrl || "",
             albumName: data.title || data.name,
         };
     });
@@ -110,38 +94,11 @@ export const getTrackList = async (idOrSlug, type) => {
     return { ...data, songs: songs };
 };
 
-export const getSongStream = async (id) => {
-    try {
-        const response = await apiClient.get(`/songs/details/${id}`);
-        const songData = response.data.data || response.data;
-
-        if (!songData) return "";
-
-        if (songData.audioUrl) return songData.audioUrl;
-
-        if (songData["128"]) return songData["128"];
-        if (songData["320"]) return songData["320"];
-        if (songData.source && songData.source["128"])
-            return songData.source["128"];
-        if (songData.source && songData.source["320"])
-            return songData.source["320"];
-        if (songData.link) return songData.link;
-        if (songData.url) return songData.url;
-
-        return "";
-    } catch (error) {
-        console.error("Lỗi lấy link nhạc:", error);
-        return null;
-    }
-};
-
 export const playlistService = {
     getPlaylistsByCountry,
     getPlaylistDetailsApi,
     getAlbumDetailsApi,
-    getLineDetailsApi,
     getTrackList,
-    getSongStream,
 };
 
 export default playlistService;

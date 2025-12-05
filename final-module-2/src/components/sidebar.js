@@ -11,30 +11,30 @@ const sidebar = () => {
                 <button class="js-menu-btn cursor-pointer text-gray-400 hover:text-white">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
-                <a href="/" class="js-sidebar-link flex items-center max-md:hidden" data-navigo>
+                <a href="/" class="js-sidebar-link flex items-center" data-navigo>
                     <img src="${logo}" alt="Youtube Music" class="h-6">
                 </a>
             </div>
             
             <nav class="js-menu mx-2 mt-6 space-y-2 group-[.collapsed]:mx-2">
-                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 max-md:justify-center max-md:px-0 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/" data-navigo>
+                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/" data-navigo>
                     <i class="fa-solid fa-house text-xl"></i>
                     <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Trang chủ</span>
                 </a>
                 
-                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 max-md:justify-center max-md:px-0 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/discoverPage" data-navigo>
+                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/discoverPage" data-navigo>
                     <i class="fa-regular fa-compass text-xl"></i>
                     <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Khám phá</span>
                 </a>
 
-                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 max-md:justify-center max-md:px-0 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/libraryPage" data-navigo>
+                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/libraryPage" data-navigo>
                     <i class="fa-solid fa-bookmark text-xl"></i>
                     <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Thư viện</span>
                 </a>               
                 ${
                     user
                         ? `
-                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 max-md:justify-center max-md:px-0 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/upgradePage" data-navigo>
+                <a class="js-sidebar-link nav-item flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg text-white hover:bg-gray-800 transition-colors group-[.collapsed]:flex-col group-[.collapsed]:px-1 group-[.collapsed]:w-14 group-[.collapsed]:gap-1 group-[.collapsed]:text-[10px]" href="/upgradePage" data-navigo>
                     <i class="fa-regular fa-circle-play text-xl"></i>
                     <span class="group-[.collapsed]:text-[10px] text-[10px] md:text-lg">Nâng cấp</span>
                 </a>
@@ -45,7 +45,7 @@ const sidebar = () => {
 
             <div class="border-t border-gray-800 mx-4 my-4 group-[.collapsed]:hidden"></div>
             
-            <div class="px-4 pb-4 group-[.collapsed]:hidden max-md:hidden">
+            <div class="px-4 pb-4 group-[.collapsed]:hidden">
                 ${
                     user
                         ? `

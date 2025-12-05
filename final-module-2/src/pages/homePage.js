@@ -2,7 +2,7 @@ import { homeService } from "../service/homeService";
 import { discoverService } from "../service/discoverService";
 import { getPlaylistsByCountry } from "../service/playlistService";
 import { storageService } from "../service/storageService";
-import { playerService } from "../service/playerService";
+import { escapeHtml } from "../utils/htmlUtils";
 
 const renderCard = (item, type) => {
     const title = item.title || item.name || "Không tiêu đề";
@@ -21,30 +21,33 @@ const renderCard = (item, type) => {
     else if (item.thumbnail) image = item.thumbnail;
 
     const id = item.slug || item.encodeId || item._id || item.id;
+    const safeTitle = escapeHtml(title);
+    const safeSubtitle = escapeHtml(subtitle);
 
     if (type === "mood") {
         return `
             <a href="/discoverPage/${id}" data-navigo class="block w-[200px] h-[100px] shrink-0 relative rounded-lg overflow-hidden group hover:scale-105 transition-transform duration-300 snap-start">
-                <img src="${image}" class="w-full h-full object-cover brightness-75 group-hover:brightness-100 transition-all" alt="${title}">
+                <img src="${image}" class="w-full h-full object-cover brightness-75 group-hover:brightness-100 transition-all" alt="${safeTitle}">
                 <div class="absolute inset-0 flex items-center justify-center">
-                    <h3 class="text-white font-bold text-lg text-center drop-shadow-md px-2">${title}</h3>
+                    <h3 class="text-white font-bold text-lg text-center drop-shadow-md px-2">${safeTitle}</h3>
                 </div>
             </a>
         `;
     }
 
+    // Lưu ý: class js-album-card và js-play-btn sẽ được Router bắt sự kiện
     return `
         <div class="js-album-card w-[170px] md:w-[200px] shrink-0 group snap-start cursor-pointer" data-id="${id}" data-type="${type}">
             <div class="relative w-full aspect-square rounded-md overflow-hidden mb-3 shadow-lg bg-gray-800">
-                <img src="${image}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                <img src="${image}" alt="${safeTitle}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
                     <button class="js-play-btn w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl cursor-pointer z-10" title="Phát ngay">
                         <i class="fa-solid fa-play ml-1 text-xl"></i>
                     </button>
                 </div>
             </div>
-            <h4 class="text-white font-bold text-sm md:text-base truncate group-hover:underline" title="${title}">${title}</h4>
-            <p class="text-gray-400 text-xs md:text-sm truncate mt-1">${subtitle}</p>
+            <h4 class="text-white font-bold text-sm md:text-base truncate group-hover:underline" title="${safeTitle}">${safeTitle}</h4>
+            <p class="text-gray-400 text-xs md:text-sm truncate mt-1">${safeSubtitle}</p>
         </div>
     `;
 };
@@ -70,7 +73,6 @@ const renderSection = (title, items, type, sectionId) => {
 const homePage = async () => {
     const user = storageService.getUserInfo();
     const isLoggedIn = !!user;
-    let content = `<div class="w-full h-[60vh] flex flex-col justify-center items-center text-gray-500"><i class="fa-solid fa-circle-notch fa-spin text-4xl mb-4 text-white"></i><p>Đang tải thư viện nhạc...</p></div>`;
 
     try {
         const [personalized, albums, hits, vnPlaylists, moods] =
@@ -90,6 +92,7 @@ const homePage = async () => {
                 "playlist",
                 "personalized"
             );
+
         sectionsHtml += renderSection(
             "Album thịnh hành",
             albums,
@@ -118,12 +121,12 @@ const homePage = async () => {
         if (!sectionsHtml)
             sectionsHtml = `<div class="text-center text-gray-400 mt-20"><p>Không có dữ liệu hiển thị.</p></div>`;
 
-        content = `
+        return `
             <div class="pb-32 px-4 md:px-8 pt-8 max-w-[1600px] mx-auto">
                 <div class="mb-8 px-2">
                     <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">${
                         isLoggedIn
-                            ? `Chào mừng ${user.name} trở lại!`
+                            ? `Chào mừng ${escapeHtml(user.name)} trở lại!`
                             : "Khám phá thế giới âm nhạc"
                     }</h1>
                     <p class="text-gray-400 text-sm md:text-base">${
@@ -142,82 +145,8 @@ const homePage = async () => {
         `;
     } catch (e) {
         console.error("Home Page Error:", e);
-        content = `<div class="pt-20 text-center text-white">Lỗi tải trang: ${e.message}</div>`;
+        return `<div class="pt-20 text-center text-white">Lỗi tải trang: ${e.message}</div>`;
     }
-
-    setTimeout(() => {
-        document.querySelectorAll(".js-play-btn").forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const card = btn.closest(".js-album-card");
-                if (card) {
-                    playerService.playAlbumOrPlaylist(
-                        card.dataset.id,
-                        card.dataset.type
-                    );
-                    document.dispatchEvent(new CustomEvent("OPEN_FULL_PLAYER"));
-                }
-            });
-        });
-
-        document.querySelectorAll(".js-album-card").forEach((card) => {
-            card.addEventListener("click", () => {
-                playerService.loadPlaylistOnly(
-                    card.dataset.id,
-                    card.dataset.type
-                );
-                document.dispatchEvent(new CustomEvent("OPEN_FULL_PLAYER"));
-            });
-        });
-
-        document
-            .querySelectorAll(".js-scroll-container")
-            .forEach((container) => {
-                const sectionId = container.dataset.section;
-                const prevBtn = document.getElementById(
-                    `btn-prev-${sectionId}`
-                );
-                const nextBtn = document.getElementById(
-                    `btn-next-${sectionId}`
-                );
-                const updateButtonState = () => {
-                    if (!prevBtn || !nextBtn) return;
-                    prevBtn.disabled = container.scrollLeft <= 5;
-                    prevBtn.style.opacity = prevBtn.disabled ? "0.3" : "1";
-                    const maxScroll =
-                        container.scrollWidth - container.clientWidth;
-                    nextBtn.disabled = container.scrollLeft >= maxScroll - 5;
-                    nextBtn.style.opacity = nextBtn.disabled ? "0.3" : "1";
-                };
-                container.addEventListener("scroll", updateButtonState);
-                [prevBtn, nextBtn].forEach((btn) => {
-                    if (!btn) return;
-                    btn.addEventListener("click", () => {
-                        const amount = container.clientWidth * 0.7;
-                        container.scrollTo({
-                            left: btn.id.includes("prev")
-                                ? Math.max(0, container.scrollLeft - amount)
-                                : container.scrollLeft + amount,
-                            behavior: "smooth",
-                        });
-                    });
-                });
-                updateButtonState();
-                window.addEventListener("resize", updateButtonState);
-            });
-        const loginBtn = document.querySelector(".js-open-login-modal");
-        if (loginBtn)
-            loginBtn.addEventListener("click", () => {
-                document
-                    .querySelector(".js-auth-modal")
-                    ?.classList.remove("hidden");
-                document
-                    .querySelector(".js-auth-overlay")
-                    ?.classList.remove("hidden");
-            });
-    }, 100);
-
-    return content;
 };
 
 export default homePage;
