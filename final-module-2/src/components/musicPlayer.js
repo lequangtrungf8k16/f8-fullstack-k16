@@ -68,7 +68,7 @@ const renderFullPlayerList = () => {
 
 const musicPlayer = () => {
     return `
-    <div id="full-player" class="hidden absolute top-16 left-0 right-0 bottom-20 z-40 bg-[#121212] flex flex-col animate-fade-in overflow-hidden cursor-default transition-all duration-300 border-t border-gray-800">
+    <div id="full-player" class="hidden fixed top-16 bottom-20 right-0 left-0 z-10 bg-[#121212] flex flex-col animate-fade-in overflow-hidden cursor-default transition-all duration-300">
         <div class="relative flex flex-col md:flex-row h-full overflow-hidden">
             <div class="flex-1 flex items-center justify-center p-6 md:p-10 overflow-hidden bg-[#0a0a0a]">
                 <div class="js-stop-close relative aspect-square w-full max-w-[320px] md:max-w-[450px] shadow-2xl rounded-lg overflow-hidden border border-gray-800">
@@ -87,9 +87,9 @@ const musicPlayer = () => {
         </div>
     </div>
 
-    <div id="music-player" class="hidden absolute bottom-0 left-0 w-full bg-[#212121] text-white shadow-2xl z-50 border-t border-gray-700 h-20 flex flex-col justify-center transition-all duration-300">
-        <div class="absolute -top-4 left-0 w-full group h-4 cursor-pointer flex items-end">
-            <input id="progress-bar" type="range" min="0" max="100" value="0" class="w-full h-1 group-hover:h-1.5 bg-[#4b5563] appearance-none cursor-pointer transition-all rounded-lg" style="background: linear-gradient(to right, #dc2626 0%, #4b5563 0%);" />
+    <div id="music-player" class="hidden fixed bottom-0 left-0 right-0 bg-[#212121] text-white shadow-2xl z-50 border-t border-gray-700 h-20 flex flex-col justify-center transition-all duration-300">
+        <div class="absolute -top-4 left-0 w-full group h-1 cursor-pointer">
+            <input id="progress-bar" type="range" min="0" max="100" value="0" class="w-full h-full bg-[#4b5563] appearance-none cursor-pointer hover:h-1.5 transition-all rounded-lg" style="background: linear-gradient(to right, #dc2626 0%, #4b5563 0%);" />
         </div>
         <div class="flex items-center justify-between px-4 h-full">
             <div class="flex items-center gap-4 w-1/3">
@@ -113,7 +113,7 @@ const musicPlayer = () => {
                     <i class="js-volume-icon fa-solid fa-volume-high text-gray-400 w-5 text-center"></i>
                     <input type="range" min="0" max="1" step="0.05" value="1" id="volume-control" class="w-20 accent-white h-1 cursor-pointer bg-gray-600">
                 </div>
-                <button class="js-open-playlist js-toggle-full-player text-gray-400 hover:text-white ml-4 p-2 transition-transform" title="Mở rộng"><i class="js-playlist-icon fa-solid fa-chevron-up text-lg cursor-pointer"></i></button>
+                <button class="js-open-playlist js-toggle-full-player text-gray-400 hover:text-white ml-4 p-2 transition-transform" title="Mở rộng"><i class="js-playlist-icon fa-solid fa-chevron-down text-lg cursor-pointer"></i></button>
             </div>
         </div>
         <audio id="audio" class="hidden"></audio>
