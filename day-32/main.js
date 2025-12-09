@@ -11,7 +11,7 @@ const TodoList = () => {
 
     const handleClickBtn = () => {
         if (!inputValue) {
-            setMsg("Vui lòng nhập nội dung");
+            setMsg("Không được để trống");
         } else {
             setMsg("");
             setData([...data, inputValue]);
