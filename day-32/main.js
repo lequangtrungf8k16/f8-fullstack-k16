@@ -89,8 +89,10 @@ const TodoList = () => {
             ToggleToast("Hoàn tất chỉnh sửa trước khi xóa", "error");
             return;
         }
-        setData(data.filter((item, _index) => _index !== index)); // Tham số không dùng đến có thể để dấu gạch dưới "_"
-        ToggleToast("Xóa thành công");
+        if (window.confirm("Bạn có chắc chắn muốn xóa không")) {
+            setData(data.filter((item, _index) => _index !== index)); // Tham số không dùng đến có thể để dấu gạch dưới "_"
+            ToggleToast("Xóa thành công");
+        }
     };
 
     return (
