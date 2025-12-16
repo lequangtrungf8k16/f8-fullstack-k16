@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Service Login</title>
+    </head>
+    <body>
+        <section>
+            <form
+                action="https://api-gateway.fullstack.edu.vn/action_page.php"
+                method="post"
+            >
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2"><h2>Novell Service Login</h2></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><label for="lbl-username">Username:</label></td>
+                            <td colspan="2">
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id="lbl-username"
+                                    placeholder="Nhập tên..."
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="lbl-password">Password:</label></td>
+                            <td>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="lbl-password"
+                                    placeholder="Nhập mật khẩu..."
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="lbl-city"
+                                    >City of <br />
+                                    Employment:</label
+                                >
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    name="city"
+                                    id="lbl-city"
+                                    placeholder="Nơi làm việc..."
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="lbl-web-server">Web server:</label>
+                            </td>
+                            <td>
+                                <select name="web-server" id="lbl-web-server">
+                                    <option value="0">
+                                        --Choose a server--
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4">
+                                Please specify <br />
+                                your role:
+                            </td>
+                            <td>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="specify"
+                                        value="admin"
+                                    />
+                                    Admin
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- <td></td> -->
+                            <td>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="specify"
+                                        value="engineer"
+                                    />
+                                    Engineer
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- <td></td> -->
+                            <td>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="specify"
+                                        value="manager"
+                                    />
+                                    Manager
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- <td></td> -->
+                            <td>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="specify"
+                                        value="guest"
+                                    />
+                                    Guest
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">
+                                Single Sign-on <br />
+                                to the following:
+                            </td>
+                            <td>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        name="mail"
+                                        value="mail"
+                                    />
+                                    Mail
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- <td></td> -->
+                            <td>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        name="payroll"
+                                        value="payroll"
+                                    />
+                                    Payroll
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- <td></td> -->
+                            <td>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        name="self-service"
+                                        value="self-service"
+                                    />
+                                    Self-service
+                                </label>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="2">
+                                <button type="submit">Login</button>
+                                <button type="submit">Reset</button>
+                            </th>
+                            <!-- <td></td> -->
+                        </tr>
+                    </tfoot>
+                </table>
+            </form>
+        </section>
+    </body>
+</html>

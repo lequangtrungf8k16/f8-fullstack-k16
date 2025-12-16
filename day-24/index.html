@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Todo List</title>
+
+        <!-- Font Awesome 7.1.0 -->
+        <link rel="stylesheet" href="../font-awesome/css/all.min.css" />
+
+        <!-- Tailwindcss v4.1.16 -->
+        <link rel="stylesheet" href="./src/output.css" />
+        <link rel="stylesheet" href="./src/input.css" />
+    </head>
+    <body class="bg-violet-600">
+        <div
+            class="container bg-violet-950 w-[400px] h-auto my-20 mx-auto px-8 rounded-md shadow-xl/40"
+        >
+            <div class="form-wrapper py-8">
+                <h1 class="text-center text-white text-3xl font-bold">
+                    Get Things Done !
+                </h1>
+                <div>
+                    <form
+                        action="#!"
+                        method="post"
+                        id="js-form"
+                        class="flex justify-between mt-8"
+                    >
+                        <input
+                            class="js-input flex-2 border-2 border-violet-500 text-white px-2 py-1.5 placeholder:text-white-700 focus:outline-none"
+                            type="text"
+                            placeholder="What is the task today?"
+                            spellcheck="false"
+                            autocomplete="off"
+                        />
+                        <button
+                            type="submit"
+                            class="js-btn flex-1 w-full bg-violet-500 text-white font-bold hover:cursor-pointer"
+                        >
+                            Add Task
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Todo List -->
+                <div id="js-todo-list"></div>
+
+                <!-- Form edit -->
+                <div id="js-edit"></div>
+            </div>
+        </div>
+
+        <script src="./main.js"></script>
+    </body>
+</html>
+<!-- 
+    npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+-->

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Form đặt hàng sản phẩm</title>
+    </head>
+    <body>
+        <section>
+            <article style="width: 450px">
+                <form
+                    action="https://api-gateway.fullstack.edu.vn/action_page.php"
+                    method="post"
+                >
+                    <h2>Form đặt hàng sản phẩm</h2>
+                    <fieldset>
+                        <legend>Thông tin đơn hàng</legend>
+                        <div>
+                            <label for="lbl-info"> Tên sản phẩm: </label>
+                            <select name="info" id="lbl-info">
+                                <option value="0">iPhone 15</option>
+                                <option value="1">iPhone 14</option>
+                                <option value="2">iPhone 12</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="lbl-total"> Số lượng: </label>
+                            <input
+                                type="number"
+                                name="total"
+                                id="lbl-total"
+                                style="width: 50px"
+                            />
+                        </div>
+                        <div>
+                            <label for="lbl-pay">
+                                Upload ảnh thanh toán:
+                            </label>
+                            <input
+                                type="file"
+                                name="pay"
+                                id="lbl-pay"
+                                accept="image/*"
+                            />
+                        </div>
+                    </fieldset>
+                    <button type="submit">Đặt hàng</button>
+                </form>
+            </article>
+        </section>
+    </body>
+</html>

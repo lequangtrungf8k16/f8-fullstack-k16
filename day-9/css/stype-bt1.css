@@ -1,0 +1,80 @@
+body {
+    background: #2e3e4d;
+}
+
+li {
+    list-style: none;
+}
+
+.nav {
+    margin: 40px 60px 0;
+    background: #1f4959;
+}
+
+.menu {
+    display: flex;
+
+    height: auto;
+}
+
+/* Menu cấp 1 */
+.menu > li {
+    padding: 10px 0;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+
+    padding: 10px 20px;
+}
+
+.menu a:hover {
+    background: red;
+}
+
+/* Menu cấp 2 */
+.menu .sub-menu {
+    position: absolute;
+    top: 102%;
+    left: -10px;
+
+    width: 200px;
+    display: none;
+
+    background: #23a1d2;
+}
+
+.menu .sub-menu a {
+    width: 100%;
+    display: inline-block;
+
+    border-bottom: 1px solid white;
+}
+
+.menu li:hover > .sub-menu {
+    display: block;
+}
+
+/* Menu cấp 3 */
+.menu .sub-menu .sub-menu {
+    top: 0;
+    left: 100%;
+
+    width: 200px;
+    background: #23a1d2;
+}
+
+/* Menu cấp 4 */
+
+.menu .sub-menu .sub-menu .sub-menu {
+    top: 0;
+    left: 100%;
+
+    width: 200px;
+    background: #23a1d2;
+}

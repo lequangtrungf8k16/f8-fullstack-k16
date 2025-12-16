@@ -1,0 +1,72 @@
+img {
+    max-width: 100%;
+}
+
+main {
+    width: 65vw;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.car-service-heading h2 {
+    padding-top: 10px;
+    font-size: 4.6rem;
+}
+
+.car-service-heading p {
+    margin-top: 10px;
+}
+
+.car-service-list {
+    font-size: 0;
+}
+
+.car-service-list h2 {
+    font-size: 4.6rem;
+}
+
+p {
+    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.car-service-item {
+    display: inline-block;
+    width: 33.33%;
+    height: auto;
+
+    margin-top: 40px;
+    padding: 0 10px;
+    font-size: 1.4rem;
+}
+
+.car-service-desc {
+    height: 100px;
+    /* display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+}
+
+.car-service-item .car-service-img {
+    width: 60px;
+    margin-top: 0;
+    object-fit: cover;
+}
+
+.car-service-item .car-service-title,
+.car-service-item .car-service-desc {
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+.car-service-item .car-service-more {
+    display: inline-block;
+    background: blue;
+    color: white;
+    border-radius: 6px;
+    margin: 10px 0 0;
+    padding: 10px 20px;
+    text-decoration: none;
+}

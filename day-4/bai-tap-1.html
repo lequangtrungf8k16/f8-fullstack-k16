@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Form đăng ký tài khoản</title>
+    </head>
+    <body>
+        <section>
+            <form
+                action="https://api-gateway.fullstack.edu.vn/action_page.php"
+                method="post"
+            >
+                <h2>Form đăng ký tài khoản</h2>
+                <div>
+                    <label for="lbl-fullname"> Họ tên: </label>
+                    <input
+                        type="text"
+                        name="fullname"
+                        id="lbl-fullname"
+                        placeholder="Họ tên..."
+                    />
+                </div>
+                <div>
+                    <label for="lbl-email"> Email: </label>
+                    <input
+                        type="text"
+                        name="email"
+                        id="lbl-email"
+                        placeholder="Email..."
+                    />
+                </div>
+                <div>
+                    <label for="lbl-password"> Mật khẩu: </label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="lbl-password"
+                        placeholder="Mật khẩu..."
+                    />
+                </div>
+                <div>
+                    <label for="lbl-birthday"> Ngày sinh: </label>
+                    <input type="date" name="birthday" id="lbl-birthday" />
+                </div>
+                <div>
+                    <label>Giới tính:</label>
+                    <label>
+                        <input type="radio" name="gender" value="male" />
+                        Nam
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female" />
+                        Nữ
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="orther" />
+                        Khác
+                    </label>
+                </div>
+                <div>
+                    <label>Sở thích:</label>
+                    <label>
+                        <input type="checkbox" name="read" value="read" />
+                        Đọc sách
+                    </label>
+                    <label>
+                        <input type="checkbox" name="travel" value="travel" />
+                        Du lịch
+                    </label>
+                    <label>
+                        <input type="checkbox" name="sport" value="sport" />
+                        Thể thao
+                    </label>
+                </div>
+                <div>
+                    <label for="info"> Mô tả bản thân: </label> <br />
+                    <textarea
+                        name="info"
+                        id="info"
+                        placeholder="Mô tả bản thân..."
+                        style="width: 350px; height: 50px"
+                    ></textarea>
+                </div>
+                <button type="submit">Đăng ký</button>
+                <button type="reset">Xóa</button>
+            </form>
+        </section>
+    </body>
+</html>

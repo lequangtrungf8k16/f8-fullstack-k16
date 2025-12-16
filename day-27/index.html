@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>day 27: Blog</title>
+
+        <!-- Font Awesome 7.1.0 -->
+        <link rel="stylesheet" href="../font-awesome/css/all.min.css" />
+
+        <!-- Tailwindcss v4.1.16 -->
+        <link rel="stylesheet" href="./src/output.css" />
+        <link rel="stylesheet" href="./src/input.css" />
+    </head>
+    <body>
+        <main>
+            <div></div>
+            <section>
+                <div id="container" class="flex flex-col gap-1"></div>
+                <div
+                    id="pagination"
+                    class="flex justify-center flex-wrap gap-2 mt-8"
+                ></div>
+            </section>
+        </main>
+
+        <div
+            id="overlay"
+            class="hidden fixed inset-0 bg-black opacity-50 z-998"
+        ></div>
+
+        <div
+            id="content"
+            class="hidden fixed inset-0 flex justify-center items-center z-999"
+        >
+            <div
+                id="modal-box"
+                class="bg-white p-6 rounded-lg shadow-lg max-w-[500px] w-[90%] relative"
+            ></div>
+        </div>
+
+        <script src="./main.js"></script>
+    </body>
+</html>

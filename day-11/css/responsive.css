@@ -1,0 +1,113 @@
+/* PC */
+@media screen and (max-width: 1449.98px) {
+    .decoration {
+        display: none;
+    }
+    .auth .form-box .form-login-wrapper,
+    .auth .form-box .form-register-wrapper {
+        box-shadow: none;
+    }
+}
+
+/* PC Low */
+@media screen and (max-width: 1365.98px) {
+    .auth {
+        padding: 80px 0 100px;
+        position: static;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .auth .info {
+        position: static;
+    }
+
+    .heading-info p:last-child {
+        display: none;
+    }
+
+    .auth .form-box {
+        display: block;
+        margin: 30px auto;
+    }
+
+    .auth .form-box .img-rocket {
+        display: none;
+    }
+
+    .auth .form-box .form-login-wrapper,
+    .auth .form-box .form-register-wrapper {
+        position: static;
+
+        display: flex;
+        width: 485px;
+        height: 630px;
+        margin: 20px auto;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: none;
+    }
+
+    .auth:has(#register-btn:checked) .form-login-wrapper {
+        display: none;
+    }
+
+    .auth:has(#login-btn:checked) .form-register-wrapper {
+        display: none;
+    }
+}
+
+/* Tablet */
+@media screen and (max-width: 922.98px) {
+    .info {
+        width: 100%;
+    }
+
+    .info .heading-info h1 {
+        margin-top: 20px;
+        font-size: 7.6rem;
+    }
+
+    .auth .form-box .form-login-wrapper,
+    .auth .form-box .form-register-wrapper {
+        padding: 0 auto;
+    }
+
+    .info .switch-btn {
+        width: 450px;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 575.98px) {
+    .auth {
+        min-width: 360px;
+        padding: 0 10px;
+    }
+
+    .auth .form-box {
+        width: 100%;
+    }
+
+    .info {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .info .heading-info h1 {
+        margin-top: 20px;
+        font-size: 7.6rem;
+    }
+
+    .auth .form-box .form-login-wrapper,
+    .auth .form-box .form-register-wrapper {
+        width: 100%;
+    }
+
+    .info .switch-btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,24 @@
+/* Khi rê chuột vào thẻ <a>, đổi màu chữ thành cam */
+a:hover {
+    color: orange;
+}
+
+/* Khi click (active) vào nút <button>, đổi màu nền thành xanh lá */
+button:active {
+    background: green;
+}
+
+/* Đổi màu xanh dương cho phần tử đầu tiên của danh sách <ul> */
+ul > li:first-child {
+    color: blue;
+}
+
+/* Đổi màu đỏ cho phần tử cuối cùng của danh sách <ol> */
+ol > li:last-child {
+    color: red;
+}
+
+/* Tô nền xám cho tất cả <li> ở vị trí lẻ */
+li:nth-child(odd) {
+    background: gray;
+}

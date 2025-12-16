@@ -1,0 +1,26 @@
+/* Tô màu đỏ cho tất cả thể h1 */
+h1 {
+    color: red;
+}
+
+/* Tô màu xanh cho phần tử có class .highlight */
+.highlight {
+    color: blue;
+}
+
+/* Gạch chân phần tử có id special */
+#special {
+    text-decoration: underline;
+}
+
+/* Đổi nền vàng cho tất cả <p> nằm trong <div> có class .box */
+.box p {
+    background: yellow;
+}
+
+/* Viền đen 2px cho tất cả <li> con trực tiếp của <ul> */
+ul > li {
+    border: 2px solid black;
+}
+
+

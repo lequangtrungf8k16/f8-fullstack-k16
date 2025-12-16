@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Form liên hệ nhiều bước</title>
+    </head>
+    <body>
+        <section style="width: 400px">
+            <form
+                action="https://api-gateway.fullstack.edu.vn/action_page.php"
+                method="post"
+            >
+                <h2>Form liên hệ nhiều bước</h2>
+                <div>
+                    <fieldset>
+                        <legend>Thông tin cá nhân</legend>
+                        <div>
+                            <label for="lbl-username"> Họ tên: </label>
+                            <input
+                                type="text"
+                                name="username"
+                                id="lbl-username"
+                                placeholder="Nhập họ tên..."
+                            />
+                        </div>
+                        <div>
+                            <label for="lbl-email"> Email: </label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="lbl-email"
+                                placeholder="Nhập email..."
+                            />
+                        </div>
+                        <div>
+                            <label for="lbl-phone"> Số điện thoại: </label>
+                            <input
+                                type="number"
+                                name="phone"
+                                id="lbl-phone"
+                                placeholder="Nhập số điện thoại..."
+                            />
+                        </div>
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>Thông tin yêu cầu</legend>
+                        <div>
+                            <label for="lbl-support"> Loại yêu cầu: </label>
+                            <select name="support" id="lbl-support">
+                                <option value="0">Hỗ trợ kỹ thuật</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="lbl-desc"> Mô tả: </label>
+                        </div>
+                        <textarea
+                            name="desc"
+                            id="lbl-desc"
+                            placeholder="Nhập mô tả..."
+                            style="width: 300px; height: 40px"
+                        ></textarea>
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>Thông tin bổ sung</legend>
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="receive"
+                                value="receive"
+                            />
+                            Nhận email khuyến mãi
+                        </label>
+                        <div>
+                            <label> Cách liên hệ: </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="contact"
+                                    value="email"
+                                />
+                                Email
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="contact"
+                                    value="phone"
+                                />
+                                Điện thoại
+                            </label>
+                        </div>
+                    </fieldset>
+                    <button type="submit">Gửi thông tin</button>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>

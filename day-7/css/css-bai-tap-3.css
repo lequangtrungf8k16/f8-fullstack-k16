@@ -1,0 +1,69 @@
+img {
+    max-width: 100%;
+}
+
+main {
+    width: 70vw;
+    margin: 0 auto;
+}
+
+.content-car-heading {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 1.6rem;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.content-car-info {
+    margin-top: 20px;
+    font-size: 0;
+}
+
+.content-car-item {
+    display: inline-block;
+    width: 33.33%;
+    height: auto;
+    margin-top: 20px;
+    padding: 0 5px;
+    font-size: 1.6rem;
+}
+
+.content-car-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.content-car-item .content-car-title {
+    margin-top: 10px;
+}
+
+.content-car-item .content-car-title a {
+    color: black;
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+
+.content-car-item div {
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.content-car-item .content-car-desc {
+    height: 76.3px;
+}
+
+.content-car-item .content-car-more {
+    display: inline-block;
+    background: blue;
+    color: white;
+    margin-top: 20px;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+}

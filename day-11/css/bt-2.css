@@ -1,0 +1,159 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0 1 0;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 0 30px;
+}
+
+.header .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.header .menu-icon {
+    display: none;
+}
+
+.header nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header .menu {
+    display: flex;
+}
+
+.header .menu li {
+    list-style: none;
+    padding: 6px 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.header .menu li a {
+    text-decoration: none;
+    line-height: 1.6rem;
+    font-weight: 600;
+    color: inherit;
+}
+
+.header .menu li:hover,
+.header .active:hover {
+    background: blue;
+    color: #fff;
+    cursor: pointer;
+}
+
+.header .btn {
+    padding: 6px 15px;
+    border-radius: 10px;
+    color: #fff;
+    background: blue;
+    text-decoration: none;
+    line-height: 1.6rem;
+    font-weight: 600;
+}
+
+.header .toggle {
+    display: none;
+}
+
+@media screen and (max-width: 991.98px) {
+    .header .toggle {
+        display: block;
+    }
+
+    .header .toggle i {
+        font-size: 2.5rem;
+    }
+
+    .header .toggle i:hover {
+        cursor: pointer;
+        color: red;
+    }
+
+    .header .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        position: fixed;
+        top: 0;
+        left: -101%;
+        z-index: 100;
+
+        width: 300px;
+        height: 100%;
+        background: rgb(56, 56, 56);
+
+        padding-top: 20px;
+        transition: left 0.3s;
+    }
+
+    .header .menu li {
+        border-bottom: 1px solid gray;
+        padding: 10px 20px;
+    }
+
+    .header .overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 99;
+
+        background: rgba(128, 128, 128, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s;
+    }
+
+    #menu-toggle:checked + .header .menu {
+        left: 0;
+    }
+
+    #menu-toggle:checked + .header .overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .header .menu li {
+        width: inherit;
+        text-align: left;
+        border-radius: 0%;
+    }
+}
+
+@media screen and (max-width: 767.98px) {
+    body {
+        min-width: 360px;
+    }
+
+    .header {
+        position: relative;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header .contact {
+        position: absolute;
+        top: 90vh;
+        left: -101%;
+        z-index: 999;
+        transition-property: top left;
+        transition-duration: 0.3s;
+    }
+
+    #menu-toggle:checked + .header .contact {
+        top: 90vh;
+        left: 190px;
+    }
+
+    .header .menu-icon {
+        display: block;
+    }
+}

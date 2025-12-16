@@ -1,0 +1,62 @@
+@font-face {
+    font-family: Arial, Helvetica, sans-serif;
+    src: url(../fonts/ARIAL.TTF);
+}
+
+html {
+    font-size: 62.5%;
+    font-family: arial, sans-serif;
+    background: rgb(235, 204, 204);
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+.menu {
+    width: 400px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+}
+
+h1,
+span {
+    color: rgb(136, 69, 18);
+    font-weight: bold;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    height: 28px;
+    padding-top: 8px;
+    list-style: none;
+    border-bottom: 1px solid black;
+    text-align: justify;
+}
+
+li:hover {
+    background: rgb(156, 102, 102);
+    cursor: pointer;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+}
+
+a::before {
+    content: "☕ ";
+}
+
+.full-width {
+    display: inline-block;
+    width: 100%;
+}

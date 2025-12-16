@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>day 26</title>
+
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div class="list">
+            <ul>
+                <li>
+                    Item 1
+                    <span class="up">Up</span>
+                    <span class="down">Down</span>
+                </li>
+                <li>
+                    Item 2
+                    <span class="up">Up</span>
+                    <span class="down">Down</span>
+                </li>
+                <li>
+                    Item 3
+                    <span class="up">Up</span>
+                    <span class="down">Down</span>
+                </li>
+                <li>
+                    Item 4
+                    <span class="up">Up</span>
+                    <span class="down">Down</span>
+                </li>
+                <li>
+                    Item 5
+                    <span class="up">Up</span>
+                    <span class="down">Down</span>
+                </li>
+            </ul>
+        </div>
+
+        <div id="context-menu">
+            <button id="rename">Đổi tên</button>
+            <button id="delete">Xóa</button>
+        </div>
+
+        <div id="overlay">
+            <div id="rename-box">
+                <input
+                    type="text"
+                    id="rename-input"
+                    placeholder="Nhập tên mới..."
+                />
+                <button id="save-rename">Lưu</button>
+            </div>
+        </div>
+
+        <script src="./main.js"></script>
+    </body>
+</html>

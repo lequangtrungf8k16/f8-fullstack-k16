@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Đăng ký</title>
+    </head>
+    <body>
+        <section>
+            <form
+                action="https://api-gateway.fullstack.edu.vn/action_page.php"
+                method="post"
+            >
+                <table border="1" style="width: 400px">
+                    <thead>
+                        <tr>
+                            <th colspan="2">
+                                <h2 style="margin: 0">ĐĂNG KÝ</h2>
+                            </th>
+                            <!-- <th></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><label for="lbl-fullname">Full name</label></td>
+                            <td>
+                                <input
+                                    type="text"
+                                    name="fullname"
+                                    id="lbl-fullname"
+                                    placeholder="Nhập fullname..."
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="lbl-username">User name</label></td>
+                            <td>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id="lbl-username"
+                                    placeholder="Nhập tên..."
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="lbl-password">Password</label></td>
+                            <td>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="lbl-password"
+                                    placeholder="Nhập mật khẩu..."
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="lbl-re-password">
+                                    Nhập lại <br />
+                                    Password
+                                </label>
+                            </td>
+                            <td>
+                                <input
+                                    type="password"
+                                    name="re-password"
+                                    id="lbl-re-password"
+                                    placeholder="Nhập lại mật khẩu..."
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Giới tính</td>
+                            <td>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="gender"
+                                        value="Male"
+                                    />
+                                    Nam
+                                </label>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="gender"
+                                        value="Female"
+                                    />
+                                    Nữ
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ngày sinh</td>
+                            <td>
+                                <select name="day" id="day">
+                                    <option value="0">Ngày 1</option>
+                                </select>
+                                <select name="month" id="month">
+                                    <option value="0">Tháng 1</option>
+                                </select>
+                                <select name="year" id="year">
+                                    <option value="0">Năm 2015</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="lbl-address">Địa chỉ</label></td>
+                            <td>
+                                <textarea
+                                    name="address"
+                                    id="lbl-address"
+                                    placeholder="Nhập địa chỉ..."
+                                ></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="lbl-avatar">Avatar</label></td>
+                            <td>
+                                <input
+                                    type="file"
+                                    name="avatar"
+                                    id="lbl-avatar"
+                                    accept="image/*"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sở thích</td>
+                            <td>
+                                <label
+                                    ><input
+                                        type="checkbox"
+                                        name="film"
+                                        value="film"
+                                    />Xem phim</label
+                                >
+                                <label
+                                    ><input
+                                        type="checkbox"
+                                        name="sport"
+                                        value="sport"
+                                    />Thể thao</label
+                                >
+                                <label
+                                    ><input
+                                        type="checkbox"
+                                        name="web"
+                                        value="web"
+                                    />Web</label
+                                >
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="2">
+                                <button type="reset">Reset</button>
+                                <button type="submit">OK</button>
+                            </th>
+                            <!-- <th></th> -->
+                        </tr>
+                    </tfoot>
+                </table>
+            </form>
+        </section>
+    </body>
+</html>

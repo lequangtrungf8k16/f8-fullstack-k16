@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Buổi 11</title>
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+            integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <link rel="stylesheet" href="../day-11/css/base.css" />
+        <link rel="stylesheet" href="../day-11/css/bt-1.css" />
+        <link rel="stylesheet" href="../day-11/css/responsive.css" />
+    </head>
+    <body>
+        <section class="auth">
+            <div class="decoration"></div>
+            <!-- Start Background -->
+            <div class="info">
+                <a href="#!">
+                    <img
+                        class="logo"
+                        src="../day-11/img/viking-logo.png"
+                        alt="viking-logo"
+                    />
+                </a>
+                <div class="heading-info">
+                    <p>WELCOME TO</p>
+                    <h1>VIKINGER</h1>
+                    <p>
+                        The next generation social network & community! Connect
+                        with your friends and play with our quests and badges
+                        gamification system!
+                    </p>
+                </div>
+                <div class="switch-btn">
+                    <input
+                        type="radio"
+                        id="login-btn"
+                        name="tab-switch"
+                        value="login"
+                        checked
+                        hidden
+                    />
+                    <label for="login-btn" class="tab-switch-btn active">
+                        Login
+                    </label>
+                    <input
+                        type="radio"
+                        id="register-btn"
+                        name="tab-switch"
+                        value="register"
+                        hidden
+                    />
+                    <label for="register-btn" class="tab-switch-btn">
+                        Register
+                    </label>
+                </div>
+            </div>
+            <!-- End Background -->
+            <!-- Start Form Login -->
+            <div class="form-box">
+                <div class="form-login-wrapper">
+                    <div class="img-rocket">
+                        <img src="../day-11/img/rocket.png" alt="" />
+                    </div>
+                    <h2 class="form-heading">Account Login</h2>
+                    <form action="#!" method="post" class="form-login">
+                        <div class="form-email">
+                            <input
+                                type="text"
+                                id="username-email"
+                                placeholder=" "
+                                autocomplete="off"
+                            />
+                            <label for="username-email">
+                                Ussername or Email
+                            </label>
+                        </div>
+                        <div class="form-password">
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder=" "
+                                autocomplete="off"
+                            />
+                            <label for="password"> Password </label>
+                        </div>
+                        <div class="form-remember">
+                            <div class="remember">
+                                <input
+                                    type="checkbox"
+                                    id="remember-input"
+                                    placeholder=" "
+                                    autocomplete="off"
+                                    hidden
+                                />
+                                <label for="remember-input">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    <span></span>
+                                </label>
+                                <label for="remember-input">Remember Me</label>
+                            </div>
+                            <a href="#!">Fogot Password?</a>
+                        </div>
+                        <button class="btn" type="submit">
+                            Login to your Acount!
+                        </button>
+
+                        <div class="form-item">
+                            <p>Login with your Social Account</p>
+                            <div>
+                                <a href="#!" class="link-fb">
+                                    <i class="fa-brands fa-square-facebook"></i>
+                                </a>
+                                <a href="#!" class="link-twitter">
+                                    <i class="fa-brands fa-square-twitter"></i>
+                                </a>
+                                <a href="#!" class="link-twitch">
+                                    <i class="fa-brands fa-twitch"></i>
+                                </a>
+                                <a href="#!" class="link-youtube">
+                                    <i class="fa-brands fa-square-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- End Form Login -->
+                </div>
+                <!-- Start Form Register -->
+                <div class="form-register-wrapper">
+                    <div class="img-rocket">
+                        <img src="../day-11/img/rocket.png" alt="" />
+                    </div>
+                    <h2 class="form-heading">Create your Account!</h2>
+                    <form action="#!" method="post" class="form-register">
+                        <div class="form-email">
+                            <input
+                                type="email"
+                                id="your-email"
+                                placeholder=" "
+                                autocomplete="off"
+                            />
+                            <label for="your-email"> Your Email </label>
+                        </div>
+                        <div class="form-username">
+                            <input
+                                type="text"
+                                id="user-name"
+                                placeholder=" "
+                                autocomplete="off"
+                            />
+                            <label for="user-name"> Username </label>
+                        </div>
+                        <div class="form-password">
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder=" "
+                                autocomplete="off"
+                            />
+                            <label for="password"> Password </label>
+                        </div>
+                        <div class="form-re-password">
+                            <input
+                                type="password"
+                                name="re-password"
+                                id="re-password"
+                                placeholder=" "
+                                autocomplete="off"
+                            />
+                            <label for="re-password"> Repeat Password </label>
+                        </div>
+                        <div class="form-receive-mail">
+                            <div class="receive-mail">
+                                <input
+                                    type="checkbox"
+                                    id="receive-input"
+                                    placeholder=" "
+                                    autocomplete="off"
+                                    hidden
+                                />
+                                <label for="receive-input">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    <span></span>
+                                </label>
+                                <label for="receive-input">
+                                    Send me news and updates via email
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="btn" type="submit">Register Now!</button>
+                        <p>
+                            You'll receive a confirmation email in your inbox
+                            with a link to activate your account. If you have
+                            any problems, <a href="#!">contact us</a>!
+                        </p>
+                    </form>
+                </div>
+                <!-- End Form Register -->
+            </div>
+        </section>
+    </body>
+</html>

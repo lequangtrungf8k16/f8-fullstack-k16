@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Day 25: Cart</title>
+
+        <!-- Tailwindcss v4.1.16 -->
+        <link rel="stylesheet" href="./src/output.css" />
+        <link rel="stylesheet" href="./src/input.css" />
+    </head>
+    <body>
+        <!-- Danh sách sản phẩm -->
+        <section
+            class="w-full px-4 md:w-[750px] md:px-6 lg:w-[1000px] lg:px-8 mx-auto"
+        >
+            <h2 class="text-2xl font-bold mt-4">DANH SÁCH SẢN PHẨM</h2>
+            <table
+                class="w-full border-collapse table-auto border border-gray-500 mt-4 mx-auto"
+            >
+                <thead class="border-collapse border border-gray-500">
+                    <tr>
+                        <th
+                            class="w-[50px] border-collapse border border-gray-500"
+                        >
+                            STT
+                        </th>
+                        <th class="border-collapse border border-gray-500">
+                            Tên sản phẩm
+                        </th>
+                        <th
+                            class="w-[70px] border-collapse border border-gray-500"
+                        >
+                            Giá
+                        </th>
+                        <th
+                            class="w-[70px] border-collapse border border-gray-500"
+                        >
+                            Thêm vào giỏ
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="product-list">
+                    <!-- <tr>
+                        <td
+                            class="border-collapse border border-gray-500 text-center"
+                        >
+                            1
+                        </td>
+                        <td class="border-collapse border border-gray-500 px-2">
+                            Sản phẩm 1
+                        </td>
+                        <td
+                            class="border-collapse border border-gray-500 px-2 text-right"
+                        >
+                            1000
+                        </td>
+                        <td
+                            class="flex flex-col border-collapse border border-gray-500"
+                        >
+                            <input
+                                type="number"
+                                min="1"
+                                value="1"
+                                class="w-full text-center qty-input focus:outline-none"
+                                data-id=""
+                            />
+                            <button
+                                class="bg-gray-400 border border-gray-800 text-xs text-white hover:bg-blue-800 hover:cursor-pointer"
+                                data-id=""
+                            >
+                                Thêm vào giỏ
+                            </button>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Giỏ hàng -->
+        <section
+            class="w-full px-4 md:w-[750px] md:px-6 lg:w-[1000px] lg:px-8 mx-auto"
+        >
+            <h2 class="text-2xl font-bold mt-4">GIỎ HÀNG</h2>
+            <p id="empty-cart" class="mt-4">Giỏ hàng không có sản phẩm</p>
+
+            <table
+                id="cart-section"
+                class="w-full border-collapse table-auto border border-gray-500 mt-4 mx-auto"
+            >
+                <thead
+                    id="cart-head"
+                    class="border-collapse border border-gray-500 hidden"
+                >
+                    <tr>
+                        <th class="border-collapse border border-gray-500">
+                            STT
+                        </th>
+                        <th class="border-collapse border border-gray-500">
+                            Tên sản phẩm
+                        </th>
+                        <th class="border-collapse border border-gray-500">
+                            Giá
+                        </th>
+                        <th
+                            class="w-[70px] border-collapse border border-gray-500"
+                        >
+                            Số lượng
+                        </th>
+                        <th class="border-collapse border border-gray-500">
+                            Thành tiền
+                        </th>
+                        <th class="border-collapse border border-gray-500">
+                            Xóa
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="cart-info">
+                    <!-- <tr>
+                        <td class="border-collapse border border-gray-500">
+                            1
+                        </td>
+                        <td class="border-collapse border border-gray-500">
+                            Tên sản phẩm
+                        </td>
+                        <td
+                            class="border-collapse border border-gray-500 px-2 text-right"
+                        >
+                            Giá
+                        </td>
+                        <td
+                            class="border-collapse border border-gray-500 px-2 text-right"
+                        >
+                            Số lượng
+                        </td>
+                        <td
+                            class="border-collapse border border-gray-500 px-2 text-right"
+                        >
+                            Thành tiền
+                        </td>
+                        <td class="border-collapse border border-gray-500">
+                            <button
+                                class="w-full bg-gray-400 border border-gray-800 text-xs text-white hover:bg-blue-800 hover:cursor-pointer"
+                            >
+                                Xóa
+                            </button>
+                        </td>
+                    </tr> -->
+                    <!-- Hàng tính tổng sản phẩm -->
+                    <!-- <tr>
+                        <td
+                            colspan="3"
+                            class="border-collapse border border-gray-500"
+                        >
+                            Tổng
+                        </td>
+                        <td
+                            class="border-collapse border border-gray-500 px-2 text-right"
+                        >
+                            item
+                        </td>
+                        <td
+                            class="border-collapse border border-gray-500 px-2 text-right"
+                        >
+                            item
+                        </td>
+                        <td class="border-collapse border border-gray-500">
+                            <span id="cart-total"></span>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+            <div id="action-btn" class="hidden">
+                <hr class="mt-4" />
+                <div class="flex justify-between mt-4">
+                    <button
+                        id="update-cart"
+                        class="bg-gray-400 border border-gray-800 text-white px-2 py-1 hover:bg-blue-800 hover:cursor-pointer"
+                    >
+                        Cập nhật giỏ hàng
+                    </button>
+                    <button
+                        id="clear-cart"
+                        class="bg-red-600 border-red-800 text-white px-2 py-1 hover:bg-red-800 hover:cursor-pointer"
+                    >
+                        Xóa giỏ hàng
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <script src="./main.js"></script>
+    </body>
+</html>

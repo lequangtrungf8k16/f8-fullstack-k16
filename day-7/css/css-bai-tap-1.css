@@ -1,0 +1,33 @@
+html {
+    background: rgb(46, 66, 77);
+}
+
+.nav-list {
+    width: 90%;
+    background: rgb(31, 73, 89);
+    border-radius: 6px;
+    margin: 40px auto;
+    font-size: 0;
+}
+
+.nav-list ul li {
+    display: inline-block;
+    height: 40px;
+}
+
+.nav-list ul li a {
+    display: inline-block;
+    height: 100%;
+    width: 100px;
+    padding: 4px 20px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 1.8;
+    border-radius: 6px;
+}
+
+.nav-list ul li a:hover {
+    background: rgb(243, 46, 46);
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Blogs: Hoàn thiện bài tập buổi 27</title>
+
+        <!-- Font Awesome 7.1.0 -->
+        <link rel="stylesheet" href="../font-awesome/css/all.min.css" />
+
+        <!-- Tailwindcss v4.1.16 -->
+        <link rel="stylesheet" href="./src/output.css" />
+        <link rel="stylesheet" href="./src/input.css" />
+    </head>
+    <body>
+        <main class="w-[1200px] mx-auto max-xl:w-full max-xl:px-4">
+            <h1 class="text-5xl font-bold text-center my-4">Blogs</h1>
+            <div class="w-full mt-8">
+                <input
+                    class="js-search w-full border border-gray-400 rounded-sm px-2 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    type="text"
+                    placeholder="Search..."
+                />
+            </div>
+            <button
+                class="js-add-btn border border-gray-300 rounded-sm mt-4 px-3 py-2 hover:bg-blue-500 hover:cursor-pointer hover:text-white transition-colors"
+            >
+                Thêm mới
+            </button>
+            <div class="flex gap-2">
+                <button
+                    class="js-newest border border-gray-300 rounded-sm mt-4 px-3 py-2 hover:bg-blue-500 hover:cursor-pointer hover:text-white transition-colors"
+                >
+                    Mới nhất</button
+                ><button
+                    class="js-oldest border border-gray-300 rounded-sm mt-4 px-3 py-2 hover:bg-blue-500 hover:cursor-pointer hover:text-white transition-colors"
+                >
+                    Cũ nhất
+                </button>
+            </div>
+
+            <div class="js-loading mt-4"></div>
+
+            <section class="js-post-list">
+                <!-- <h2 class="font-bold"></h2>
+                <p class="mt-4">
+                </p>
+                <div class="flex justify-between">
+                    <button
+                        class="border border-gray-300 rounded-sm mt-4 px-4 py-2 bg-blue-500 text-white hover:bg-blue-700 hover:cursor-pointer transition-colors"
+                    >
+                        Xem chi tiết
+                    </button>
+                    <div>
+                        <button
+                            class="border border-gray-300 rounded-sm mt-4 px-4 py-2 bg-yellow-500 text-white hover:bg-yellow-700 hover:cursor-pointer transition-colors"
+                        >
+                            Sửa
+                        </button>
+                        <button
+                            class="border border-gray-300 rounded-sm mt-4 px-4 py-2 bg-red-500 text-white hover:bg-red-700 hover:cursor-pointer transition-colors"
+                        >
+                            Xóa
+                        </button>
+                    </div>
+                </div> -->
+            </section>
+
+            <div
+                class="js-pagination flex flex-wrap justify-center items-center gap-2 my-6"
+            ></div>
+        </main>
+
+        <div class="js-modal hidden">
+            <div
+                class="max-w-[90%] mx-auto fixed top-[15%] left-0 right-0 z-999 bg-white border border-gray-500 rounded-sm p-5"
+            >
+                <h2
+                    class="js-modal-title text-3xl mb-3 border-b border-gray-400 pb-2"
+                ></h2>
+                <div class="js-modal-content">
+                    <p></p>
+                </div>
+            </div>
+            <div
+                class="js-overlay fixed inset-0 bg-black opacity-45 z-990"
+            ></div>
+        </div>
+
+        <script src="./main.js"></script>
+    </body>
+</html>

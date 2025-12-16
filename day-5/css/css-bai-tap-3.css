@@ -1,0 +1,31 @@
+/* Thêm ký hiệu trước mỗi tiêu đề <h2> */
+h2::before {
+    content: "👉 ";
+}
+
+/* Hoặc dùng theo tên class */
+/* 
+.highlight::before {
+    content: "👉 ";
+} */
+
+/* Thêm ký hiệu sau mỗi mục trong danh sách <li> */
+li::after {
+    content: " ✔️";
+}
+
+/* Làm chữ cái đầu tiên của đoạn <p> to hơn và màu đỏ */
+p::first-letter {
+    font-size: 40px;
+    color: red;
+}
+
+/* Tô nền vàng cho dòng đầu tiên của <p> */
+p::first-line {
+    background: yellow;
+}
+
+/* Khi bôi chọn chữ trong <p>, nền sẽ đổi thành xanh lá */
+p::selection {
+    background: green;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link rel="stylesheet" href="style.css" />
+
+        <title>Create Account</title>
+    </head>
+    <body class="bg-violet-500">
+        <div
+            class="container shadow-xl/40 bg-white w-100 rounded-md mt-30 mx-auto p-8"
+        >
+            <form action="#!" method="post">
+                <h2 class="font-bold text-2xl text-center pt-5">
+                    Create a new account
+                </h2>
+
+                <!-- Username -->
+                <div class="flex flex-col mt-4">
+                    <label for="username" class="font-bold"> Username </label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        class="username text-violet-800 border-2 border-gray-400 rounded-md mt-1.5 px-3 py-1.5 placeholder:text-gray-600/25 focus:outline-none focus:ring-1 focus:ring-violet-700"
+                        placeholder="webcrunch"
+                        autocomplete="off"
+                    />
+                </div>
+                <span class="error-username text-red-500 text-[10px]"></span>
+
+                <!-- Email -->
+                <div class="flex flex-col mt-4">
+                    <label for="email" class="font-bold"> Email </label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="email text-violet-800 border-2 border-gray-400 rounded-md mt-1.5 px-3 py-1.5 placeholder:text-gray-600/25 focus:outline-none focus:ring-1 focus:ring-violet-700"
+                        placeholder="andy@webcrunch.com"
+                    />
+                </div>
+                <span class="error-email text-red-500 text-[10px]"></span>
+
+                <!-- Password -->
+                <div class="flex flex-col mt-4">
+                    <label for="password" class="font-bold"> Password </label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="pass text-violet-800 border-2 border-gray-400 rounded-md mt-1.5 px-3 py-1.5 placeholder:text-gray-600/25 focus:outline-none focus:ring-1 focus:ring-violet-700"
+                        placeholder="Nhập password..."
+                        spellcheck="false"
+                    />
+                </div>
+                <span class="error-pass text-red-500 text-[10px]"></span>
+
+                <!-- Re-Password -->
+                <div class="flex flex-col mt-4">
+                    <label for="re-password" class="font-bold">
+                        Password confirmation
+                    </label>
+                    <input
+                        type="password"
+                        id="re-password"
+                        name="re-password"
+                        class="re-pass text-violet-800 border-2 border-gray-400 rounded-md mt-1.5 px-3 py-1.5 placeholder:text-gray-600/25 focus:outline-none focus:ring-1 focus:ring-violet-700"
+                        placeholder="Nhập lại password"
+                    />
+                    <span class="error-repass text-red-500 text-[10px]"></span>
+                </div>
+
+                <!-- Button -->
+                <button
+                    class="btn w-full bg-violet-500 rounded-md text-center font-bold text-white my-6 p-2.5 hover:bg-violet-800 cursor-pointer"
+                >
+                    Create account
+                </button>
+            </form>
+        </div>
+
+        <script src="./main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,605 @@
+body {
+    font-size: 1.8rem;
+    overflow-x: hidden;
+}
+
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    background: #f8ebc9;
+    padding: 10px 137px;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-inner .logo a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2.4rem;
+    font-weight: 900;
+}
+
+.header-inner .logo img {
+    width: 20px;
+    height: 20px;
+}
+
+.header-inner .logo span:last-child {
+    font-size: 1.4rem;
+    font-weight: normal;
+}
+
+/* Navigation */
+.toggle-menu,
+.close-btn {
+    display: none;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-inner .menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.header-inner .menu li {
+    list-style: none;
+}
+
+.header-inner a {
+    font-family: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+
+.header-inner .menu a:hover {
+    color: #fd6038;
+    transition: color 0.3s;
+}
+
+.header-inner .menu li:hover i {
+    cursor: pointer;
+    color: #fd6038;
+}
+
+.header-inner .menu li:last-child {
+    position: relative;
+}
+
+.header-inner .menu li:last-child > ul {
+    position: absolute;
+    z-index: 2;
+    display: none;
+    width: max-content;
+    padding-top: 10px;
+    background: #f8ebc9;
+    padding: 1px 11px;
+    box-shadow: 0 20px 70px 0 rgba(14, 20, 18, 0.07);
+}
+
+.header-inner .menu li:last-child > ul li {
+    padding: 10px;
+    border-bottom: 1px solid #313d39;
+}
+
+.header-inner .menu li:last-child:hover > ul {
+    display: block;
+}
+
+.header-inner .contact a {
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.header-inner .contact a:hover {
+    color: #fd6038;
+}
+
+/* Main */
+/* #Blog */
+.blogs {
+    padding: 80px 137px;
+}
+
+.blogs .inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.blogs .inner .wrapper-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.blogs .inner .wrapper-info .heading h2 {
+    font-family: "Roboto Slab";
+    font-size: 4.2rem;
+    margin-top: 20px;
+}
+
+.blogs .inner .wrapper-info .blog-btn {
+    margin-top: 20px;
+    display: flex;
+    flex-shrink: 0;
+    overflow: auto;
+}
+
+.blogs .inner .wrapper-info .blog-btn button {
+    font-family: "Manrope";
+    font-size: 1.8rem;
+    text-decoration: none;
+    user-select: none;
+    padding: 15px 30px;
+    margin: 10px 5px;
+    background: transparent;
+    color: #fff;
+    background: #0e1412;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.blogs .inner .wrapper-info .blog-btn .btn:hover {
+    background: #fc4011;
+}
+
+.blogs .inner .wrapper-info .blog-btn button:first-child {
+    background: #fc4011;
+}
+
+.blogs .inner .wrapper-blog {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.blogs .inner .wrapper-blog .blog-inner {
+    width: 33.3%;
+}
+
+.blogs .inner .blog-item a {
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.blogs .inner .blog-item a:hover {
+    color: #fd6038;
+}
+
+.blogs .inner .blog-item .blog-image {
+    height: 270px;
+    overflow: hidden;
+}
+
+.blogs .inner .blog-item .blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.blogs .inner .blog-item .blog-image:hover img {
+    transform: scale(110%);
+}
+
+.blogs .inner .blog-item .blog-name {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.blogs .inner .blog-item .blog-name img {
+    cursor: pointer;
+}
+
+.blogs .inner .blog-item .blog-name .name-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.blogs .inner .blog-item .blog-name .name-info a span {
+    font-size: 2rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.blogs .inner .blog-item .blog-name .name-info a:hover {
+    color: #fd6038;
+}
+
+.blogs .inner .blog-item .blog-name .name-info span {
+    font-size: 1.6rem;
+}
+
+.blogs .inner .blog-inner .blog-item .btn {
+    display: inline-block;
+    font-family: "Manrope";
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 20px;
+    background: transparent;
+    color: #0e1412;
+    transition: color 0.3s;
+}
+
+.blogs .inner .blog-inner .blog-item .btn:hover {
+    color: #fc4011;
+}
+
+/* #Newsletter */
+.newsletter-item {
+    padding: 80px 137px;
+    background: #017848;
+}
+
+.newsletter-item .wrapper-info {
+    width: 570px;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+}
+
+.newsletter-item .wrapper-info .heading p:last-child {
+    display: none;
+}
+
+.newsletter-item .wrapper-info .email-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.newsletter-item .wrapper-info .email-info input {
+    width: 300px;
+    padding: 14px;
+    font-family: "Manrope";
+    font-size: 1.8rem;
+}
+
+.newsletter-item .wrapper-info .email-info .btn {
+    display: inline-block;
+    font-family: "Manrope";
+    text-decoration: none;
+    user-select: none;
+    padding: 10px 20px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    background: #fd6038;
+    transition: background-color 0.3s;
+}
+
+.newsletter-item .wrapper-info .email-info .btn:hover {
+    background: #fc4011;
+}
+
+.newsletter-item .wrapper-info a {
+    text-decoration: none;
+    color: #fed464;
+}
+
+.newsletter-item .wrapper-info button {
+    display: none;
+    font-family: "Manrope";
+    font-size: 1.8rem;
+    text-decoration: none;
+    padding: 15px 30px;
+    margin: 10px;
+    background: transparent;
+    color: #fff;
+    background: #fd6038;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.newsletter-item .wrapper-info button:hover {
+    background: #fc4011;
+}
+
+/* Blog list */
+.blogs-list {
+    padding: 80px 137px;
+}
+
+.blogs-list .inner {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.blogs-list .inner .wrapper-info .heading h2 {
+    font-family: "Roboto Slab";
+    font-size: 4.2rem;
+    margin-top: 20px;
+}
+
+.blogs-list .inner .wrapper-blog {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.blogs-list .inner .wrapper-blog .blog-inner {
+    width: calc(33.3% - 20px);
+}
+
+.blogs-list .inner .blog-item a {
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.blogs-list .inner .blog-item a:hover {
+    color: #fd6038;
+}
+
+.blogs-list .inner .blog-item .blog-image {
+    height: 270px;
+    overflow: hidden;
+}
+
+.blogs-list .inner .blog-item .blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.blogs-list .inner .blog-item .blog-image:hover img {
+    transform: scale(110%);
+}
+
+.blogs-list .inner .blog-item .blog-name {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.blogs-list .inner .blog-item .blog-name img {
+    cursor: pointer;
+}
+
+.blogs-list .inner .blog-item .blog-name .name-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.blogs-list .inner .blog-item .blog-name .name-info a span {
+    font-size: 2rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.blogs-list .inner .blog-item .blog-name .name-info a:hover {
+    color: #fd6038;
+}
+
+.blogs-list .inner .blog-item .blog-name .name-info span {
+    font-size: 1.6rem;
+}
+
+.blogs-list .inner .blog-inner .blog-item .btn {
+    display: inline-block;
+    font-family: "Manrope";
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 20px;
+    background: transparent;
+    color: #0e1412;
+    transition: color 0.3s;
+}
+
+.blogs-list .inner .wrapper-blog .blog-inner .blog-item .btn:hover {
+    color: #fc4011;
+}
+
+.blogs-list .inner .btn-switch {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.blogs-list .inner .btn-switch .btn {
+    background: #0e1412;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 10px 5px;
+}
+
+.blogs-list .inner .btn-switch .btn:hover {
+    background: #fd6038;
+}
+
+.blogs-list .inner .btn-switch .btn:first-child {
+    background: #fd6038;
+}
+
+/* Footer */
+footer {
+    padding: 80px 137px;
+    background: #0e1412;
+    color: #fff;
+}
+
+footer .contact {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    margin: 20px 0;
+    border-bottom: 1px solid #313d39;
+}
+
+footer .contact h2 {
+    font-size: 2rem;
+}
+
+footer .contact * :not(h2) {
+    font-size: 1.6rem;
+}
+
+footer .contact .justice {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 20%;
+}
+
+footer .contact .justice span {
+    margin-top: 20px;
+}
+
+footer .contact .pages {
+    display: flex;
+    flex-direction: column;
+}
+
+footer .contact .justice2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+footer .contact a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #beccc7;
+}
+
+footer .contact a:hover {
+    color: #fd6038;
+}
+
+footer .contact .map {
+    position: relative;
+
+    height: 268px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+footer .contact .map img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+footer .contact .map a {
+    position: absolute;
+    top: 0;
+    left: 10px;
+
+    display: inline-block;
+    padding: 6px 20px;
+    background: #fff;
+    color: #0e1412;
+    transition: background-color 0.3s;
+}
+
+footer .contact .map a:hover {
+    background: #fd6038;
+    color: #fff;
+}
+
+.about-justice {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 20px;
+}
+
+.about-justice .justice-icon .wrapper-logo {
+    display: flex;
+}
+
+.about-justice .justice-icon .logo a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.about-justice .justice-icon .logo img {
+    width: 20px;
+    height: 20px;
+}
+
+.about-justice .justice-icon .copyright {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.about-justice .social {
+    display: flex;
+    gap: 20px;
+}
+
+.about-justice .justice-icon .wrapper-logo .logo span:first-of-type {
+    font-size: 2.4rem;
+    font-weight: 900;
+}
+
+.about-justice .justice-icon .wrapper-logo .logo span:last-of-type {
+    font-size: 1.4rem;
+    font-weight: normal;
+}
+
+.about-justice .social a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #313d39;
+    padding-left: 10px;
+    transition-property: background-color transform;
+    transition-duration: 0.3s;
+}
+
+.about-justice .social i {
+    display: inline-block;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.about-justice .social a:hover {
+    background: #fd6038;
+    transform: scale(110%);
+}
+
+/* Back to top */
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 90;
+    padding: 10px;
+    border-radius: 50%;
+    background: #fd6038;
+    color: #fff;
+}
+
+.back-to-top:hover {
+    background: #fc4011;
+}
