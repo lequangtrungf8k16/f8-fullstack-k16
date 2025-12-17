@@ -1,22 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 
 function App() {
-    const [sidebarWidth, setSidebarWidth] = useState("200");
-    const isResizingRef = useRef(false);
+    const [sidebarWidth, setSidebarWidth] = useState(200);
+    const isResizeRef = useRef(false);
 
     const [isOpen, setIsOpen] = useState(true);
     const [isDragging, setIsDragging] = useState(false);
 
     useEffect(() => {
         const handleMouseMove = (e) => {
-            if (!isResizingRef.current) return;
+            if (!isResizeRef.current) return;
 
             let newResize = e.clientX;
-            if (newResize < 80) {
-                newResize = 80;
+            if (newResize < 60) {
+                newResize = 60;
             }
-            if (newResize > 300) {
-                newResize = 300;
+            if (newResize > 400) {
+                newResize = 400;
             }
 
             setSidebarWidth(newResize);
@@ -24,8 +24,8 @@ function App() {
         };
 
         const handleMouseStop = () => {
-            if (isResizingRef.current) {
-                isResizingRef.current = false;
+            if (isResizeRef.current) {
+                isResizeRef.current = false;
                 setIsDragging(false);
 
                 document.body.style.cursor = "default";
@@ -42,8 +42,8 @@ function App() {
         };
     }, []);
 
-    const startResizing = () => {
-        isResizingRef.current = true;
+    const startResize = () => {
+        isResizeRef.current = true;
         setIsDragging(true);
 
         document.body.style.userSelect = "none";
@@ -88,7 +88,7 @@ function App() {
 
             {/* Resize */}
             <div
-                onMouseDown={startResizing}
+                onMouseDown={startResize}
                 className={`relative border-2 border-gray-700 transition-opacity opacity-0 cursor-col-resize ${
                     isOpen
                         ? "hover:opacity-100"
