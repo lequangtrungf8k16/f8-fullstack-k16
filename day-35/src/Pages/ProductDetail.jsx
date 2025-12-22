@@ -108,7 +108,7 @@ export default function ProductDetail() {
                         ))}
                         {productDetail?.images.length > 2 ? (
                             <button
-                                onClick={handlePrev}
+                                onClick={handleNext}
                                 className="font-bold cursor-pointer"
                             >
                                 Sau
