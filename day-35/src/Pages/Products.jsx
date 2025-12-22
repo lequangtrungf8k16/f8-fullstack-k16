@@ -81,7 +81,7 @@ export default function Products() {
         );
 
     return (
-        <div className="mt-4 px-4">
+        <div className="my-20 px-4">
             <h2 className="text-2xl font-bold">Sản phẩm</h2>
             <input
                 value={inputValue}

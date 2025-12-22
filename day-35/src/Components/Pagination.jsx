@@ -31,7 +31,7 @@ export default function Pagination({ page, totalPages, onChangePage }) {
     };
 
     return (
-        <div className="flex justify-center items-center gap-4 px-4 py-10 font-bold">
+        <div className="flex justify-center items-center gap-4 px-4 py-20 font-bold">
             <button
                 onClick={() => onChangePage(page - 1)}
                 disabled={page === 1}

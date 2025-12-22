@@ -70,7 +70,7 @@ export default function ProductDetail() {
     };
 
     return (
-        <div className="mt-10 px-4">
+        <div className="my-20 px-4">
             <h3 className="text-center text-5xl font-bold">
                 Chi tiết sản phẩm
             </h3>
