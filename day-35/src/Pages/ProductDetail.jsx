@@ -76,7 +76,7 @@ export default function ProductDetail() {
             </h3>
 
             <article className="flex flex-col justify-between mt-10 px-4 lg:flex-row">
-                <div className="flex-1 px-4">
+                <div className="flex-1 items-center px-4">
                     <div className="bg-gray-200 rounded-md">
                         <img src={mainImage} alt={productDetail?.title} />
                     </div>
@@ -93,7 +93,7 @@ export default function ProductDetail() {
                             ""
                         )}
                         {productDetail?.images?.map((image, index) => (
-                            <div key={index} 
+                            <div key={index}>
                                 <img
                                     onClick={() => setMainImage(image)}
                                     src={image}
@@ -126,7 +126,6 @@ export default function ProductDetail() {
                         {productDetail?.price} $
                     </p>
                     <p className="mt-4 text-gray-600">
-                        
                         {productDetail?.description}
                     </p>
                     <div className="mt-4 flex gap-4 text-blue-500">
