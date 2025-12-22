@@ -10,7 +10,7 @@ export default function Products() {
     const [isError, setIsError] = useState(false);
     const [products, setProducts] = useState([]);
 
-    const [inputValue, setInputValue] = useState(searchParams.get("q" || ""));
+    const [inputValue, setInputValue] = useState(searchParams.get("q") || "");
     const searchQuery = searchParams.get("q") || "";
     const navigate = useNavigate();
 
