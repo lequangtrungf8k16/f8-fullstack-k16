@@ -10,12 +10,21 @@ export default function Products() {
     const [isError, setIsError] = useState(false);
     const [products, setProducts] = useState([]);
 
+    const [inputValue, setInputValue] = useState(searchParams.get("q" || ""));
     const searchQuery = searchParams.get("q") || "";
     const navigate = useNavigate();
 
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const limit = 8;
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setSearchParams({ q: inputValue });
+            setPage(1);
+        }, 700);
+        return () => clearTimeout(timeoutId);
+    }, [inputValue, setSearchParams]);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -48,6 +57,13 @@ export default function Products() {
         fetchProducts();
     }, [page, searchQuery]);
 
+    const handlePageChange = (newPage) => {
+        if (newPage >= 1 && newPage <= totalPages) {
+            setPage(newPage);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    };
+
     if (isLoading) {
         return (
             <div className="flex flex-col items-center gap-2 p-4">
@@ -64,27 +80,17 @@ export default function Products() {
             </p>
         );
 
-    const handlePageChange = (newPage) => {
-        if (newPage >= 1 && newPage <= totalPages) {
-            setPage(newPage);
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-    };
-
     return (
         <div className="px-4">
             <h2 className="mt-4 text-2xl font-bold">Sản phẩm</h2>
             <input
-                value={searchQuery}
-                onChange={(e) => {
-                    setSearchParams({ q: e.target.value });
-                    setPage(1);
-                }}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
                 type="text"
                 placeholder="Tìm kiếm..."
                 className="mt-4 px-2 py-1 border border-gray-400 rounded-md shadow-md"
             />
-            {!isError ? (
+            {!isLoading ? (
                 <section className="grid grid-cols-1 gap-8 mt-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {products?.length > 0 ? (
                         products.map((item) => (
