@@ -88,7 +88,7 @@ export default function Products() {
                 onChange={(e) => setInputValue(e.target.value)}
                 type="text"
                 placeholder="Tìm kiếm..."
-                className="w-80 mt-4 px-3 py-2 border border-gray-400 rounded-md shadow-md"
+                className="w-full sm:w-100 mt-4 px-3 py-2 border border-gray-400 rounded-md shadow-md"
             />
             {!isLoading ? (
                 <section className="grid grid-cols-1 gap-8 mt-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
