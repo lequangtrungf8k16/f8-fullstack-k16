@@ -100,13 +100,21 @@ export default function Products() {
                             >
                                 <div className="aspect-square overflow-hidden bg-gray-200">
                                     <img
+                                        onClick={() =>
+                                            navigate(`/product/${item.id}`)
+                                        }
                                         src={item?.thumbnail}
                                         alt={item?.title}
                                         className="w-full object-cover cursor-pointer transition-transform duration-300 group-hover:scale-110"
                                     />
                                 </div>
                                 <div className="flex flex-col flex-1 justify-between gap-2 px-4">
-                                    <h3 className="flex-1 text-xl font-bold text-gray-900 line-clamp-2 cursor-pointer">
+                                    <h3
+                                        onClick={() =>
+                                            navigate(`/product/${item.id}`)
+                                        }
+                                        className="flex-1 text-xl font-bold text-gray-900 line-clamp-2 cursor-pointer"
+                                    >
                                         {item?.title}
                                     </h3>
                                     <div className="flex flex-col items-start mt-auto">
