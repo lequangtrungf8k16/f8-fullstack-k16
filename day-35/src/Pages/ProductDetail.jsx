@@ -94,7 +94,7 @@ export default function ProductDetail() {
                         )}
                         {productDetail?.images?.map((image, index) => (
                             <div key={index} 
-                                className="w-full overflow-x-hidden">
+                                className="w-60 overflow-x-hidden">
                                 <img
                                     onClick={() => setMainImage(image)}
                                     src={image}
