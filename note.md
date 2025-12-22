@@ -58,7 +58,7 @@
     -   Gõ vào thanh tìm kiếm: React Snippets.
     -   Tìm mục "ES7 React Snippets: Import React On Top".
     -   Bỏ chọn (Uncheck) ô này.
-    -   Thử lại lệnh rafc, dòng import React sẽ biến mất.
+    -   Thử lại lệnh rfc, dòng import React sẽ biến mất.
 
     *   Xuống dòng không ảnh hưởng code
 
@@ -86,3 +86,7 @@
         Vẫn trong Settings, tìm kiếm: Prettier Print Width (nếu bạn đã cài Prettier Extension).
         Mặc định là 80. Bạn có thể chỉnh lên 100 hoặc 120 nếu muốn dòng dài hơn một chút rồi mới xuống dòng.
         Lưu ý: Để cách này hoạt động, bạn cần cài Extension Prettier - Code formatter trong VS Code.
+
+5.  Các thư viện
+
+npm i react-router-dom
