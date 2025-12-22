@@ -82,7 +82,7 @@ export default function ProductDetail() {
                     </div>
 
                     <div className="flex justify-center items-center gap-4 my-4 overflow-x-auto">
-                        {productDetail?.images.length > 2 ? (
+                        {productDetail?.images.length > 1 ? (
                             <button
                                 onClick={handlePrev}
                                 className="font-bold cursor-pointer"
@@ -94,7 +94,6 @@ export default function ProductDetail() {
                         )}
                         {productDetail?.images?.map((image, index) => (
                             <div key={index} 
-                                className="w-60 overflow-x-hidden">
                                 <img
                                     onClick={() => setMainImage(image)}
                                     src={image}
@@ -107,7 +106,7 @@ export default function ProductDetail() {
                                 />
                             </div>
                         ))}
-                        {productDetail?.images.length > 2 ? (
+                        {productDetail?.images.length > 1 ? (
                             <button
                                 onClick={handleNext}
                                 className="font-bold cursor-pointer"
