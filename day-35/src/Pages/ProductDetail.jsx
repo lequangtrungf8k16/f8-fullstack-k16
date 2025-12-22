@@ -82,7 +82,7 @@ export default function ProductDetail() {
                     </div>
 
                     <div className="flex justify-center items-center gap-4 my-4 overflow-x-auto">
-                        {productDetail?.images.length > 2 ? (
+                        {productDetail?.images.length > 1 ? (
                             <button
                                 onClick={handlePrev}
                                 className="font-bold cursor-pointer"
@@ -100,13 +100,13 @@ export default function ProductDetail() {
                                     alt={productDetail?.title}
                                     className={`mt-6 w-20 h-20 object-cover cursor-pointer rounded-md border-2 transition-all duration-300 shadow-sm ${
                                         mainImage === image
-                                            ? "border-blue-500 -translate-y-4 shadow-xl scale-110 z-10" // Khi được chọn: Nhấc lên, phóng to, đổ bóng đậm
-                                            : "border-transparent opacity-60 hover:opacity-100 hover:-translate-y-1" // Khi chưa chọn: Mờ hơn, rê chuột vào nhấc nhẹ
+                                            ? "border-blue-500 -translate-y-4 shadow-xl scale-110 z-10"
+                                            : "border-transparent opacity-60 hover:opacity-100 hover:-translate-y-1"
                                     }`}
                                 />
                             </div>
                         ))}
-                        {productDetail?.images.length > 2 ? (
+                        {productDetail?.images.length > 1 ? (
                             <button
                                 onClick={handleNext}
                                 className="font-bold cursor-pointer"
