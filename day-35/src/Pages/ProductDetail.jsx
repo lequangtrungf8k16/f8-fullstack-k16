@@ -93,7 +93,8 @@ export default function ProductDetail() {
                             ""
                         )}
                         {productDetail?.images?.map((image, index) => (
-                            <div key={index}>
+                            <div key={index} 
+                                className="overflow-x-hidden">
                                 <img
                                     onClick={() => setMainImage(image)}
                                     src={image}
@@ -126,6 +127,7 @@ export default function ProductDetail() {
                         {productDetail?.price} $
                     </p>
                     <p className="mt-4 text-gray-600">
+                        
                         {productDetail?.description}
                     </p>
                     <div className="mt-4 flex gap-4 text-blue-500">
