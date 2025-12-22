@@ -81,8 +81,8 @@ export default function Products() {
         );
 
     return (
-        <div className="px-4">
-            <h2 className="mt-4 text-2xl font-bold">Sản phẩm</h2>
+        <div className="mt-4 px-4">
+            <h2 className="text-2xl font-bold">Sản phẩm</h2>
             <input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}

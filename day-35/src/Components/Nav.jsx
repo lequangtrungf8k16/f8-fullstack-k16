@@ -11,7 +11,7 @@ export default function Nav({ children }) {
 
     return (
         <>
-            <div className="flex justify-center items-center gap-2 py-2 select-none border-b border-b-gray-400">
+            <div className="flex justify-center items-center gap-2 px-4 py-2 select-none border-b border-b-gray-400">
                 <NavLink to="/" className={classNavLink}>
                     Home
                 </NavLink>
