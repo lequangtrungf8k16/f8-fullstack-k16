@@ -31,7 +31,7 @@ export default function Pagination({ page, totalPages, onChangePage }) {
     };
 
     return (
-        <div className="flex justify-center items-center gap-4 p-10 font-bold">
+        <div className="flex justify-center items-center gap-4 px-4 py-10 font-bold">
             <button
                 onClick={() => onChangePage(page - 1)}
                 disabled={page === 1}
@@ -59,7 +59,7 @@ export default function Pagination({ page, totalPages, onChangePage }) {
                 ) : (
                     <span
                         onClick={() => setIsEdit(true)}
-                        className="min-w-20 text-center p-2 border border-gray-400 rounded-md"
+                        className="min-w-28 text-center p-2 border border-gray-400 rounded-md"
                     >
                         {page} / {totalPages}
                     </span>
