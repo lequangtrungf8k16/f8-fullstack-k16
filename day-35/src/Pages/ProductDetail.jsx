@@ -36,7 +36,7 @@ export default function ProductDetail() {
 
     if (isLoading) {
         return (
-            <div className="flex flex-col items-center gap-2 p-4">
+            <div className="mt-20 flex flex-col items-center gap-2 p-4">
                 <div className="w-16 h-16 border-4 border-dashed border-blue-500 rounded-full animate-spin"></div>
                 <p className="text-3xl font-bold">Đang tải dữ liệu...</p>
             </div>
@@ -45,7 +45,7 @@ export default function ProductDetail() {
 
     if (isError) {
         return (
-            <p className="mt-10 text-center text-4xl font-bold text-red-500">
+            <p className="mt-20 text-center text-4xl font-bold text-red-500">
                 Đã có lỗi: {isError}
             </p>
         );
