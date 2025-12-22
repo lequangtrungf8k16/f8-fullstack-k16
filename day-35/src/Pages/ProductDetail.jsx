@@ -61,7 +61,7 @@ export default function ProductDetail() {
                     />
                 </div>
                 <div className="flex-1 px-4">
-                    <h3 className="mt-4 text-3xl text-gray-600 font-bold text-justify">
+                    <h3 className="mt-4 text-3xl text-gray-800 font-bold text-justify">
                         {productDetail?.title}
                     </h3>
                     <p className="mt-4 text-red-500 font-bold">
