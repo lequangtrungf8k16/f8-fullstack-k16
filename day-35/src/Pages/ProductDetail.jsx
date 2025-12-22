@@ -10,6 +10,8 @@ export default function ProductDetail() {
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
 
+    const [mainImage, setMainImage] = useState("");
+
     useEffect(() => {
         const fetchProductDetail = async () => {
             try {
@@ -19,6 +21,8 @@ export default function ProductDetail() {
                 const res = await shopApi.get(`/products/${id}`);
 
                 setProductDetail(res.data);
+
+                setMainImage(res.data.images[0] || res.data.thumbnail);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -47,6 +51,24 @@ export default function ProductDetail() {
         );
     }
 
+    const handlePrev = () => {
+        const images = productDetail?.images || [];
+        if (images.length === 0) return;
+        const currentIndex = images.indexOf(mainImage);
+        const newIndex = (currentIndex - 1 + images.length) % images.length;
+
+        setMainImage(images[newIndex]);
+    };
+
+    const handleNext = () => {
+        const images = productDetail?.images || [];
+        if (images.length === 0) return;
+        const currentIndex = images.indexOf(mainImage);
+        const newIndex = (currentIndex + 1) % images.length;
+
+        setMainImage(images[newIndex]);
+    };
+
     return (
         <div className="mt-10">
             <h3 className="text-center text-5xl font-bold">
@@ -55,10 +77,38 @@ export default function ProductDetail() {
 
             <article className="flex flex-col justify-between mt-10 px-4 lg:flex-row">
                 <div className="flex-1 px-4">
-                    <img
-                        src={productDetail?.thumbnail}
-                        alt={productDetail?.title}
-                    />
+                    <div className="bg-gray-200">
+                        <img src={mainImage} alt={productDetail?.title} />
+                    </div>
+
+                    <div className="flex justify-center items-center gap-4 my-4 overflow-x-auto">
+                        <button
+                            onClick={handlePrev}
+                            className="font-bold cursor-pointer"
+                        >
+                            Trước
+                        </button>
+                        {productDetail?.images?.map((image, index) => (
+                            <div key={index}>
+                                <img
+                                    onClick={() => setMainImage(image)}
+                                    src={image}
+                                    alt={productDetail?.title}
+                                    className={`mt-6 w-20 h-20 object-cover cursor-pointer rounded-xl border-2 transition-all duration-300 shadow-sm ${
+                                        mainImage === image
+                                            ? "border-blue-500 -translate-y-4 shadow-xl scale-110 z-10" // Khi được chọn: Nhấc lên, phóng to, đổ bóng đậm
+                                            : "border-transparent opacity-60 hover:opacity-100 hover:-translate-y-1" // Khi chưa chọn: Mờ hơn, rê chuột vào nhấc nhẹ
+                                    }`}
+                                />
+                            </div>
+                        ))}
+                        <button
+                            onClick={handleNext}
+                            className="font-bold cursor-pointer"
+                        >
+                            Sau
+                        </button>
+                    </div>
                 </div>
                 <div className="flex-1 px-4">
                     <h3 className="mt-4 text-3xl text-gray-800 font-bold text-justify">
