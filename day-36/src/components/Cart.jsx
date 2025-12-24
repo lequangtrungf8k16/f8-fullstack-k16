@@ -31,10 +31,10 @@ export const Cart = () => {
                     isCartOpen ? "translate-x-0" : "translate-x-full"
                 }`}
             >
-                <div className="flex justify-between items-center p-2 border-b bg-gray-50">
+                <div className="flex justify-between items-center p-4 border-b bg-gray-50">
                     <button
                         onClick={closeCart}
-                        className="w-10 h-10 pb-2 border border-gray-400 text-3xl font-bold text-gray-500 transition-colors cursor-pointer hover:text-red-500"
+                        className="w-10 h-10 rounded-md pb-2 border border-gray-400 text-3xl font-bold text-gray-500 transition-colors cursor-pointer hover:text-red-500"
                     >
                         &times;
                     </button>
@@ -47,7 +47,7 @@ export const Cart = () => {
                 {/* Các sản phẩm trong giỏ hàng */}
                 <div className="flex-1 overflow-y-auto p-4 space-y-4">
                     {cartItems.length === 0 ? (
-                        <p className="text-center text-gray-500 mt-10">
+                        <p className="text-2xl text-center text-gray-600 mt-10">
                             Chưa có sản phẩm nào!
                         </p>
                     ) : (
@@ -62,19 +62,19 @@ export const Cart = () => {
                                     className="w-16 h-16 object-cover rounded border"
                                 />
 
-                                <div className="flex-1">
-                                    <h4 className="font-semibold text-gray-800 line-clamp-1">
+                                <div className="flex-1 flex flex-col justify-between gap-2">
+                                    <h4 className="text-xl text-gray-800 line-clamp-1">
                                         {item.title}
                                     </h4>
-                                    <p className="text-gray-600">
+                                    <p className="text-red-500">
                                         {item.price} $
                                     </p>
                                 </div>
 
                                 {/* Tăng giảm sản phẩm */}
-                                <div className="flex flex-col items-center gap-1">
+                                <div className="flex flex-col items-center">
                                     <button
-                                        className="w-6 h-6 bg-gray-200 rounded hover:bg-gray-300 flex items-center justify-center"
+                                        className="w-6 h-6 bg-gray-200 rounded hover:bg-gray-300 flex items-center justify-center cursor-pointer"
                                         onClick={() =>
                                             dispatch({
                                                 type: "cart/updateQuantity",
@@ -93,7 +93,7 @@ export const Cart = () => {
                                     </span>
 
                                     <button
-                                        className="w-6 h-6 bg-gray-200 rounded hover:bg-gray-300 flex items-center justify-center"
+                                        className="w-6 h-6 bg-gray-200 rounded hover:bg-gray-300 flex items-center justify-center cursor-pointer"
                                         onClick={() =>
                                             dispatch({
                                                 type: "cart/updateQuantity",

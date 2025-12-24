@@ -49,8 +49,8 @@ export default function ProductItem({ product }) {
                 disabled={isAdded}
                 className={`w-full bg-violet-950 py-3 text-white font-bold transition-colors ${
                     isAdded
-                        ? " cursor-not-allowed"
-                        : " cursor-pointer hover:bg-violet-800"
+                        ? "opacity-50 cursor-not-allowed"
+                        : "cursor-pointer hover:bg-violet-800"
                 }`}
             >
                 {isAdded ? "Added" : "Add to cart"}
