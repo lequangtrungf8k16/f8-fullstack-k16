@@ -4,6 +4,8 @@ export const Cart = () => {
     const { cartItems, isCartOpen } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
+    const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
     const totalAmount = cartItems.reduce(
         (sum, item) => sum + item.price * item.quantity,
         0
@@ -38,6 +40,7 @@ export const Cart = () => {
                     </button>
                     <h2 className="text-xl font-bold text-gray-800">
                         Giỏ hàng
+                        <span className="mx-2">({totalCount})</span>
                     </h2>
                 </div>
 
