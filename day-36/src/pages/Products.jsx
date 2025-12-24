@@ -11,7 +11,7 @@ export default function Products() {
         const fetchProducts = async () => {
             try {
                 setIsLoading(true);
-                isError(null);
+                setIsError(null);
                 const res = await productsApi(`/products?limit=8`);
                 setProducts(res.data.products);
             } catch (error) {
