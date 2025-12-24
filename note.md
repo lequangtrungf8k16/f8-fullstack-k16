@@ -1,7 +1,7 @@
 1. Cài đặt Vite
    Mở terminal thư mục dự án
 
--   npm create vite
+-   npm create vite@latest
 
 -   Rồi chọn theo các bước sau: (Project name: để dấu . để cài đặt tại thư mục hiện tại)
 
@@ -89,4 +89,8 @@
 
 5.  Các thư viện
 
-npm i react-router-dom
+    npm i react-router-dom
+
+6.  Thư viện redux
+
+    npm i redux react-redux (Cài 1 lúc 2 thư viện: redux và react-redux)
