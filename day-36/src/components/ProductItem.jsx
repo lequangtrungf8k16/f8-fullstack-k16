@@ -14,12 +14,14 @@ export default function ProductItem({ product }) {
     }, [isAdded]);
 
     const handleAddToCart = () => {
-        dispatch({
-            type: "cart/add",
-            payload: product,
-        });
-
         setIsAdded(true);
+        setTimeout(() => {
+            dispatch({
+                type: "cart/add",
+                payload: product,
+            });
+        }, 2000);
+        return () => clearTimeout;
     };
 
     return (
